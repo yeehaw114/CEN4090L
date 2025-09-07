@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://btaajwyd7swy2"]
+
+[ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
+[ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
+[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="2_pjdjj"]
+[ext_resource type="Script" uid="uid://ber5iaoml6ibr" path="res://Scripts/player_combat.gd" id="2_tvmj4"]
+[ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/enemy.gd" id="5_w1xkj"]
+
+[node name="BattleManager" type="Node2D"]
+script = ExtResource("1_tvmj4")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttackButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 495.0
+offset_right = 214.0
+offset_bottom = 526.0
+text = "Attack
+"
+
+[node name="Player" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(136, 302)
+scale = Vector2(8, 8)
+texture = ExtResource("1_58ulb")
+script = ExtResource("2_tvmj4")
+health = 20
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" type="Sprite2D" parent="Enemies"]
+position = Vector2(975, 313)
+texture = ExtResource("2_pjdjj")
+script = ExtResource("5_w1xkj")
+health = 10
