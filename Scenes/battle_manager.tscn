@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=6 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
-[ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui.gd" id="2_8i1lf"]
-[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="2_pjdjj"]
-[ext_resource type="Script" uid="uid://ber5iaoml6ibr" path="res://Scripts/player_combat.gd" id="2_tvmj4"]
-[ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/enemy.gd" id="5_w1xkj"]
+[ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
+[ext_resource type="Script" uid="uid://ber5iaoml6ibr" path="res://Scripts/character/player_combat.gd" id="2_tvmj4"]
+[ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 
 [node name="BattleManager" type="Node2D"]
 script = ExtResource("1_tvmj4")
@@ -28,6 +27,7 @@ text = "Attack
 "
 
 [node name="SkillButton" type="Button" parent="UI"]
+layout_mode = 0
 offset_left = 26.0
 offset_top = 78.0
 offset_right = 84.0
@@ -37,6 +37,7 @@ text = "Skills
 "
 
 [node name="ItemsButton" type="Button" parent="UI"]
+layout_mode = 0
 offset_left = 27.0
 offset_top = 136.0
 offset_right = 85.0
@@ -52,15 +53,16 @@ scale = Vector2(8, 8)
 texture = ExtResource("1_58ulb")
 script = ExtResource("2_tvmj4")
 health = 20
+dmg = 3
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" type="Sprite2D" parent="Enemies"]
-position = Vector2(975, 313)
-texture = ExtResource("2_pjdjj")
-script = ExtResource("5_w1xkj")
-health = 10
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_w1xkj")]
+position = Vector2(917, 169)
 
-[connection signal="pressed" from="UI/AttackButton" to="UI" method="_on_attack_button_pressed"]
-[connection signal="pressed" from="UI/SkillButton" to="UI" method="_on_skill_button_pressed"]
-[connection signal="pressed" from="UI/ItemsButton" to="UI" method="_on_items_button_pressed"]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("5_w1xkj")]
+position = Vector2(898, 395)
+
+[connection signal="pressed" from="UI/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="UI/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="UI/ItemsButton" to="." method="_on_items_button_pressed"]

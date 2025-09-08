@@ -3,6 +3,7 @@ class_name Character
 
 @export_category('Stats')
 @export var health: int
+@export var dmg: int
 
 func begin_turn():
 	pass
