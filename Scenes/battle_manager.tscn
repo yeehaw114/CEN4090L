@@ -36,11 +36,11 @@ dmg = 3
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(992, 164)
+position = Vector2(1018, 150)
 scale = Vector2(5, 5)
 texture = ExtResource("7_hy4ep")
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(849, 395)
+position = Vector2(1018, 419)
 scale = Vector2(5, 5)
 texture = ExtResource("7_hy4ep")

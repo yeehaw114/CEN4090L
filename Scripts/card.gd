@@ -14,7 +14,12 @@ func set_values() -> void:
 	cost_label.text = str(card_cost)
 	description_label.text = card_description
 	
-
+func _ready() -> void:
+	set_values()
 
 func mouse_entered_card_area() -> void:
 	print('mouse over card '+ card_name)
+	scale = scale + Vector2(1,1)
+
+func mouse_exited_card_area() -> void:
+	scale = scale - Vector2(1,1)
