@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfixw0merhgge"]
+
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="1_0qqmn"]
+
+[node name="Card" type="Node2D"]
+
+[node name="BaseCardSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_0qqmn")
+
+[node name="CostLabel" type="Label" parent="BaseCardSprite"]
+offset_left = 9.0
+offset_top = -21.0
+offset_right = 49.0
+offset_bottom = 2.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
+
+[node name="Label" type="Label" parent="BaseCardSprite"]
+offset_left = -11.0
+offset_top = 10.0
+offset_right = 67.0
+offset_bottom = 33.0
+scale = Vector2(0.28, 0.28)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2 Damage"

@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=7 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
 [ext_resource type="Script" uid="uid://ber5iaoml6ibr" path="res://Scripts/character/player_combat.gd" id="2_tvmj4"]
-[ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
+[ext_resource type="Texture2D" uid="uid://bu53vfskyej80" path="res://Assets/Textures/card_template_scaled_32x_pngcrushed.png" id="3_8i1lf"]
 [ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
-[ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 
 [node name="BattleManager" type="Node2D"]
 script = ExtResource("1_tvmj4")
@@ -18,16 +17,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_8i1lf")
 
-[node name="Cards" type="Node" parent="UI"]
+[node name="Node" type="Node" parent="UI"]
 
-[node name="Card" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
-position = Vector2(553, 532)
-scale = Vector2(3.865, 3.865)
+[node name="Card" type="Sprite2D" parent="UI/Node"]
+position = Vector2(426, 493)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_8i1lf")
 
 [node name="Player" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(130, 320)
-scale = Vector2(5, 5)
+scale = Vector2(8, 8)
 texture = ExtResource("1_58ulb")
 script = ExtResource("2_tvmj4")
 health = 20
@@ -36,11 +36,7 @@ dmg = 3
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(992, 164)
-scale = Vector2(5, 5)
-texture = ExtResource("7_hy4ep")
+position = Vector2(917, 169)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(849, 395)
-scale = Vector2(5, 5)
-texture = ExtResource("7_hy4ep")
+position = Vector2(898, 395)

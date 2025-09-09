@@ -5,4 +5,4 @@ extends Control
 @onready var items_button: Button = $ItemsButton
 
 func _ready() -> void:
-	attack_button.grab_focus()
+	pass

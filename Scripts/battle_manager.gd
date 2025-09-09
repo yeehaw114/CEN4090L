@@ -1,9 +1,6 @@
 extends Node2D
 @onready var enemies_node: Node = $Enemies
 
-@onready var enemy_test: Enemy = $Enemies/Enemy
-
-
 @export var player: Character
 @export var enemy: Character
 var current_character: Character
@@ -15,7 +12,6 @@ var game_over: bool = false
 func _ready() -> void:
 	set_enemys()
 	
-
 func next_turn():
 	if game_over:
 		return
