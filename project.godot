@@ -15,6 +15,10 @@ run/main_scene="uid://qqfd2j7c0dss"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/Textures/icon.svg"
 
+[global_group]
+
+Card=""
+
 [input]
 
 ui_accept={

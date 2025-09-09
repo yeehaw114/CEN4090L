@@ -18,7 +18,6 @@ func _ready() -> void:
 	set_values()
 
 func mouse_entered_card_area() -> void:
-	print('mouse over card '+ card_name)
 	scale = scale + Vector2(1,1)
 
 func mouse_exited_card_area() -> void:

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf8id"]
 size = Vector2(32, 48)
 
-[node name="Card" type="Node2D"]
+[node name="Card" type="Node2D" groups=["Card"]]
 script = ExtResource("1_wf8id")
 card_name = "Attack"
 card_description = "2 Damage"

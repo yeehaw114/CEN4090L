@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
-[ext_resource type="Script" uid="uid://ber5iaoml6ibr" path="res://Scripts/character/player_combat.gd" id="2_tvmj4"]
 [ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
+[ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 
@@ -19,28 +19,26 @@ grow_vertical = 2
 script = ExtResource("2_8i1lf")
 
 [node name="Cards" type="Node" parent="UI"]
+script = ExtResource("3_qfsls")
 
 [node name="Card" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
 position = Vector2(553, 532)
 scale = Vector2(3.865, 3.865)
 
-[node name="Player" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(130, 320)
-scale = Vector2(5, 5)
-texture = ExtResource("1_58ulb")
-script = ExtResource("2_tvmj4")
-health = 20
-dmg = 3
+[node name="Player" parent="." instance=ExtResource("5_w1xkj")]
+position = Vector2(136, 269)
+sprite = ExtResource("1_58ulb")
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(1018, 150)
-scale = Vector2(5, 5)
-texture = ExtResource("7_hy4ep")
+health = 10
+sprite = ExtResource("7_hy4ep")
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(1018, 419)
-scale = Vector2(5, 5)
-texture = ExtResource("7_hy4ep")
+health = 10
+sprite = ExtResource("7_hy4ep")
+
+[connection signal="card_clicked" from="UI/Cards" to="." method="_on_card_selected"]
