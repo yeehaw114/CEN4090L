@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=9 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
+[ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
 
 [node name="BattleManager" type="Node2D"]
 script = ExtResource("1_tvmj4")
@@ -27,9 +28,11 @@ scale = Vector2(3.865, 3.865)
 
 [node name="Player" parent="." instance=ExtResource("5_w1xkj")]
 position = Vector2(136, 269)
+health = 20
 sprite = ExtResource("1_58ulb")
 
 [node name="Enemies" type="Node" parent="."]
+script = ExtResource("7_qfsls")
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(1018, 150)

@@ -3,7 +3,6 @@ class_name Character
 
 @export_category('Stats')
 @export var health: int
-@export var dmg: int
 @export var sprite: Texture2D
 
 func begin_turn():

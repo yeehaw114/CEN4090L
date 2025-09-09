@@ -1,13 +1,22 @@
 extends Node
 
+var cards: Array = []
+var currently_selected_card: Card
+
 signal card_clicked(card: Card)
+
+func _ready() -> void:
+	set_cards()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			var card = raycast_check_for_card()
-			if card != null:
+			if card != null and card != currently_selected_card:
 				card_clicked.emit(card)
+				currently_selected_card = card
+				currently_selected_card.is_currently_selected = true
+				highlight_selected_card(currently_selected_card)
 		else:
 			pass
 			
@@ -23,3 +32,9 @@ func raycast_check_for_card():
 			return result[0].collider.get_parent()
 	return null
 	
+func set_cards():
+	for c in get_children():
+		cards.append(c)
+		
+func highlight_selected_card(card: Card):
+	card.scale += Vector2(1,1)
