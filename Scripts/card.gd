@@ -22,9 +22,19 @@ func _ready() -> void:
 func mouse_entered_card_area() -> void:
 	if is_currently_selected:
 		return
-	scale = scale + Vector2(1,1)
+	increase_scale(1)
 
 func mouse_exited_card_area() -> void:
 	if is_currently_selected:
 		return
-	scale = scale - Vector2(1,1)
+	decrease_scale(1)
+
+func increase_scale(n: int):
+	scale = scale + Vector2(n,n)
+	
+func decrease_scale(n: int):
+	scale = scale - Vector2(n,n)
+	
+func reset_scale_and_position():
+	scale = Vector2(3.5,3.5)
+	position.y = 532

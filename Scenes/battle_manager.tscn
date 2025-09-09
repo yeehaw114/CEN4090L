@@ -24,7 +24,15 @@ script = ExtResource("3_qfsls")
 
 [node name="Card" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
 position = Vector2(553, 532)
-scale = Vector2(3.865, 3.865)
+scale = Vector2(3.5, 3.5)
+
+[node name="Card2" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
+position = Vector2(680, 532)
+scale = Vector2(3.5, 3.5)
+
+[node name="Card3" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
+position = Vector2(429, 533)
+scale = Vector2(3.5, 3.5)
 
 [node name="Player" parent="." instance=ExtResource("5_w1xkj")]
 position = Vector2(136, 269)

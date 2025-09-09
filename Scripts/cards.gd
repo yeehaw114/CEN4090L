@@ -14,6 +14,9 @@ func _input(event: InputEvent) -> void:
 			var card = raycast_check_for_card()
 			if card != null and card != currently_selected_card:
 				card_clicked.emit(card)
+				if currently_selected_card != null:
+					currently_selected_card.reset_scale_and_position()
+					currently_selected_card.is_currently_selected = false
 				currently_selected_card = card
 				currently_selected_card.is_currently_selected = true
 				highlight_selected_card(currently_selected_card)
@@ -37,4 +40,5 @@ func set_cards():
 		cards.append(c)
 		
 func highlight_selected_card(card: Card):
-	card.scale += Vector2(1,1)
+	card.position.y -= 15
+	card.increase_scale(0.5)
