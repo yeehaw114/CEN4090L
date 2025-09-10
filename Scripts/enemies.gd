@@ -10,7 +10,6 @@ func set_enemys():
 		enemies.append(e)
 
 func toggle_selectability_on():
-	print('toggle')
 	for e in enemies:
 		e.is_able_to_be_selected = true
 

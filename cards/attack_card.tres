@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://jtly2hmumqqw"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_604j2"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_w44wb"]
+
+[sub_resource type="Resource" id="Resource_604j2"]
+script = ExtResource("1_604j2")
+value = 3
+type = 0
+status_effect = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_w44wb")
+card_name = "Attack"
+card_cost = 1
+card_description = "2 Damage"
+card_actions = Array[ExtResource("1_604j2")]([SubResource("Resource_604j2")])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

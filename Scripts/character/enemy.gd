@@ -23,3 +23,7 @@ func mouse_entered_body() -> void:
 	
 func mouse_exited_body() -> void:
 	select_ring.visible = false
+
+func take_damage(damage: int):
+	health -= damage
+	health_bar.value = health

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afpow"]
 size = Vector2(49, 49.5)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="Node2D" groups=["Character"]]
 script = ExtResource("2_287tu")
 
 [node name="HealthBar" type="ProgressBar" parent="."]

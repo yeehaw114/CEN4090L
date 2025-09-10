@@ -14,8 +14,8 @@ func end_turn():
 func _process(delta: float) -> void:
 	pass
 	
-func take_damage():
-	pass
+func take_damage(damage: int):
+	health -= damage
 	
 func heal():
 	pass
