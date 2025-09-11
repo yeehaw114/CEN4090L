@@ -11,8 +11,8 @@ func set_enemys():
 
 func toggle_selectability_on():
 	for e in enemies:
-		e.is_able_to_be_selected = true
+		e.turn_selectibility_on()
 
 func toggle_selectability_off():
 	for e in enemies:
-		e.is_able_to_be_selected = false
+		e.turn_selectibility_off()

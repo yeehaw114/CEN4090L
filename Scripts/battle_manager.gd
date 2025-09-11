@@ -6,7 +6,6 @@ extends Node2D
 @export var enemy: Character
 #var current_character: Character
 var currently_selected_enemy: Character
-var currently_selected_card: Card = null
 
 var game_over: bool = false
 
@@ -30,8 +29,8 @@ func select_character():
 	var e: Character
 
 func _on_card_selected(card: Card) -> void:
-	currently_selected_card = card
-	print(currently_selected_card)
+	cards.currently_selected_card = card
+	#print(cards.currently_selected_card)
 	enemies_node.toggle_selectability_on()
 	
 func raycast_check_for_character():
@@ -51,5 +50,11 @@ func cast_card_on_character(card: Card, character: Character) -> void:
 		#print(action.ACTION_TYPE)
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			character.take_damage(action.value)
-			print(str(char)+' took '+str(action.value)+ ' damage')
+			#print(str(char)+' took '+str(action.value)+ ' damage')
+			cards.discard_pile.discarded_cards.append(card)
+			cards.currently_selected_card.reparent(cards.discard_pile)
+			cards.currently_selected_card = null
+			cards.discard_pile.move_cards_to_discard()
+			cards.discard_pile.print_all_discarded_cards()
+			enemies_node.toggle_selectability_off()
 	
