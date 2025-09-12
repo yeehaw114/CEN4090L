@@ -40,6 +40,11 @@ position = Vector2(429, 533)
 scale = Vector2(3.5, 3.5)
 card_stats = ExtResource("5_uqssg")
 
+[node name="Card4" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
+position = Vector2(303, 533)
+scale = Vector2(3.5, 3.5)
+card_stats = ExtResource("5_uqssg")
+
 [node name="DiscardPile" type="Node2D" parent="UI/Cards"]
 script = ExtResource("6_mg17r")
 
