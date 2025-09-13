@@ -1,6 +1,7 @@
 extends Node
 
 @onready var discard_pile: Node2D = $DiscardPile
+@onready var hand_area: ColorRect = $HandArea
 
 var cards: Array = []
 var currently_selected_card: Card
@@ -38,7 +39,7 @@ func raycast_check_for_card():
 	return null
 	
 func set_cards():
-	for c in get_children():
+	for c in hand_area.get_children():
 		cards.append(c)
 		
 func highlight_selected_card(card: Card):

@@ -1,6 +1,8 @@
 extends Node2D
 class_name Card
 
+const SIZE := Vector2(32,48)
+
 @export var card_stats: CardResource
 
 @export var card_name: String
@@ -30,11 +32,14 @@ func mouse_exited_card_area() -> void:
 	decrease_scale(1)
 
 func increase_scale(n: int):
-	scale = scale + Vector2(n,n)
+	#scale = scale + Vector2(n,n)
+	pass
 	
 func decrease_scale(n: int):
-	scale = scale - Vector2(n,n)
+	#scale = scale - Vector2(n,n)
+	pass
 	
 func reset_scale_and_position():
-	scale = Vector2(3.5,3.5)
-	position.y = 532
+	#scale = Vector2(2,2)
+	#position.y = 450
+	pass

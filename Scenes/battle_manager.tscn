@@ -1,16 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=15 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
 [ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
+[ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
 [ext_resource type="Resource" uid="uid://jtly2hmumqqw" path="res://cards/attack_card.tres" id="5_uqssg"]
 [ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
+
+[sub_resource type="Curve" id="Curve_2u0r0"]
+_data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_xs0o8"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 5.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 5.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="BattleManager" type="Node2D"]
 script = ExtResource("1_tvmj4")
@@ -25,24 +35,39 @@ script = ExtResource("2_8i1lf")
 [node name="Cards" type="Node" parent="UI"]
 script = ExtResource("3_qfsls")
 
-[node name="Card" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
-position = Vector2(553, 532)
-scale = Vector2(3.5, 3.5)
+[node name="HandArea" type="ColorRect" parent="UI/Cards"]
+custom_minimum_size = Vector2(500, 150)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -120.0
+offset_right = 325.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+script = ExtResource("4_2u0r0")
+hand_curve = SubResource("Curve_2u0r0")
+rotation_curve = SubResource("Curve_xs0o8")
+x_sep = 35
+y_min = 10
+
+[node name="Card" parent="UI/Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(146, 31)
 card_stats = ExtResource("5_uqssg")
 
-[node name="Card2" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
-position = Vector2(680, 532)
-scale = Vector2(3.5, 3.5)
+[node name="Card2" parent="UI/Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(220, 30)
 card_stats = ExtResource("5_uqssg")
 
-[node name="Card3" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
-position = Vector2(429, 533)
-scale = Vector2(3.5, 3.5)
+[node name="Card3" parent="UI/Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(297, 31)
 card_stats = ExtResource("5_uqssg")
 
-[node name="Card4" parent="UI/Cards" instance=ExtResource("3_8i1lf")]
-position = Vector2(303, 533)
-scale = Vector2(3.5, 3.5)
+[node name="Card4" parent="UI/Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(375, 30)
 card_stats = ExtResource("5_uqssg")
 
 [node name="DiscardPile" type="Node2D" parent="UI/Cards"]
@@ -62,7 +87,7 @@ offset_right = 1089.0
 offset_bottom = 573.0
 
 [node name="Player" parent="." instance=ExtResource("5_w1xkj")]
-position = Vector2(136, 269)
+position = Vector2(71, 155)
 health = 20
 sprite = ExtResource("1_58ulb")
 
@@ -70,12 +95,12 @@ sprite = ExtResource("1_58ulb")
 script = ExtResource("7_qfsls")
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(1018, 150)
+position = Vector2(844, 157)
 health = 10
 sprite = ExtResource("7_hy4ep")
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(1022, 356)
+position = Vector2(676, 153)
 health = 10
 sprite = ExtResource("7_hy4ep")
 

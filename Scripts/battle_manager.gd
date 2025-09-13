@@ -57,4 +57,5 @@ func cast_card_on_character(card: Card, character: Character) -> void:
 			cards.discard_pile.move_cards_to_discard()
 			cards.discard_pile.print_all_discarded_cards()
 			enemies_node.toggle_selectability_off()
+			cards.hand_area.update_cards()
 	

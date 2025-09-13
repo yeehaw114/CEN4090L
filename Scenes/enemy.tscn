@@ -9,6 +9,7 @@ size = Vector2(49, 49.5)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_287tu"]
 
 [node name="Enemy" type="Node2D" groups=["Character"]]
+scale = Vector2(2, 2)
 script = ExtResource("2_287tu")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -21,21 +22,19 @@ value = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 12.25)
-scale = Vector2(3.37, 3.37)
 shape = SubResource("RectangleShape2D_afpow")
 
 [node name="SelectRing" type="Sprite2D" parent="."]
 visible = false
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(5.96046e-07, 140)
-scale = Vector2(3.885, 7.74)
+position = Vector2(1.5, 71)
 texture = ExtResource("3_0830c")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_287tu")
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="mouse_entered_body"]
 [connection signal="mouse_exited" from="Area2D" to="." method="mouse_exited_body"]
