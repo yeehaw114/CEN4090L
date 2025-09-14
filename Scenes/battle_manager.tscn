@@ -27,10 +27,38 @@ script = ExtResource("1_tvmj4")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_8i1lf")
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 445.0
+offset_right = 523.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "End Turn
+"
+
+[node name="CharacterContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 4.0
+grow_vertical = 2
+
+[node name="PlayerContainer" type="HBoxContainer" parent="UI/CharacterContainer"]
+layout_mode = 2
+
+[node name="EnemyContainer" type="HBoxContainer" parent="UI/CharacterContainer"]
+layout_mode = 2
 
 [node name="Cards" type="Node" parent="UI"]
 script = ExtResource("3_qfsls")
@@ -71,13 +99,13 @@ position = Vector2(375, 30)
 card_stats = ExtResource("5_uqssg")
 
 [node name="DiscardPile" type="Node2D" parent="UI/Cards"]
+position = Vector2(852, 450)
 script = ExtResource("6_mg17r")
 
 [node name="Discard_spawn" type="Node2D" parent="UI/Cards/DiscardPile"]
 position = Vector2(1388, 457)
 
 [node name="DiscardSprite" type="Sprite2D" parent="UI/Cards/DiscardPile"]
-position = Vector2(961, 564)
 texture = ExtResource("7_2u0r0")
 
 [node name="DiscardCount" type="Label" parent="UI/Cards/DiscardPile"]
