@@ -38,72 +38,87 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -39.0
-offset_right = 39.0
+offset_left = 445.0
+offset_right = 523.0
 offset_bottom = 31.0
 grow_horizontal = 2
 text = "End Turn
 "
 
 [node name="CharacterContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -75.0
+offset_right = 2.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
-alignment = 1
 
 [node name="PlayerContainer" type="HBoxContainer" parent="CharacterContainer"]
-layout_mode = 2
-
-[node name="Rank4Container" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
-
-[node name="Rank4Position" type="Control" parent="CharacterContainer/PlayerContainer/Rank4Container"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="RankContainer2" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
-
-[node name="Rank4Position" type="Control" parent="CharacterContainer/PlayerContainer/RankContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="RankContainer3" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
-
-[node name="RankContainer4" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
 layout_mode = 2
 
 [node name="EnemyContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
 
-[node name="RankContainer" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
+[node name="Cards" type="Node" parent="."]
+script = ExtResource("3_qfsls")
 
-[node name="RankContainer2" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
+[node name="HandArea" type="ColorRect" parent="Cards"]
+custom_minimum_size = Vector2(500, 150)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -120.0
+offset_right = 325.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+script = ExtResource("4_2u0r0")
+hand_curve = SubResource("Curve_2u0r0")
+rotation_curve = SubResource("Curve_xs0o8")
+x_sep = 35
+y_min = 10
 
-[node name="RankContainer3" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
+[node name="Card" parent="Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(146, 31)
+card_stats = ExtResource("5_uqssg")
 
-[node name="RankContainer4" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
+[node name="Card2" parent="Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(220, 30)
+card_stats = ExtResource("5_uqssg")
+
+[node name="Card3" parent="Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(297, 31)
+card_stats = ExtResource("5_uqssg")
+
+[node name="Card4" parent="Cards/HandArea" instance=ExtResource("3_8i1lf")]
+position = Vector2(375, 30)
+card_stats = ExtResource("5_uqssg")
+
+[node name="DiscardPile" type="Node2D" parent="Cards"]
+position = Vector2(852, 450)
+script = ExtResource("6_mg17r")
+
+[node name="Discard_spawn" type="Node2D" parent="Cards/DiscardPile"]
+position = Vector2(1388, 457)
+
+[node name="DiscardSprite" type="Sprite2D" parent="Cards/DiscardPile"]
+texture = ExtResource("7_2u0r0")
+
+[node name="DiscardCount" type="Label" parent="Cards/DiscardPile"]
+offset_left = 1049.0
+offset_top = 550.0
+offset_right = 1089.0
+offset_bottom = 573.0
 
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
@@ -126,58 +141,4 @@ position = Vector2(676, 153)
 health = 10
 sprite = ExtResource("7_hy4ep")
 
-[node name="Cards" type="Node" parent="BattleManager"]
-script = ExtResource("3_qfsls")
-
-[node name="HandArea" type="ColorRect" parent="BattleManager/Cards"]
-custom_minimum_size = Vector2(500, 150)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -325.0
-offset_top = -120.0
-offset_right = 325.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(1, 1, 1, 0)
-script = ExtResource("4_2u0r0")
-hand_curve = SubResource("Curve_2u0r0")
-rotation_curve = SubResource("Curve_xs0o8")
-x_sep = 35
-y_min = 10
-
-[node name="Card" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-position = Vector2(146, 31)
-card_stats = ExtResource("5_uqssg")
-
-[node name="Card2" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-position = Vector2(220, 30)
-card_stats = ExtResource("5_uqssg")
-
-[node name="Card3" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-position = Vector2(297, 31)
-card_stats = ExtResource("5_uqssg")
-
-[node name="Card4" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-position = Vector2(375, 30)
-card_stats = ExtResource("5_uqssg")
-
-[node name="DiscardPile" type="Node2D" parent="BattleManager/Cards"]
-position = Vector2(852, 450)
-script = ExtResource("6_mg17r")
-
-[node name="Discard_spawn" type="Node2D" parent="BattleManager/Cards/DiscardPile"]
-position = Vector2(1388, 457)
-
-[node name="DiscardSprite" type="Sprite2D" parent="BattleManager/Cards/DiscardPile"]
-texture = ExtResource("7_2u0r0")
-
-[node name="DiscardCount" type="Label" parent="BattleManager/Cards/DiscardPile"]
-offset_left = 1049.0
-offset_top = 550.0
-offset_right = 1089.0
-offset_bottom = 573.0
-
-[connection signal="card_clicked" from="BattleManager/Cards" to="BattleManager" method="_on_card_selected"]
+[connection signal="card_clicked" from="Cards" to="BattleManager" method="_on_card_selected"]

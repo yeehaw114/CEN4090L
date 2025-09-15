@@ -1,6 +1,6 @@
 extends Node2D
 @onready var enemies_node: Node = $Enemies
-@onready var cards: Node = $UI/Cards
+@onready var cards: Node = $Cards
 
 @export var player: Character
 @export var enemy: Character

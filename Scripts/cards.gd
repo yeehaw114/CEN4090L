@@ -1,7 +1,9 @@
 extends Node
 
 @onready var discard_pile: Node2D = $DiscardPile
+
 @onready var hand_area: ColorRect = $HandArea
+
 
 var cards: Array = []
 var currently_selected_card: Card
