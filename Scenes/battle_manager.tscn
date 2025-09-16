@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=16 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
+[ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="2_xs0o8"]
 [ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
@@ -33,7 +34,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_8i1lf")
 
-[node name="Button" type="Button" parent="."]
+[node name="MovementButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Move"
+
+[node name="EndTurnButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -60,58 +67,41 @@ alignment = 1
 [node name="PlayerContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
 
-[node name="Rank4Container" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+rank = 4
 
-[node name="Rank4Position" type="Control" parent="CharacterContainer/PlayerContainer/Rank4Container"]
+[node name="RankContainer2" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+rank = 3
 
-[node name="RankContainer2" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer3" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+rank = 2
 
-[node name="Rank4Position" type="Control" parent="CharacterContainer/PlayerContainer/RankContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="RankContainer3" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
-layout_mode = 2
-
-[node name="RankContainer4" type="PanelContainer" parent="CharacterContainer/PlayerContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer4" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 
 [node name="EnemyContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
 
-[node name="RankContainer" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 
-[node name="RankContainer2" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer2" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+rank = 2
 
-[node name="RankContainer3" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer3" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+rank = 3
 
-[node name="RankContainer4" type="PanelContainer" parent="CharacterContainer/EnemyContainer"]
-custom_minimum_size = Vector2(110, 100)
+[node name="RankContainer4" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+rank = 4
 
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
-
-[node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
-position = Vector2(399, 244)
-health = 20
-sprite = ExtResource("1_58ulb")
 
 [node name="Enemies" type="Node" parent="BattleManager"]
 script = ExtResource("7_qfsls")
@@ -180,4 +170,16 @@ offset_top = 550.0
 offset_right = 1089.0
 offset_bottom = 573.0
 
+[node name="PlayerLine" type="Line2D" parent="BattleManager"]
+position = Vector2(2, 220)
+scale = Vector2(0.474974, 1)
+points = PackedVector2Array(-28.98, 52, 978.895, 52)
+
+[node name="Player" parent="BattleManager/PlayerLine" instance=ExtResource("5_w1xkj")]
+position = Vector2(852.205, -15)
+scale = Vector2(4.21076, 2)
+health = 20
+sprite = ExtResource("1_58ulb")
+
+[connection signal="pressed" from="MovementButton" to="." method="_on_movement_button_pressed"]
 [connection signal="card_clicked" from="BattleManager/Cards" to="BattleManager" method="_on_card_selected"]

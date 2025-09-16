@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1syl8lfndi8q"]
+[gd_scene load_steps=6 format=3 uid="uid://d1syl8lfndi8q"]
 
 [ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/character/enemy.gd" id="2_287tu"]
 [ext_resource type="Texture2D" uid="uid://cx3g6b3i4x7y0" path="res://Assets/Textures/select_target_ring.png" id="3_0830c"]
+[ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="3_afpow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afpow"]
 size = Vector2(49, 49.5)
@@ -13,15 +14,16 @@ scale = Vector2(2, 2)
 script = ExtResource("2_287tu")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_top = 78.0
-offset_right = 4.0
-offset_bottom = 105.0
+offset_left = -1.0
+offset_top = 8.5
+offset_right = 3.0
+offset_bottom = 35.5
 value = 100.0
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 12.25)
 shape = SubResource("RectangleShape2D_afpow")
 
 [node name="SelectRing" type="Sprite2D" parent="."]
@@ -34,7 +36,10 @@ texture = ExtResource("3_0830c")
 [node name="EnemySprite" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_287tu")
+position = Vector2(0, -7.5)
 scale = Vector2(2, 2)
+texture = ExtResource("3_afpow")
+offset = Vector2(0.25, -12.25)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="mouse_entered_body"]
 [connection signal="mouse_exited" from="Area2D" to="." method="mouse_exited_body"]
