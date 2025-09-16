@@ -109,7 +109,7 @@ layout_mode = 2
 script = ExtResource("1_tvmj4")
 
 [node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
-position = Vector2(71, 155)
+position = Vector2(399, 244)
 health = 20
 sprite = ExtResource("1_58ulb")
 
