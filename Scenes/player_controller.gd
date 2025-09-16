@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 200.0
 
 @onready var animated_sprite = $AnimatedSprite2D
-var facing_right = true
+var last_facing_right = true
 
 func _physics_process(_delta):
 	var input_vector = Vector2(
@@ -13,18 +13,17 @@ func _physics_process(_delta):
 	velocity = input_vector * SPEED
 	move_and_slide()
 
-	# Determine facing direction
+	# Update last facing direction when moving horizontally
 	if input_vector.x > 0:
-		facing_right = true
+		last_facing_right = true
+		if animated_sprite.animation != "walk_right":
+			animated_sprite.play("walk_right")
 	elif input_vector.x < 0:
-		facing_right = false
-
-	var idle_anim = "idle_right" if facing_right else "idle_left"
-	var walk_anim = "walk_right" if facing_right else "walk_left"
-
-	if input_vector.length() > 0:
-		if animated_sprite.animation != walk_anim:
-			animated_sprite.play(walk_anim)
+		last_facing_right = false
+		if animated_sprite.animation != "walk_left":
+			animated_sprite.play("walk_left")
 	else:
+		# No horizontal movement; use last facing direction for idle
+		var idle_anim = "idle_right" if last_facing_right else "idle_left"
 		if animated_sprite.animation != idle_anim:
-			animated_sprite
+			animated_sprite.play(idle_anim)
