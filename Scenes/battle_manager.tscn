@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=17 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
+[ext_resource type="Script" uid="uid://cdekaiejafqpg" path="res://Scripts/ui/player_container.gd" id="2_htoyf"]
 [ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="2_xs0o8"]
 [ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
@@ -66,6 +67,7 @@ alignment = 1
 
 [node name="PlayerContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
+script = ExtResource("2_htoyf")
 
 [node name="RankContainer" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
@@ -79,8 +81,9 @@ rank = 3
 layout_mode = 2
 rank = 2
 
-[node name="RankContainer4" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
+[node name="RankContainer4" parent="CharacterContainer/PlayerContainer" node_paths=PackedStringArray("character") instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+character = NodePath("../../../BattleManager/PlayerLine/Player")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2

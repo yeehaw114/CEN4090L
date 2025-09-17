@@ -58,4 +58,6 @@ func cast_card_on_character(card: Card, character: Character) -> void:
 			cards.discard_pile.print_all_discarded_cards()
 			enemies_node.toggle_selectability_off()
 			cards.hand_area.update_cards()
-	
+
+func set_character_rank(player: Character, enemies_node):
+	pass

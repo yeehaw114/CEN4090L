@@ -16,3 +16,6 @@ func toggle_selectability_on():
 func toggle_selectability_off():
 	for e in enemies:
 		e.turn_selectibility_off()
+
+func get_all_enemies() -> Array[Character]:
+	return enemies

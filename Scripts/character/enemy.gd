@@ -9,6 +9,7 @@ const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 
 var is_able_to_be_selected = false
 var is_dead = false
+var rank : int = -1 
 
 func _ready():
 	enemy_sprite.texture = sprite
