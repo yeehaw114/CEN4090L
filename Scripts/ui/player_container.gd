@@ -5,5 +5,12 @@ extends HBoxContainer
 @onready var rank_container_3: PanelContainer = $RankContainer3
 @onready var rank_container_4: PanelContainer = $RankContainer4
 
-func set_player_placement():
+func set_player_placement(rank):
 	pass
+
+func get_tile(rank:int):
+	for t in get_children():
+		#print(t.character_position_point.global_position) # global
+		if t.rank == rank:
+			#print(t)
+			return t

@@ -1,25 +1,38 @@
 extends Node2D
 @onready var enemies_node: Node = $Enemies
 @onready var cards: Node = $Cards
+@onready var player: Enemy = $Player
 
-@export var player: Character
+
+@onready var player_container: HBoxContainer = $"../CharacterContainer/PlayerContainer"
+@onready var player_movement_positions: Node2D = $Player_movement_positions
+
 @export var enemy: Character
 #var current_character: Character
 var currently_selected_enemy: Character
-
-var game_over: bool = false
+var able_to_select_card := false
+var able_to_move := true
+var game_over := false
 
 func _ready() -> void:
-	pass
+	set_player_rank(player,2)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			var char = raycast_check_for_character()
-			if char != null and cards.currently_selected_card != null:
-				currently_selected_enemy = char
-				#print('using '+str(cards.currently_selected_card)+' on '+str(char))
-				cast_card_on_character(cards.currently_selected_card,currently_selected_enemy)
+			handle_input()
+
+func handle_input():
+	if able_to_select_card:
+		var char = raycast_check_for_character()
+		if char != null and cards.currently_selected_card != null:
+			currently_selected_enemy = char
+			#print('using '+str(cards.currently_selected_card)+' on '+str(char))
+			cast_card_on_character(cards.currently_selected_card,currently_selected_enemy)
+	elif able_to_move:
+		var tile = raycast_check_for_tile()
+		if tile != null:
+			set_player_rank(player,tile.rank)
 
 func next_turn():
 	if game_over:
@@ -44,7 +57,20 @@ func raycast_check_for_character():
 		if result[0].collider.get_parent().is_in_group("Character"):
 			return result[0].collider.get_parent()
 	return null
+
+func raycast_check_for_tile():
+	var space_state = get_viewport().world_2d.direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = get_viewport().get_mouse_position()
+	parameters.collide_with_areas = true
+	parameters.collision_mask = 1
+	var result = space_state.intersect_point(parameters)
+	if result.size() > 0:
+		if result[0].collider.get_parent().is_in_group("Tile"):
+			return result[0].collider.get_parent()
+	return null
 	
+
 func cast_card_on_character(card: Card, character: Character) -> void:
 	for action in card.card_stats.card_actions:
 		#print(action.ACTION_TYPE)
@@ -59,5 +85,7 @@ func cast_card_on_character(card: Card, character: Character) -> void:
 			enemies_node.toggle_selectability_off()
 			cards.hand_area.update_cards()
 
-func set_character_rank(player: Character, enemies_node):
-	pass
+func set_player_rank(character: Character, rank: int):
+	var tile_to_move_to = player_container.get_tile(rank)
+	character.global_position = tile_to_move_to.character_position_point.global_position
+	

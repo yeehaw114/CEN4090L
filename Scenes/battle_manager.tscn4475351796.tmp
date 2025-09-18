@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=18 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
+[ext_resource type="Script" uid="uid://bafrysi7f77w6" path="res://Scripts/player_movement_positions.gd" id="15_qfhry"]
 
 [sub_resource type="Curve" id="Curve_2u0r0"]
 _data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
@@ -83,7 +84,7 @@ rank = 2
 
 [node name="RankContainer4" parent="CharacterContainer/PlayerContainer" node_paths=PackedStringArray("character") instance=ExtResource("2_xs0o8")]
 layout_mode = 2
-character = NodePath("../../../BattleManager/Player")
+character = NodePath("../../../BattleManager/PlayerLine/Player")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
@@ -105,12 +106,6 @@ rank = 4
 
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
-
-[node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
-position = Vector2(406.775, 205)
-scale = Vector2(2, 2)
-health = 20
-sprite = ExtResource("1_58ulb")
 
 [node name="Enemies" type="Node" parent="BattleManager"]
 script = ExtResource("7_qfsls")
@@ -178,6 +173,32 @@ offset_left = 1049.0
 offset_top = 550.0
 offset_right = 1089.0
 offset_bottom = 573.0
+
+[node name="PlayerLine" type="Line2D" parent="BattleManager"]
+position = Vector2(2, 220)
+scale = Vector2(0.474974, 1)
+points = PackedVector2Array(-28.98, 52, 978.895, 52)
+
+[node name="Player" parent="BattleManager/PlayerLine" instance=ExtResource("5_w1xkj")]
+position = Vector2(852.205, -15)
+scale = Vector2(4.21076, 2)
+health = 20
+sprite = ExtResource("1_58ulb")
+
+[node name="Player_movement_positions" type="Node2D" parent="BattleManager"]
+position = Vector2(58, 322)
+script = ExtResource("15_qfhry")
+
+[node name="player_rank4_position" type="Node2D" parent="BattleManager/Player_movement_positions"]
+
+[node name="player_rank3_position" type="Node2D" parent="BattleManager/Player_movement_positions"]
+position = Vector2(117, 0)
+
+[node name="player_rank2_position" type="Node2D" parent="BattleManager/Player_movement_positions"]
+position = Vector2(229, -1)
+
+[node name="player_rank1_position" type="Node2D" parent="BattleManager/Player_movement_positions"]
+position = Vector2(345, -1)
 
 [connection signal="pressed" from="MovementButton" to="." method="_on_movement_button_pressed"]
 [connection signal="card_clicked" from="BattleManager/Cards" to="BattleManager" method="_on_card_selected"]
