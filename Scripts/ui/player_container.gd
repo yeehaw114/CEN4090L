@@ -14,3 +14,9 @@ func get_tile(rank:int):
 		if t.rank == rank:
 			#print(t)
 			return t
+
+func get_tile_by_char(character: Character):
+	for t in get_children():
+		if t.character == character:
+			return t
+	return null

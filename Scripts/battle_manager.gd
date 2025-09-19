@@ -2,44 +2,58 @@ extends Node2D
 @onready var enemies_node: Node = $Enemies
 @onready var cards: Node = $Cards
 @onready var player: Enemy = $Player
-
-
 @onready var player_container: HBoxContainer = $"../CharacterContainer/PlayerContainer"
 @onready var player_movement_positions: Node2D = $Player_movement_positions
 
 @export var enemy: Character
-#var current_character: Character
+
 var currently_selected_enemy: Character
-var able_to_select_card := false
-var able_to_move := true
 var game_over := false
 
+enum battle_state_player {MOVE=0,SELECT_CARD=1}
+var active_state := -1
+
 func _ready() -> void:
-	set_player_rank(player,2)
+	set_state(battle_state_player.SELECT_CARD)
+	get_current_state()
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			handle_input()
+			handle_left_input()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			handle_right_input()
 
-func handle_input():
-	if able_to_select_card:
-		var char = raycast_check_for_character()
+func handle_left_input():
+	if active_state == battle_state_player.SELECT_CARD:
+		cards.attempt_to_select_card()
+		#print('currently_selected_card: '+str(cards.currently_selected_card))
+		var tile = raycast_check_for_tile()
+		var char : Character
+		if tile:
+			char = tile.character
+		#print('currently_selected_character: '+str(char))
 		if char != null and cards.currently_selected_card != null:
 			currently_selected_enemy = char
+			#print('currently_selected_char: '+str(currently_selected_enemy))
 			#print('using '+str(cards.currently_selected_card)+' on '+str(char))
 			cast_card_on_character(cards.currently_selected_card,currently_selected_enemy)
-	elif able_to_move:
+	elif active_state == battle_state_player.MOVE:
 		var tile = raycast_check_for_tile()
 		if tile != null:
 			set_player_rank(player,tile.rank)
 
+func handle_right_input():
+	if active_state == battle_state_player.SELECT_CARD:
+		if cards.currently_selected_card:
+			cards.unselect_card()
+	elif active_state == battle_state_player.MOVE:
+		active_state = battle_state_player.SELECT_CARD
+
 func next_turn():
 	if game_over:
 		return
-
-func select_character():
-	var e: Character
 
 func _on_card_selected(card: Card) -> void:
 	cards.currently_selected_card = card
@@ -67,10 +81,11 @@ func raycast_check_for_tile():
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		if result[0].collider.get_parent().is_in_group("Tile"):
+			print('Tile: '+str(result[0].collider.get_parent()))
+			print('Char: '+str(result[0].collider.get_parent().character))
 			return result[0].collider.get_parent()
 	return null
 	
-
 func cast_card_on_character(card: Card, character: Character) -> void:
 	for action in card.card_stats.card_actions:
 		#print(action.ACTION_TYPE)
@@ -87,5 +102,25 @@ func cast_card_on_character(card: Card, character: Character) -> void:
 
 func set_player_rank(character: Character, rank: int):
 	var tile_to_move_to = player_container.get_tile(rank)
+	var character_current_tile = player_container.get_tile_by_char(character)
+	character_current_tile.character = null
+	tile_to_move_to.character = character
 	character.global_position = tile_to_move_to.character_position_point.global_position
 	
+func set_state(index: int):
+	var count := 0
+	if index >= 0 and index <= 1:
+		active_state = index
+	else:
+		print('setting incorrect state')
+		
+func get_current_state():
+	for state in battle_state_player.values():
+		if state == active_state:
+			print(state)
+			return state
+
+func _on_movement_button_pressed() -> void:
+	if active_state == battle_state_player.SELECT_CARD:
+		cards.unselect_card()
+		set_state(battle_state_player.MOVE)

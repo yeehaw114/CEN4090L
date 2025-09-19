@@ -6,8 +6,9 @@ var discarded_cards: Array[Card]
 
 func print_all_discarded_cards() -> void:
 	for card in discarded_cards:
-		print(str(card))
-	print()
+		#print(str(card))
+		pass
+	#print()
 
 func move_cards_to_discard() -> void:
 	var count: int = 0
