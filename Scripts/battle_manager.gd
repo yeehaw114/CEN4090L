@@ -3,7 +3,8 @@ extends Node2D
 @onready var cards: Node = $Cards
 @onready var player: Enemy = $Player
 @onready var player_container: HBoxContainer = $"../CharacterContainer/PlayerContainer"
-@onready var player_movement_positions: Node2D = $Player_movement_positions
+@onready var enemy_container: HBoxContainer = $"../CharacterContainer/EnemyContainer"
+#@onready var player_movement_positions: Node2D = $Player_movement_positions
 
 @export var enemy: Character
 
@@ -38,7 +39,7 @@ func handle_left_input():
 			currently_selected_enemy = char
 			#print('currently_selected_char: '+str(currently_selected_enemy))
 			#print('using '+str(cards.currently_selected_card)+' on '+str(char))
-			cast_card_on_character(cards.currently_selected_card,currently_selected_enemy)
+			cast_card_on_character(player,cards.currently_selected_card,currently_selected_enemy)
 	elif active_state == battle_state_player.MOVE:
 		var tile = raycast_check_for_tile()
 		if tile != null:
@@ -86,11 +87,13 @@ func raycast_check_for_tile():
 			return result[0].collider.get_parent()
 	return null
 	
-func cast_card_on_character(card: Card, character: Character) -> void:
+func cast_card_on_character(character: Character, card: Card, enemy: Character) -> void:
+	if !check_character_on_valid_tile(character,card) or !check_enemy_on_valid_tile(enemy,card):
+		return
+
 	for action in card.card_stats.card_actions:
-		#print(action.ACTION_TYPE)
 		if action.type == action.ACTION_TYPE.DAMAGE:
-			character.take_damage(action.value)
+			enemy.take_damage(action.value)
 			#print(str(char)+' took '+str(action.value)+ ' damage')
 			cards.discard_pile.discarded_cards.append(card)
 			cards.currently_selected_card.reparent(cards.discard_pile)
@@ -99,6 +102,20 @@ func cast_card_on_character(card: Card, character: Character) -> void:
 			cards.discard_pile.print_all_discarded_cards()
 			enemies_node.toggle_selectability_off()
 			cards.hand_area.update_cards()
+
+func check_character_on_valid_tile(character: Character, card: Card) -> bool:
+		var character_rank = player_container.get_tile_by_char(character).rank
+		for rank in card.card_stats.character_position:
+			if rank == character_rank:
+				return true
+		return false
+
+func check_enemy_on_valid_tile(character: Character, card: Card) -> bool:
+		var enemy_rank = enemy_container.get_tile_by_char(character).rank
+		for rank in card.card_stats.enemy_position:
+			if rank == enemy_rank:
+				return true
+		return false
 
 func set_player_rank(character: Character, rank: int):
 	var tile_to_move_to = player_container.get_tile(rank)

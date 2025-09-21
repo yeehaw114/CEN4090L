@@ -91,6 +91,7 @@ character = NodePath("../../../BattleManager/Player")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
+script = ExtResource("2_htoyf")
 
 [node name="RankContainer" parent="CharacterContainer/EnemyContainer" node_paths=PackedStringArray("character") instance=ExtResource("2_xs0o8")]
 layout_mode = 2

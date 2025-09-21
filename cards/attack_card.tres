@@ -17,4 +17,6 @@ card_name = "Attack"
 card_cost = 1
 card_description = "2 Damage"
 card_actions = Array[ExtResource("1_604j2")]([SubResource("Resource_604j2")])
+character_position = Array[int]([1, 2])
+enemy_position = Array[int]([1])
 metadata/_custom_type_script = "uid://dda632fu6blsg"
