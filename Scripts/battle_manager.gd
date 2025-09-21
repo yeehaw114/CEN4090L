@@ -13,6 +13,7 @@ var game_over := false
 
 enum battle_state_player {MOVE=0,SELECT_CARD=1}
 var active_state := -1
+signal state_changed(state: int)
 
 func _ready() -> void:
 	set_state(battle_state_player.SELECT_CARD)
@@ -50,7 +51,7 @@ func handle_right_input():
 		if cards.currently_selected_card:
 			cards.unselect_card()
 	elif active_state == battle_state_player.MOVE:
-		active_state = battle_state_player.SELECT_CARD
+		set_state(battle_state_player.SELECT_CARD)
 
 func next_turn():
 	if game_over:
@@ -128,6 +129,7 @@ func set_state(index: int):
 	var count := 0
 	if index >= 0 and index <= 1:
 		active_state = index
+		state_changed.emit(index)
 	else:
 		print('setting incorrect state')
 		

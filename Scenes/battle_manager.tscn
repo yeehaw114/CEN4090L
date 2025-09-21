@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=19 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
 [ext_resource type="Script" uid="uid://cdekaiejafqpg" path="res://Scripts/ui/player_container.gd" id="2_htoyf"]
+[ext_resource type="Texture2D" uid="uid://dramnk8jinkra" path="res://Assets/Textures/move_crystal_sprite_sheet.png" id="2_qfhry"]
 [ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="2_xs0o8"]
 [ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
@@ -14,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
+atlas = ExtResource("2_qfhry")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Curve" id="Curve_2u0r0"]
 _data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
@@ -35,11 +40,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_8i1lf")
 
-[node name="MovementButton" type="Button" parent="."]
+[node name="MoveCrystalButton" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Move"
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture_normal = SubResource("AtlasTexture_qfhry")
 
 [node name="EndTurnButton" type="Button" parent="."]
 layout_mode = 1
@@ -113,6 +120,8 @@ rank = 4
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
 
+[node name="CombatManager" type="Node" parent="BattleManager"]
+
 [node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
 position = Vector2(400, 264)
 health = 20
@@ -185,5 +194,6 @@ offset_top = 550.0
 offset_right = 1089.0
 offset_bottom = 573.0
 
-[connection signal="pressed" from="MovementButton" to="." method="_on_movement_button_pressed"]
-[connection signal="pressed" from="MovementButton" to="BattleManager" method="_on_movement_button_pressed"]
+[connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
+[connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
+[connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
