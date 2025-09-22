@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=20 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
+[ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="2_gfmbw"]
 [ext_resource type="Script" uid="uid://cdekaiejafqpg" path="res://Scripts/ui/player_container.gd" id="2_htoyf"]
 [ext_resource type="Texture2D" uid="uid://dramnk8jinkra" path="res://Assets/Textures/move_crystal_sprite_sheet.png" id="2_qfhry"]
 [ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="2_xs0o8"]
@@ -40,6 +41,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_8i1lf")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gfmbw")
+
 [node name="MoveCrystalButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
@@ -68,9 +79,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -1.0
-offset_top = -104.0
+offset_top = -55.0
 offset_right = -1.0
-offset_bottom = -4.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
