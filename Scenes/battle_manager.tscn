@@ -134,7 +134,7 @@ script = ExtResource("1_tvmj4")
 [node name="CombatManager" type="Node" parent="BattleManager"]
 
 [node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
-position = Vector2(400, 264)
+position = Vector2(400, 318)
 health = 20
 sprite = ExtResource("1_58ulb")
 
@@ -142,12 +142,12 @@ sprite = ExtResource("1_58ulb")
 script = ExtResource("7_qfsls")
 
 [node name="Enemy" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(786, 260)
+position = Vector2(785, 317)
 health = 10
 sprite = ExtResource("7_hy4ep")
 
 [node name="Enemy2" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(559, 265)
+position = Vector2(560, 317)
 health = 10
 sprite = ExtResource("7_hy4ep")
 
@@ -200,10 +200,11 @@ position = Vector2(1388, 457)
 texture = ExtResource("7_2u0r0")
 
 [node name="DiscardCount" type="Label" parent="BattleManager/Cards/DiscardPile"]
-offset_left = 1049.0
-offset_top = 550.0
-offset_right = 1089.0
-offset_bottom = 573.0
+offset_left = 70.0
+offset_top = -75.0
+offset_right = 198.0
+offset_bottom = -52.0
+text = "0"
 
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]

@@ -7,7 +7,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_287tu"]
 
 [node name="Enemy" type="Node2D" groups=["Character"]]
-scale = Vector2(2, 2)
 script = ExtResource("2_287tu")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
