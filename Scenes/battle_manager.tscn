@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=21 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://jtly2hmumqqw" path="res://cards/attack_card.tres" id="5_uqssg"]
 [ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
+[ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
@@ -128,17 +129,21 @@ character = NodePath("../../../BattleManager/Enemies/Enemy")
 layout_mode = 2
 rank = 4
 
+[node name="DisplayCardDeck" parent="." instance=ExtResource("6_wwo4e")]
+visible = false
+layout_mode = 1
+
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
 
-[node name="CombatManager" type="Node" parent="BattleManager"]
+[node name="CombatManager" type="Node2D" parent="BattleManager"]
 
 [node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
 position = Vector2(400, 318)
 health = 20
 sprite = ExtResource("1_58ulb")
 
-[node name="Enemies" type="Node" parent="BattleManager"]
+[node name="Enemies" type="Node2D" parent="BattleManager"]
 script = ExtResource("7_qfsls")
 
 [node name="Enemy" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
@@ -151,7 +156,7 @@ position = Vector2(560, 317)
 health = 10
 sprite = ExtResource("7_hy4ep")
 
-[node name="Cards" type="Node" parent="BattleManager"]
+[node name="Cards" type="Node2D" parent="BattleManager"]
 script = ExtResource("3_qfsls")
 
 [node name="HandArea" type="ColorRect" parent="BattleManager/Cards"]
@@ -161,9 +166,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -325.0
-offset_top = -120.0
-offset_right = 325.0
+offset_left = 169.0
+offset_top = 373.0
+offset_right = 819.0
+offset_bottom = 523.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 1, 1, 0)

@@ -1,6 +1,6 @@
 extends Node2D
-@onready var enemies_node: Node = $Enemies
-@onready var cards: Node = $Cards
+@onready var enemies_node: Node2D = $Enemies
+@onready var cards: Node2D = $Cards
 @onready var player: Enemy = $Player
 @onready var player_container: HBoxContainer = $"../CharacterContainer/PlayerContainer"
 @onready var enemy_container: HBoxContainer = $"../CharacterContainer/EnemyContainer"
