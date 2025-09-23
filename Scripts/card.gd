@@ -5,18 +5,14 @@ const SIZE := Vector2(32,48)
 
 @export var card_stats: CardResource
 
-@export var card_name: String
-@export var card_description: String
-@export var card_cost: int
-
 @onready var cost_label: Label = $BaseCardSprite/CostLabel
 @onready var description_label: Label = $BaseCardSprite/DescriptionLabel
 
 var is_currently_selected: bool = false
 
 func set_values() -> void:
-	cost_label.text = str(card_cost)
-	description_label.text = card_description
+	cost_label.text = str(card_stats.card_cost)
+	description_label.text = card_stats.card_description
 	
 func _ready() -> void:
 	set_values()

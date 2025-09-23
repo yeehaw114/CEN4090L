@@ -83,8 +83,8 @@ func raycast_check_for_tile():
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		if result[0].collider.get_parent().is_in_group("Tile"):
-			print('Tile: '+str(result[0].collider.get_parent()))
-			print('Char: '+str(result[0].collider.get_parent().character))
+			#print('Tile: '+str(result[0].collider.get_parent()))
+			#print('Char: '+str(result[0].collider.get_parent().character))
 			return result[0].collider.get_parent()
 	return null
 	
@@ -136,7 +136,7 @@ func set_state(index: int):
 func get_current_state():
 	for state in battle_state_player.values():
 		if state == active_state:
-			print(state)
+			#print(state)
 			return state
 
 func _on_movement_button_pressed() -> void:

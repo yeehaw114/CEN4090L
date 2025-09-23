@@ -17,3 +17,5 @@ func move_cards_to_discard() -> void:
 		count += 1
 	discard_count.text = str(count)
 	
+func get_discarded_cards() -> Array[Card]:
+	return discarded_cards

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://jtly2hmumqqw"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://jtly2hmumqqw"]
 
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_604j2"]
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="2_u2cjq"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_w44wb"]
 
 [sub_resource type="Resource" id="Resource_604j2"]
@@ -16,6 +17,7 @@ script = ExtResource("2_w44wb")
 card_name = "Attack"
 card_cost = 1
 card_description = "2 Damage"
+card_image = ExtResource("2_u2cjq")
 card_actions = Array[ExtResource("1_604j2")]([SubResource("Resource_604j2")])
 character_position = Array[int]([1, 2])
 enemy_position = Array[int]([1])
