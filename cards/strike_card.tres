@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://detdhfkxxsff5"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_q0muu"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_alf0t"]
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="2_x51ho"]
+
+[sub_resource type="Resource" id="Resource_dmua7"]
+script = ExtResource("1_q0muu")
+value = 3
+type = 0
+status_effect = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_alf0t")
+card_name = "Strike"
+card_cost = 1
+card_description = "3 dmg"
+card_image = ExtResource("2_x51ho")
+card_actions = Array[ExtResource("1_q0muu")]([SubResource("Resource_dmua7")])
+character_position = Array[int]([1, 2])
+enemy_position = Array[int]([1])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

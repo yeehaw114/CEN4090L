@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name Card
 
 const SIZE := Vector2(32,48)
@@ -11,10 +11,13 @@ const SIZE := Vector2(32,48)
 var is_currently_selected: bool = false
 
 func set_values() -> void:
-	cost_label.text = str(card_stats.card_cost)
-	description_label.text = card_stats.card_description
+	if card_stats:
+		cost_label.text = str(card_stats.card_cost)
+		description_label.text = card_stats.card_description
+		pass
 	
 func _ready() -> void:
+	#print('ready: '+str(card_stats))
 	set_values()
 
 func mouse_entered_card_area() -> void:

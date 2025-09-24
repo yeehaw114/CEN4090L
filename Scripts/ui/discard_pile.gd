@@ -4,18 +4,19 @@ var discarded_cards: Array[Card]
 @onready var discard_spawn: Node2D = $Discard_spawn
 @onready var discard_count: Label = $DiscardCount
 
+
+signal card_discarded(card: Card)
+
 func print_all_discarded_cards() -> void:
 	for card in discarded_cards:
-		#print(str(card))
+		print(str(card))
 		pass
-	#print()
-
-func move_cards_to_discard() -> void:
-	var count: int = 0
-	for card in discarded_cards:
-		card.position = discard_spawn.position
-		count += 1
-	discard_count.text = str(count)
+	print()
+	
+func move_card_to_discard(card: Card) ->void:
+	card.position = discard_spawn.position
+	card_discarded.emit(card)
+	discard_count.text = str(discarded_cards.size())
 	
 func get_discarded_cards() -> Array[Card]:
 	return discarded_cards

@@ -3,6 +3,8 @@ extends Node
 @onready var discard_pile: Node2D = $DiscardPile
 @onready var hand_area: ColorRect = $HandArea
 
+@onready var card_debug: Card = $HandArea/Card
+
 var cards: Array = []
 var currently_selected_card: Card
 
@@ -11,6 +13,7 @@ const CARD_SCALE_FACTOR := 0.7
 
 
 func _ready() -> void:
+	#print(card_debug.card_stats)
 	set_cards()
 
 func attempt_to_select_card():

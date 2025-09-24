@@ -99,8 +99,7 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 			cards.discard_pile.discarded_cards.append(card)
 			cards.currently_selected_card.reparent(cards.discard_pile)
 			cards.currently_selected_card = null
-			cards.discard_pile.move_cards_to_discard()
-			cards.discard_pile.print_all_discarded_cards()
+			cards.discard_pile.move_card_to_discard(card)
 			enemies_node.toggle_selectability_off()
 			cards.hand_area.update_cards()
 
