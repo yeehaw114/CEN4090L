@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=23 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -7,16 +7,18 @@
 [ext_resource type="Script" uid="uid://cdekaiejafqpg" path="res://Scripts/ui/player_container.gd" id="2_htoyf"]
 [ext_resource type="Texture2D" uid="uid://dramnk8jinkra" path="res://Assets/Textures/move_crystal_sprite_sheet.png" id="2_qfhry"]
 [ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="2_xs0o8"]
-[ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_8i1lf"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
 [ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
+[ext_resource type="Script" uid="uid://bidihr68pu0ak" path="res://Scripts/ui/display_draw_deck.gd" id="7_csd6w"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
 [ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://cards/strike_card.tres" id="15_wwo4e"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="17_8mf7n"]
+[ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
@@ -129,9 +131,14 @@ character = NodePath("../../../BattleManager/Enemies/Enemy")
 layout_mode = 2
 rank = 4
 
-[node name="DisplayCardDeck" parent="." instance=ExtResource("6_wwo4e")]
+[node name="DisplayDiscardDeck" parent="." instance=ExtResource("6_wwo4e")]
 visible = false
 layout_mode = 1
+
+[node name="DisplayDrawDeck" parent="." instance=ExtResource("6_wwo4e")]
+visible = false
+layout_mode = 1
+script = ExtResource("7_csd6w")
 
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
@@ -179,34 +186,6 @@ rotation_curve = SubResource("Curve_xs0o8")
 x_sep = 35
 y_min = 45
 
-[node name="Card" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-offset_left = 146.0
-offset_top = 31.0
-offset_right = 146.0
-offset_bottom = 31.0
-card_stats = ExtResource("15_wwo4e")
-
-[node name="Card2" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-offset_left = 220.0
-offset_top = 30.0
-offset_right = 220.0
-offset_bottom = 30.0
-card_stats = ExtResource("15_wwo4e")
-
-[node name="Card3" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-offset_left = 297.0
-offset_top = 31.0
-offset_right = 297.0
-offset_bottom = 31.0
-card_stats = ExtResource("15_wwo4e")
-
-[node name="Card4" parent="BattleManager/Cards/HandArea" instance=ExtResource("3_8i1lf")]
-offset_left = 375.0
-offset_top = 30.0
-offset_right = 375.0
-offset_bottom = 30.0
-card_stats = ExtResource("15_wwo4e")
-
 [node name="DiscardPile" type="Node2D" parent="BattleManager/Cards"]
 position = Vector2(852, 450)
 script = ExtResource("6_mg17r")
@@ -230,9 +209,37 @@ offset_top = -62.0
 offset_right = 61.0
 offset_bottom = 61.0
 
+[node name="DrawPile" type="Node2D" parent="BattleManager/Cards"]
+position = Vector2(99, 447)
+script = ExtResource("18_8mf7n")
+draw_cards = Array[ExtResource("17_8mf7n")]([ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e"), ExtResource("15_wwo4e")])
+
+[node name="Discard_spawn" type="Node2D" parent="BattleManager/Cards/DrawPile"]
+position = Vector2(1388, 457)
+
+[node name="DiscardSprite" type="Sprite2D" parent="BattleManager/Cards/DrawPile"]
+texture = ExtResource("7_2u0r0")
+
+[node name="DiscardCount" type="Label" parent="BattleManager/Cards/DrawPile"]
+offset_left = 70.0
+offset_top = -75.0
+offset_right = 198.0
+offset_bottom = -52.0
+text = "0"
+
+[node name="DiscardButton" type="TextureButton" parent="BattleManager/Cards/DrawPile"]
+offset_left = -59.0
+offset_top = -62.0
+offset_right = 61.0
+offset_bottom = 61.0
+
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
-[connection signal="exit_button_clicked" from="DisplayCardDeck" to="." method="switch_to_display_battle_screen"]
+[connection signal="exit_button_clicked" from="DisplayDiscardDeck" to="." method="switch_to_display_battle_screen"]
+[connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
-[connection signal="card_discarded" from="BattleManager/Cards/DiscardPile" to="DisplayCardDeck" method="_on_discard_pile_card_discarded"]
+[connection signal="card_discarded" from="BattleManager/Cards/DiscardPile" to="DisplayDiscardDeck" method="_on_discard_pile_card_discarded"]
 [connection signal="pressed" from="BattleManager/Cards/DiscardPile/DiscardButton" to="." method="on_discard_button_pressed"]
+[connection signal="card_discarded" from="BattleManager/Cards/DrawPile" to="DisplayDiscardDeck" method="_on_discard_pile_card_discarded"]
+[connection signal="update_display_card_deck" from="BattleManager/Cards/DrawPile" to="DisplayDrawDeck" method="_on_draw_pile_update_display_card_deck"]
+[connection signal="pressed" from="BattleManager/Cards/DrawPile/DiscardButton" to="." method="on_draw_button_pressed"]

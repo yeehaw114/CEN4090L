@@ -30,16 +30,12 @@ func _input(event: InputEvent) -> void:
 func handle_left_input():
 	if active_state == battle_state_player.SELECT_CARD:
 		cards.attempt_to_select_card()
-		#print('currently_selected_card: '+str(cards.currently_selected_card))
 		var tile = raycast_check_for_tile()
 		var char : Character
 		if tile:
 			char = tile.character
-		#print('currently_selected_character: '+str(char))
 		if char != null and cards.currently_selected_card != null:
 			currently_selected_enemy = char
-			#print('currently_selected_char: '+str(currently_selected_enemy))
-			#print('using '+str(cards.currently_selected_card)+' on '+str(char))
 			cast_card_on_character(player,cards.currently_selected_card,currently_selected_enemy)
 	elif active_state == battle_state_player.MOVE:
 		var tile = raycast_check_for_tile()

@@ -1,9 +1,11 @@
 extends Node
 
 @onready var discard_pile: Node2D = $DiscardPile
+@onready var draw_pile: Node2D = $DrawPile
+
 @onready var hand_area: ColorRect = $HandArea
 
-@onready var card_debug: Card = $HandArea/Card
+@export var card_scene: PackedScene = preload("res://Scenes/card.tscn")
 
 var cards: Array = []
 var currently_selected_card: Card
@@ -15,6 +17,10 @@ const CARD_SCALE_FACTOR := 0.7
 func _ready() -> void:
 	#print(card_debug.card_stats)
 	set_cards()
+	draw_one_card()
+	draw_one_card()
+	draw_one_card()
+	hand_area.update_cards()
 
 func attempt_to_select_card():
 	var card = raycast_check_for_card()
@@ -56,3 +62,11 @@ func unselect_card():
 	unhighlight_selected_card(currently_selected_card)
 	currently_selected_card = null
 	
+func draw_one_card():
+	var draw_pile_cards = draw_pile.draw_cards
+	var top_card = draw_pile_cards.pop_front()
+	if top_card:
+		var new_card = card_scene.instantiate()
+		new_card.card_stats = top_card
+		hand_area.add_child(new_card)
+		draw_pile.update_count()

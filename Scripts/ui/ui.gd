@@ -6,7 +6,9 @@ extends Control
 @onready var end_turn_button: Button = $EndTurnButton
 @onready var character_container: HBoxContainer = $CharacterContainer
 @onready var battle_manager: Node2D = $BattleManager
-@onready var display_card_deck: Control = $DisplayCardDeck
+
+@onready var display_discard_deck: Control = $DisplayDiscardDeck
+@onready var display_draw_deck: Control = $DisplayDrawDeck
 
 var move_crystal_normal = Rect2(Vector2(0,0),Vector2(32,32))
 var move_crystal_selected = Rect2(Vector2(32,0),Vector2(32,32))
@@ -22,9 +24,10 @@ func switch_to_display_discard_pile() -> void:
 	end_turn_button.visible = false
 	character_container.visible = false
 	battle_manager.visible = false
+	display_draw_deck.visible = false
 	
-	display_card_deck.populate_grid()
-	display_card_deck.visible = true
+	display_discard_deck.populate_grid()
+	display_discard_deck.visible = true
 	
 func switch_to_display_battle_screen() -> void:
 	move_crystal_button.visible = true
@@ -32,7 +35,18 @@ func switch_to_display_battle_screen() -> void:
 	end_turn_button.visible = true
 	character_container.visible = true
 	battle_manager.visible = true
-	display_card_deck.visible = false
+	display_discard_deck.visible = false
+	display_draw_deck.visible = false
+
+func switch_to_display_draw_pile() -> void:
+	move_crystal_button.visible = false
+	background.visible = false
+	end_turn_button.visible = false
+	character_container.visible = false
+	battle_manager.visible = false
+	
+	display_draw_deck.populate_grid()
+	display_draw_deck.visible = true
 
 func _on_movement_button_pressed() -> void:
 	print('movement button pressed')
@@ -52,3 +66,6 @@ func _on_battle_manager_state_changed(state: int) -> void:
 
 func on_discard_button_pressed() -> void:
 	switch_to_display_discard_pile()
+	
+func on_draw_button_pressed() -> void:
+	switch_to_display_draw_pile()
