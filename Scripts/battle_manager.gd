@@ -15,9 +15,12 @@ enum battle_state_player {MOVE=0,SELECT_CARD=1}
 var active_state := -1
 signal state_changed(state: int)
 
+enum battle_state {PLAYER_STATUS,PLAYER, ENEMY_STATUS,ENEMY}
+var active_battle_state := -1
+
 func _ready() -> void:
 	set_state(battle_state_player.SELECT_CARD)
-	get_current_state()
+	set_active_battle_state(battle_state.PLAYER)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -26,6 +29,26 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.pressed:
 			handle_right_input()
+
+#FUNCTIONS FOR MANAGING BATTLE_STATE----------------------------------------------------
+func next_turn():
+	if game_over:
+		return
+	var current_state = get_active_battle_state()
+	if current_state == battle_state.ENEMY:
+		set_active_battle_state(0)
+		return
+	set_active_battle_state(current_state+1)
+	
+func set_active_battle_state(index: int):
+	active_battle_state = index
+	
+func get_active_battle_state():
+	for state in battle_state.values():
+		if state == active_battle_state:
+			return state
+
+#--------------------------------------------------------------------------------------
 
 func handle_left_input():
 	if active_state == battle_state_player.SELECT_CARD:
@@ -49,9 +72,7 @@ func handle_right_input():
 	elif active_state == battle_state_player.MOVE:
 		set_state(battle_state_player.SELECT_CARD)
 
-func next_turn():
-	if game_over:
-		return
+
 
 func _on_card_selected(card: Card) -> void:
 	cards.currently_selected_card = card
