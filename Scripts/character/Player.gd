@@ -1,13 +1,11 @@
 extends Character
-class_name Enemy
+class_name Player
 
 const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: Sprite2D = $EnemySprite
 @onready var health_bar: ProgressBar = $HealthBar
-
-@export var actions: Array[Action]
 
 var is_able_to_be_selected = false
 var is_dead = false

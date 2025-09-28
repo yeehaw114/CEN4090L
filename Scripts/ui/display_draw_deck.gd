@@ -2,7 +2,7 @@ extends Control
 
 @export var card_scene: PackedScene = preload("res://Scenes/card.tscn")
 @export var grid_width: int = 5      # how many columns
-@export var cell_size: Vector2 = Vector2(36, 48)
+@export var cell_size: Vector2 = Vector2(96, 144)
 
 @onready var grid_container: GridContainer = $VBoxContainer/MarginContainer/GridContainer
 

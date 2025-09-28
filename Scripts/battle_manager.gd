@@ -1,7 +1,7 @@
 extends Node2D
 @onready var enemies_node: Node2D = $Enemies
 @onready var cards: Node2D = $Cards
-@onready var player: Enemy = $Player
+@onready var player: Player = $Player
 @onready var player_container: HBoxContainer = $"../CharacterContainer/PlayerContainer"
 @onready var enemy_container: HBoxContainer = $"../CharacterContainer/EnemyContainer"
 #@onready var player_movement_positions: Node2D = $Player_movement_positions
@@ -100,6 +100,7 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 			cards.hand_area.update_cards()
 
 func check_character_on_valid_tile(character: Character, card: Card) -> bool:
+		var tile = player_container.get_tile_by_char(character)
 		var character_rank = player_container.get_tile_by_char(character).rank
 		for rank in card.card_stats.character_position:
 			if rank == character_rank:

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dckl0ng06ox3i"]
+
+[ext_resource type="Script" uid="uid://clyguo5h5h47k" path="res://Scripts/character/Player.gd" id="1_nytcm"]
+[ext_resource type="Texture2D" uid="uid://cx3g6b3i4x7y0" path="res://Assets/Textures/select_target_ring.png" id="2_ejsiy"]
+[ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="3_2mse5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_287tu"]
+
+[node name="Player" type="Node2D" groups=["Character"]]
+script = ExtResource("1_nytcm")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -29.0
+offset_right = 31.0
+offset_bottom = 27.0
+value = 100.0
+
+[node name="SelectRing" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(1.5, 71)
+texture = ExtResource("2_ejsiy")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_287tu")
+position = Vector2(0, -7.5)
+scale = Vector2(2, 2)
+texture = ExtResource("3_2mse5")
+offset = Vector2(0.25, -12.25)

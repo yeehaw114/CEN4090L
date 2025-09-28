@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=27 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://bidihr68pu0ak" path="res://Scripts/ui/display_draw_deck.gd" id="7_csd6w"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
+[ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="13_85kri"]
 [ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://cards/strike_card.tres" id="15_wwo4e"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="17_8mf7n"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
@@ -23,6 +25,22 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_cr05y"]
+script = ExtResource("13_85kri")
+value = 5
+type = 0
+status_effect = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_85kri"]
+script = ExtResource("13_85kri")
+value = 5
+type = 4
+status_effect = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Curve" id="Curve_2u0r0"]
 _data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
@@ -145,7 +163,7 @@ script = ExtResource("1_tvmj4")
 
 [node name="CombatManager" type="Node2D" parent="BattleManager"]
 
-[node name="Player" parent="BattleManager" instance=ExtResource("5_w1xkj")]
+[node name="Player" parent="BattleManager" instance=ExtResource("9_csd6w")]
 position = Vector2(400, 318)
 health = 20
 sprite = ExtResource("1_58ulb")
@@ -155,6 +173,7 @@ script = ExtResource("7_qfsls")
 
 [node name="Enemy" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(785, 317)
+actions = Array[ExtResource("13_85kri")]([SubResource("Resource_cr05y"), SubResource("Resource_85kri")])
 health = 10
 sprite = ExtResource("7_hy4ep")
 
@@ -173,18 +192,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 169.0
-offset_top = 373.0
-offset_right = 819.0
-offset_bottom = 523.0
+offset_left = 158.0
+offset_top = 365.0
+offset_right = 808.0
+offset_bottom = 515.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 1, 1, 0)
 script = ExtResource("4_2u0r0")
 hand_curve = SubResource("Curve_2u0r0")
 rotation_curve = SubResource("Curve_xs0o8")
-x_sep = 35
-y_min = 45
+x_sep = 50
+y_min = 15
 
 [node name="DiscardPile" type="Node2D" parent="BattleManager/Cards"]
 position = Vector2(852, 450)
