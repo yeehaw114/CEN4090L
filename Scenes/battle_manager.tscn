@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://5svhxht7fhon" path="res://Scripts/combat_manager.gd" id="9_cr05y"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="13_85kri"]
-[ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://cards/strike_card.tres" id="15_wwo4e"]
+[ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://Assets/Resources/cards/strike_card.tres" id="15_wwo4e"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="17_8mf7n"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
 
@@ -256,6 +256,7 @@ offset_bottom = 61.0
 
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
+[connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="exit_button_clicked" from="DisplayDiscardDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]

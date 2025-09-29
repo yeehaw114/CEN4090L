@@ -61,6 +61,8 @@ func _on_battle_manager_state_changed(state: int) -> void:
 	#move state
 	if state == 0:
 		change_move_crystal_texture(move_crystal_selected)
+	elif state == 1:
+		change_move_crystal_texture(move_crystal_empty)
 	else:
 		change_move_crystal_texture(move_crystal_normal)
 

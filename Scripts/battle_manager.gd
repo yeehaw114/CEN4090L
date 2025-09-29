@@ -1,17 +1,17 @@
 extends Node2D
-@onready var enemies_node: Node2D = $Enemies
-@onready var cards: Node2D = $Cards
+
 @onready var player: Player = $Player
-@onready var player_container: HBoxContainer = $"../CharacterContainer/PlayerContainer"
-@onready var enemy_container: HBoxContainer = $"../CharacterContainer/EnemyContainer"
-#@onready var player_movement_positions: Node2D = $Player_movement_positions
 
 @export var enemy: Character
 
+@onready var combat_manager: Node2D = $CombatManager
+
 var currently_selected_enemy: Character
 var game_over := false
+var can_move := true
 
 enum battle_state_player {MOVE=0,SELECT_CARD=1}
+enum move_crystal_state {SELECT,EMPTY,NORMAL}
 var active_state := -1
 signal state_changed(state: int)
 
@@ -23,6 +23,9 @@ func _ready() -> void:
 	set_active_battle_state(battle_state.PLAYER)
 	
 func _input(event: InputEvent) -> void:
+	if get_active_battle_state() != battle_state.PLAYER:
+		return
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			handle_left_input()
@@ -50,103 +53,44 @@ func get_active_battle_state():
 
 #--------------------------------------------------------------------------------------
 
+
+#HANDLE LEFT AND RIGHT INPUT-----------------------------------------------------------
 func handle_left_input():
 	if active_state == battle_state_player.SELECT_CARD:
-		cards.attempt_to_select_card()
-		var tile = raycast_check_for_tile()
+		combat_manager.cards.attempt_to_select_card()
+		var tile = combat_manager.raycast_check_for_tile()
 		var char : Character
 		if tile:
 			char = tile.character
-		if char != null and cards.currently_selected_card != null:
+		if char != null and combat_manager.cards.currently_selected_card != null:
 			currently_selected_enemy = char
-			cast_card_on_character(player,cards.currently_selected_card,currently_selected_enemy)
+			combat_manager.cast_card_on_character(player,combat_manager.cards.currently_selected_card,currently_selected_enemy)
 	elif active_state == battle_state_player.MOVE:
-		var tile = raycast_check_for_tile()
+		var tile = combat_manager.raycast_check_for_tile()
 		if tile != null:
-			set_player_rank(player,tile.rank)
+			combat_manager.set_player_rank(player,tile.rank)
+			can_move = false
+			state_changed.emit(1)
+			set_state(battle_state_player.SELECT_CARD)
 
 func handle_right_input():
 	if active_state == battle_state_player.SELECT_CARD:
-		if cards.currently_selected_card:
-			cards.unselect_card()
+		if combat_manager.cards.currently_selected_card:
+			combat_manager.cards.unselect_card()
 	elif active_state == battle_state_player.MOVE:
+		if can_move:
+			state_changed.emit(move_crystal_state.NORMAL)
+		else:
+			state_changed.emit(move_crystal_state.EMPTY)
 		set_state(battle_state_player.SELECT_CARD)
+#--------------------------------------------------------------------------------------
 
-
-
-func _on_card_selected(card: Card) -> void:
-	cards.currently_selected_card = card
-	#print(cards.currently_selected_card)
-	enemies_node.toggle_selectability_on()
-	
-func raycast_check_for_character():
-	var space_state = get_viewport().world_2d.direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_viewport().get_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = 1
-	var result = space_state.intersect_point(parameters)
-	if result.size() > 0:
-		if result[0].collider.get_parent().is_in_group("Character"):
-			return result[0].collider.get_parent()
-	return null
-
-func raycast_check_for_tile():
-	var space_state = get_viewport().world_2d.direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_viewport().get_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = 1
-	var result = space_state.intersect_point(parameters)
-	if result.size() > 0:
-		if result[0].collider.get_parent().is_in_group("Tile"):
-			#print('Tile: '+str(result[0].collider.get_parent()))
-			#print('Char: '+str(result[0].collider.get_parent().character))
-			return result[0].collider.get_parent()
-	return null
-	
-func cast_card_on_character(character: Character, card: Card, enemy: Character) -> void:
-	if !check_character_on_valid_tile(character,card) or !check_enemy_on_valid_tile(enemy,card):
-		return
-
-	for action in card.card_stats.card_actions:
-		if action.type == action.ACTION_TYPE.DAMAGE:
-			enemy.take_damage(action.value)
-			#print(str(char)+' took '+str(action.value)+ ' damage')
-			cards.discard_pile.discarded_cards.append(card)
-			cards.currently_selected_card.reparent(cards.discard_pile)
-			cards.currently_selected_card = null
-			cards.discard_pile.move_card_to_discard(card)
-			enemies_node.toggle_selectability_off()
-			cards.hand_area.update_cards()
-
-func check_character_on_valid_tile(character: Character, card: Card) -> bool:
-		var tile = player_container.get_tile_by_char(character)
-		var character_rank = player_container.get_tile_by_char(character).rank
-		for rank in card.card_stats.character_position:
-			if rank == character_rank:
-				return true
-		return false
-
-func check_enemy_on_valid_tile(character: Character, card: Card) -> bool:
-		var enemy_rank = enemy_container.get_tile_by_char(character).rank
-		for rank in card.card_stats.enemy_position:
-			if rank == enemy_rank:
-				return true
-		return false
-
-func set_player_rank(character: Character, rank: int):
-	var tile_to_move_to = player_container.get_tile(rank)
-	var character_current_tile = player_container.get_tile_by_char(character)
-	character_current_tile.character = null
-	tile_to_move_to.character = character
-	character.global_position = tile_to_move_to.character_position_point.global_position
-	
 func set_state(index: int):
 	var count := 0
 	if index >= 0 and index <= 1:
 		active_state = index
-		state_changed.emit(index)
+		#state_changed.emit(index)
+		#can_move = false
 	else:
 		print('setting incorrect state')
 		
@@ -157,6 +101,15 @@ func get_current_state():
 			return state
 
 func _on_movement_button_pressed() -> void:
+	if !can_move:
+		return
 	if active_state == battle_state_player.SELECT_CARD:
-		cards.unselect_card()
+		combat_manager.cards.unselect_card()
 		set_state(battle_state_player.MOVE)
+		state_changed.emit(move_crystal_state.SELECT)
+
+
+func _on_end_turn_button_pressed() -> void:
+	if active_battle_state == battle_state.PLAYER:
+		print('end turn')
+		next_turn()

@@ -5,6 +5,8 @@ class_name Character
 @export var health: int
 @export var sprite: Texture2D
 
+var status_effects : Array
+
 func begin_turn():
 	pass
 	
