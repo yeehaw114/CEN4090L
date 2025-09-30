@@ -6,9 +6,12 @@ const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: Sprite2D = $EnemySprite
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var intention_texture: TextureRect = $IntentionContainer/IntentionTexture
+@onready var intention_label: Label = $IntentionContainer/IntentionLabel
 
 @export var actions: Array[Action]
 
+var current_action : Action
 var is_able_to_be_selected = false
 var is_dead = false
 var rank : int = -1 
@@ -51,3 +54,9 @@ func set_grey_shader() -> void:
 	var shader_mat = ShaderMaterial.new()
 	shader_mat.shader = grey_shader
 	enemy_sprite.material = shader_mat
+	
+func set_current_action(index: int):
+	current_action = actions[index]
+
+func update_intention():
+	intention_label.text = str(current_action.value)

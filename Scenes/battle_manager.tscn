@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=30 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -36,6 +36,22 @@ status_effect_value = 0
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Resource" id="Resource_85kri"]
+script = ExtResource("13_85kri")
+value = 5
+type = 4
+status_effect = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_6q0we"]
+script = ExtResource("13_85kri")
+value = 5
+type = 0
+status_effect = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_bvh6n"]
 script = ExtResource("13_85kri")
 value = 5
 type = 4
@@ -181,6 +197,7 @@ sprite = ExtResource("7_hy4ep")
 
 [node name="Enemy2" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(560, 317)
+actions = Array[ExtResource("13_85kri")]([SubResource("Resource_6q0we"), SubResource("Resource_bvh6n")])
 health = 10
 sprite = ExtResource("7_hy4ep")
 

@@ -20,12 +20,10 @@ func _ready():
 
 func populate_grid():
 	clear_grid()
-	print(cards)
 	for card_stat in stats_list:
 		var new_card = card_scene.instantiate()
 		new_card.card_stats = card_stat
 		grid_container.add_child(new_card)
-	print()
 	
 func clear_grid():
 	for card in grid_container.get_children():
@@ -45,4 +43,3 @@ func _on_discard_pile_card_discarded(card: Card) -> void:
 
 func _on_draw_pile_update_display_card_deck(cards: Array[CardResource]) -> void:
 	stats_list = cards
-	print(stats_list)

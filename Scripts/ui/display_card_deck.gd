@@ -21,7 +21,6 @@ func _ready():
 func populate_grid():
 	set_stats_list()
 	clear_grid()
-	print(cards)
 	for card_stat in stats_list:
 		var new_card = card_scene.instantiate()
 		new_card.card_stats = card_stat

@@ -1,9 +1,6 @@
 extends Node2D
 
 @onready var player: Player = $Player
-
-@export var enemy: Character
-
 @onready var combat_manager: Node2D = $CombatManager
 
 var currently_selected_enemy: Character
@@ -21,17 +18,39 @@ var active_battle_state := -1
 func _ready() -> void:
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
+	for e in combat_manager.enemies.get_all_enemies():
+		e.set_current_action(0)
+		e.update_intention()
 	
 func _input(event: InputEvent) -> void:
 	if get_active_battle_state() != battle_state.PLAYER:
 		return
-	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			handle_left_input()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.pressed:
 			handle_right_input()
+
+func handle_current_turn():
+	if get_active_battle_state() == battle_state.PLAYER_STATUS:
+		#APPLY STATUS EFFECTS TO PLAYER
+		print('handling status effects on player')
+		next_turn()
+	elif get_active_battle_state() == battle_state.PLAYER:
+		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE
+		print('handling player turn')
+	elif get_active_battle_state() == battle_state.ENEMY_STATUS:
+		#APPLY STATUS EFFECTS TO ENEMYS
+		print('handling status effects on enemies')
+		next_turn()
+	elif get_active_battle_state() == battle_state.ENEMY:
+		#ALLOW ENEMIES TO DO THEIR ACTIONS
+		print('handling enemies turn')
+		var enemies = combat_manager.enemies.get_all_enemies()
+		combat_manager.enemies_do_action(enemies)
+		next_turn()
+	
 
 #FUNCTIONS FOR MANAGING BATTLE_STATE----------------------------------------------------
 func next_turn():
@@ -40,8 +59,10 @@ func next_turn():
 	var current_state = get_active_battle_state()
 	if current_state == battle_state.ENEMY:
 		set_active_battle_state(0)
+		handle_current_turn()
 		return
 	set_active_battle_state(current_state+1)
+	handle_current_turn()
 	
 func set_active_battle_state(index: int):
 	active_battle_state = index

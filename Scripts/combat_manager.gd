@@ -1,14 +1,15 @@
 extends Node2D
 
 @onready var cards: Node2D = $"../Cards"
-@onready var enemies_node: Node2D = $"../Enemies"
+@onready var enemies: Node2D = $"../Enemies"
 @onready var player_container: HBoxContainer = $"../../CharacterContainer/PlayerContainer"
 @onready var enemy_container: HBoxContainer = $"../../CharacterContainer/EnemyContainer"
+@onready var player: Player = $"../Player"
 
 func _on_card_selected(card: Card) -> void:
 	cards.currently_selected_card = card
 	#print(cards.currently_selected_card)
-	enemies_node.toggle_selectability_on()
+	enemies.toggle_selectability_on()
 	
 func raycast_check_for_character():
 	var space_state = get_viewport().world_2d.direct_space_state
@@ -48,7 +49,7 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 			cards.currently_selected_card.reparent(cards.discard_pile)
 			cards.currently_selected_card = null
 			cards.discard_pile.move_card_to_discard(card)
-			enemies_node.toggle_selectability_off()
+			enemies.toggle_selectability_off()
 			cards.hand_area.update_cards()
 
 func check_character_on_valid_tile(character: Character, card: Card) -> bool:
@@ -72,3 +73,10 @@ func set_player_rank(character: Character, rank: int):
 	character_current_tile.character = null
 	tile_to_move_to.character = character
 	character.global_position = tile_to_move_to.character_position_point.global_position
+	
+func enemies_do_action(enemes: Array):
+	for e in enemes:
+		var enemy_action = e.current_action
+		if enemy_action.type == Action.ACTION_TYPE.DAMAGE:
+			print(str(e)+" is attempting to deal "+str(enemy_action.value)+' dmg')
+			player.take_damage(enemy_action.value)
