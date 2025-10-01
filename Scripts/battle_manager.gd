@@ -40,6 +40,11 @@ func handle_current_turn():
 	elif get_active_battle_state() == battle_state.PLAYER:
 		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE
 		print('handling player turn')
+		can_move = true
+		state_changed.emit(move_crystal_state.NORMAL)
+		for e in combat_manager.enemies.get_all_enemies():
+			e.next_action()
+			e.update_intention()
 	elif get_active_battle_state() == battle_state.ENEMY_STATUS:
 		#APPLY STATUS EFFECTS TO ENEMYS
 		print('handling status effects on enemies')
@@ -51,7 +56,6 @@ func handle_current_turn():
 		combat_manager.enemies_do_action(enemies)
 		next_turn()
 	
-
 #FUNCTIONS FOR MANAGING BATTLE_STATE----------------------------------------------------
 func next_turn():
 	if game_over:
@@ -71,9 +75,6 @@ func get_active_battle_state():
 	for state in battle_state.values():
 		if state == active_battle_state:
 			return state
-
-#--------------------------------------------------------------------------------------
-
 
 #HANDLE LEFT AND RIGHT INPUT-----------------------------------------------------------
 func handle_left_input():
@@ -128,7 +129,6 @@ func _on_movement_button_pressed() -> void:
 		combat_manager.cards.unselect_card()
 		set_state(battle_state_player.MOVE)
 		state_changed.emit(move_crystal_state.SELECT)
-
 
 func _on_end_turn_button_pressed() -> void:
 	if active_battle_state == battle_state.PLAYER:

@@ -2,6 +2,8 @@ extends Character
 class_name Enemy
 
 const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
+const attack_intention_texture = preload("res://Assets/Textures/attack_intenttion.png")
+const block_intention_texture = preload("res://Assets/Textures/block_intention.png")
 
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: Sprite2D = $EnemySprite
@@ -60,3 +62,16 @@ func set_current_action(index: int):
 
 func update_intention():
 	intention_label.text = str(current_action.value)
+	if current_action.type == Action.ACTION_TYPE.DAMAGE:
+		intention_texture.texture = attack_intention_texture
+	if current_action.type == Action.ACTION_TYPE.BLOCK:
+		intention_texture.texture = block_intention_texture
+
+func next_action():
+	var index = actions.find(current_action)
+	if index == actions.size()-1:
+		set_current_action(0)
+		print(0)
+		return
+	set_current_action(index+1)
+	print(index+1)
