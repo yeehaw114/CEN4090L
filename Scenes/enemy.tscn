@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1syl8lfndi8q"]
+[gd_scene load_steps=8 format=3 uid="uid://d1syl8lfndi8q"]
 
 [ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/character/enemy.gd" id="2_287tu"]
 [ext_resource type="Texture2D" uid="uid://cx3g6b3i4x7y0" path="res://Assets/Textures/select_target_ring.png" id="3_0830c"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="3_afpow"]
 [ext_resource type="Texture2D" uid="uid://bftt4w431ccvi" path="res://Assets/Textures/attack_intenttion.png" id="4_287tu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_287tu"]
+bg_color = Color(0.215018, 0.0732119, 0.0222391, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0830c"]
+bg_color = Color(0.290785, 0.707762, 0.161001, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_287tu"]
 
@@ -14,7 +20,9 @@ script = ExtResource("2_287tu")
 offset_left = -29.0
 offset_right = 31.0
 offset_bottom = 27.0
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_287tu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0830c")
+value = 50.0
 
 [node name="SelectRing" type="Sprite2D" parent="."]
 visible = false
