@@ -61,6 +61,8 @@ func unselect_card():
 	
 func draw_one_card():
 	var draw_pile_cards = draw_pile.draw_cards
+	if draw_pile_cards.size() == 1:
+		print('need more cards')
 	var top_card = draw_pile_cards.pop_front()
 	if top_card:
 		var new_card = card_scene.instantiate()
