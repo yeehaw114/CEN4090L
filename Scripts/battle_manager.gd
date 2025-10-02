@@ -6,6 +6,7 @@ extends Node2D
 var currently_selected_enemy: Character
 var game_over := false
 var can_move := true
+var num_cards_drawn := 5
 
 enum battle_state_player {MOVE=0,SELECT_CARD=1}
 enum move_crystal_state {SELECT,EMPTY,NORMAL}
@@ -21,6 +22,7 @@ func _ready() -> void:
 	for e in combat_manager.enemies.get_all_enemies():
 		e.set_current_action(0)
 		e.update_intention()
+	combat_manager.cards.draw_cards(5)
 	
 func _input(event: InputEvent) -> void:
 	if get_active_battle_state() != battle_state.PLAYER:
@@ -40,6 +42,7 @@ func handle_current_turn():
 	elif get_active_battle_state() == battle_state.PLAYER:
 		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE
 		print('handling player turn')
+		combat_manager.cards.draw_cards(4)
 		can_move = true
 		state_changed.emit(move_crystal_state.NORMAL)
 		for e in combat_manager.enemies.get_all_enemies():
@@ -133,4 +136,5 @@ func _on_movement_button_pressed() -> void:
 func _on_end_turn_button_pressed() -> void:
 	if active_battle_state == battle_state.PLAYER:
 		print('end turn')
+		combat_manager.cards.discard_all_cards()
 		next_turn()

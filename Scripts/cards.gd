@@ -17,9 +17,6 @@ const CARD_SCALE_FACTOR := 0.7
 func _ready() -> void:
 	#print(card_debug.card_stats)
 	set_cards()
-	draw_one_card()
-	draw_one_card()
-	draw_one_card()
 	hand_area.update_cards()
 
 func attempt_to_select_card():
@@ -70,3 +67,13 @@ func draw_one_card():
 		new_card.card_stats = top_card
 		hand_area.add_child(new_card)
 		draw_pile.update_count()
+	hand_area.update_cards()
+
+func draw_cards(num: int):
+	for n in num:
+		draw_one_card()
+	hand_area.update_cards()
+
+func discard_all_cards():
+	var cards_to_be_discarded = hand_area.get_cards()
+	discard_pile.move_all_cards_to_discard(cards_to_be_discarded)

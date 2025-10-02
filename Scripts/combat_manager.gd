@@ -40,7 +40,6 @@ func raycast_check_for_tile():
 func cast_card_on_character(character: Character, card: Card, enemy: Character) -> void:
 	if !check_character_on_valid_tile(character,card) or !check_enemy_on_valid_tile(enemy,card):
 		return
-
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			enemy.take_damage(action.value)

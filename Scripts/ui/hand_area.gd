@@ -32,3 +32,6 @@ func update_cards() -> void:
 		var final_y: float = y_min + y_max * y_multiplier
 		card.position = Vector2(final_x,final_y)
 		card.rotation_degrees = max_rotation_degress * rot_multiplier
+
+func get_cards():
+	return get_children()

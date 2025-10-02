@@ -19,3 +19,9 @@ func move_card_to_discard(card: Card) ->void:
 	
 func get_discarded_cards_resource() -> Array[Card]:
 	return discarded_cards
+
+func move_all_cards_to_discard(cards: Array[Node]):
+	for card in cards:
+		discarded_cards.append(card)
+		move_card_to_discard(card)
+		card.reparent(self)
