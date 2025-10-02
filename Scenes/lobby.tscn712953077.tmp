@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://qkxtqdxp1q7l" path="res://Assets/TileSetDemo/run_left.png" id="11_0f3vc"]
 [ext_resource type="Texture2D" uid="uid://dv57xhhoha11c" path="res://Assets/TileSetDemo/run_right.png" id="12_bbmoa"]
 [ext_resource type="Texture2D" uid="uid://dtv2jiwguqi02" path="res://Assets/TileSetDemo/run_up.png" id="13_4jmuv"]
-[ext_resource type="Script" uid="uid://byqyqx8r72djm" path="res://Scenes/exit_area.gd" id="16_sqxuf"]
+[ext_resource type="Script" uid="uid://cuhgsfk6a122i" path="res://Scenes/lobby_transition.gd" id="16_sqxuf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqxuf"]
 texture = ExtResource("1_nvaej")
@@ -9684,7 +9684,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2vla"]
-size = Vector2(83, 46)
+size = Vector2(74, 35)
 
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_4233d")
@@ -9758,17 +9758,12 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Button"
 
-[node name="ExitArea" type="Area2D" parent="."]
+[node name="LobbyTransition" type="Area2D" parent="."]
 script = ExtResource("16_sqxuf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-position = Vector2(179.5, 139)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LobbyTransition"]
+position = Vector2(132, 137.5)
 shape = SubResource("RectangleShape2D_a2vla")
-
-[node name="Sprite2D" type="Sprite2D" parent="ExitArea"]
-position = Vector2(179.25, 138.5)
-scale = Vector2(0.652344, 0.398438)
-texture = ExtResource("6_jigxi")
 
 [connection signal="body_entered" from="ShopTrigger" to="." method="_on_shop_trigger_body_entered"]
 [connection signal="body_exited" from="ShopTrigger" to="." method="_on_shop_trigger_body_exited"]
