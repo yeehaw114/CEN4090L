@@ -44,8 +44,8 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			enemy.take_damage(action.value)
 			#print(str(char)+' took '+str(action.value)+ ' damage')
-			cards.discard_pile.discarded_cards.append(card)
-			cards.currently_selected_card.reparent(cards.discard_pile)
+			#cards.discard_pile.discarded_cards.append(card.card_stats)
+			#cards.currently_selected_card.reparent(cards.discard_pile)
 			cards.currently_selected_card = null
 			cards.discard_pile.move_card_to_discard(card)
 			enemies.toggle_selectability_off()

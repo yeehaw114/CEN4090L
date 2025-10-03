@@ -11,22 +11,17 @@ var stats_list : Array[CardResource]
 
 signal exit_button_clicked()
 
-func set_stats_list():
-	for card in cards:
-		stats_list.append(card.card_stats)
-
 func _ready():
 	pass
 
 func populate_grid():
-	set_stats_list()
 	clear_grid()
+	print('DISPLAY DISCARD DECK\n'+str(stats_list))
 	for card_stat in stats_list:
 		var new_card = card_scene.instantiate()
 		new_card.card_stats = card_stat
 		grid_container.add_child(new_card)
 	print()
-	stats_list = []
 	
 func clear_grid():
 	for card in grid_container.get_children():
@@ -39,6 +34,16 @@ func _on_exit_button_pressed() -> void:
 	clear_grid()
 	exit_button_clicked.emit()
 
+func _on_discard_pile_card_discarded(card: CardResource) -> void:
+	print('appending card to stats list')
+	print('STATS_LIST_BEFORE: '+str(stats_list))
+	#stats_list.append(card)
+	print('STATS_LIST: '+str(stats_list))
+	print(card)
 
-func _on_discard_pile_card_discarded(card: Card) -> void:
-	cards.append(card)
+func _on_discard_pile_update_display_card_deck(cards: Array[CardResource]) -> void:
+	stats_list = cards
+	print('UPDATED STATS_LIST: '+str(stats_list))
+
+func get_stats_list():
+	return stats_list

@@ -61,8 +61,11 @@ func unselect_card():
 	
 func draw_one_card():
 	var draw_pile_cards = draw_pile.draw_cards
-	if draw_pile_cards.size() == 1:
+	if draw_pile_cards.size() < 1:
 		print('need more cards')
+		move_discard_cards_to_draw()
+		draw_pile_cards = draw_pile.draw_cards
+		draw_pile.update_display_card_deck.emit(draw_pile_cards)
 	var top_card = draw_pile_cards.pop_front()
 	if top_card:
 		var new_card = card_scene.instantiate()
@@ -79,3 +82,15 @@ func draw_cards(num: int):
 func discard_all_cards():
 	var cards_to_be_discarded = hand_area.get_cards()
 	discard_pile.move_all_cards_to_discard(cards_to_be_discarded)
+
+func move_discard_cards_to_draw():
+	var discard_card_stats = discard_pile.get_discarded_cards().duplicate(true)
+	draw_pile.draw_cards = discard_card_stats
+	discard_pile.discarded_cards.clear()
+	draw_pile.update_display_card_deck.emit(draw_pile.draw_cards)
+	draw_pile.update_count()
+	discard_pile.update_display_card_deck.emit(discard_pile.discarded_cards)
+	discard_pile.update_count()
+	print('ATTEMPT TO MOVE CARDS FROM DISCARD TO DRAW')
+	print('DRAW PILE: '+str(draw_pile.draw_cards))
+	print('DISCARD PILE: '+str(discard_pile.discarded_cards))

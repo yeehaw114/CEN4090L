@@ -27,3 +27,6 @@ func get_discarded_cards_resource() -> Array[CardResource]:
 
 func update_count():
 	discard_count.text = str(draw_cards.size())
+	
+func get_draw_cards() -> Array[CardResource]:
+	return draw_cards

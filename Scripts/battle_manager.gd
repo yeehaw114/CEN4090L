@@ -42,7 +42,7 @@ func handle_current_turn():
 	elif get_active_battle_state() == battle_state.PLAYER:
 		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE
 		print('handling player turn')
-		combat_manager.cards.draw_cards(4)
+		combat_manager.cards.draw_cards(5)
 		can_move = true
 		state_changed.emit(move_crystal_state.NORMAL)
 		for e in combat_manager.enemies.get_all_enemies():

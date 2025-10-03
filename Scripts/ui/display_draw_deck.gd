@@ -20,6 +20,7 @@ func _ready():
 
 func populate_grid():
 	clear_grid()
+	print('DISPLAY DRAW DECK\n'+str(stats_list))
 	for card_stat in stats_list:
 		var new_card = card_scene.instantiate()
 		new_card.card_stats = card_stat
