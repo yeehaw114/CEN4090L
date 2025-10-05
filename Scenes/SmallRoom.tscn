@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://encp1lfehwbb"]
+
+[ext_resource type="Script" uid="uid://byjeall8ckfxe" path="res://Scenes/small_room.gd" id="1_joqn7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_joqn7")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "This is the SMALL room!"

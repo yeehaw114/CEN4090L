@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://w8nm2xlmmtgi"]
+
+[ext_resource type="Script" uid="uid://crnnv5ty5rkwl" path="res://Scripts/RoomSelection.gd" id="1_j4bhn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j4bhn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 19.0
+offset_right = 463.0
+offset_bottom = 129.0
+
+[node name="RoomButtonA" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RoomButtonB" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RoomButtonC" type="Button" parent="VBoxContainer"]
+layout_mode = 2

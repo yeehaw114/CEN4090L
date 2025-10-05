@@ -1,6 +1,6 @@
-[gd_scene load_steps=82 format=3 uid="uid://u1x7v1qy7gbi"]
+[gd_scene load_steps=84 format=3 uid="uid://u1x7v1qy7gbi"]
 
-[ext_resource type="Script" uid="uid://davrco1nbat1f" path="res://Scenes/player_controller.gd" id="2_cfab1"]
+[ext_resource type="Script" uid="uid://davrco1nbat1f" path="res://Scripts/player_controller.gd" id="2_cfab1"]
 [ext_resource type="Texture2D" uid="uid://cekqpka3nqf0v" path="res://Assets/TileSetDemo/idle_down.png" id="3_t1jcd"]
 [ext_resource type="Texture2D" uid="uid://6t2jeoma6u7t" path="res://Assets/TileSetDemo/idle_left.png" id="4_dkr56"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="4_qqkwj"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://qkxtqdxp1q7l" path="res://Assets/TileSetDemo/run_left.png" id="8_e63bo"]
 [ext_resource type="Texture2D" uid="uid://dv57xhhoha11c" path="res://Assets/TileSetDemo/run_right.png" id="9_20gfy"]
 [ext_resource type="Texture2D" uid="uid://dtv2jiwguqi02" path="res://Assets/TileSetDemo/run_up.png" id="10_0sq6h"]
-[ext_resource type="Script" uid="uid://cuq2rr3y7a3np" path="res://Scenes/back_to_lobby.gd" id="11_dkr56"]
+[ext_resource type="Script" uid="uid://cuq2rr3y7a3np" path="res://Scripts/back_to_lobby.gd" id="11_dkr56"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="12_nlhq1"]
+[ext_resource type="Script" uid="uid://cvy06ukx1qcx7" path="res://Scripts/RoguelikeEntryZone.gd" id="13_nlhq1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lthij"]
 texture = ExtResource("4_qqkwj")
@@ -2916,6 +2917,9 @@ size = Vector2(17, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soac1"]
 size = Vector2(83, 46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q78db"]
+size = Vector2(89, 46)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2948,4 +2952,16 @@ shape = SubResource("RectangleShape2D_soac1")
 [node name="Sprite2D" type="Sprite2D" parent="ExitArea"]
 position = Vector2(179.25, 138.5)
 scale = Vector2(0.652344, 0.398438)
+texture = ExtResource("12_nlhq1")
+
+[node name="RoguelikeEntryZone" type="Area2D" parent="."]
+script = ExtResource("13_nlhq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoguelikeEntryZone"]
+position = Vector2(28, 298)
+shape = SubResource("RectangleShape2D_q78db")
+
+[node name="Sprite2D" type="Sprite2D" parent="RoguelikeEntryZone"]
+position = Vector2(25.8823, 299.92)
+scale = Vector2(0.767464, 0.376251)
 texture = ExtResource("12_nlhq1")
