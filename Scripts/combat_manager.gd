@@ -43,9 +43,6 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			enemy.take_damage(action.value)
-			#print(str(char)+' took '+str(action.value)+ ' damage')
-			#cards.discard_pile.discarded_cards.append(card.card_stats)
-			#cards.currently_selected_card.reparent(cards.discard_pile)
 			cards.currently_selected_card = null
 			cards.discard_pile.move_card_to_discard(card)
 			enemies.toggle_selectability_off()
@@ -79,3 +76,6 @@ func enemies_do_action(enemes: Array):
 		if enemy_action.type == Action.ACTION_TYPE.DAMAGE:
 			print(str(e)+" is attempting to deal "+str(enemy_action.value)+' dmg')
 			player.take_damage(enemy_action.value)
+		elif enemy_action.type == Action.ACTION_TYPE.BLOCK:
+			print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
+			e.add_and_set_block_value(enemy_action.value)

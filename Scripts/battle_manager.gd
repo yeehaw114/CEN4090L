@@ -56,6 +56,8 @@ func handle_current_turn():
 		#ALLOW ENEMIES TO DO THEIR ACTIONS
 		print('handling enemies turn')
 		var enemies = combat_manager.enemies.get_all_enemies()
+		for e in enemies:
+			e.clear_block_value()
 		combat_manager.enemies_do_action(enemies)
 		next_turn()
 	
