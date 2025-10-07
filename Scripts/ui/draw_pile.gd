@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var draw_cards: Array[CardResource]
+@export var draw_cards: Array[CardResource] = []
 @onready var discard_spawn: Node2D = $Discard_spawn
 @onready var discard_count: Label = $DiscardCount
 
@@ -19,7 +19,7 @@ func print_all_discarded_cards() -> void:
 	
 func move_card_to_discard(card: Card) ->void:
 	card.position = discard_spawn.position
-	card_discarded.emit(card)
+	#card_discarded.emit(card)
 	discard_count.text = str(draw_cards.size())
 	
 func get_discarded_cards_resource() -> Array[CardResource]:

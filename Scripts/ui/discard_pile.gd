@@ -7,6 +7,9 @@ var discarded_cards: Array[CardResource]
 signal card_discarded(card: Card)
 signal update_display_card_deck(cards: Array[CardResource])
 
+func _ready() -> void:
+	print("Discard pile node:", self.name, "ID:", get_instance_id())
+
 func print_all_discarded_cards() -> void:
 	for card in discarded_cards:
 		print(str(card))
@@ -14,9 +17,12 @@ func print_all_discarded_cards() -> void:
 	
 func move_card_to_discard(card: Card) ->void:
 	var stats_copy = card.card_stats.duplicate(true)
+	print("Moving card", card.get_instance_id(), "Stats ID:", stats_copy.get_instance_id())
 	discarded_cards.append(stats_copy)
 	discard_count.text = str(discarded_cards.size())
-	card_discarded.emit(stats_copy)
+	
+	update_display_card_deck.emit(discarded_cards)
+	
 	card.reparent(self)
 	card.queue_free()
 	

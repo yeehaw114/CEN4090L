@@ -5,6 +5,7 @@ extends Control
 @export var cell_size: Vector2 = Vector2(96, 144)
 
 @onready var grid_container: GridContainer = $VBoxContainer/MarginContainer/GridContainer
+@onready var discard_pile: Node2D = $"../BattleManager/Cards/DiscardPile"
 
 var cards: Array[Card]
 var stats_list : Array[CardResource]
@@ -35,15 +36,16 @@ func _on_exit_button_pressed() -> void:
 	exit_button_clicked.emit()
 
 func _on_discard_pile_card_discarded(card: CardResource) -> void:
+	print("Signal received with Stats ID:", card.get_instance_id())
 	print('appending card to stats list')
 	print('STATS_LIST_BEFORE: '+str(stats_list))
-	#stats_list.append(card)
+	stats_list.append(card)
 	print('STATS_LIST: '+str(stats_list))
 	print(card)
 
 func _on_discard_pile_update_display_card_deck(cards: Array[CardResource]) -> void:
 	stats_list = cards
-	print('UPDATED STATS_LIST: '+str(stats_list))
+	print('UPDATED DISCARD STATS_LIST: '+str(stats_list))
 
 func get_stats_list():
 	return stats_list

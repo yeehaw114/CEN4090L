@@ -69,7 +69,9 @@ func draw_one_card():
 	var top_card = draw_pile_cards.pop_front()
 	if top_card:
 		var new_card = card_scene.instantiate()
-		new_card.card_stats = top_card
+		new_card.card_stats = top_card.duplicate(true)
+		print("Drawn card ID:", new_card.get_instance_id(), 
+	  "Stats ID:", new_card.card_stats.get_instance_id())
 		hand_area.add_child(new_card)
 		draw_pile.update_count()
 	hand_area.update_cards()
@@ -84,7 +86,9 @@ func discard_all_cards():
 	discard_pile.move_all_cards_to_discard(cards_to_be_discarded)
 
 func move_discard_cards_to_draw():
-	var discard_card_stats = discard_pile.get_discarded_cards().duplicate(true)
+	var discard_card_stats : Array[CardResource] = []
+	for card_stats in discard_pile.get_discarded_cards():
+		discard_card_stats.append(card_stats.duplicate(true))
 	draw_pile.draw_cards = discard_card_stats
 	discard_pile.discarded_cards.clear()
 	draw_pile.update_display_card_deck.emit(draw_pile.draw_cards)

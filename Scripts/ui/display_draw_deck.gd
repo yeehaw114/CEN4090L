@@ -44,3 +44,4 @@ func _on_discard_pile_card_discarded(card: Card) -> void:
 
 func _on_draw_pile_update_display_card_deck(cards: Array[CardResource]) -> void:
 	stats_list = cards
+	print('UPDATED DRAW STATS_LIST: '+str(stats_list))
