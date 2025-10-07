@@ -1,6 +1,8 @@
 extends Control
 
 @onready var move_crystal_button: TextureButton = $MoveCrystalButton
+@onready var energy_label: Label = $EnergyOrb/EnergyLabel
+
 @onready var discard_pile: Node2D = $BattleManager/Cards/DiscardPile
 @onready var background: TextureRect = $Background
 @onready var end_turn_button: Button = $EndTurnButton
@@ -16,7 +18,8 @@ var move_crystal_empty = Rect2(Vector2(64,0),Vector2(64,32))
 
 func _ready() -> void:
 	change_move_crystal_texture(move_crystal_normal)
-	#switch_to_display_discard_pile()
+	set_energy_max(3)
+	set_energy_value(3)
 
 func switch_to_display_discard_pile() -> void:
 	move_crystal_button.visible = false
@@ -47,6 +50,14 @@ func switch_to_display_draw_pile() -> void:
 	
 	display_draw_deck.populate_grid()
 	display_draw_deck.visible = true
+
+func set_energy_max(max: int):
+	var text = energy_label.text.split('/')
+	energy_label.text = text[0]+'/'+str(max)
+
+func set_energy_value(energy: int):
+	var text = energy_label.text.split('/')
+	energy_label.text = str(energy)+'/'+text[1]
 
 func _on_movement_button_pressed() -> void:
 	print('movement button pressed')

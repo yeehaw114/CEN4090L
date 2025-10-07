@@ -16,6 +16,9 @@ signal state_changed(state: int)
 enum battle_state {PLAYER_STATUS,PLAYER, ENEMY_STATUS,ENEMY}
 var active_battle_state := -1
 
+var total_energy := 3
+var current_eneergy := 3
+
 func _ready() -> void:
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
@@ -43,6 +46,7 @@ func handle_current_turn():
 		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE
 		print('handling player turn')
 		combat_manager.cards.draw_cards(5)
+		combat_manager.reset_energy()
 		can_move = true
 		state_changed.emit(move_crystal_state.NORMAL)
 		for e in combat_manager.enemies.get_all_enemies():

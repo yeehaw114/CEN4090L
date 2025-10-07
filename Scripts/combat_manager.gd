@@ -6,6 +6,10 @@ extends Node2D
 @onready var enemy_container: HBoxContainer = $"../../CharacterContainer/EnemyContainer"
 @onready var player: Player = $"../Player"
 
+@export var max_energy := 3
+var current_energy := max_energy
+signal energy_changed(energy: int)
+
 func _on_card_selected(card: Card) -> void:
 	cards.currently_selected_card = card
 	#print(cards.currently_selected_card)
@@ -40,8 +44,12 @@ func raycast_check_for_tile():
 func cast_card_on_character(character: Character, card: Card, enemy: Character) -> void:
 	if !check_character_on_valid_tile(character,card) or !check_enemy_on_valid_tile(enemy,card):
 		return
+	if card.card_stats.card_cost > current_energy:
+		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
+			use_energy(card.card_stats.card_cost)
+			energy_changed.emit(current_energy)
 			enemy.take_damage(action.value)
 			cards.currently_selected_card = null
 			cards.discard_pile.move_card_to_discard(card)
@@ -79,3 +87,12 @@ func enemies_do_action(enemes: Array):
 		elif enemy_action.type == Action.ACTION_TYPE.BLOCK:
 			print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
 			e.add_and_set_block_value(enemy_action.value)
+			
+func use_energy(cost: int):
+	current_energy -= cost
+	if current_energy < 0:
+		current_energy = 0
+
+func reset_energy():
+	current_energy = max_energy
+	energy_changed.emit(current_energy)
