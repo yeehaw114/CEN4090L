@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfixw0merhgge"]
+[gd_scene load_steps=5 format=3 uid="uid://dfixw0merhgge"]
 
 [ext_resource type="Script" uid="uid://djqe6niv4w71f" path="res://Scripts/card.gd" id="1_wf8id"]
-[ext_resource type="Texture2D" uid="uid://b1043b2peajvd" path="res://Assets/Textures/card_template_scaled_3x_pngcrushed.png" id="2_wf8id"]
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="2_wf8id"]
+[ext_resource type="Texture2D" uid="uid://8f5ekqr3mvef" path="res://Assets/Textures/position_fill.png" id="3_brehn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf8id"]
 size = Vector2(96, 144)
@@ -25,10 +26,10 @@ texture = ExtResource("2_wf8id")
 
 [node name="CostLabel" type="Label" parent="BaseCardSprite"]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 14.0
-offset_right = 113.0
-offset_bottom = 37.0
+offset_left = 81.0
+offset_top = 5.0
+offset_right = 129.0
+offset_bottom = 44.0
 scale = Vector2(0.25, 0.25)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
@@ -40,6 +41,79 @@ offset_right = 91.0
 offset_bottom = 121.0
 scale = Vector2(0.896551, 0.815884)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="NameLabel" type="Label" parent="BaseCardSprite"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 50.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="playerRank4Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 130.0
+offset_right = 13.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="playerRank3Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 18.0
+offset_top = 130.0
+offset_right = 22.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="playerRank2Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 27.0
+offset_top = 130.0
+offset_right = 31.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="playerRank1Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 36.0
+offset_top = 130.0
+offset_right = 40.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="enemyRank1Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 56.0
+offset_top = 130.0
+offset_right = 60.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="enemyRank2Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 65.0
+offset_top = 130.0
+offset_right = 69.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="enemyRank3Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 74.0
+offset_top = 130.0
+offset_right = 78.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
+
+[node name="enemyRank4Texture" type="TextureRect" parent="BaseCardSprite"]
+visible = false
+offset_left = 83.0
+offset_top = 130.0
+offset_right = 87.0
+offset_bottom = 134.0
+texture = ExtResource("3_brehn")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(16, 24)
