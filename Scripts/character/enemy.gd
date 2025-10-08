@@ -15,6 +15,8 @@ const block_intention_texture = preload("res://Assets/Textures/block_intention.p
 
 @export var actions: Array[Action]
 
+@export var enemy_resource: EnemyResource
+
 var current_action : Action
 var is_able_to_be_selected = false
 var is_dead = false
@@ -22,9 +24,9 @@ var rank : int = -1
 var block_value := 0 
 
 func _ready():
-	enemy_sprite.texture = sprite
-	health_bar.value = health
-	health_bar.max_value = health
+	enemy_sprite.texture = enemy_resource.enemy_texture
+	health_bar.value = enemy_resource.max_health
+	health_bar.max_value = enemy_resource.max_health
 
 func mouse_entered_body() -> void:
 	if is_able_to_be_selected:

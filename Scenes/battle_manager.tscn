@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=32 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="13_85kri"]
 [ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://Assets/Resources/cards/strike_card.tres" id="15_wwo4e"]
+[ext_resource type="Resource" uid="uid://bv3l6j5p3op6y" path="res://Assets/Resources/enemies/deer.tres" id="16_bvh6n"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="17_8mf7n"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
 
@@ -119,6 +120,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_qfhry")
+stretch_mode = 0
 
 [node name="EndTurnButton" type="Button" parent="."]
 layout_mode = 1
@@ -215,12 +217,14 @@ script = ExtResource("7_qfsls")
 [node name="Enemy" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(785, 317)
 actions = Array[ExtResource("13_85kri")]([SubResource("Resource_cr05y"), SubResource("Resource_85kri")])
+enemy_resource = ExtResource("16_bvh6n")
 health = 10
 sprite = ExtResource("7_hy4ep")
 
 [node name="Enemy2" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
 position = Vector2(560, 317)
 actions = Array[ExtResource("13_85kri")]([SubResource("Resource_6q0we"), SubResource("Resource_bvh6n")])
+enemy_resource = ExtResource("16_bvh6n")
 health = 10
 sprite = ExtResource("7_hy4ep")
 

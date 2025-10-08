@@ -19,3 +19,6 @@ func toggle_selectability_off():
 
 func get_all_enemies() -> Array:
 	return enemies
+
+func spawn_enemies():
+	pass

@@ -61,6 +61,7 @@ texture = ExtResource("3_brehn")
 
 [node name="playerRank3Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 18.0
 offset_top = 130.0
 offset_right = 22.0
@@ -69,6 +70,7 @@ texture = ExtResource("3_brehn")
 
 [node name="playerRank2Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 27.0
 offset_top = 130.0
 offset_right = 31.0
@@ -77,6 +79,7 @@ texture = ExtResource("3_brehn")
 
 [node name="playerRank1Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 36.0
 offset_top = 130.0
 offset_right = 40.0
@@ -85,6 +88,7 @@ texture = ExtResource("3_brehn")
 
 [node name="enemyRank1Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 56.0
 offset_top = 130.0
 offset_right = 60.0
@@ -93,6 +97,7 @@ texture = ExtResource("3_brehn")
 
 [node name="enemyRank2Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 65.0
 offset_top = 130.0
 offset_right = 69.0
@@ -101,6 +106,7 @@ texture = ExtResource("3_brehn")
 
 [node name="enemyRank3Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 74.0
 offset_top = 130.0
 offset_right = 78.0
@@ -109,6 +115,7 @@ texture = ExtResource("3_brehn")
 
 [node name="enemyRank4Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false
+layout_mode = 0
 offset_left = 83.0
 offset_top = 130.0
 offset_right = 87.0
