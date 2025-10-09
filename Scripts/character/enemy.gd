@@ -94,18 +94,19 @@ func add_and_set_block_value(num: int):
 	block_value += num
 	if block_value > 0:
 		block_label.text = str(block_value)
+		block_texture.visible = true
 	else:
 		clear_block_value()
 	
 func clear_block_value():
 	block_value = 0
 	block_label.text = ''
+	block_texture.visible = false
 
 func remove_block_value(num: int):
 	block_value -= num
 	if block_value <= 0:
-		block_value = 0
-		block_label.text = ''
+		clear_block_value()
 	else:
 		block_label.text = str(block_value)
 
@@ -113,4 +114,5 @@ func set_block_value(num: int):
 	if num < 0:
 		num = 0
 	block_value = num
+	block_texture.visible = true
 	block_label.text = str(num)

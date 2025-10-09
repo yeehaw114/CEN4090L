@@ -77,6 +77,10 @@ func set_player_rank(character: Character, rank: int):
 	character_current_tile.character = null
 	tile_to_move_to.character = character
 	character.global_position = tile_to_move_to.character_position_point.global_position
+	print('\nMOVING CHARACTER--------------------')
+	print('moving '+str(character)+' to '+str(rank))
+	print('position to move to: '+str(character.global_position))
+	print('-------------------------------------\n')
 	
 func enemies_do_action(enemes: Array):
 	for e in enemes:

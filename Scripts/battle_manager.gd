@@ -3,6 +3,8 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var combat_manager: Node2D = $CombatManager
 
+@onready var battle_resource := preload("res://Assets/Resources/battles/deer_2.tres")
+
 var currently_selected_enemy: Character
 var game_over := false
 var can_move := true
@@ -22,6 +24,10 @@ var current_eneergy := 3
 func _ready() -> void:
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
+	combat_manager.cards.draw_pile.draw_cards = battle_resource.starting_cards
+	
+	combat_manager.call_deferred("set_player_rank", player, battle_resource.player_position)
+	
 	for e in combat_manager.enemies.get_all_enemies():
 		e.set_current_action(0)
 		e.update_intention()
