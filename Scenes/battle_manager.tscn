@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=22 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -10,54 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://bj7wunbj8gpih" path="res://Assets/Textures/energy_orb.png" id="3_6q0we"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
-[ext_resource type="PackedScene" uid="uid://d1syl8lfndi8q" path="res://Scenes/enemy.tscn" id="5_w1xkj"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
 [ext_resource type="Script" uid="uid://bidihr68pu0ak" path="res://Scripts/ui/display_draw_deck.gd" id="7_csd6w"]
-[ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="7_hy4ep"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
 [ext_resource type="Script" uid="uid://5svhxht7fhon" path="res://Scripts/combat_manager.gd" id="9_cr05y"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
-[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="13_85kri"]
-[ext_resource type="Resource" uid="uid://bv3l6j5p3op6y" path="res://Assets/Resources/enemies/deer.tres" id="16_bvh6n"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="Resource" id="Resource_cr05y"]
-script = ExtResource("13_85kri")
-value = 5
-type = 0
-status_effect = 0
-status_effect_value = 0
-metadata/_custom_type_script = "uid://mirotg2noub8"
-
-[sub_resource type="Resource" id="Resource_85kri"]
-script = ExtResource("13_85kri")
-value = 5
-type = 4
-status_effect = 0
-status_effect_value = 0
-metadata/_custom_type_script = "uid://mirotg2noub8"
-
-[sub_resource type="Resource" id="Resource_6q0we"]
-script = ExtResource("13_85kri")
-value = 5
-type = 0
-status_effect = 0
-status_effect_value = 0
-metadata/_custom_type_script = "uid://mirotg2noub8"
-
-[sub_resource type="Resource" id="Resource_bvh6n"]
-script = ExtResource("13_85kri")
-value = 5
-type = 4
-status_effect = 0
-status_effect_value = 0
-metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Curve" id="Curve_2u0r0"]
 _data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
@@ -172,18 +136,16 @@ character = NodePath("../../../BattleManager/Player")
 layout_mode = 2
 script = ExtResource("2_htoyf")
 
-[node name="RankContainer" parent="CharacterContainer/EnemyContainer" node_paths=PackedStringArray("character") instance=ExtResource("2_xs0o8")]
+[node name="RankContainer" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
-character = NodePath("../../../BattleManager/Enemies/Enemy2")
 
 [node name="RankContainer2" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 2
 
-[node name="RankContainer3" parent="CharacterContainer/EnemyContainer" node_paths=PackedStringArray("character") instance=ExtResource("2_xs0o8")]
+[node name="RankContainer3" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 3
-character = NodePath("../../../BattleManager/Enemies/Enemy")
 
 [node name="RankContainer4" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
@@ -211,20 +173,6 @@ sprite = ExtResource("1_58ulb")
 
 [node name="Enemies" type="Node2D" parent="BattleManager"]
 script = ExtResource("7_qfsls")
-
-[node name="Enemy" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(785, 317)
-actions = Array[ExtResource("13_85kri")]([SubResource("Resource_cr05y"), SubResource("Resource_85kri")])
-enemy_resource = ExtResource("16_bvh6n")
-health = 10
-sprite = ExtResource("7_hy4ep")
-
-[node name="Enemy2" parent="BattleManager/Enemies" instance=ExtResource("5_w1xkj")]
-position = Vector2(560, 317)
-actions = Array[ExtResource("13_85kri")]([SubResource("Resource_6q0we"), SubResource("Resource_bvh6n")])
-enemy_resource = ExtResource("16_bvh6n")
-health = 10
-sprite = ExtResource("7_hy4ep")
 
 [node name="Cards" type="Node2D" parent="BattleManager"]
 script = ExtResource("3_qfsls")

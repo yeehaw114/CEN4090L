@@ -82,9 +82,22 @@ func set_player_rank(character: Character, rank: int):
 	print('position to move to: '+str(character.global_position))
 	print('-------------------------------------\n')
 	
+func set_enemy_rank(character: Character, rank: int):
+	var tile_to_move_to = enemy_container.get_tile(rank)
+	var character_current_tile = enemy_container.get_tile_by_char(character)
+	if character_current_tile:
+		character_current_tile.character = null
+	tile_to_move_to.character = character
+	character.global_position = tile_to_move_to.character_position_point.global_position
+	print('\nMOVING CHARACTER--------------------')
+	print('moving '+str(character)+' to '+str(rank))
+	print('position to move to: '+str(character.global_position))
+	print('-------------------------------------\n')
+	
 func enemies_do_action(enemes: Array):
 	for e in enemes:
 		var enemy_action = e.current_action
+		print('\nENEMY ATTEMPTING TO DO ACTION: '+str(enemy_action)+'\n')
 		if enemy_action.type == Action.ACTION_TYPE.DAMAGE:
 			print(str(e)+" is attempting to deal "+str(enemy_action.value)+' dmg')
 			player.take_damage(enemy_action.value)

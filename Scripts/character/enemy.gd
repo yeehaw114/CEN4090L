@@ -27,6 +27,11 @@ func _ready():
 	enemy_sprite.texture = enemy_resource.enemy_texture
 	health_bar.value = enemy_resource.max_health
 	health_bar.max_value = enemy_resource.max_health
+	health = enemy_resource.max_health
+	actions = enemy_resource.actions
+	set_current_action(0)
+	print('\nENEMY ACTIONS: '+str(actions))
+	print('CURRENT ACTION: '+str(current_action))
 
 func mouse_entered_body() -> void:
 	if is_able_to_be_selected:
