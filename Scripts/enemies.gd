@@ -3,6 +3,8 @@ extends Node
 var enemies: Array = []
 var enemy_scene := preload("res://Scenes/enemy.tscn")
 
+signal all_enemies_died
+
 func _ready():
 	set_enemys()
 
@@ -26,5 +28,14 @@ func spawn_enemy(enemyResource : EnemyResource) -> Enemy:
 	new_enemy.enemy_resource = enemyResource
 	add_child(new_enemy)
 	enemies.append(new_enemy)
+	new_enemy.enemy_died.connect(check_if_all_enemies_died)
 	print('SPAWING ENEMY: '+str(new_enemy.enemy_resource))
 	return new_enemy
+
+func check_if_all_enemies_died() -> bool:
+	print('CHECKING IF ALL ENEMIES ARE DEAD')
+	for e in enemies:
+		if e.is_dead == false:
+			return false
+	all_enemies_died.emit()
+	return true

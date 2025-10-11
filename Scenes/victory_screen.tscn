@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://djwo85t3pfwst"]
+[gd_scene load_steps=4 format=3 uid="uid://crinoxwgj5hyu"]
 
-[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_0gua7"]
+[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_oq8vb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jb6in"]
-shader = ExtResource("1_0gua7")
+shader = ExtResource("1_oq8vb")
 shader_parameter/amount = 2.265
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gua7"]
 bg_color = Color(0.065224, 0.0241953, 0.00326082, 1)
 
-[node name="GameOverScreen" type="Control"]
+[node name="VictoryScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,7 +51,7 @@ offset_left = -46.0
 offset_right = 46.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "YOU'VE BEEN FELLED"
+text = "YOU'VE CLEANSED YOUR FOES"
 
 [node name="Button" type="Button" parent="Panel"]
 layout_mode = 1
@@ -65,4 +65,4 @@ offset_top = -31.0
 offset_right = 73.5
 grow_horizontal = 2
 grow_vertical = 0
-text = "RETURN TO CAMP"
+text = "CONTINUE"

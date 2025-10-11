@@ -20,5 +20,5 @@ card_description = "3 dmg"
 card_image = ExtResource("2_x51ho")
 card_actions = Array[ExtResource("1_q0muu")]([SubResource("Resource_dmua7")])
 character_position = Array[int]([1, 2])
-enemy_position = Array[int]([1])
+enemy_position = Array[int]([1, 2])
 metadata/_custom_type_script = "uid://dda632fu6blsg"

@@ -17,6 +17,8 @@ const block_intention_texture = preload("res://Assets/Textures/block_intention.p
 
 @export var enemy_resource: EnemyResource
 
+signal enemy_died
+
 var current_action : Action
 var is_able_to_be_selected = false
 var is_dead = false
@@ -130,3 +132,5 @@ func die():
 	is_dead = true
 	set_grey_shader()
 	update_intention()
+	clear_block_value()
+	enemy_died.emit()
