@@ -7,11 +7,12 @@ const block_intention_texture = preload("res://Assets/Textures/block_intention.p
 
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: TextureRect = $HBoxContainer/VBoxContainer/EnemySprite
-@onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/HealthBar
+@onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/MarginContainer/HealthBar
 @onready var intention_texture: TextureRect = $HBoxContainer/VBoxContainer/IntentionContainer/IntentionTexture
 @onready var intention_label: Label = $HBoxContainer/VBoxContainer/IntentionContainer/IntentionLabel
-@onready var block_label: Label = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
-@onready var block_texture: TextureRect = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture
+@onready var block_label: Label = $HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture/BlockLabel
+@onready var block_texture: TextureRect = $HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
+
 
 @export var actions: Array[Action]
 
@@ -83,14 +84,17 @@ func set_current_action(index: int):
 
 func update_intention():
 	if is_dead:
-		intention_label.hide()
-		intention_texture.hide()
+		hide_intention()
 		return
 	intention_label.text = str(current_action.value)
 	if current_action.type == Action.ACTION_TYPE.DAMAGE:
 		intention_texture.texture = attack_intention_texture
 	if current_action.type == Action.ACTION_TYPE.BLOCK:
 		intention_texture.texture = block_intention_texture
+
+func hide_intention():
+	intention_label.modulate = Color(1, 1, 1, 0)
+	intention_texture.modulate = Color(1, 1, 1, 0)
 
 func next_action():
 	var index = actions.find(current_action)

@@ -14,6 +14,7 @@ bg_color = Color(0.215018, 0.0732119, 0.0222391, 1)
 bg_color = Color(0.290785, 0.707762, 0.161001, 1)
 
 [node name="Player" type="Node2D" groups=["Character"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_nytcm")
 
 [node name="SelectRing" type="Sprite2D" parent="."]
@@ -29,9 +30,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -86.0
-offset_right = 20.0
+offset_left = -16.0
+offset_top = -34.0
+offset_right = 48.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -41,7 +43,7 @@ layout_mode = 2
 [node name="EnemySprite" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ejsiy")
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_2mse5")
 
@@ -66,8 +68,14 @@ offset_bottom = 13.0
 texture = ExtResource("4_nytcm")
 
 [node name="BlockLabel" type="Label" parent="HBoxContainer/VBoxContainer/HealthBar/BlockTexture"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = -4.0
-offset_right = 43.0
-offset_bottom = 19.0
+offset_top = 0.5
+offset_right = 6.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)

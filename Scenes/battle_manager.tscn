@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=25 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bj7wunbj8gpih" path="res://Assets/Textures/energy_orb.png" id="3_6q0we"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
+[ext_resource type="Texture2D" uid="uid://c3ytv3j8mh0qi" path="res://Assets/Textures/end_turn_underlay.png" id="5_85kri"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
@@ -57,24 +58,30 @@ texture = ExtResource("2_gfmbw")
 
 [node name="EnergyOrb" type="TextureRect" parent="."]
 texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -81.0
-offset_top = 1.0
-offset_right = -41.0
-offset_bottom = 41.0
+offset_left = -40.0
+offset_bottom = 40.0
 grow_horizontal = 0
-scale = Vector2(2, 2)
 texture = ExtResource("3_6q0we")
 
 [node name="EnergyLabel" type="Label" parent="EnergyOrb"]
-layout_mode = 0
-offset_left = 7.5
-offset_top = 6.5
-offset_right = 47.5
-offset_bottom = 29.5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 22.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 text = "0/0"
 
 [node name="MoveCrystalButton" type="TextureButton" parent="."]
@@ -82,21 +89,37 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_qfhry")
-stretch_mode = 0
 
-[node name="EndTurnButton" type="Button" parent="."]
+[node name="EndTurnButton" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -39.0
-offset_right = 39.0
-offset_bottom = 31.0
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 48.0
 grow_horizontal = 2
-text = "End Turn
-"
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 0)
+texture_normal = ExtResource("5_85kri")
+
+[node name="Label" type="Label" parent="EndTurnButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -19.0
+offset_right = 41.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "END TURN"
 
 [node name="CharacterContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
@@ -219,8 +242,10 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("4_2u0r0")
 hand_curve = SubResource("Curve_2u0r0")
 rotation_curve = SubResource("Curve_xs0o8")
-x_sep = 50
+max_rotation_degress = 0
+x_sep = 60
 y_min = 15
+y_max = 0
 
 [node name="DiscardPile" type="Node2D" parent="BattleManager/Cards"]
 position = Vector2(852, 450)

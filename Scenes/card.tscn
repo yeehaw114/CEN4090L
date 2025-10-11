@@ -26,11 +26,11 @@ texture = ExtResource("2_wf8id")
 
 [node name="CostLabel" type="Label" parent="BaseCardSprite"]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 5.0
-offset_right = 129.0
-offset_bottom = 44.0
-scale = Vector2(0.25, 0.25)
+offset_left = 82.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 41.0
+scale = Vector2(0.81, 0.57)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="DescriptionLabel" type="Label" parent="BaseCardSprite"]

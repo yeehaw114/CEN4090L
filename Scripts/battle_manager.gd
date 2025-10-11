@@ -27,6 +27,7 @@ func _ready() -> void:
 	
 	combat_manager.cards.draw_pile.draw_cards = battle_resource.starting_cards
 	combat_manager.cards.draw_pile.shuffle_draw_cards()
+	combat_manager.cards.draw_pile.update_display_card_deck.emit(combat_manager.cards.draw_pile.draw_cards)
 	
 	combat_manager.call_deferred("set_player_rank", player, battle_resource.player_position)
 	

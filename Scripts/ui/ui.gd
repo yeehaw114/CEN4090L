@@ -5,7 +5,7 @@ extends Control
 
 @onready var discard_pile: Node2D = $BattleManager/Cards/DiscardPile
 @onready var background: TextureRect = $Background
-@onready var end_turn_button: Button = $EndTurnButton
+@onready var end_turn_button: TextureButton = $EndTurnButton
 @onready var character_container: HBoxContainer = $CharacterContainer
 @onready var battle_manager: Node2D = $BattleManager
 
