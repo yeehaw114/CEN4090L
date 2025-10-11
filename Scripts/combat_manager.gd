@@ -123,14 +123,15 @@ func set_enemy_rank(character: Character, rank: int):
 	
 func enemies_do_action(enemes: Array):
 	for e in enemes:
-		var enemy_action = e.current_action
-		print('\nENEMY ATTEMPTING TO DO ACTION: '+str(enemy_action)+'\n')
-		if enemy_action.type == Action.ACTION_TYPE.DAMAGE:
-			print(str(e)+" is attempting to deal "+str(enemy_action.value)+' dmg')
-			player.take_damage(enemy_action.value)
-		elif enemy_action.type == Action.ACTION_TYPE.BLOCK:
-			print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
-			e.add_and_set_block_value(enemy_action.value)
+		if e.is_dead == false:
+			var enemy_action = e.current_action
+			print('\nENEMY ATTEMPTING TO DO ACTION: '+str(enemy_action)+'\n')
+			if enemy_action.type == Action.ACTION_TYPE.DAMAGE:
+				print(str(e)+" is attempting to deal "+str(enemy_action.value)+' dmg')
+				player.take_damage(enemy_action.value)
+			elif enemy_action.type == Action.ACTION_TYPE.BLOCK:
+				print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
+				e.add_and_set_block_value(enemy_action.value)
 			
 func use_energy(cost: int):
 	current_energy -= cost

@@ -54,8 +54,7 @@ func take_damage(damage: int):
 	health -= damage
 	health_bar.value = health
 	if check_if_dead():
-		set_grey_shader()
-		is_dead = true
+		die()
 
 func turn_selectibility_off() ->void:
 	select_ring.visible = false
@@ -81,6 +80,10 @@ func set_current_action(index: int):
 	update_intention()
 
 func update_intention():
+	if is_dead:
+		intention_label.hide()
+		intention_texture.hide()
+		return
 	intention_label.text = str(current_action.value)
 	if current_action.type == Action.ACTION_TYPE.DAMAGE:
 		intention_texture.texture = attack_intention_texture
@@ -122,3 +125,8 @@ func set_block_value(num: int):
 	block_value = num
 	block_texture.visible = true
 	block_label.text = str(num)
+
+func die():
+	is_dead = true
+	set_grey_shader()
+	update_intention()
