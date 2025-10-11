@@ -78,6 +78,7 @@ func set_grey_shader() -> void:
 	
 func set_current_action(index: int):
 	current_action = actions[index]
+	update_intention()
 
 func update_intention():
 	intention_label.text = str(current_action.value)

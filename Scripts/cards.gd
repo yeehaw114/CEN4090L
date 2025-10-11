@@ -13,7 +13,6 @@ var currently_selected_card: Card
 const CARD_Y_FACTOR := 25
 const CARD_SCALE_FACTOR := 0.7
 
-
 func _ready() -> void:
 	#print(card_debug.card_stats)
 	set_cards()
@@ -91,6 +90,9 @@ func move_discard_cards_to_draw():
 		discard_card_stats.append(card_stats.duplicate(true))
 	draw_pile.draw_cards = discard_card_stats
 	discard_pile.discarded_cards.clear()
+	
+	draw_pile.shuffle_draw_cards()
+	
 	draw_pile.update_display_card_deck.emit(draw_pile.draw_cards)
 	draw_pile.update_count()
 	discard_pile.update_display_card_deck.emit(discard_pile.discarded_cards)

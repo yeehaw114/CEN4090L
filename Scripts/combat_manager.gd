@@ -56,6 +56,29 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 			enemies.toggle_selectability_off()
 			cards.hand_area.update_cards()
 
+func cast_card_on_player(character: Character, card: Card) -> void:
+	if !check_character_on_valid_tile(character,card):
+		return
+	if card.card_stats.card_cost > current_energy:
+		return
+	for action in card.card_stats.card_actions:
+		if action.type == action.ACTION_TYPE.DAMAGE:
+			use_energy(card.card_stats.card_cost)
+			energy_changed.emit(current_energy)
+			character.take_damage(action.value)
+			clear_and_update_cards(card)
+		elif action.type == action.ACTION_TYPE.BLOCK:
+			use_energy(card.card_stats.card_cost)
+			energy_changed.emit(current_energy)
+			character.add_and_set_block_value(action.value)
+			clear_and_update_cards(card)
+			
+func clear_and_update_cards(card):
+	cards.currently_selected_card = null
+	cards.discard_pile.move_card_to_discard(card)
+	enemies.toggle_selectability_off()
+	cards.hand_area.update_cards()
+
 func check_character_on_valid_tile(character: Character, card: Card) -> bool:
 		var tile = player_container.get_tile_by_char(character)
 		var character_rank = player_container.get_tile_by_char(character).rank
@@ -65,7 +88,11 @@ func check_character_on_valid_tile(character: Character, card: Card) -> bool:
 		return false
 
 func check_enemy_on_valid_tile(character: Character, card: Card) -> bool:
-		var enemy_rank = enemy_container.get_tile_by_char(character).rank
+		var tile = enemy_container.get_tile_by_char(character)
+		var enemy_rank
+		if !tile:
+			return false
+		enemy_rank = tile.rank
 		for rank in card.card_stats.enemy_position:
 			if rank == enemy_rank:
 				return true

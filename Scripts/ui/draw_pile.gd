@@ -30,3 +30,7 @@ func update_count():
 	
 func get_draw_cards() -> Array[CardResource]:
 	return draw_cards
+
+func shuffle_draw_cards():
+	print('SHFFLING DRAW CARDS: '+str(draw_cards))
+	draw_cards.shuffle()

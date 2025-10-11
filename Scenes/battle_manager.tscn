@@ -166,7 +166,7 @@ script = ExtResource("1_tvmj4")
 [node name="CombatManager" type="Node2D" parent="BattleManager"]
 script = ExtResource("9_cr05y")
 
-[node name="Player" parent="BattleManager" instance=ExtResource("9_csd6w")]
+[node name="Player" parent="BattleManager" groups=["Player"] instance=ExtResource("9_csd6w")]
 position = Vector2(400, 318)
 health = 20
 sprite = ExtResource("1_58ulb")

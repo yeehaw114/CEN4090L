@@ -24,7 +24,9 @@ var current_eneergy := 3
 func _ready() -> void:
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
+	
 	combat_manager.cards.draw_pile.draw_cards = battle_resource.starting_cards
+	combat_manager.cards.draw_pile.shuffle_draw_cards()
 	
 	combat_manager.call_deferred("set_player_rank", player, battle_resource.player_position)
 	
@@ -68,6 +70,7 @@ func handle_current_turn():
 	elif get_active_battle_state() == battle_state.PLAYER:
 		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE
 		print('handling player turn')
+		player.clear_block_value()
 		combat_manager.cards.draw_cards(5)
 		combat_manager.reset_energy()
 		can_move = true
@@ -119,7 +122,10 @@ func handle_left_input():
 			char = tile.character
 		if char != null and combat_manager.cards.currently_selected_card != null:
 			currently_selected_enemy = char
-			combat_manager.cast_card_on_character(player,combat_manager.cards.currently_selected_card,currently_selected_enemy)
+			if currently_selected_enemy.is_in_group('Player'):
+				combat_manager.cast_card_on_player(player, combat_manager.cards.currently_selected_card)
+			else:
+				combat_manager.cast_card_on_character(player,combat_manager.cards.currently_selected_card,currently_selected_enemy)
 	elif active_state == battle_state_player.MOVE:
 		var tile = combat_manager.raycast_check_for_tile()
 		if tile != null:
