@@ -14,6 +14,8 @@ var is_dead = false
 var rank : int = -1 
 var block_value := 0 
 
+signal player_died
+
 func _ready():
 	enemy_sprite.texture = sprite
 	health_bar.value = health
@@ -40,8 +42,7 @@ func take_damage(damage: int):
 	health -= damage
 	health_bar.value = health
 	if check_if_dead():
-		set_grey_shader()
-		is_dead = true
+		die()
 
 func turn_selectibility_off() ->void:
 	select_ring.visible = false
@@ -88,3 +89,8 @@ func set_block_value(num: int):
 	block_value = num
 	block_texture.visible = true
 	block_label.text = str(num)
+
+func die():
+	is_dead = true
+	set_grey_shader()
+	player_died.emit()

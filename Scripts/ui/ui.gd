@@ -12,6 +12,8 @@ extends Control
 @onready var display_discard_deck: Control = $DisplayDiscardDeck
 @onready var display_draw_deck: Control = $DisplayDrawDeck
 
+@onready var game_over_screen: Control = $GameOverScreen
+
 var move_crystal_normal = Rect2(Vector2(0,0),Vector2(32,32))
 var move_crystal_selected = Rect2(Vector2(32,0),Vector2(32,32))
 var move_crystal_empty = Rect2(Vector2(64,0),Vector2(64,32))
@@ -82,3 +84,7 @@ func on_discard_button_pressed() -> void:
 	
 func on_draw_button_pressed() -> void:
 	switch_to_display_draw_pile()
+
+func display_game_over_screen():
+	get_tree().paused = true;
+	game_over_screen.show()

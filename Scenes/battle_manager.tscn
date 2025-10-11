@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=23 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://5svhxht7fhon" path="res://Scripts/combat_manager.gd" id="9_cr05y"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
+[ext_resource type="PackedScene" uid="uid://djwo85t3pfwst" path="res://Scenes/game_over_screen.tscn" id="19_csd6w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
@@ -243,6 +244,10 @@ offset_top = -62.0
 offset_right = 61.0
 offset_bottom = 61.0
 
+[node name="GameOverScreen" parent="." instance=ExtResource("19_csd6w")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
@@ -250,6 +255,7 @@ offset_bottom = 61.0
 [connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
 [connection signal="energy_changed" from="BattleManager/CombatManager" to="." method="set_energy_value"]
+[connection signal="player_died" from="BattleManager/Player" to="." method="display_game_over_screen"]
 [connection signal="update_display_card_deck" from="BattleManager/Cards/DrawPile" to="DisplayDrawDeck" method="_on_draw_pile_update_display_card_deck"]
 [connection signal="pressed" from="BattleManager/Cards/DrawPile/DiscardButton" to="." method="on_draw_button_pressed"]
 [connection signal="card_discarded" from="BattleManager/Cards/DiscardPile" to="DisplayDiscardDeck" method="_on_discard_pile_card_discarded"]
