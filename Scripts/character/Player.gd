@@ -15,6 +15,7 @@ var rank : int = -1
 var block_value := 0 
 
 signal player_died
+signal took_damage(damage: int)
 
 func _ready():
 	enemy_sprite.texture = sprite
@@ -39,7 +40,10 @@ func take_damage(damage: int):
 			damage = 0
 		print('damage after block: '+str(damage))
 		set_block_value(new_block)
+	var health_before_damage = health
 	health -= damage
+	if !health_before_damage == health:
+		took_damage.emit(damage)
 	health_bar.value = health
 	if check_if_dead():
 		die()

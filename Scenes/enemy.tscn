@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1syl8lfndi8q"]
+[gd_scene load_steps=10 format=3 uid="uid://d1syl8lfndi8q"]
 
 [ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/character/enemy.gd" id="2_287tu"]
 [ext_resource type="Texture2D" uid="uid://cx3g6b3i4x7y0" path="res://Assets/Textures/select_target_ring.png" id="3_0830c"]
 [ext_resource type="Texture2D" uid="uid://bftt4w431ccvi" path="res://Assets/Textures/attack_intenttion.png" id="4_287tu"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="4_0830c"]
 [ext_resource type="Texture2D" uid="uid://dj5cvo2wfnqry" path="res://Assets/Textures/block_intention.png" id="5_0830c"]
+[ext_resource type="Script" uid="uid://dld5mwiy7c1hi" path="res://Scripts/damage_popup_position.gd" id="6_ghaa6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_287tu"]
 
@@ -101,3 +102,9 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.504726, 0.501993)
+
+[node name="DamagePopupPosition" type="Marker2D" parent="."]
+position = Vector2(17, -55)
+script = ExtResource("6_ghaa6")
+
+[connection signal="took_damage" from="." to="DamagePopupPosition" method="popup"]

@@ -1,0 +1,16 @@
+extends Marker2D
+
+var damage_popup = preload("res://Scenes/damage_popup.tscn")
+
+func popup(num: int):
+	var damage = damage_popup.instantiate()
+	get_tree().current_scene.add_child(damage)
+	damage.position = global_position + random_point_offset(5)
+	print('\nDAMAGE POPUP GLOBAL POSITION: '+str(damage.position)+'\n')
+	damage.set_damage(num)
+
+func random_point_offset(mult_factor: int):
+	var random_vector = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+	random_vector = random_vector.normalized()
+	random_vector *= max(randf_range(0, 1), randf_range(0, 1))
+	return random_vector * mult_factor

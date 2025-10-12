@@ -91,5 +91,5 @@ func display_game_over_screen():
 	game_over_screen.show()
 	
 func display_victory_screen():
-	get_tree().paused = true;
+	#get_tree().paused = true;
 	victory_screen.show()
