@@ -21,6 +21,7 @@ func populate_grid():
 	for card_stat in stats_list:
 		var new_card = card_scene.instantiate()
 		new_card.card_stats = card_stat
+		new_card.is_able_to_be_selected = false
 		grid_container.add_child(new_card)
 	print()
 	

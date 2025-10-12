@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func attempt_to_select_card():
 	var card = raycast_check_for_card()
-	if card != null and card != currently_selected_card:
+	if card != null and card != currently_selected_card and card.is_able_to_be_selected:
 		if currently_selected_card != null:
 			unhighlight_selected_card(currently_selected_card)
 			currently_selected_card.is_currently_selected = false
@@ -100,3 +100,12 @@ func move_discard_cards_to_draw():
 	print('ATTEMPT TO MOVE CARDS FROM DISCARD TO DRAW')
 	print('DRAW PILE: '+str(draw_pile.draw_cards))
 	print('DISCARD PILE: '+str(discard_pile.discarded_cards))
+
+func make_cards_in_hand_unselectable():
+	print('\nATTEMPTING TO MAKE CARDS UNSELECTABLE: '+str(hand_area.get_cards())+'\n')
+	for card in hand_area.get_cards():
+		card.is_able_to_be_selected = false
+
+func make_cards_in_hand_selectable():
+	for card in hand_area.get_cards():
+		card.is_able_to_be_selected = true

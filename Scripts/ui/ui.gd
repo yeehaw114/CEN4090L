@@ -2,12 +2,16 @@ extends Control
 
 @onready var move_crystal_button: TextureButton = $MoveCrystalButton
 @onready var energy_label: Label = $EnergyOrb/EnergyLabel
+@onready var energy_orb: TextureRect = $EnergyOrb
 
-@onready var discard_pile: Node2D = $BattleManager/Cards/DiscardPile
 @onready var background: TextureRect = $Background
 @onready var end_turn_button: TextureButton = $EndTurnButton
 @onready var character_container: HBoxContainer = $CharacterContainer
+
 @onready var battle_manager: Node2D = $BattleManager
+@onready var hand_area: ColorRect = $BattleManager/Cards/HandArea
+@onready var draw_pile: Node2D = $BattleManager/Cards/DrawPile
+@onready var discard_pile: Node2D = $BattleManager/Cards/DiscardPile
 
 @onready var display_discard_deck: Control = $DisplayDiscardDeck
 @onready var display_draw_deck: Control = $DisplayDrawDeck
@@ -26,11 +30,15 @@ func _ready() -> void:
 
 func switch_to_display_discard_pile() -> void:
 	move_crystal_button.visible = false
-	background.visible = false
 	end_turn_button.visible = false
-	character_container.visible = false
-	battle_manager.visible = false
+	
+	hand_area.visible = false
+	draw_pile.visible = false
+	discard_pile.visible = false
+	
 	display_draw_deck.visible = false
+	energy_orb.visible = false
+	battle_manager.visible = false
 	
 	display_discard_deck.populate_grid()
 	display_discard_deck.visible = true
@@ -43,12 +51,19 @@ func switch_to_display_battle_screen() -> void:
 	battle_manager.visible = true
 	display_discard_deck.visible = false
 	display_draw_deck.visible = false
+	energy_orb.visible = true
+	hand_area.visible = true
+	draw_pile.visible = true
+	discard_pile.visible = true
 
 func switch_to_display_draw_pile() -> void:
 	move_crystal_button.visible = false
-	background.visible = false
 	end_turn_button.visible = false
-	character_container.visible = false
+	hand_area.visible = false
+	draw_pile.visible = false
+	discard_pile.visible = false
+	display_draw_deck.visible = false
+	energy_orb.visible = false
 	battle_manager.visible = false
 	
 	display_draw_deck.populate_grid()
@@ -87,9 +102,11 @@ func on_draw_button_pressed() -> void:
 	switch_to_display_draw_pile()
 
 func display_game_over_screen():
-	get_tree().paused = true;
+	#get_tree().paused = true;
+	battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
 	game_over_screen.show()
 	
 func display_victory_screen():
 	#get_tree().paused = true;
+	battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
 	victory_screen.show()

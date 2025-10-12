@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://c3ytv3j8mh0qi" path="res://Assets/Textures/end_turn_underlay.png" id="5_85kri"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
-[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="7_2u0r0"]
 [ext_resource type="Script" uid="uid://bidihr68pu0ak" path="res://Scripts/ui/display_draw_deck.gd" id="7_csd6w"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
 [ext_resource type="Script" uid="uid://5svhxht7fhon" path="res://Scripts/combat_manager.gd" id="9_cr05y"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
+[ext_resource type="Texture2D" uid="uid://ch3hht6huwojd" path="res://Assets/Textures/display_card_button.png" id="17_85kri"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
 [ext_resource type="PackedScene" uid="uid://djwo85t3pfwst" path="res://Scenes/game_over_screen.tscn" id="19_csd6w"]
 [ext_resource type="PackedScene" uid="uid://crinoxwgj5hyu" path="res://Scenes/victory_screen.tscn" id="20_et1xl"]
@@ -203,27 +203,30 @@ script = ExtResource("7_qfsls")
 script = ExtResource("3_qfsls")
 
 [node name="DrawPile" type="Node2D" parent="BattleManager/Cards"]
-position = Vector2(99, 447)
+position = Vector2(49, 452)
 script = ExtResource("18_8mf7n")
 
 [node name="Discard_spawn" type="Node2D" parent="BattleManager/Cards/DrawPile"]
 position = Vector2(1388, 457)
 
 [node name="DiscardSprite" type="Sprite2D" parent="BattleManager/Cards/DrawPile"]
-texture = ExtResource("7_2u0r0")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("17_85kri")
 
 [node name="DiscardCount" type="Label" parent="BattleManager/Cards/DrawPile"]
-offset_left = 70.0
-offset_top = -75.0
-offset_right = 198.0
-offset_bottom = -52.0
+offset_left = 31.0
+offset_top = -44.0
+offset_right = 159.0
+offset_bottom = -21.0
 text = "0"
 
 [node name="DiscardButton" type="TextureButton" parent="BattleManager/Cards/DrawPile"]
-offset_left = -59.0
-offset_top = -62.0
-offset_right = 61.0
-offset_bottom = 61.0
+offset_left = -39.0
+offset_top = -43.0
+offset_right = 81.0
+offset_bottom = 80.0
+scale = Vector2(0.7, 0.7)
 
 [node name="HandArea" type="ColorRect" parent="BattleManager/Cards"]
 custom_minimum_size = Vector2(500, 150)
@@ -248,27 +251,30 @@ y_min = 15
 y_max = 0
 
 [node name="DiscardPile" type="Node2D" parent="BattleManager/Cards"]
-position = Vector2(852, 450)
+position = Vector2(900, 454)
 script = ExtResource("6_mg17r")
 
 [node name="Discard_spawn" type="Node2D" parent="BattleManager/Cards/DiscardPile"]
 position = Vector2(1388, 457)
 
 [node name="DiscardSprite" type="Sprite2D" parent="BattleManager/Cards/DiscardPile"]
-texture = ExtResource("7_2u0r0")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("17_85kri")
 
 [node name="DiscardCount" type="Label" parent="BattleManager/Cards/DiscardPile"]
-offset_left = 70.0
-offset_top = -75.0
-offset_right = 198.0
-offset_bottom = -52.0
+offset_left = 34.0
+offset_top = -46.0
+offset_right = 162.0
+offset_bottom = -23.0
 text = "0"
 
 [node name="DiscardButton" type="TextureButton" parent="BattleManager/Cards/DiscardPile"]
-offset_left = -59.0
-offset_top = -62.0
-offset_right = 61.0
-offset_bottom = 61.0
+offset_left = -40.0
+offset_top = -49.0
+offset_right = 80.0
+offset_bottom = 74.0
+scale = Vector2(0.7, 0.7)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("19_csd6w")]
 visible = false
@@ -286,7 +292,9 @@ layout_mode = 1
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
 [connection signal="energy_changed" from="BattleManager/CombatManager" to="." method="set_energy_value"]
 [connection signal="player_died" from="BattleManager/Player" to="." method="display_game_over_screen"]
+[connection signal="player_died" from="BattleManager/Player" to="BattleManager" method="_on_player_player_died"]
 [connection signal="all_enemies_died" from="BattleManager/Enemies" to="." method="display_victory_screen"]
+[connection signal="all_enemies_died" from="BattleManager/Enemies" to="BattleManager" method="_on_enemies_all_enemies_died"]
 [connection signal="update_display_card_deck" from="BattleManager/Cards/DrawPile" to="DisplayDrawDeck" method="_on_draw_pile_update_display_card_deck"]
 [connection signal="pressed" from="BattleManager/Cards/DrawPile/DiscardButton" to="." method="on_draw_button_pressed"]
 [connection signal="card_discarded" from="BattleManager/Cards/DiscardPile" to="DisplayDiscardDeck" method="_on_discard_pile_card_discarded"]

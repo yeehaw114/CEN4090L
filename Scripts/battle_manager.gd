@@ -47,10 +47,6 @@ func _ready() -> void:
 		var enemy = combat_manager.enemies.spawn_enemy(battle_resource.enemy_rank_4)
 		combat_manager.call_deferred("set_enemy_rank", enemy, 4)
 		print('SPAWNING ENEMY IN RANK 4: '+str(enemy))
-	
-	#for e in combat_manager.enemies.get_all_enemies():
-		#e.set_current_action(0)
-		#e.update_intention()
 	combat_manager.cards.draw_cards(5)
 	
 func _input(event: InputEvent) -> void:
@@ -64,6 +60,8 @@ func _input(event: InputEvent) -> void:
 			handle_right_input()
 
 func handle_current_turn():
+	if game_over:
+		return
 	if get_active_battle_state() == battle_state.PLAYER_STATUS:
 		#APPLY STATUS EFFECTS TO PLAYER
 		print('handling status effects on player')
@@ -161,7 +159,7 @@ func get_current_state():
 		if state == active_state:
 			#print(state)
 			return state
-
+	
 func _on_movement_button_pressed() -> void:
 	if !can_move:
 		return
@@ -175,3 +173,9 @@ func _on_end_turn_button_pressed() -> void:
 		print('end turn')
 		combat_manager.cards.discard_all_cards()
 		next_turn()
+
+func _on_enemies_all_enemies_died() -> void:
+	game_over = true
+
+func _on_player_player_died() -> void:
+	game_over = true

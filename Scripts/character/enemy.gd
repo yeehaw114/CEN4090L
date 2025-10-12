@@ -4,6 +4,7 @@ class_name Enemy
 const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 const attack_intention_texture = preload("res://Assets/Textures/attack_intenttion.png")
 const block_intention_texture = preload("res://Assets/Textures/block_intention.png")
+const BLUR_CONSTANT = 2.5
 
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: TextureRect = $HBoxContainer/VBoxContainer/EnemySprite

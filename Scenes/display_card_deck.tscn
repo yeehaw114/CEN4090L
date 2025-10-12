@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2gu0jn3son2i"]
+[gd_scene load_steps=4 format=3 uid="uid://b2gu0jn3son2i"]
 
 [ext_resource type="Script" uid="uid://epb3vl2vm5ug" path="res://Scripts/ui/display_card_deck.gd" id="1_t1rpv"]
+[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="2_t1rpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2jmi"]
+shader = ExtResource("2_t1rpv")
+shader_parameter/amount = 2.5
 
 [node name="DisplayCardDeck" type="Control"]
 layout_mode = 3
@@ -12,13 +17,13 @@ grow_vertical = 2
 script = ExtResource("1_t1rpv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_b2jmi")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.388235, 0.403922, 1, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

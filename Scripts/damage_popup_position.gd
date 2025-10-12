@@ -1,11 +1,12 @@
 extends Marker2D
 
 var damage_popup = preload("res://Scenes/damage_popup.tscn")
+const DAMAGE_OFFSET_MULTIPLIER = 20
 
 func popup(num: int):
 	var damage = damage_popup.instantiate()
 	get_tree().current_scene.add_child(damage)
-	damage.position = global_position + random_point_offset(5)
+	damage.position = global_position + random_point_offset(DAMAGE_OFFSET_MULTIPLIER)
 	print('\nDAMAGE POPUP GLOBAL POSITION: '+str(damage.position)+'\n')
 	damage.set_damage(num)
 

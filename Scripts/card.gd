@@ -20,6 +20,7 @@ const SIZE := Vector2(32,48)
 
 
 var is_currently_selected: bool = false
+var is_able_to_be_selected: bool = true
 
 func set_values() -> void:
 	if card_stats:
@@ -50,12 +51,12 @@ func _ready() -> void:
 	set_values()
 
 func mouse_entered_card_area() -> void:
-	if is_currently_selected:
+	if is_currently_selected or !is_able_to_be_selected:
 		return
 	increase_scale(1)
 
 func mouse_exited_card_area() -> void:
-	if is_currently_selected:
+	if is_currently_selected or !is_able_to_be_selected:
 		return
 	decrease_scale(1)
 
