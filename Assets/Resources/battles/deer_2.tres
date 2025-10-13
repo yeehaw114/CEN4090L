@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="BattleResource" load_steps=6 format=3 uid="uid://couoivijdshec"]
+[gd_resource type="Resource" script_class="BattleResource" load_steps=7 format=3 uid="uid://couoivijdshec"]
 
 [ext_resource type="Resource" uid="uid://bv3l6j5p3op6y" path="res://Assets/Resources/enemies/deer.tres" id="1_k4ty6"]
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="1_ln1s2"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_gnj06"]
 [ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://Assets/Resources/cards/strike_card.tres" id="4_cvk1j"]
 [ext_resource type="Resource" uid="uid://bspbdiwrehxpn" path="res://Assets/Resources/cards/defend_card.tres" id="5_cvk1j"]
+[ext_resource type="Resource" uid="uid://cq1rwnf63qmjq" path="res://Assets/Resources/cards/plague_gernade_card.tres" id="6_4a0am"]
 
 [resource]
 script = ExtResource("1_ln1s2")
-starting_cards = Array[ExtResource("2_gnj06")]([ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("5_cvk1j"), ExtResource("4_cvk1j"), ExtResource("5_cvk1j"), ExtResource("5_cvk1j"), ExtResource("5_cvk1j")])
+starting_cards = Array[ExtResource("2_gnj06")]([ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("5_cvk1j"), ExtResource("4_cvk1j"), ExtResource("5_cvk1j"), ExtResource("6_4a0am"), ExtResource("6_4a0am"), ExtResource("6_4a0am")])
 enemy_rank_1 = ExtResource("1_k4ty6")
 enemy_rank_2 = ExtResource("1_k4ty6")
 player_position = 1

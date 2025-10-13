@@ -4,16 +4,17 @@ class_name Enemy
 const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 const attack_intention_texture = preload("res://Assets/Textures/attack_intenttion.png")
 const block_intention_texture = preload("res://Assets/Textures/block_intention.png")
+const status_effect_scene = preload("res://Scenes/status_effect.tscn")
 const BLUR_CONSTANT = 2.5
 
 @onready var select_ring: Sprite2D = $SelectRing
-@onready var enemy_sprite: TextureRect = $HBoxContainer/VBoxContainer/EnemySprite
-@onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/MarginContainer/HealthBar
-@onready var intention_texture: TextureRect = $HBoxContainer/VBoxContainer/IntentionContainer/IntentionTexture
-@onready var intention_label: Label = $HBoxContainer/VBoxContainer/IntentionContainer/IntentionLabel
-@onready var block_label: Label = $HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture/BlockLabel
-@onready var block_texture: TextureRect = $HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
-
+@onready var enemy_sprite: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/EnemySprite
+@onready var health_bar: ProgressBar = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar
+@onready var intention_texture: TextureRect = $VBoxContainer/IntentionContainer/IntentionTexture
+@onready var intention_label: Label = $VBoxContainer/IntentionContainer/IntentionLabel
+@onready var block_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture/BlockLabel
+@onready var block_texture: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
+@onready var status_effect_container: GridContainer = $VBoxContainer/HBoxContainer/StatusEffectContainer
 
 @export var actions: Array[Action]
 
@@ -143,3 +144,27 @@ func die():
 	update_intention()
 	clear_block_value()
 	enemy_died.emit()
+
+func set_status_effect(status_effect: StatusEffect):
+	for effect in status_effects:
+		if effect.name == status_effect.name:
+			var current_effects = get_status_effect_nodes()
+			for e in current_effects:
+				if e.status_effect_resource.name == status_effect.name:
+					print('\nATTEMPTING TO ADD TO STATUS EFFECT: '+e.status_effect_resource.name+'\n')
+					effect.count += 1
+					e.set_data()
+					return
+	var new_status_effect = status_effect_scene.instantiate()
+	new_status_effect.scale = Vector2(0.3,0.3)
+	new_status_effect.status_effect_resource = status_effect
+	status_effect_container.add_child(new_status_effect)
+	new_status_effect.status_effect_resource.count += 1
+	print('\nATTEMPTING TO ADD STATUS EFFECT: '+new_status_effect.name+'\n')
+	new_status_effect.set_data()
+	status_effects.append(status_effect)
+
+
+
+func get_status_effect_nodes():
+	return status_effect_container.get_children()

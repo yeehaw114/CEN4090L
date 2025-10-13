@@ -2,9 +2,8 @@ extends Resource
 class_name Action
 
 enum ACTION_TYPE {DAMAGE, HEAL, BUFF, DEBUFF, BLOCK}
-enum STATUS_EFFECT {}
 
 @export var value: int
 @export var type: ACTION_TYPE
-@export var status_effect: STATUS_EFFECT
+@export var status_effect: StatusEffect
 @export var status_effect_value: int

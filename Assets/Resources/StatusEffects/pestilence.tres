@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dy0qgeh7m6kfn"]
+
+[ext_resource type="Script" uid="uid://cqwe2neaf6scq" path="res://Scripts/status_effect_resource.gd" id="1_onft0"]
+[ext_resource type="Texture2D" uid="uid://bdnyfmqvu8bur" path="res://Assets/Textures/pestilence.png" id="2_xul82"]
+
+[resource]
+script = ExtResource("1_onft0")
+name = "Pestilence"
+_type = 2
+value = 1
+_stat = 0
+texture = ExtResource("2_xul82")
+metadata/_custom_type_script = "uid://cqwe2neaf6scq"

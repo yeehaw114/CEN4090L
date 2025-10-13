@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://cq1rwnf63qmjq"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_sqwx0"]
+[ext_resource type="Resource" uid="uid://dy0qgeh7m6kfn" path="res://Assets/Resources/StatusEffects/pestilence.tres" id="2_8ix7c"]
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="3_v8umw"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="4_ibxmf"]
+
+[sub_resource type="Resource" id="Resource_0v8ht"]
+script = ExtResource("1_sqwx0")
+value = 2
+type = 3
+status_effect = ExtResource("2_8ix7c")
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("4_ibxmf")
+card_name = "Plauge Gernade"
+card_cost = 1
+card_description = "add 2 pestilence"
+card_image = ExtResource("3_v8umw")
+card_actions = Array[ExtResource("1_sqwx0")]([SubResource("Resource_0v8ht")])
+character_position = Array[int]([3, 4])
+enemy_position = Array[int]([1, 2, 3])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

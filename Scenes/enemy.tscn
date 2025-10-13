@@ -16,7 +16,7 @@ bg_color = Color(0.215018, 0.0732119, 0.0222391, 1)
 bg_color = Color(0.290785, 0.707762, 0.161001, 1)
 
 [node name="Character" type="Node2D" groups=["Character"]]
-scale = Vector2(2, 2)
+scale = Vector2(1.7, 1.7)
 script = ExtResource("2_287tu")
 
 [node name="SelectRing" type="Sprite2D" parent="."]
@@ -26,26 +26,16 @@ texture_filter = 1
 position = Vector2(1.5, 71)
 texture = ExtResource("3_0830c")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -91.0
-offset_right = 32.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -32.3529
+offset_top = -89.4118
+offset_right = 67.6471
+offset_bottom = 13.5882
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="IntentionContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="IntentionContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="IntentionTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer/IntentionContainer"]
+[node name="IntentionTexture" type="TextureRect" parent="VBoxContainer/IntentionContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -53,22 +43,28 @@ size_flags_vertical = 4
 texture = ExtResource("4_287tu")
 stretch_mode = 2
 
-[node name="IntentionLabel" type="Label" parent="HBoxContainer/VBoxContainer/IntentionContainer"]
+[node name="IntentionLabel" type="Label" parent="VBoxContainer/IntentionContainer"]
 layout_mode = 2
 text = "10"
 
-[node name="EnemySprite" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="EnemySprite" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_287tu")
 layout_mode = 2
 texture = ExtResource("4_0830c")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="HealthBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -77,7 +73,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0830c")
 value = 50.0
 show_percentage = false
 
-[node name="BlockTexture" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HealthBar"]
+[node name="BlockTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar"]
 visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(8, 8)
@@ -88,7 +84,7 @@ offset_right = 8.0
 offset_bottom = 13.0
 texture = ExtResource("5_0830c")
 
-[node name="BlockLabel" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture"]
+[node name="BlockLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -104,6 +100,11 @@ grow_vertical = 2
 scale = Vector2(0.504726, 0.501993)
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatusEffectContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="DamagePopupPosition" type="Marker2D" parent="."]
 position = Vector2(17, -55)

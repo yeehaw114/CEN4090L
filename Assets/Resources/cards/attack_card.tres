@@ -8,7 +8,6 @@
 script = ExtResource("1_604j2")
 value = 3
 type = 0
-status_effect = 0
 status_effect_value = 0
 metadata/_custom_type_script = "uid://mirotg2noub8"
 

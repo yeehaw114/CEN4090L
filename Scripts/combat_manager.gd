@@ -52,9 +52,18 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 			energy_changed.emit(current_energy)
 			enemy.take_damage(action.value)
 			cards.currently_selected_card = null
-			cards.discard_pile.move_card_to_discard(card)
-			enemies.toggle_selectability_off()
-			cards.hand_area.update_cards()
+			move_card_to_discard(card)
+		elif action.type == action.ACTION_TYPE.DEBUFF:
+			use_energy(card.card_stats.card_cost)
+			energy_changed.emit(current_energy)
+			enemy.set_status_effect(action.status_effect)
+			cards.currently_selected_card = null
+			move_card_to_discard(card)
+
+func move_card_to_discard(card):
+	cards.discard_pile.move_card_to_discard(card)
+	enemies.toggle_selectability_off()
+	cards.hand_area.update_cards()
 
 func cast_card_on_player(character: Character, card: Card) -> void:
 	if !check_character_on_valid_tile(character,card):
@@ -133,6 +142,11 @@ func enemies_do_action(enemes: Array):
 				print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
 				e.add_and_set_block_value(enemy_action.value)
 			
+func enemies_apply_dot(enemies: Array):
+	for e in enemies:
+		if e.is_dead == false:
+			var status_effects = e.status_effects
+	
 func use_energy(cost: int):
 	current_energy -= cost
 	if current_energy < 0:

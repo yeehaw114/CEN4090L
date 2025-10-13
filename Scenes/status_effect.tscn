@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://jvjvox4434i7"]
+
+[ext_resource type="Script" uid="uid://cp8pkb5be7o4k" path="res://Scripts/status_effect.gd" id="1_fpu3d"]
+
+[node name="StatusEffect" type="Control"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fpu3d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+pivot_offset = Vector2(4, 4)
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 9.49
+offset_bottom = 23.0
+scale = Vector2(0.345, 0.345)
