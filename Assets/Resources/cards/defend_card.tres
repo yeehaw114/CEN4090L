@@ -7,7 +7,6 @@
 script = ExtResource("1_0spv1")
 value = 5
 type = 4
-status_effect = 0
 status_effect_value = 0
 metadata/_custom_type_script = "uid://mirotg2noub8"
 

@@ -56,7 +56,7 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 		elif action.type == action.ACTION_TYPE.DEBUFF:
 			use_energy(card.card_stats.card_cost)
 			energy_changed.emit(current_energy)
-			enemy.set_status_effect(action.status_effect)
+			enemy.set_status_effect(action.status_effect, action.value)
 			cards.currently_selected_card = null
 			move_card_to_discard(card)
 

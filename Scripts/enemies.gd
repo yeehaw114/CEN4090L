@@ -39,3 +39,7 @@ func check_if_all_enemies_died() -> bool:
 			return false
 	all_enemies_died.emit()
 	return true
+
+func apply_status_effect_to_all_enemies():
+	for e in get_all_enemies():
+		e.aply_status_effects()

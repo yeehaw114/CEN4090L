@@ -80,6 +80,7 @@ func handle_current_turn():
 	elif get_active_battle_state() == battle_state.ENEMY_STATUS:
 		#APPLY STATUS EFFECTS TO ENEMYS
 		print('handling status effects on enemies')
+		combat_manager.enemies.apply_status_effect_to_all_enemies()
 		next_turn()
 	elif get_active_battle_state() == battle_state.ENEMY:
 		#ALLOW ENEMIES TO DO THEIR ACTIONS

@@ -15,6 +15,7 @@ const BLUR_CONSTANT = 2.5
 @onready var block_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture/BlockLabel
 @onready var block_texture: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
 @onready var status_effect_container: GridContainer = $VBoxContainer/HBoxContainer/StatusEffectContainer
+@onready var health_value_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/HealthValueLabel
 
 @export var actions: Array[Action]
 
@@ -35,6 +36,7 @@ func _ready():
 	health_bar.max_value = enemy_resource.max_health
 	health = enemy_resource.max_health
 	actions = enemy_resource.actions
+	health_value_label.text = str(health)+'/'+str(health)
 	set_current_action(0)
 	print('\nENEMY ACTIONS: '+str(actions))
 	print('CURRENT ACTION: '+str(current_action))
@@ -49,6 +51,7 @@ func mouse_exited_body() -> void:
 	select_ring.visible = false
 
 func take_damage(damage: int):
+	print('\n'+str(self)+' is taking '+str(damage))
 	if block_value > 0:
 		var new_block := 0
 		new_block = block_value - damage
@@ -135,6 +138,9 @@ func set_block_value(num: int):
 	if num < 0:
 		num = 0
 	block_value = num
+	if block_value == 0:
+		clear_block_value()
+		return
 	block_texture.visible = true
 	block_label.text = str(num)
 
@@ -143,29 +149,43 @@ func die():
 	set_grey_shader()
 	update_intention()
 	clear_block_value()
+	clear_status_effects()
 	enemy_died.emit()
 
-func set_status_effect(status_effect: StatusEffect):
+func set_status_effect(status_effect: StatusEffect, value: int):
 	for effect in status_effects:
 		if effect.name == status_effect.name:
-			var current_effects = get_status_effect_nodes()
-			for e in current_effects:
+			for e in get_status_effect_nodes():
 				if e.status_effect_resource.name == status_effect.name:
-					print('\nATTEMPTING TO ADD TO STATUS EFFECT: '+e.status_effect_resource.name+'\n')
-					e.status_effect_resource.count += 1
-					effect.count += 1
+					print('\nADDING TO STATUS EFFECT: '+e.status_effect_resource.name+
+							' COUNT: '+str(value)+'\n')
+					e.status_effect_resource.count += value
+					#effect.count += value
 					e.set_data()
 					return
+	
+	var new_effect = status_effect.duplicate(true)
+	new_effect.count += value
+	status_effects.append(new_effect)
+	
 	var new_status_effect = status_effect_scene.instantiate()
-	new_status_effect.scale = Vector2(0.3,0.3)
-	new_status_effect.status_effect_resource = status_effect.duplicate(true)
+	new_status_effect.status_effect_resource = new_effect
 	status_effect_container.add_child(new_status_effect)
-	new_status_effect.status_effect_resource.count += 1
-	print('\nATTEMPTING TO ADD STATUS EFFECT: '+new_status_effect.name+'\n')
+	print('\nADDING NEW STATUS EFFECT: '+new_status_effect.name+'\n')
 	new_status_effect.set_data()
-	status_effects.append(status_effect)
-
-
-
+	
 func get_status_effect_nodes():
 	return status_effect_container.get_children()
+
+func aply_status_effects():
+	if is_dead:
+		return
+	for status in status_effects:
+		if status._type == status.type.DOT:
+			print('\nAPPLYING STATUS EFFECT: '+str(status)+' COUNT: '+str(status.count))
+			take_damage(status.count)
+
+func clear_status_effects():
+	for status_nodes in get_status_effect_nodes():
+		status_nodes.queue_free()
+	status_effects.clear()
