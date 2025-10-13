@@ -152,12 +152,13 @@ func set_status_effect(status_effect: StatusEffect):
 			for e in current_effects:
 				if e.status_effect_resource.name == status_effect.name:
 					print('\nATTEMPTING TO ADD TO STATUS EFFECT: '+e.status_effect_resource.name+'\n')
+					e.status_effect_resource.count += 1
 					effect.count += 1
 					e.set_data()
 					return
 	var new_status_effect = status_effect_scene.instantiate()
 	new_status_effect.scale = Vector2(0.3,0.3)
-	new_status_effect.status_effect_resource = status_effect
+	new_status_effect.status_effect_resource = status_effect.duplicate(true)
 	status_effect_container.add_child(new_status_effect)
 	new_status_effect.status_effect_resource.count += 1
 	print('\nATTEMPTING TO ADD STATUS EFFECT: '+new_status_effect.name+'\n')

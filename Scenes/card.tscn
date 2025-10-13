@@ -14,6 +14,7 @@ anchors_preset = 0
 offset_right = 36.0
 offset_bottom = 48.0
 scale = Vector2(1.25, 1.25)
+pivot_offset = Vector2(48, 72)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_wf8id")
