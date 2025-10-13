@@ -3,6 +3,7 @@ class_name Character
 
 @export_category('Stats')
 @export var health: int
+@export var max_health:int = 20
 @export var sprite: Texture2D
 
 var status_effects : Array[StatusEffect]

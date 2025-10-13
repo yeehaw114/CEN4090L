@@ -64,6 +64,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
+		health_value_label.text = str(health)+'/'+str(enemy_resource.max_health)
 	health_bar.value = health
 	if check_if_dead():
 		die()
@@ -150,6 +151,7 @@ func die():
 	update_intention()
 	clear_block_value()
 	clear_status_effects()
+	health_value_label.text = '0/0'
 	enemy_died.emit()
 
 func set_status_effect(status_effect: StatusEffect, value: int):

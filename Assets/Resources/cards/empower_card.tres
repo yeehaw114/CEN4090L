@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://0ip1ck77fjuu"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_oo6cp"]
+[ext_resource type="Resource" uid="uid://bdwj7i5gmypmi" path="res://Assets/Resources/StatusEffects/strength.tres" id="2_ac72e"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_r3rlj"]
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="3_qam1b"]
+
+[sub_resource type="Resource" id="Resource_mn0oq"]
+script = ExtResource("1_oo6cp")
+value = 1
+type = 2
+status_effect = ExtResource("2_ac72e")
+status_effect_value = 1
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_r3rlj")
+card_name = "Empower"
+card_cost = 1
+card_description = "Add 1 strength"
+card_image = ExtResource("3_qam1b")
+card_actions = Array[ExtResource("1_oo6cp")]([SubResource("Resource_mn0oq")])
+character_position = Array[int]([2, 3])
+enemy_position = Array[int]([])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

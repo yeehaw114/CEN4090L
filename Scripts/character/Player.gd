@@ -2,6 +2,7 @@ extends Character
 class_name Player
 
 const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
+const status_effect_scene = preload("res://Scenes/status_effect.tscn")
 const BLUR_CONSTANT = 2.5
 
 @onready var select_ring: Sprite2D = $SelectRing
@@ -9,11 +10,14 @@ const BLUR_CONSTANT = 2.5
 @onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/HealthBar
 @onready var block_texture: TextureRect = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture
 @onready var block_label: Label = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
+@onready var status_effect_container: GridContainer = $HBoxContainer/StatusEffectContainer
+@onready var health_value_label: Label = $HBoxContainer/VBoxContainer/HealthBar/HealthValueLabel
 
 var is_able_to_be_selected = false
 var is_dead = false
 var rank : int = -1 
 var block_value := 0 
+var damage_modifier := 0
 
 signal player_died
 signal took_damage(damage: int)
@@ -22,6 +26,7 @@ func _ready():
 	enemy_sprite.texture = sprite
 	health_bar.value = health
 	health_bar.max_value = health
+	health_value_label.text = str(health)+'/'+str(health)
 
 func mouse_entered_body() -> void:
 	if is_able_to_be_selected:
@@ -45,6 +50,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
+		health_value_label.text = str(health)+'/'+str(max_health)
 	health_bar.value = health
 	if check_if_dead():
 		die()
@@ -99,3 +105,55 @@ func die():
 	is_dead = true
 	set_grey_shader()
 	player_died.emit()
+
+func set_status_effect(status_effect: StatusEffect, value: int):
+	for effect in status_effects:
+		if effect.name == status_effect.name:
+			for e in get_status_effect_nodes():
+				if e.status_effect_resource.name == status_effect.name:
+					print('\nADDING TO STATUS EFFECT: '+e.status_effect_resource.name+
+							' COUNT: '+str(value)+'\n')
+					e.status_effect_resource.count += value
+					#effect.count += value
+					e.set_data()
+					return
+	
+	var new_effect = status_effect.duplicate(true)
+	new_effect.count += value
+	status_effects.append(new_effect)
+	
+	var new_status_effect = status_effect_scene.instantiate()
+	new_status_effect.status_effect_resource = new_effect
+	status_effect_container.add_child(new_status_effect)
+	print('\nADDING NEW STATUS EFFECT: '+new_status_effect.name+'\n')
+	new_status_effect.set_data()
+	
+func get_status_effect_nodes():
+	return status_effect_container.get_children()
+
+func aply_status_effects():
+	if is_dead:
+		return
+	for status in status_effects:
+		if status._type == status.type.DOT:
+			print('\nAPPLYING STATUS EFFECT: '+str(status)+' COUNT: '+str(status.count))
+			take_damage(status.count)
+		elif status._type == status.type.BUFF:
+			apply_buffs()
+
+func apply_buffs():
+	for status in status_effects:
+		if status._type == status.type.BUFF:
+				match status._stat:
+					status.stat.DAMAGE:
+						damage_modifier = status.count
+						print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
+					status.stat.BLOCK:
+						pass
+					status.stat.CRIT:
+						pass
+
+func clear_status_effects():
+	for status_nodes in get_status_effect_nodes():
+		status_nodes.queue_free()
+	status_effects.clear()

@@ -31,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -34.0
-offset_right = 48.0
-offset_bottom = 52.0
+offset_left = -23.5
+offset_top = -33.0
+offset_right = 44.5
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -82,6 +82,29 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealthValueLabel" type="Label" parent="HBoxContainer/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.29416
+offset_top = -4.88232
+offset_right = 35.7058
+offset_bottom = 18.1177
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.37, 0.37)
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusEffectContainer" type="GridContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="DamagePopupPosition" type="Marker2D" parent="."]
 position = Vector2(-14, -30)
