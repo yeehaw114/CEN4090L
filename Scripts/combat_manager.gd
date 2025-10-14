@@ -76,7 +76,7 @@ func cast_card_on_player(character: Character, card: Card) -> void:
 			clear_and_update_cards(card)
 		elif action.type == action.ACTION_TYPE.BLOCK:
 			clear_and_update_cards(card)
-			character.add_and_set_block_value(action.value)
+			character.add_and_set_block_value(action.value + character.block_modifier)
 		elif action.type == action.ACTION_TYPE.BUFF:
 			clear_and_update_cards(card)
 			character.set_status_effect(action.status_effect, action.value)
@@ -143,6 +143,8 @@ func enemies_do_action(enemes: Array):
 			elif enemy_action.type == Action.ACTION_TYPE.BLOCK:
 				print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
 				e.add_and_set_block_value(enemy_action.value)
+			elif enemy_action.type == Action.ACTION_TYPE.DEBUFF:
+				player.set_status_effect(enemy_action.status_effect, enemy_action.value)
 			
 func enemies_apply_dot(enemies: Array):
 	for e in enemies:

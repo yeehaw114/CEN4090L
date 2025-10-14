@@ -18,6 +18,7 @@ var is_dead = false
 var rank : int = -1 
 var block_value := 0 
 var damage_modifier := 0
+var block_modifier := 0
 
 signal player_died
 signal took_damage(damage: int)
@@ -117,7 +118,6 @@ func set_status_effect(status_effect: StatusEffect, value: int):
 					#effect.count += value
 					e.set_data()
 					return
-	
 	var new_effect = status_effect.duplicate(true)
 	new_effect.count += value
 	status_effects.append(new_effect)
@@ -140,6 +140,16 @@ func aply_status_effects():
 			take_damage(status.count)
 		elif status._type == status.type.BUFF:
 			apply_buffs()
+		elif status._type == status.type.DEBUFF:
+			match status._stat:
+					status.stat.DAMAGE:
+						damage_modifier -= status.count
+						print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
+					status.stat.BLOCK:
+						block_modifier -= status.count
+						print('\n'+'UPDATING BLOCK MODIFER: '+str(block_modifier))
+					status.stat.CRIT:
+						pass
 
 func apply_buffs():
 	for status in status_effects:

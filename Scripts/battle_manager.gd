@@ -65,6 +65,7 @@ func handle_current_turn():
 	if get_active_battle_state() == battle_state.PLAYER_STATUS:
 		#APPLY STATUS EFFECTS TO PLAYER
 		print('handling status effects on player')
+		player.aply_status_effects()
 		next_turn()
 	elif get_active_battle_state() == battle_state.PLAYER:
 		#ALLOW PLAYER TO PLAY CARDS, LOOK AT THEIR CARDS, AND MOVE

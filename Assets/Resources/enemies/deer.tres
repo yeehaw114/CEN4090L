@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=6 format=3 uid="uid://bv3l6j5p3op6y"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=8 format=3 uid="uid://bv3l6j5p3op6y"]
 
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_e1kuj"]
 [ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_ay4v3"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="2_fku5e"]
+[ext_resource type="Resource" uid="uid://d3p8x0txm2gb0" path="res://Assets/Resources/StatusEffects/weaken.tres" id="2_qoh11"]
 
 [sub_resource type="Resource" id="Resource_qoh11"]
 script = ExtResource("1_e1kuj")
@@ -18,9 +19,17 @@ type = 4
 status_effect_value = 0
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
+[sub_resource type="Resource" id="Resource_vqclo"]
+script = ExtResource("1_e1kuj")
+value = 1
+type = 3
+status_effect = ExtResource("2_qoh11")
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
 [resource]
 script = ExtResource("2_ay4v3")
 max_health = 10
 enemy_texture = ExtResource("2_fku5e")
-actions = Array[ExtResource("1_e1kuj")]([SubResource("Resource_qoh11"), SubResource("Resource_ownfw")])
+actions = Array[ExtResource("1_e1kuj")]([SubResource("Resource_qoh11"), SubResource("Resource_ownfw"), SubResource("Resource_vqclo")])
 metadata/_custom_type_script = "uid://dbdemlyd4pbbv"
