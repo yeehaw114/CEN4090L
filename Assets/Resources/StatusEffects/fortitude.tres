@@ -10,4 +10,7 @@ _type = 0
 value = 1
 _stat = 2
 texture = ExtResource("2_0x5xx")
+tooltip_text = "Fortitude
+
+Increases block by X"
 metadata/_custom_type_script = "uid://cqwe2neaf6scq"

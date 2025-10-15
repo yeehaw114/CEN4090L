@@ -10,4 +10,7 @@ _type = 1
 value = 1
 _stat = 2
 texture = ExtResource("2_ducl2")
+tooltip_text = "Weaken
+
+Decreases block by X"
 metadata/_custom_type_script = "uid://cqwe2neaf6scq"

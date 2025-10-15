@@ -10,4 +10,7 @@ _type = 0
 value = 1
 _stat = 1
 texture = ExtResource("2_p242c")
+tooltip_text = "Strength
+
+Increases damage by X"
 metadata/_custom_type_script = "uid://cqwe2neaf6scq"

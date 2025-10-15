@@ -10,4 +10,7 @@ _type = 2
 value = 1
 _stat = 0
 texture = ExtResource("2_xul82")
+tooltip_text = "Pestilence
+
+Deals X damage at end of turn"
 metadata/_custom_type_script = "uid://cqwe2neaf6scq"

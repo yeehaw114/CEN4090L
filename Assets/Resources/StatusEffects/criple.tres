@@ -10,4 +10,7 @@ _type = 1
 value = 1
 _stat = 1
 texture = ExtResource("2_lypsu")
+tooltip_text = "Weaken
+
+Decreases damage by X"
 metadata/_custom_type_script = "uid://cqwe2neaf6scq"

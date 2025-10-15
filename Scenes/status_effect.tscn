@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jvjvox4434i7"]
+[gd_scene load_steps=3 format=3 uid="uid://jvjvox4434i7"]
 
 [ext_resource type="Script" uid="uid://cp8pkb5be7o4k" path="res://Scripts/status_effect.gd" id="1_fpu3d"]
+[ext_resource type="PackedScene" uid="uid://drel65aix12v2" path="res://Scenes/tool_tip.tscn" id="2_fi7i3"]
 
 [node name="StatusEffect" type="Control"]
 custom_minimum_size = Vector2(8, 8)
@@ -15,17 +16,25 @@ script = ExtResource("1_fpu3d")
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 custom_minimum_size = Vector2(8, 8)
-layout_mode = 1
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-pivot_offset = Vector2(4, 4)
+layout_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-layout_mode = 0
-offset_right = 9.49
-offset_bottom = 23.0
-scale = Vector2(0.345, 0.345)
+layout_mode = 2
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 32.0
+offset_bottom = 25.0
+scale = Vector2(0.425, 0.425)
+text = "1"
+
+[node name="ToolTip" parent="." instance=ExtResource("2_fi7i3")]
+visible = false
+layout_mode = 2
+offset_right = 150.0
+offset_bottom = 100.0

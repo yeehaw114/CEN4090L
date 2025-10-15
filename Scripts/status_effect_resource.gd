@@ -11,3 +11,4 @@ enum stat {NONE,DAMAGE,BLOCK,CRIT}
 var count : int = 0
 
 @export var texture : Texture2D
+@export_multiline var tooltip_text : String

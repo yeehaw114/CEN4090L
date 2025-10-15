@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://drel65aix12v2"]
+
+[ext_resource type="Script" uid="uid://bgt0es7rsoeoy" path="res://Scripts/ui/tool_tip.gd" id="1_2pxfn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u43yf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="ToolTip" type="PanelContainer"]
+top_level = true
+custom_minimum_size = Vector2(150, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u43yf")
+script = ExtResource("1_2pxfn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+mouse_filter = 2
+text = "Pestilence
+
+Deals X damage at end of turn"
+fit_content = true
+autowrap_mode = 2
