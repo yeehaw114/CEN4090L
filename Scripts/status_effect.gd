@@ -12,9 +12,6 @@ func _ready() -> void:
 	mouse_exited.connect(on_mouse_exited)
 	tool_tip.set_text(status_effect_resource.tooltip_text)
 
-func _process(_delta):
-	queue_redraw()
-
 func set_data():
 	if status_effect_resource:
 		texture_rect.texture = status_effect_resource.texture
@@ -26,6 +23,3 @@ func on_mouse_entered():
 func on_mouse_exited():
 	tool_tip.toggle(false)
 	print('TOOLTIP TOGGLE OFF')
-
-func _draw():
-	draw_rect(Rect2(Vector2.ZERO, size), Color(1, 0, 0, 0.3), false) # outline
