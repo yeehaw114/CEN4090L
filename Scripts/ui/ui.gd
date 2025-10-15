@@ -18,6 +18,7 @@ extends Control
 
 @onready var game_over_screen: Control = $GameOverScreen
 @onready var victory_screen: Control = $VictoryScreen
+@onready var pause_screen: Control = $PauseScreen
 
 var move_crystal_normal = Rect2(Vector2(0,0),Vector2(32,32))
 var move_crystal_selected = Rect2(Vector2(32,0),Vector2(32,32))
@@ -27,6 +28,7 @@ func _ready() -> void:
 	change_move_crystal_texture(move_crystal_normal)
 	set_energy_max(3)
 	set_energy_value(3)
+	pause_screen.un_pause_button.button_up.connect(display_pause_screen.bind(false))
 
 func switch_to_display_discard_pile() -> void:
 	move_crystal_button.visible = false
@@ -110,3 +112,15 @@ func display_victory_screen():
 	#get_tree().paused = true;
 	battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
 	victory_screen.show()
+	
+func display_pause_screen(switch: bool):
+	#get_tree().paused = true;
+	if switch:
+		battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
+		pause_screen.show()
+		print('SHOW PAUSE SCREEN')
+	else:
+		battle_manager.combat_manager.cards.make_cards_in_hand_selectable()
+		battle_manager.game_paused = false
+		pause_screen.hide()
+		print('HIDE PAUSE SCREEN')

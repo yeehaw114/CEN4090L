@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=26 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
 [ext_resource type="PackedScene" uid="uid://djwo85t3pfwst" path="res://Scenes/game_over_screen.tscn" id="19_csd6w"]
 [ext_resource type="PackedScene" uid="uid://crinoxwgj5hyu" path="res://Scenes/victory_screen.tscn" id="20_et1xl"]
+[ext_resource type="PackedScene" uid="uid://dsvhja4baeqre" path="res://Scenes/pause_screen.tscn" id="22_cr05y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
@@ -284,11 +285,16 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="PauseScreen" parent="." instance=ExtResource("22_cr05y")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="exit_button_clicked" from="DisplayDiscardDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
+[connection signal="pause_game" from="BattleManager" to="." method="display_pause_screen"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
 [connection signal="energy_changed" from="BattleManager/CombatManager" to="." method="set_energy_value"]
 [connection signal="player_died" from="BattleManager/Player" to="." method="display_game_over_screen"]

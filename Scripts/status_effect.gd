@@ -19,7 +19,5 @@ func set_data():
 
 func on_mouse_entered():
 	tool_tip.toggle(true)
-	print('TOOLTIP TOGGLE ON')
 func on_mouse_exited():
 	tool_tip.toggle(false)
-	print('TOOLTIP TOGGLE OFF')

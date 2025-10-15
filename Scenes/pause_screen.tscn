@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsvhja4baeqre"]
+
+[ext_resource type="Script" uid="uid://duc3blx3mm0nu" path="res://Scenes/pause_screen.gd" id="1_8py1w"]
+[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_xub4q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jb6in"]
+shader = ExtResource("1_xub4q")
+shader_parameter/amount = 2.265
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gua7"]
+bg_color = Color(0.065224, 0.0241953, 0.00326082, 1)
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8py1w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jb6in")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 425)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gua7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="UnPauseButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "QUIT GAME"

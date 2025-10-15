@@ -14,12 +14,10 @@ func toggle(on: bool):
 		show()
 		modulate.a = 0.0
 		tween_opacity(1.0)
-		print('TOOLTIP TOGGLE ON')
 	else:
 		modulate.a = 1.0
 		await tween_opacity(0.0).finished
 		hide()
-		print('TOOLTIP TOGGLE OFF')
 
 func tween_opacity(to: float):
 	if opacity_tween:

@@ -8,12 +8,14 @@ extends Node2D
 var currently_selected_enemy: Character
 var game_over := false
 var can_move := true
+var game_paused := false
 var num_cards_drawn := 5
 
 enum battle_state_player {MOVE=0,SELECT_CARD=1}
 enum move_crystal_state {SELECT,EMPTY,NORMAL}
 var active_state := -1
 signal state_changed(state: int)
+signal pause_game(switch: bool)
 
 enum battle_state {PLAYER_STATUS,PLAYER, ENEMY_STATUS,ENEMY}
 var active_battle_state := -1
@@ -58,6 +60,15 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.pressed:
 			handle_right_input()
+	elif Input.is_action_just_released('Pause'):
+		if game_paused:
+			game_paused = false
+			pause_game.emit(game_paused)
+		else:
+			game_paused = true
+			if combat_manager.cards.currently_selected_card:
+				combat_manager.cards.unselect_card()
+			pause_game.emit(game_paused)
 
 func handle_current_turn():
 	if game_over:
