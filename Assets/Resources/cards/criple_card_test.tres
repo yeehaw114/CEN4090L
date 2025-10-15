@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://b31qg1xqqc52p"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_1nb1h"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_1q11v"]
+[ext_resource type="Resource" uid="uid://cv1o3hdbd3eot" path="res://Assets/Resources/StatusEffects/criple.tres" id="2_nqjqx"]
+[ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="3_mhk4p"]
+
+[sub_resource type="Resource" id="Resource_duquf"]
+script = ExtResource("1_1nb1h")
+value = 1
+type = 3
+status_effect = ExtResource("2_nqjqx")
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_1q11v")
+card_name = "Criple Test"
+card_cost = 0
+card_description = "Apply 1 criple"
+card_image = ExtResource("3_mhk4p")
+card_actions = Array[ExtResource("1_1nb1h")]([SubResource("Resource_duquf")])
+character_position = Array[int]([1, 2, 3, 4])
+enemy_position = Array[int]([1, 2, 3, 4])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://cv1o3hdbd3eot"]
+
+[ext_resource type="Script" uid="uid://cqwe2neaf6scq" path="res://Scripts/status_effect_resource.gd" id="1_nj1qo"]
+[ext_resource type="Texture2D" uid="uid://dixsyme0bj0nr" path="res://Assets/Textures/criple.png" id="2_lypsu"]
+
+[resource]
+script = ExtResource("1_nj1qo")
+name = "Criple"
+_type = 1
+value = 1
+_stat = 1
+texture = ExtResource("2_lypsu")
+metadata/_custom_type_script = "uid://cqwe2neaf6scq"

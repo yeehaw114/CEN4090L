@@ -139,10 +139,10 @@ func enemies_do_action(enemes: Array):
 			print('\nENEMY ATTEMPTING TO DO ACTION: '+str(enemy_action)+'\n')
 			if enemy_action.type == Action.ACTION_TYPE.DAMAGE:
 				print(str(e)+" is attempting to deal "+str(enemy_action.value)+' dmg')
-				player.take_damage(enemy_action.value)
+				player.take_damage(enemy_action.value + e.damage_modifier)
 			elif enemy_action.type == Action.ACTION_TYPE.BLOCK:
 				print(str(e)+" is attempting to block "+str(enemy_action.value)+' dmg')
-				e.add_and_set_block_value(enemy_action.value)
+				e.add_and_set_block_value(enemy_action.value + e.block_modifier)
 			elif enemy_action.type == Action.ACTION_TYPE.DEBUFF:
 				player.set_status_effect(enemy_action.status_effect, enemy_action.value)
 			

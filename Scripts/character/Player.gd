@@ -17,8 +17,14 @@ var is_able_to_be_selected = false
 var is_dead = false
 var rank : int = -1 
 var block_value := 0 
+
 var damage_modifier := 0
+var damage_increase := 0
+var damage_decrease := 0
+
 var block_modifier := 0
+var block_increase := 0
+var block_decrease := 0
 
 signal player_died
 signal took_damage(damage: int)
@@ -143,27 +149,35 @@ func aply_status_effects():
 		elif status._type == status.type.DEBUFF:
 			match status._stat:
 					status.stat.DAMAGE:
-						damage_modifier -= status.count
+						damage_decrease = status.count
 						print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
 					status.stat.BLOCK:
-						block_modifier -= status.count
+						block_decrease = status.count
 						print('\n'+'UPDATING BLOCK MODIFER: '+str(block_modifier))
 					status.stat.CRIT:
 						pass
+	set_damage_and_block_modifer()
 
 func apply_buffs():
 	for status in status_effects:
 		if status._type == status.type.BUFF:
 				match status._stat:
 					status.stat.DAMAGE:
-						damage_modifier = status.count
-						print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
+						damage_increase = status.count
+						print('---------------\nDAMAGE_INCREASE: '+str(damage_increase))
+						print('DAMAGE_DECREASE: '+str(damage_decrease))
 					status.stat.BLOCK:
-						pass
+						block_increase = status.count
 					status.stat.CRIT:
 						pass
+	set_damage_and_block_modifer()
 
 func clear_status_effects():
 	for status_nodes in get_status_effect_nodes():
 		status_nodes.queue_free()
 	status_effects.clear()
+
+func set_damage_and_block_modifer():
+	damage_modifier = damage_increase - damage_decrease
+	block_modifier = block_increase - block_decrease
+	print('UPDATING DAMAGE MODIFER: '+str(damage_modifier))
