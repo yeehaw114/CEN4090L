@@ -20,3 +20,13 @@ func get_tile_by_char(character: Character):
 		if t.character == character:
 			return t
 	return null
+
+func highlight_tiles(character_pos_data: Array[CardResource.rank]):
+	for pos in character_pos_data:
+		for tile in get_children():
+			if pos == tile.rank:
+				tile.highlight(true)
+
+func un_highlight_tiles():
+	for tile in get_children():
+		tile.highlight(false)

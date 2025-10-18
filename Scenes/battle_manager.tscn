@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=27 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
 [ext_resource type="Texture2D" uid="uid://c3ytv3j8mh0qi" path="res://Assets/Textures/end_turn_underlay.png" id="5_85kri"]
+[ext_resource type="Script" uid="uid://hxdbbb7wtq5v" path="res://Scripts/ui/character_container.gd" id="6_6q0we"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
 [ext_resource type="Script" uid="uid://bidihr68pu0ak" path="res://Scripts/ui/display_draw_deck.gd" id="7_csd6w"]
@@ -139,6 +140,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
+script = ExtResource("6_6q0we")
 
 [node name="PlayerContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
@@ -301,6 +303,8 @@ layout_mode = 1
 [connection signal="player_died" from="BattleManager/Player" to="BattleManager" method="_on_player_player_died"]
 [connection signal="all_enemies_died" from="BattleManager/Enemies" to="." method="display_victory_screen"]
 [connection signal="all_enemies_died" from="BattleManager/Enemies" to="BattleManager" method="_on_enemies_all_enemies_died"]
+[connection signal="card_selected" from="BattleManager/Cards" to="CharacterContainer" method="update_tile_highlights"]
+[connection signal="card_unselected" from="BattleManager/Cards" to="CharacterContainer" method="clear_tile_highlights"]
 [connection signal="update_display_card_deck" from="BattleManager/Cards/DrawPile" to="DisplayDrawDeck" method="_on_draw_pile_update_display_card_deck"]
 [connection signal="pressed" from="BattleManager/Cards/DrawPile/DiscardButton" to="." method="on_draw_button_pressed"]
 [connection signal="card_discarded" from="BattleManager/Cards/DiscardPile" to="DisplayDiscardDeck" method="_on_discard_pile_card_discarded"]

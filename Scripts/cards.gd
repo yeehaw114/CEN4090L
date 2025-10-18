@@ -10,6 +10,9 @@ extends Node
 var cards: Array = []
 var currently_selected_card: Card
 
+signal card_selected(card_data: Array)
+signal card_unselected
+
 const CARD_Y_FACTOR := 25
 const CARD_SCALE_FACTOR := 0.7
 
@@ -26,6 +29,8 @@ func attempt_to_select_card():
 			currently_selected_card.is_currently_selected = false
 		currently_selected_card = card
 		currently_selected_card.is_currently_selected = true
+		card_selected.emit([card.card_stats.character_position,
+							card.card_stats.enemy_position])
 		highlight_selected_card(currently_selected_card)
 		#print('currently_selected_card: '+str(currently_selected_card))
 
@@ -45,6 +50,12 @@ func set_cards():
 	for c in hand_area.get_children():
 		cards.append(c)
 		
+func get_card_player_data(card: CardResource) -> Array[CardResource.rank]:
+	return card.character_position
+	
+func get_card_enemy_data(card: CardResource) -> Array[CardResource.rank]:
+	return card.enemy_position
+	
 func highlight_selected_card(card: Card):
 	card.position.y -= CARD_Y_FACTOR
 	card.increase_scale(CARD_SCALE_FACTOR)
@@ -56,6 +67,7 @@ func unhighlight_selected_card(card: Card):
 
 func unselect_card():
 	unhighlight_selected_card(currently_selected_card)
+	card_unselected.emit()
 	currently_selected_card = null
 	
 func draw_one_card():

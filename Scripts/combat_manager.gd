@@ -48,17 +48,11 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
-			use_energy(card.card_stats.card_cost)
-			energy_changed.emit(current_energy)
 			enemy.take_damage(action.value + character.damage_modifier)
-			cards.currently_selected_card = null
-			move_card_to_discard(card)
+			clear_and_update_cards(card)
 		elif action.type == action.ACTION_TYPE.DEBUFF:
-			use_energy(card.card_stats.card_cost)
-			energy_changed.emit(current_energy)
 			enemy.set_status_effect(action.status_effect, action.value)
-			cards.currently_selected_card = null
-			move_card_to_discard(card)
+			clear_and_update_cards(card)
 
 func move_card_to_discard(card):
 	cards.discard_pile.move_card_to_discard(card)
@@ -83,6 +77,7 @@ func cast_card_on_player(character: Character, card: Card) -> void:
 			character.apply_buffs()
 			
 func clear_and_update_cards(card):
+	cards.card_unselected.emit()
 	use_energy(card.card_stats.card_cost)
 	energy_changed.emit(current_energy)
 	cards.currently_selected_card = null
