@@ -33,8 +33,8 @@ texture = ExtResource("2_d6w64")
 
 [node name="HighLightSprite" type="Sprite2D" parent="."]
 visible = false
-self_modulate = Color(1, 1, 1, 0.341176)
+self_modulate = Color(1, 1, 1, 0.807843)
 texture_filter = 1
 position = Vector2(55, 103)
-scale = Vector2(2.255, 3.075)
+scale = Vector2(1.6575, 2.58125)
 texture = ExtResource("3_owunr")

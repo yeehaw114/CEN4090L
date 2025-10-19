@@ -149,18 +149,22 @@ script = ExtResource("2_htoyf")
 [node name="RankContainer" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 4
+color = Color(1, 1, 1, 1)
 
 [node name="RankContainer2" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 3
+color = Color(1, 1, 1, 1)
 
 [node name="RankContainer3" parent="CharacterContainer/PlayerContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 2
+color = Color(1, 1, 1, 1)
 
 [node name="RankContainer4" parent="CharacterContainer/PlayerContainer" node_paths=PackedStringArray("character") instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 character = NodePath("../../../BattleManager/Player")
+color = Color(1, 1, 1, 1)
 
 [node name="EnemyContainer" type="HBoxContainer" parent="CharacterContainer"]
 layout_mode = 2
@@ -168,18 +172,22 @@ script = ExtResource("2_htoyf")
 
 [node name="RankContainer" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
+color = Color(1, 0, 0, 1)
 
 [node name="RankContainer2" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 2
+color = Color(1, 0, 0, 1)
 
 [node name="RankContainer3" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 3
+color = Color(1, 0, 0, 1)
 
 [node name="RankContainer4" parent="CharacterContainer/EnemyContainer" instance=ExtResource("2_xs0o8")]
 layout_mode = 2
 rank = 4
+color = Color(1, 0, 0, 1)
 
 [node name="DisplayDiscardDeck" parent="." instance=ExtResource("6_wwo4e")]
 visible = false

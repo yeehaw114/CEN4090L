@@ -26,6 +26,7 @@ func attempt_to_select_card():
 	if card != null and card != currently_selected_card and card.is_able_to_be_selected:
 		if currently_selected_card != null:
 			unhighlight_selected_card(currently_selected_card)
+			card_unselected.emit()
 			currently_selected_card.is_currently_selected = false
 		currently_selected_card = card
 		currently_selected_card.is_currently_selected = true
@@ -66,9 +67,10 @@ func unhighlight_selected_card(card: Card):
 		card.decrease_scale(CARD_SCALE_FACTOR)
 
 func unselect_card():
-	unhighlight_selected_card(currently_selected_card)
-	card_unselected.emit()
-	currently_selected_card = null
+	if currently_selected_card:
+		unhighlight_selected_card(currently_selected_card)
+		card_unselected.emit()
+		currently_selected_card = null
 	
 func draw_one_card():
 	var draw_pile_cards = draw_pile.draw_cards
