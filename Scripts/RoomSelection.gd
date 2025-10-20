@@ -21,4 +21,4 @@ func _on_room_selected(room_id):
 		"C":
 			room_path = "res://Scenes/LargeRoom.tscn"
 
-	get_tree().change_scene_to_file(room_path)
+	GameState.change_scene(room_path)

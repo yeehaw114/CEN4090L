@@ -10,4 +10,4 @@ func _on_exit_entered(body):
 		call_deferred("go_to_campfire")
 
 func go_to_campfire():
-	get_tree().change_scene_to_file("res://Scenes/Campfire.tscn")
+	GameState.change_scene(GameState.SCENES["campfire"])
