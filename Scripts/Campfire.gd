@@ -7,4 +7,4 @@ func _ready():
 
 func _on_exit_entered(body):
 	if body.name == "Player":
-		GameState.change_scene(GameState.SCENES["map"])  # or "room_selection" as desired
+		GameState.change_scene(GameState.SCENES["room_selection"])  # or "room_selection" as desired
