@@ -5,6 +5,7 @@ extends Control
 @onready var button_c = $VBoxContainer/RoomButtonC
 
 func _ready():
+	GameState.preload_run_scenes()
 	button_a.pressed.connect(_on_room_selected.bind("A"))
 	button_b.pressed.connect(_on_room_selected.bind("B"))
 	button_c.pressed.connect(_on_room_selected.bind("C"))
