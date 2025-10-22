@@ -3,7 +3,8 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var combat_manager: Node2D = $CombatManager
 
-@onready var battle_resource := preload("res://Assets/Resources/battles/deer_2.tres")
+@onready var battle_resource : BattleResource
+const battle_resource_test := preload("res://Assets/Resources/battles/deer_2.tres")
 
 var currently_selected_enemy: Character
 var game_over := false
@@ -24,6 +25,11 @@ var total_energy := 3
 var current_eneergy := 3
 
 func _ready() -> void:
+	if GameState.pending_battle_resource:
+		battle_resource = GameState.pending_battle_resource
+	else:
+		battle_resource = battle_resource_test
+	
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
 	

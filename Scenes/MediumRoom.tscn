@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://nebwfw80r7lt"]
+[gd_scene load_steps=84 format=3 uid="uid://nebwfw80r7lt"]
 
 [ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_r1cx8"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_537ox"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtv2jiwguqi02" path="res://Assets/TileSetDemo/run_up.png" id="11_v1aig"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="12_hewmn"]
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="13_e6dov"]
+[ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="14_xftum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfcrv"]
 texture = ExtResource("2_537ox")
@@ -2953,3 +2954,4 @@ texture = ExtResource("12_hewmn")
 
 [node name="Enemy" parent="." instance=ExtResource("13_e6dov")]
 position = Vector2(316, -24)
+battle_resource = ExtResource("14_xftum")

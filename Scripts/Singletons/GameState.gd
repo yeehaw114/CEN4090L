@@ -11,6 +11,7 @@ func clear():
 # --- Persistent run data ---
 var current_scene_path: String = ""
 var previous_scene: Node
+var pending_battle_resource: BattleResource = null
 var rooms_cleared: int = 0
 var total_rooms: int = 10
 var player_alive: bool = true
