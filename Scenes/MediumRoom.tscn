@@ -2917,7 +2917,7 @@ size = Vector2(17, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j8mo"]
 size = Vector2(145, 119)
 
-[node name="Node2D" type="Node2D"]
+[node name="MediumRoom" type="Node2D"]
 script = ExtResource("1_r1cx8")
 
 [node name="TileMap" type="TileMap" parent="."]

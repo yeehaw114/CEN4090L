@@ -10,6 +10,7 @@ func clear():
 
 # --- Persistent run data ---
 var current_scene_path: String = ""
+var previous_scene: Node
 var rooms_cleared: int = 0
 var total_rooms: int = 10
 var player_alive: bool = true
@@ -46,6 +47,29 @@ func change_scene(scene_path: String):
 		return
 	get_tree().call_deferred("change_scene_to_file", scene_path)
 	current_scene_path = scene_path
+
+func return_to_previous_scene_live():
+	var tree := get_tree()
+
+	# Make sure we have a valid stored scene
+	if not previous_scene or not is_instance_valid(previous_scene):
+		push_warning("No valid live scene stored.")
+		return
+
+	# Ensure the current scene exists before trying to remove it
+	var current_scene := tree.current_scene
+	if current_scene and is_instance_valid(current_scene):
+		tree.root.remove_child(current_scene)
+		current_scene.queue_free()
+	else:
+		print("No valid current scene to free (may already be removed).")
+
+	# Reattach the previous live scene
+	tree.root.add_child(previous_scene)
+	tree.current_scene = previous_scene
+	current_scene_path = ""  # optional, since this is a live restore
+
+	print("Returned to live previous scene:", previous_scene.name)
 
 # --- Lifecycle helpers ---
 func reset_run():
