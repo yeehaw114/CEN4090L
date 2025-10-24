@@ -62,6 +62,10 @@ func update_animation():
 		
 		var anim_name = "run_" + last_facing
 		if animated_sprite.animation != anim_name:
+			if last_facing == 'right':
+				animated_sprite.flip_h = false
+			if last_facing == 'left':
+				animated_sprite.flip_h = true
 			animated_sprite.play(anim_name)
 	else:
 		# Idle animation in last movement direction
