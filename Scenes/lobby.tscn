@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="6_jigxi"]
 [ext_resource type="Script" uid="uid://byqyqx8r72djm" path="res://Scripts/exit_area.gd" id="16_sqxuf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruji2"]
-size = Vector2(48, 20)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4233d"]
 bg_color = Color(0.713025, 0.819169, 0.996371, 1)
 border_width_left = 2
@@ -21,12 +18,61 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruji2"]
+size = Vector2(48, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2vla"]
 size = Vector2(83, 46)
 
 [node name="Lobby" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_4233d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ShopUI" type="Control" parent="CanvasLayer"]
+visible = false
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ShopUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -175.0
+offset_right = 300.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4233d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ShopUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ShopUI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Welcome to the Shop"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ShopUI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Button"
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -61,43 +107,6 @@ position = Vector2(108, -115)
 scale = Vector2(0.367188, 0.1875)
 texture = ExtResource("6_jigxi")
 
-[node name="ShopUI" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 400.0
-offset_bottom = 300.0
-
-[node name="Panel" type="Panel" parent="ShopUI"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4233d")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopUI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="Label" type="Label" parent="ShopUI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Welcome to the Shop"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="ShopUI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Button"
-
 [node name="ExitArea" type="Area2D" parent="."]
 script = ExtResource("16_sqxuf")
 
@@ -111,4 +120,5 @@ scale = Vector2(0.652344, 0.398438)
 texture = ExtResource("6_jigxi")
 
 [connection signal="body_entered" from="ShopTrigger" to="." method="_on_shop_trigger_body_entered"]
+[connection signal="body_entered" from="ShopTrigger" to="Player" method="_on_shop_trigger_body_entered"]
 [connection signal="body_exited" from="ShopTrigger" to="." method="_on_shop_trigger_body_exited"]
