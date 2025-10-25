@@ -1,10 +1,23 @@
 extends CharacterBody2D
 
+@export var tilemap : TileMap
+
+@export var offset_left: float = 0.0
+@export var offset_right: float = 0.0
+@export var offset_top: float = 0.0
+@export var offset_bottom: float = 0.0
+
 const SPEED = 200.0
+
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var camera_2d: Camera2D = $Camera2D
+
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
 var first_input_locked = false
+
+func _ready() -> void:
+	limit_camera(tilemap)
 
 func _physics_process(_delta):
 	handle_movement_input()
@@ -72,3 +85,21 @@ func update_animation():
 		var idle_anim = "idle_" + last_facing
 		if animated_sprite.animation != idle_anim:
 			animated_sprite.play(idle_anim)
+
+func limit_camera(tilemap: TileMap):
+	if tilemap:
+		# Get the used rectangle of the TileMap in cell coordinates
+		var used_rect = tilemap.get_used_rect()
+		var cell_size = tilemap.tile_set.tile_size
+		
+		# Convert to pixel space
+		var map_min = tilemap.map_to_local(used_rect.position)
+		var map_max = tilemap.map_to_local(used_rect.position + used_rect.size)
+		
+		# Set camera limits
+		camera_2d.limit_left   = int(map_min.x - offset_left)
+		camera_2d.limit_top    = int(map_min.y - offset_top)
+		camera_2d.limit_right  = int(map_max.x + offset_right)
+		camera_2d.limit_bottom = int(map_max.y + offset_bottom)
+	else:
+		push_warning("TileMap not found: %s" % str(tilemap))
