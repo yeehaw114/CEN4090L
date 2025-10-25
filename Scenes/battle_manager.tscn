@@ -305,6 +305,7 @@ layout_mode = 1
 [connection signal="exit_button_clicked" from="DisplayDiscardDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="pause_game" from="BattleManager" to="." method="display_pause_screen"]
+[connection signal="rewards_decided" from="BattleManager" to="VictoryScreen" method="set_reward_values"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
 [connection signal="energy_changed" from="BattleManager/CombatManager" to="." method="set_energy_value"]
 [connection signal="player_died" from="BattleManager/Player" to="." method="display_game_over_screen"]

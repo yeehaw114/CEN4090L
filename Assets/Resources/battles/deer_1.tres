@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="BattleResource" load_steps=6 format=3 uid="uid://djco31opypq60"]
+[gd_resource type="Resource" script_class="BattleResource" load_steps=9 format=3 uid="uid://djco31opypq60"]
 
 [ext_resource type="Resource" uid="uid://bv3l6j5p3op6y" path="res://Assets/Resources/enemies/deer.tres" id="1_bdeci"]
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="1_fhayy"]
+[ext_resource type="Resource" uid="uid://b31qg1xqqc52p" path="res://Assets/Resources/cards/criple_card_test.tres" id="2_3ar0t"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_xcutp"]
 [ext_resource type="Resource" uid="uid://0ip1ck77fjuu" path="res://Assets/Resources/cards/empower_card.tres" id="3_t6wb4"]
+[ext_resource type="Resource" uid="uid://c5qokaaq00eh3" path="res://Assets/Resources/cards/fortitude_card_test.tres" id="4_5d4r6"]
 [ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://Assets/Resources/cards/strike_card.tres" id="4_bdeci"]
+[ext_resource type="Resource" uid="uid://cq1rwnf63qmjq" path="res://Assets/Resources/cards/plague_gernade_card.tres" id="5_1axna"]
 
 [resource]
 script = ExtResource("1_fhayy")
 starting_cards = Array[ExtResource("2_xcutp")]([ExtResource("3_t6wb4"), ExtResource("3_t6wb4"), ExtResource("4_bdeci"), ExtResource("4_bdeci"), ExtResource("4_bdeci")])
 enemy_rank_1 = ExtResource("1_bdeci")
 player_position = 1
+coins_min = 2
+coins_max = 3
+cards = Array[ExtResource("2_xcutp")]([ExtResource("2_3ar0t"), ExtResource("3_t6wb4"), ExtResource("4_5d4r6"), ExtResource("5_1axna")])
 metadata/_custom_type_script = "uid://d6nkb4bfujhr"

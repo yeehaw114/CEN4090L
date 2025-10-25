@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func attempt_to_select_card():
 	var card = raycast_check_for_card()
-	if card != null and card != currently_selected_card and card.is_able_to_be_selected:
+	if card != null and card != currently_selected_card and card.is_able_to_be_selected and !card.is_reward:
 		if currently_selected_card != null:
 			unhighlight_selected_card(currently_selected_card)
 			card_unselected.emit()

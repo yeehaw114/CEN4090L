@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://crinoxwgj5hyu"]
+[gd_scene load_steps=6 format=3 uid="uid://crinoxwgj5hyu"]
 
 [ext_resource type="Script" uid="uid://bb0pmnt3gsnyn" path="res://Scripts/ui/victory_screen.gd" id="1_mubwb"]
 [ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_oq8vb"]
+[ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="3_fmvqe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jb6in"]
 shader = ExtResource("1_oq8vb")
@@ -44,16 +45,55 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0gua7")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -46.0
-offset_right = 46.0
-offset_bottom = 23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
 text = "YOU'VE CLEANSED YOUR FOES"
+horizontal_alignment = 1
+
+[node name="CoinRewardLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Coins Earned: 10"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select a New Card"
+horizontal_alignment = 1
+
+[node name="CardContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Card" parent="Panel/VBoxContainer/VBoxContainer/CardContainer" instance=ExtResource("3_fmvqe")]
+layout_mode = 2
+is_reward = true
+
+[node name="Card2" parent="Panel/VBoxContainer/VBoxContainer/CardContainer" instance=ExtResource("3_fmvqe")]
+layout_mode = 2
+is_reward = true
+
+[node name="Card3" parent="Panel/VBoxContainer/VBoxContainer/CardContainer" instance=ExtResource("3_fmvqe")]
+layout_mode = 2
+is_reward = true
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "None"
 
 [node name="Button" type="Button" parent="Panel"]
 layout_mode = 1
