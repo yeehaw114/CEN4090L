@@ -68,7 +68,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 27
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
+[node name="SelectCardLabel" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Select a New Card"
 horizontal_alignment = 1
@@ -89,13 +89,14 @@ is_reward = true
 layout_mode = 2
 is_reward = true
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer/VBoxContainer"]
+[node name="NoneButton" type="Button" parent="Panel/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "None"
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="ContinueButton" type="Button" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -109,4 +110,5 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "CONTINUE"
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/NoneButton" to="." method="show_continue"]
+[connection signal="pressed" from="Panel/ContinueButton" to="." method="_on_button_pressed"]

@@ -12,6 +12,7 @@ var currently_selected_card: Card
 
 signal card_selected(card_data: Array)
 signal card_unselected
+signal reward_card_selected
 
 const CARD_Y_FACTOR := 25
 const CARD_SCALE_FACTOR := 0.7
@@ -33,9 +34,13 @@ func attempt_to_select_card():
 		card_selected.emit([card.card_stats.character_position,
 							card.card_stats.enemy_position])
 		highlight_selected_card(currently_selected_card)
-		#print('currently_selected_card: '+str(currently_selected_card))
+	elif card != null and card.is_able_to_be_selected and card.is_reward:
+		GameState.transferred_cards.append(card.card_stats.duplicate(true))
+		reward_card_selected.emit()
+		print('REWARD CARD SELECTED: '+str(card))
 
 func raycast_check_for_card():
+	print('RAYCAST FOR CARDS')
 	var space_state = get_viewport().world_2d.direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_viewport().get_mouse_position()
@@ -44,6 +49,7 @@ func raycast_check_for_card():
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		if result[0].collider.get_parent().is_in_group("Card"):
+			print('CLICKED ON CARD: '+ str(result[0].collider.get_parent()))
 			return result[0].collider.get_parent()
 	return null
 

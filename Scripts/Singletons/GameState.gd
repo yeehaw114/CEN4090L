@@ -1,7 +1,11 @@
 extends Node
 
+var strike = load("res://Assets/Resources/cards/strike_card.tres")
+var defend = load("res://Assets/Resources/cards/defend_card.tres")
+var default_cards : Array[CardResource] = [strike,strike,strike,strike,defend,defend]
+
 # Existing data from your game
-var transferred_cards = []
+var transferred_cards := default_cards.duplicate(true)
 var battle_scene: Control = null
 var display_deck_scene: Control = null
 

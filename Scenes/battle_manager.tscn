@@ -314,6 +314,7 @@ layout_mode = 1
 [connection signal="all_enemies_died" from="BattleManager/Enemies" to="BattleManager" method="_on_enemies_all_enemies_died"]
 [connection signal="card_selected" from="BattleManager/Cards" to="CharacterContainer" method="update_tile_highlights"]
 [connection signal="card_unselected" from="BattleManager/Cards" to="CharacterContainer" method="clear_tile_highlights"]
+[connection signal="reward_card_selected" from="BattleManager/Cards" to="VictoryScreen" method="show_continue"]
 [connection signal="update_display_card_deck" from="BattleManager/Cards/DrawPile" to="DisplayDrawDeck" method="_on_draw_pile_update_display_card_deck"]
 [connection signal="pressed" from="BattleManager/Cards/DrawPile/DiscardButton" to="." method="on_draw_button_pressed"]
 [connection signal="card_discarded" from="BattleManager/Cards/DiscardPile" to="DisplayDiscardDeck" method="_on_discard_pile_card_discarded"]

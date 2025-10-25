@@ -61,7 +61,7 @@ func _ready() -> void:
 	combat_manager.cards.draw_cards(5)
 	
 func _input(event: InputEvent) -> void:
-	if get_active_battle_state() != battle_state.PLAYER:
+	if get_active_battle_state() != battle_state.PLAYER and !game_over:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -135,6 +135,10 @@ func get_active_battle_state():
 
 #HANDLE LEFT AND RIGHT INPUT-----------------------------------------------------------
 func handle_left_input():
+	if game_over:
+		combat_manager.cards.attempt_to_select_card()
+		return
+	
 	if active_state == battle_state_player.SELECT_CARD:
 		combat_manager.cards.attempt_to_select_card()
 		var tile = combat_manager.raycast_check_for_tile()
