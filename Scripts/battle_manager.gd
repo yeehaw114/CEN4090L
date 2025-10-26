@@ -82,6 +82,7 @@ func _input(event: InputEvent) -> void:
 func handle_current_turn():
 	if game_over:
 		return
+	decide_rewards()
 	if get_active_battle_state() == battle_state.PLAYER_STATUS:
 		#APPLY STATUS EFFECTS TO PLAYER
 		print('handling status effects on player')
@@ -200,6 +201,7 @@ func decide_rewards():
 			var index = randi_range(0, cards.size() - 1)
 			final_cards.append(cards[index])
 			cards.remove_at(index)
+	print('\nCARD REWARDS: '+str(final_cards)+'\n')
 	rewards_decided.emit(coins,final_cards)
 	
 func _on_movement_button_pressed() -> void:
