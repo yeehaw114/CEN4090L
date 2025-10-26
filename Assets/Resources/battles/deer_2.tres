@@ -15,4 +15,7 @@ starting_cards = Array[ExtResource("2_gnj06")]([ExtResource("4_cvk1j"), ExtResou
 enemy_rank_1 = ExtResource("1_k4ty6")
 enemy_rank_2 = ExtResource("1_k4ty6")
 player_position = 1
+coins_min = 2
+coins_max = 4
+cards = Array[ExtResource("2_gnj06")]([ExtResource("7_7wp7b"), ExtResource("9_ciwr2"), ExtResource("6_4a0am"), ExtResource("8_6jgd7")])
 metadata/_custom_type_script = "uid://d6nkb4bfujhr"

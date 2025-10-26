@@ -4,6 +4,7 @@ class_name Card
 const SIZE := Vector2(32,48)
 
 @export var card_stats: CardResource
+@export var is_reward: bool
 
 @onready var cost_label: Label = $BaseCardSprite/CostLabel
 @onready var description_label: Label = $BaseCardSprite/DescriptionLabel
@@ -51,12 +52,12 @@ func _ready() -> void:
 	set_values()
 
 func mouse_entered_card_area() -> void:
-	if is_currently_selected or !is_able_to_be_selected:
+	if is_currently_selected or !is_able_to_be_selected or is_reward:
 		return
 	increase_scale(1)
 
 func mouse_exited_card_area() -> void:
-	if is_currently_selected or !is_able_to_be_selected:
+	if is_currently_selected or !is_able_to_be_selected or is_reward:
 		return
 	decrease_scale(1)
 

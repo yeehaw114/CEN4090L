@@ -17,6 +17,7 @@ enum move_crystal_state {SELECT,EMPTY,NORMAL}
 var active_state := -1
 signal state_changed(state: int)
 signal pause_game(switch: bool)
+signal rewards_decided(coins: int, cards: Array[CardResource])
 
 enum battle_state {PLAYER_STATUS,PLAYER, ENEMY_STATUS,ENEMY}
 var active_battle_state := -1
@@ -32,6 +33,8 @@ func _ready() -> void:
 	
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
+	
+	call_deferred('decide_rewards')
 	
 	combat_manager.cards.draw_pile.draw_cards = battle_resource.starting_cards
 	combat_manager.cards.draw_pile.shuffle_draw_cards()
@@ -58,7 +61,7 @@ func _ready() -> void:
 	combat_manager.cards.draw_cards(5)
 	
 func _input(event: InputEvent) -> void:
-	if get_active_battle_state() != battle_state.PLAYER:
+	if get_active_battle_state() != battle_state.PLAYER and !game_over:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -132,6 +135,10 @@ func get_active_battle_state():
 
 #HANDLE LEFT AND RIGHT INPUT-----------------------------------------------------------
 func handle_left_input():
+	if game_over:
+		combat_manager.cards.attempt_to_select_card()
+		return
+	
 	if active_state == battle_state_player.SELECT_CARD:
 		combat_manager.cards.attempt_to_select_card()
 		var tile = combat_manager.raycast_check_for_tile()
@@ -178,6 +185,22 @@ func get_current_state():
 		if state == active_state:
 			#print(state)
 			return state
+	
+func decide_rewards():
+	var coins := randi_range(battle_resource.coins_min,battle_resource.coins_max)
+	var cards = battle_resource.cards.duplicate() # make a copy to avoid mutating the original
+	var final_cards: Array[CardResource] = []
+
+	# Make sure there are at least 3 cards to choose from
+	if cards.size() < 3:
+		push_warning("Not enough cards in battle_resource.cards to select 3 unique rewards.")
+		final_cards = cards.duplicate() # take all if less than 3
+	else:
+		while final_cards.size() < 3:
+			var index = randi_range(0, cards.size() - 1)
+			final_cards.append(cards[index])
+			cards.remove_at(index)
+	rewards_decided.emit(coins,final_cards)
 	
 func _on_movement_button_pressed() -> void:
 	if !can_move:

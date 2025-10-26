@@ -38,6 +38,8 @@ func _on_body_entered(body):
 func _handle_battle_transition():
 	var tree = get_tree()
 	var current_room = tree.current_scene
+	battle_resource.starting_cards.clear()
+	battle_resource.starting_cards = GameState.transferred_cards.duplicate(true)
 	GameState.pending_battle_resource = battle_resource
 	hide()
 	is_dead = true
