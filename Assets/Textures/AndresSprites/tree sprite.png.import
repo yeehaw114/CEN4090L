@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5volmsjc1bfp"
-path="res://.godot/imported/shop sprite.png-94dbe963e4ba512b26306f4353ebc3da.ctex"
+uid="uid://dg12s6wpbp5eq"
+path="res://.godot/imported/tree sprite.png-a0cd618bef54eeb172433bb25983ea97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/AndresSprites/shop sprite.png"
-dest_files=["res://.godot/imported/shop sprite.png-94dbe963e4ba512b26306f4353ebc3da.ctex"]
+source_file="res://Assets/Textures/AndresSprites/tree sprite.png"
+dest_files=["res://.godot/imported/tree sprite.png-a0cd618bef54eeb172433bb25983ea97.ctex"]
 
 [params]
 
