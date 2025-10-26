@@ -5,6 +5,8 @@ const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 const status_effect_scene = preload("res://Scenes/status_effect.tscn")
 const BLUR_CONSTANT = 2.5
 
+@export var inv: Inv
+
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: TextureRect = $HBoxContainer/VBoxContainer/EnemySprite
 @onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/HealthBar

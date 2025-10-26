@@ -24,6 +24,8 @@ var total_energy := 3
 var current_eneergy := 3
 
 func _ready() -> void:
+	combat_manager.cards.draw_pile.draw_cards = GameState.get_deck_for_battle()
+	player.health = GameState.player_current_health
 	set_state(battle_state_player.SELECT_CARD)
 	set_active_battle_state(battle_state.PLAYER)
 	
