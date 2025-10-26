@@ -69,17 +69,19 @@ scale = Vector2(0.767464, 0.376251)
 texture = ExtResource("12_nlhq1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+y_sort_enabled = true
 disable_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_cfab1")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(-47, -65)
+position = Vector2(-47, -26)
 texture = ExtResource("9_nc42k")
+offset = Vector2(0, -39)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
-polygon = PackedVector2Array(-140, -26, 46, -25, 4, -89, -25, -100, -70, -101, -98, -89)
+polygon = PackedVector2Array(-140, -26, 46, -25, 8, -55, -22, -64, -67, -65, -97, -58)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 

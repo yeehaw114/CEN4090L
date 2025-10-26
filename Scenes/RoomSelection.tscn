@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://w8nm2xlmmtgi"]
+[gd_scene load_steps=6 format=3 uid="uid://w8nm2xlmmtgi"]
 
 [ext_resource type="Script" uid="uid://crnnv5ty5rkwl" path="res://Scripts/RoomSelection.gd" id="1_j4bhn"]
+[ext_resource type="Texture2D" uid="uid://4ueydpqoc4uy" path="res://Assets/Textures/lobby_floor.png" id="2_b3xbg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4bhn"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcecl"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4wja"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,15 +45,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j4bhn")
 
+[node name="TextureRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0313726, 0.0313726, 1)
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -77.0
-offset_right = 77.0
-offset_bottom = 23.0
+offset_left = -154.0
+offset_top = 11.0
+offset_bottom = 34.0
 grow_horizontal = 2
+scale = Vector2(2, 2)
 text = "SELECT NEXT ROOM"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
@@ -29,66 +73,142 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.5
+offset_left = -231.0
 offset_top = -55.0
-offset_right = 230.5
+offset_right = 231.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4bhn")
 
-[node name="RoomButtonA" type="Button" parent="VBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -55.0
-offset_right = 57.0
-offset_bottom = 55.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Room A"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("2_b3xbg")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Danger:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Trecherous"
+horizontal_alignment = 1
+
+[node name="RoomButtonA" type="Button" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Go To room A"
 
 [node name="Panel2" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wcecl")
 
-[node name="RoomButtonB" type="Button" parent="VBoxContainer/Panel2"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel2"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -55.0
-offset_right = 57.0
-offset_bottom = 55.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Room A"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("2_b3xbg")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Danger:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Trecherous"
+horizontal_alignment = 1
+
+[node name="RoomButtonB" type="Button" parent="VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Go To room B"
 
 [node name="Panel3" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4wja")
 
-[node name="RoomButtonC" type="Button" parent="VBoxContainer/Panel3"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel3"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -56.5
-offset_top = -55.0
-offset_right = 56.5
-offset_bottom = 55.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel3/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Room A"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel3/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("2_b3xbg")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Danger:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Trecherous"
+horizontal_alignment = 1
+
+[node name="RoomButtonC" type="Button" parent="VBoxContainer/Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Go To room C"

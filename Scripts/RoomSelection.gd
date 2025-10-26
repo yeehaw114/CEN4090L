@@ -1,10 +1,10 @@
 extends Control
 
-@onready var button_a: Button = $VBoxContainer/Panel/RoomButtonA
+@onready var button_a: Button = $VBoxContainer/Panel/MarginContainer/VBoxContainer/RoomButtonA
 
-@onready var button_b: Button = $VBoxContainer/Panel2/RoomButtonB
+@onready var button_b: Button = $VBoxContainer/Panel2/MarginContainer/VBoxContainer/RoomButtonB
 
-@onready var button_c: Button = $VBoxContainer/Panel3/RoomButtonC
+@onready var button_c: Button = $VBoxContainer/Panel3/MarginContainer/VBoxContainer/RoomButtonC
 
 
 func _ready():
