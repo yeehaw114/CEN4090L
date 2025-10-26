@@ -111,4 +111,4 @@ grow_vertical = 0
 text = "CONTINUE"
 
 [connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/NoneButton" to="." method="show_continue"]
-[connection signal="pressed" from="Panel/ContinueButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/ContinueButton" to="." method="_on_return_button_pressed"]
