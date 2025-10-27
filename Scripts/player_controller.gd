@@ -9,8 +9,14 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 
+const raycast_right = Vector2(25,0)
+const raycast_left = Vector2(-25,0)
+const raycast_up = Vector2(0,-25)
+const raycast_down = Vector2(0,25)
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var interact_raycast: RayCast2D = $InteractRaycast
 
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
@@ -23,10 +29,33 @@ func _ready() -> void:
 func _physics_process(_delta):
 	handle_movement_input()
 	
+	if Input.is_action_just_pressed("Interact"):
+		if check_for_interactable():
+			var object = get_raycast_object()
+			if object.name == 'CardViewerCollision':
+				object.display_card_viewer()
+				toggle_able_to_move(false)
+	
 	velocity = locked_direction * SPEED
 	move_and_slide()
 	
 	update_animation()
+
+func check_for_interactable() -> bool:
+	if interact_raycast.is_colliding():
+		var obj = interact_raycast.get_collider()
+		return true
+	return false
+	
+func get_raycast_object():
+	if interact_raycast.is_colliding():
+		return interact_raycast.get_collider()
+
+func toggle_able_to_move(toggle: bool):
+	if toggle:
+		able_to_move = true
+		return
+	able_to_move = false
 
 func handle_movement_input():
 	if !able_to_move:
@@ -69,12 +98,16 @@ func update_animation():
 		# Moving - choose animation based on locked direction
 		if locked_direction == Vector2.RIGHT:
 			last_facing = "right"
+			interact_raycast.target_position = raycast_right
 		elif locked_direction == Vector2.LEFT:
 			last_facing = "left"
+			interact_raycast.target_position = raycast_left
 		elif locked_direction == Vector2.DOWN:
 			last_facing = "down"
+			interact_raycast.target_position = raycast_down
 		elif locked_direction == Vector2.UP:
 			last_facing = "up"
+			interact_raycast.target_position = raycast_up
 		
 		var anim_name = "run_" + last_facing
 		if animated_sprite.animation != anim_name:

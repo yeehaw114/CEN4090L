@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2rj2qfquesex"]
+[gd_scene load_steps=4 format=3 uid="uid://d2rj2qfquesex"]
 
 [ext_resource type="Script" uid="uid://cwbol7gsgjw6d" path="res://Scripts/ui/card_collection_viewer.gd" id="1_kdp6e"]
+[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="2_httmy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mf31c"]
+shader = ExtResource("2_httmy")
+shader_parameter/amount = 2.54
 
 [node name="CardCollectionViewer" type="Control"]
 layout_mode = 3
@@ -10,6 +15,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kdp6e")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mf31c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -58,3 +72,11 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 8
+
+[node name="Button" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Button" to="." method="undisplay"]

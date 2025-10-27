@@ -2,11 +2,21 @@ extends Control
 
 @onready var grid_container: GridContainer = $MarginContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/GridContainer
 
+signal toggle_display(toggle: bool)
+
 var card_file_path := "res://Assets/Resources/cards/final_cards/"
 const card_scene := preload("res://Scenes/card.tscn")
 
 func _ready() -> void:
 	call_deferred('populate_grid')
+
+func display():
+	show()
+	toggle_display.emit(false)
+	
+func undisplay():
+	hide()
+	toggle_display.emit(true)
 
 func populate_grid():
 	# Clear existing cards
