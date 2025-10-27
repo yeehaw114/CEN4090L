@@ -1,13 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://desymjcqo1841"]
+[gd_scene load_steps=3 format=3 uid="uid://desymjcqo1841"]
 
 [ext_resource type="Texture2D" uid="uid://vxjn6fb6ms37" path="res://Assets/Textures/inventory-slot.png" id="1_s06lr"]
+[ext_resource type="Script" uid="uid://b6bb7kl704ouh" path="res://Inventory/inv_ui_slot.gd" id="1_x8d8c"]
 
 [node name="inv_ui_slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
+script = ExtResource("1_x8d8c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_s06lr")
 centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(19, 49)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 17.0
+offset_bottom = 46.0
+scale = Vector2(0.5, 0.5)
+text = "99
+"
+horizontal_alignment = 2
