@@ -43,14 +43,14 @@ func _ready() -> void:
 	combat_manager.call_deferred("set_player_rank", player, battle_resource.player_position)
 	
 	if battle_resource.enemy_rank_1:
-		var enemy = combat_manager.enemies.spawn_enemy(battle_resource.enemy_rank_1)
-		combat_manager.call_deferred("set_enemy_rank", enemy, 1)
-		print('SPAWNING ENEMY IN RANK 1: '+str(enemy))
-	if battle_resource.enemy_rank_2:
-		var enemy = combat_manager.enemies.spawn_enemy(battle_resource.enemy_rank_2)
-		combat_manager.call_deferred("set_enemy_rank", enemy, 2)
-		print('SPAWNING ENEMY IN RANK 2: '+str(enemy))
-	if battle_resource.enemy_rank_3:
+			var enemy = combat_manager.enemies.spawn_enemy(battle_resource.enemy_rank_1)
+			combat_manager.call_deferred("set_enemy_rank", enemy, 1)
+			print('SPAWNING ENEMY IN RANK 1: '+str(enemy))
+		if battle_resource.enemy_rank_2:
+			var enemy = combat_manager.enemies.spawn_enemy(battle_resource.enemy_rank_2)
+			combat_manager.call_deferred("set_enemy_rank", enemy, 2)
+			print('SPAWNING ENEMY IN RANK 2: '+str(enemy))
+		if battle_resource.enemy_rank_3:
 		var enemy = combat_manager.enemies.spawn_enemy(battle_resource.enemy_rank_3)
 		combat_manager.call_deferred("set_enemy_rank", enemy, 3)
 		print('SPAWNING ENEMY IN RANK 3: '+str(enemy))

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://dad7jr7v1eil4"]
+
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="1_7uf4i"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_oqpsp"]
+
+[resource]
+script = ExtResource("1_7uf4i")
+slots = Array[ExtResource("2_oqpsp")]([])
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"
