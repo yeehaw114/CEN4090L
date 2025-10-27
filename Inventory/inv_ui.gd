@@ -4,7 +4,7 @@ extends Control
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 @export var card_scene: PackedScene = preload("res://Scenes/card.tscn")
-@onready var grid_container: GridContainer = $VBoxContainer/MarginContainer/GridContainer
+@onready var grid_container: GridContainer = $NinePatchRect/GridContainer
 
 var is_open = false
 

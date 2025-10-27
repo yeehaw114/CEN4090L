@@ -1,3 +1,14 @@
-[gd_resource type="Resource" format=3 uid="uid://bm7aaetoo2gmg"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://6he78epf7gtj"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_dtymv"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_4oh3p"]
 
 [resource]
+script = ExtResource("2_4oh3p")
+card_name = ""
+card_cost = 0
+card_description = ""
+card_actions = Array[ExtResource("1_dtymv")]([])
+character_position = Array[int]([])
+enemy_position = Array[int]([])
+metadata/_custom_type_script = "uid://dda632fu6blsg"
