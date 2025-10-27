@@ -133,14 +133,17 @@ scale = Vector2(0.652344, 0.398438)
 texture = ExtResource("6_jigxi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-z_index = 1
+y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(-102, -29)
+position = Vector2(-99, 92)
 texture = ExtResource("10_o08vn")
+offset = Vector2(-3, -121)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+y_sort_enabled = true
 polygon = PackedVector2Array(-156, 99, -138, 104, -110, 107, -82, 107, -65, 104, -50, 93, -74, 80, -74, 80, -125, 79, -123, 77)
 
 [connection signal="toggle_display" from="CanvasLayer/CardCollectionViewer" to="Player" method="toggle_able_to_move"]
