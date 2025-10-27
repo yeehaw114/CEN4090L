@@ -2,6 +2,7 @@ extends Control
 class_name Card
 
 const SIZE := Vector2(32,48)
+const grey_shader := preload("res://Assets/Shaders/grey.gdshader")
 
 @export var card_stats: CardResource
 @export var is_reward: bool
@@ -9,6 +10,7 @@ const SIZE := Vector2(32,48)
 @onready var cost_label: Label = $BaseCardSprite/CostLabel
 @onready var description_label: Label = $BaseCardSprite/DescriptionLabel
 @onready var name_label: Label = $BaseCardSprite/NameLabel
+@onready var base_card_sprite: TextureRect = $BaseCardSprite
 
 @onready var player_rank_4_texture: TextureRect = $BaseCardSprite/playerRank4Texture
 @onready var player_rank_3_texture: TextureRect = $BaseCardSprite/playerRank3Texture
@@ -73,3 +75,25 @@ func reset_scale_and_position():
 	#scale = Vector2(2,2)
 	#position.y = 450
 	pass
+
+func apply_greyscale():
+	var shader_mat = ShaderMaterial.new()
+	shader_mat.shader = grey_shader
+	player_rank_1_texture.material = shader_mat
+	player_rank_2_texture.material = shader_mat
+	player_rank_3_texture.material = shader_mat
+	player_rank_4_texture.material = shader_mat
+	enemy_rank_1_texture.material = shader_mat
+	enemy_rank_2_texture.material = shader_mat
+	enemy_rank_3_texture.material = shader_mat
+	enemy_rank_4_texture.material = shader_mat
+	
+func unapply_greyscale():
+	player_rank_1_texture.material = ShaderMaterial.new()
+	player_rank_2_texture.material = ShaderMaterial.new()
+	player_rank_3_texture.material = ShaderMaterial.new()
+	player_rank_4_texture.material = ShaderMaterial.new()
+	enemy_rank_1_texture.material = ShaderMaterial.new()
+	enemy_rank_2_texture.material = ShaderMaterial.new()
+	enemy_rank_3_texture.material = ShaderMaterial.new()
+	enemy_rank_4_texture.material = ShaderMaterial.new()

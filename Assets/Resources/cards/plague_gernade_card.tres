@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
 script = ExtResource("4_ibxmf")
+is_unlocked_at_start = false
 card_name = "Plague Grenade"
 card_cost = 1
 card_description = "add 2 pestilence"

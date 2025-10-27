@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfixw0merhgge"]
+[gd_scene load_steps=7 format=3 uid="uid://dfixw0merhgge"]
 
 [ext_resource type="Script" uid="uid://djqe6niv4w71f" path="res://Scripts/card.gd" id="1_wf8id"]
+[ext_resource type="Shader" uid="uid://b7ldgj1t2haqs" path="res://Assets/Shaders/grey.gdshader" id="2_eumee"]
 [ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="2_wf8id"]
 [ext_resource type="Texture2D" uid="uid://8f5ekqr3mvef" path="res://Assets/Textures/position_fill.png" id="3_brehn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eumee"]
+shader = ExtResource("2_eumee")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf8id"]
 size = Vector2(96, 144)
@@ -21,6 +25,7 @@ script = ExtResource("1_wf8id")
 
 [node name="BaseCardSprite" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_eumee")
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 48.0
