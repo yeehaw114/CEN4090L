@@ -16,6 +16,7 @@ metadata/_custom_type_script = "uid://mirotg2noub8"
 [resource]
 script = ExtResource("2_r3rlj")
 is_unlocked_at_start = false
+is_locked = true
 card_name = "Empower"
 card_cost = 1
 card_description = "Add 1 strength"
