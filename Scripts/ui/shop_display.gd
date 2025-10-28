@@ -8,6 +8,13 @@ extends Control
 @onready var middle_cost_label: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/MiddleCostLabel
 @onready var right_cost_label: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer/RightCostLabel
 
+@onready var purchase_button_left: Button = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/PurchaseButton
+@onready var purchase_button_middle: Button = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/PurchaseButton
+@onready var purchase_button_right: Button = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer/PurchaseButton
+
+@onready var sold_out_label_left: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/SoldOutLabel
+@onready var sold_out_label_middle: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/SoldOutLabel
+@onready var sold_out_label_right: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer/SoldOutLabel
 
 var card_file_path := "res://Assets/Resources/cards/final_cards/"
 
@@ -15,7 +22,7 @@ var card_resources : Array[CardResource] = []
 signal toggle_display(toggle: bool)
 
 func _ready() -> void:
-	get_all_locked_cards()
+	card_resources = CardCollection.get_all_locked_cards()
 	update_cards(card_resources)
 
 func update_card_resources(cards : Array[CardResource]):
@@ -26,44 +33,59 @@ func update_cards(card_resources : Array[CardResource]):
 
 	var card_nodes = [card_left, card_middle, card_right]
 	var label_nodes = [left_cost_label,middle_cost_label,right_cost_label]
+	var purchase_buttons = [purchase_button_left,purchase_button_middle,purchase_button_right]
+	var sold_labels = [sold_out_label_left,sold_out_label_middle,sold_out_label_right]
 
 	for i in range(card_nodes.size()):
 		if i < card_resources.size():
 			card_nodes[i].card_stats = card_resources[i]
 			card_nodes[i].set_values()
-			card_nodes[i].show()
-			label_nodes[i].show()
+			show_panel(i)
 		else:
-			card_nodes[i].hide() # hide unused slots if there aren't enough cards
-			label_nodes[i].hide()
+			hide_panel(i)
 
-func get_all_locked_cards():
-	# Open dir
-	var dir := DirAccess.open(card_file_path)
-	if dir == null:
-		push_error("Could not open directory: " + card_file_path)
-		return
+func show_panel(index: int):
+	if index == 0:
+		card_left.show()
+		left_cost_label.show()
+		purchase_button_left.show()
+		sold_out_label_left.hide()
+	elif index == 1:
+		card_middle.show()
+		middle_cost_label.show()
+		purchase_button_middle.show()
+		sold_out_label_middle.hide()
+	elif  index == 2:
+		card_right.show()
+		right_cost_label.show()
+		purchase_button_right.show()
+		sold_out_label_right.hide()
 		
-	var locked: Array[CardResource] = []
+func hide_panel(index: int):
+	if index == 0:
+		card_left.hide()
+		left_cost_label.hide()
+		purchase_button_left.hide()
+		sold_out_label_left.show()
+	elif index == 1:
+		card_middle.hide()
+		middle_cost_label.hide()
+		purchase_button_middle.hide()
+		sold_out_label_middle.show()
+	elif  index == 2:
+		card_right.hide()
+		right_cost_label.hide()
+		purchase_button_right.hide()
+		sold_out_label_right.show()
 
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		# skip directories and hidden entries like '.' '..'
-		if not dir.current_is_dir() and not file_name.begins_with("."):
-			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
-				var file_path := card_file_path + file_name
-				var card_resource := ResourceLoader.load(file_path)
-				if card_resource:
-					# Defensive check: make sure is_locked property exists and is a bool
-					if card_resource.is_locked:
-						locked.append(card_resource)
-				else:
-					push_warning("Failed to load resource: " + file_path)
-		file_name = dir.get_next()
-	dir.list_dir_end()
+func left_purchase():
+	hide_panel(0)
 	
-	card_resources = locked
+func middle_purchase():
+	hide_panel(1)
+	
+func right_purchase():
+	hide_panel(2)
 
 func _on_exit_button_pressed() -> void:
 	hide()

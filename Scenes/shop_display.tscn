@@ -77,16 +77,29 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
+[node name="SoldOutLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "SOLD
+OUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Card" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_v160x")]
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="LeftCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "20 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"
 
 [node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -96,16 +109,29 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
+[node name="SoldOutLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "SOLD
+OUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Card" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer" instance=ExtResource("2_v160x")]
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="MiddleCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "20 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -115,16 +141,29 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
+[node name="SoldOutLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "SOLD
+OUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Card" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer" instance=ExtResource("2_v160x")]
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="RightCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "20 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"
 
 [node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -156,4 +195,7 @@ text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/PurchaseButton" to="." method="left_purchase"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/PurchaseButton" to="." method="middle_purchase"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer/PurchaseButton" to="." method="right_purchase"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
