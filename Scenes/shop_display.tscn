@@ -81,7 +81,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="LeftCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "20 Coins"
 horizontal_alignment = 1
@@ -99,7 +100,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+[node name="MiddleCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "20 Coins"
 horizontal_alignment = 1
@@ -117,7 +119,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+[node name="RightCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "20 Coins"
 horizontal_alignment = 1
