@@ -35,6 +35,7 @@ func _physics_process(_delta):
 			if object.name == 'CardViewerCollision':
 				object.display_card_viewer()
 				toggle_able_to_move(false)
+			
 	
 	velocity = locked_direction * SPEED
 	move_and_slide()

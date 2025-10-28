@@ -3,6 +3,7 @@ extends Control
 @onready var grid_container: GridContainer = $MarginContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/GridContainer
 
 signal toggle_display(toggle: bool)
+signal populate_card_collection(cards: Array[CardResource])
 
 var card_file_path := "res://Assets/Resources/cards/final_cards/"
 const card_scene := preload("res://Scenes/card.tscn")
@@ -59,6 +60,8 @@ func populate_grid():
 		card_instance.call_deferred("set_values")
 		if card_instance.card_stats.is_locked:
 			card_instance.apply_greyscale()
+			
+	populate_card_collection.emit(locked)
 
 	# Debug info
 	print("populate_grid: unlocked=", unlocked.size(), " locked=", locked.size())

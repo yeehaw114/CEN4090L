@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://do1e73n8c4x27"]
+
+[ext_resource type="Script" uid="uid://cvumtbxtrlukm" path="res://Scripts/card_collection_viewer_object.gd" id="1_38t2m"]
+[ext_resource type="Script" uid="uid://gdu6p4ehlwx5" path="res://Scripts/card_viewer_collision.gd" id="2_b6wkx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_151om"]
+size = Vector2(38, 38)
+
+[node name="ShopObject" type="Node2D"]
+script = ExtResource("1_38t2m")
+
+[node name="MenuObjectSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -19)
+scale = Vector2(0.3, 0.3)
+
+[node name="CardViewerCollision" type="StaticBody2D" parent="."]
+collision_layer = 3
+script = ExtResource("2_b6wkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardViewerCollision" groups=["Interactable"]]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_151om")

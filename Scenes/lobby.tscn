@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dijkunqqqrdts"]
+[gd_scene load_steps=15 format=3 uid="uid://dijkunqqqrdts"]
 
 [ext_resource type="Script" uid="uid://8vdp66j7hha3" path="res://Scripts/lobby.gd" id="1_4233d"]
 [ext_resource type="PackedScene" uid="uid://d2rj2qfquesex" path="res://Scenes/card_collection_viewer.tscn" id="2_aghey"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_ruji2"]
 [ext_resource type="PackedScene" uid="uid://c538r0eqm4xck" path="res://Scenes/card_collection_viewer_object.tscn" id="3_bvheq"]
+[ext_resource type="PackedScene" uid="uid://dij45t62wor7k" path="res://Scenes/shop_display.tscn" id="3_o08vn"]
+[ext_resource type="PackedScene" uid="uid://do1e73n8c4x27" path="res://Scenes/shop_object.tscn" id="6_1updj"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="6_bvheq"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="6_jigxi"]
 [ext_resource type="Texture2D" uid="uid://c5volmsjc1bfp" path="res://Assets/Textures/AndresSprites/shop sprite.png" id="7_aghey"]
@@ -82,6 +84,9 @@ text = "Button"
 [node name="CardCollectionViewer" parent="CanvasLayer" groups=["Interactable"] instance=ExtResource("2_aghey")]
 visible = false
 
+[node name="ShopDisplay" parent="CanvasLayer" instance=ExtResource("3_o08vn")]
+visible = false
+
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
@@ -103,6 +108,9 @@ layer_2/tile_data = PackedInt32Array(720879, 327682, 1, 655343, 327682, 1, 58980
 y_sort_enabled = true
 position = Vector2(164, 74)
 
+[node name="ShopObject" parent="." instance=ExtResource("6_1updj")]
+position = Vector2(111, -92)
+
 [node name="Player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("6_bvheq")]
 position = Vector2(-5, -5)
 tilemap = NodePath("../TileMap")
@@ -110,15 +118,18 @@ offset_right = -10.0
 offset_bottom = -10.0
 
 [node name="ShopTrigger" type="Area2D" parent="."]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopTrigger"]
 position = Vector2(108, -116)
 shape = SubResource("RectangleShape2D_ruji2")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopTrigger"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(127, -131)
+position = Vector2(112, -106)
 texture = ExtResource("7_aghey")
+offset = Vector2(15, -25)
 
 [node name="ExitArea" type="Area2D" parent="."]
 script = ExtResource("16_sqxuf")
@@ -147,7 +158,9 @@ y_sort_enabled = true
 polygon = PackedVector2Array(-156, 99, -138, 104, -110, 107, -82, 107, -65, 104, -50, 93, -74, 80, -74, 80, -125, 79, -123, 77)
 
 [connection signal="toggle_display" from="CanvasLayer/CardCollectionViewer" to="Player" method="toggle_able_to_move"]
+[connection signal="toggle_display" from="CanvasLayer/ShopDisplay" to="Player" method="toggle_able_to_move"]
 [connection signal="interacted_with" from="CardCollectionViewerObject" to="CanvasLayer/CardCollectionViewer" method="display"]
+[connection signal="interacted_with" from="ShopObject" to="CanvasLayer/ShopDisplay" method="_on_shop_object_interacted_with"]
 [connection signal="body_entered" from="ShopTrigger" to="." method="_on_shop_trigger_body_entered"]
 [connection signal="body_entered" from="ShopTrigger" to="Player" method="_on_shop_trigger_body_entered"]
 [connection signal="body_exited" from="ShopTrigger" to="." method="_on_shop_trigger_body_exited"]
