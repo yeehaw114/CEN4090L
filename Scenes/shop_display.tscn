@@ -189,7 +189,7 @@ text = "Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer"]
+[node name="CoinValueLabel" type="Label" parent="PanelContainer2/VBoxContainer"]
 layout_mode = 2
 text = "20"
 horizontal_alignment = 1

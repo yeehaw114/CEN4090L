@@ -5,6 +5,8 @@ var defend = load("res://Assets/Resources/cards/defend_card.tres")
 var default_cards : Array[CardResource] = [strike,strike,strike,strike,defend,defend]
 
 # Existing data from your game
+var coins := 20
+
 var transferred_cards := default_cards.duplicate(true)
 var battle_scene: Control = null
 var display_deck_scene: Control = null

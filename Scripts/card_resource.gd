@@ -5,6 +5,7 @@ enum rank {ONE=1,TWO=2,THREE=3,FOUR=4}
 
 @export var is_unlocked_at_start : bool = false
 @export var is_locked : bool = true
+@export var cost : int = 0
 #VISUAL DATA
 @export_category('visual stats')
 @export var card_name: String

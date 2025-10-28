@@ -158,6 +158,7 @@ y_sort_enabled = true
 polygon = PackedVector2Array(-156, 99, -138, 104, -110, 107, -82, 107, -65, 104, -50, 93, -74, 80, -74, 80, -125, 79, -123, 77)
 
 [connection signal="toggle_display" from="CanvasLayer/CardCollectionViewer" to="Player" method="toggle_able_to_move"]
+[connection signal="new_card_unlocked" from="CanvasLayer/ShopDisplay" to="CanvasLayer/CardCollectionViewer" method="populate_grid"]
 [connection signal="toggle_display" from="CanvasLayer/ShopDisplay" to="Player" method="toggle_able_to_move"]
 [connection signal="interacted_with" from="CardCollectionViewerObject" to="CanvasLayer/CardCollectionViewer" method="display"]
 [connection signal="interacted_with" from="ShopObject" to="CanvasLayer/ShopDisplay" method="_on_shop_object_interacted_with"]

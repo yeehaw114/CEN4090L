@@ -16,14 +16,35 @@ extends Control
 @onready var sold_out_label_middle: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/SoldOutLabel
 @onready var sold_out_label_right: Label = $PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer/SoldOutLabel
 
+@onready var coin_value_label: Label = $PanelContainer2/VBoxContainer/CoinValueLabel
+
 var card_file_path := "res://Assets/Resources/cards/final_cards/"
 
 var card_resources : Array[CardResource] = []
 signal toggle_display(toggle: bool)
+signal new_card_unlocked
 
 func _ready() -> void:
 	card_resources = CardCollection.get_all_locked_cards()
 	update_cards(card_resources)
+	coin_value_label.text = str(GameState.coins)
+	set_coin_values()
+	
+func set_coin_values():
+	if card_left.card_stats:
+		left_cost_label.text = str(card_left.card_stats.cost)+' Coins'
+	if card_middle.card_stats:
+		middle_cost_label.text = str(card_middle.card_stats.cost)+' Coins'
+	if card_right.card_stats:
+		right_cost_label.text = str(card_right.card_stats.cost)+' Coins'
+	
+func spend_coins(value: int):
+	var current_coins = GameState.coins
+	var final_coins = current_coins - value
+	if final_coins < 0:
+		final_coins = 0
+	coin_value_label.text = str(final_coins)
+	GameState.coins = final_coins
 
 func update_card_resources(cards : Array[CardResource]):
 	card_resources = cards
@@ -79,13 +100,25 @@ func hide_panel(index: int):
 		sold_out_label_right.show()
 
 func left_purchase():
-	hide_panel(0)
+	if GameState.coins >= card_left.card_stats.cost:
+		hide_panel(0)
+		CardCollection.set_card_to_unlocked(card_left.card_stats)
+		new_card_unlocked.emit()
+		spend_coins(card_left.card_stats.cost)
 	
 func middle_purchase():
-	hide_panel(1)
+	if GameState.coins >= card_middle.card_stats.cost:
+		hide_panel(1)
+		CardCollection.set_card_to_unlocked(card_middle.card_stats)
+		new_card_unlocked.emit()
+		spend_coins(card_middle.card_stats.cost)
 	
 func right_purchase():
-	hide_panel(2)
+	if GameState.coins >= card_right.card_stats.cost:
+		hide_panel(2)
+		CardCollection.set_card_to_unlocked(card_right.card_stats)
+		new_card_unlocked.emit()
+		spend_coins(card_right.card_stats.cost)
 
 func _on_exit_button_pressed() -> void:
 	hide()

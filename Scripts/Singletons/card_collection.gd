@@ -45,3 +45,9 @@ func get_all_unlocked_cards() -> Array[CardResource]:
 		if !card.is_locked:
 			locked_cards.append(card)
 	return locked_cards
+	
+func set_card_to_unlocked(card_new: CardResource):
+	var locked_cards = get_all_locked_cards()
+	for card in locked_cards:
+		if card == card_new:
+			card.is_locked = false
