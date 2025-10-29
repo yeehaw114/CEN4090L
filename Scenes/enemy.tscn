@@ -59,8 +59,11 @@ layout_mode = 2
 [node name="EnemySprite" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_287tu")
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("4_0830c")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

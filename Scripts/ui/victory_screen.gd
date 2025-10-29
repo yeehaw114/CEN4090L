@@ -10,6 +10,11 @@ var coins_value: int
 var card_resources: Array[CardResource]
 
 func _on_return_button_pressed() -> void:
+	if GameState.boss_time:
+		GameState.coins_current += coins_value
+		GameState.change_scene(GameState.SCENES['lobby'])
+		return
+	
 	print('ATTEMPT TO RETURN TO: '+str(GameState.previous_scene))
 	GameState.coins_current += coins_value
 	print('COINS NEW VALUE: '+str(GameState.coins_current))
@@ -20,13 +25,15 @@ func set_reward_values(coins:int,cards:Array[CardResource]):
 	coins_value = coins
 	var children := card_container.get_children()
 	var index := 0
-	
+	if GameState.boss_time:
+		show_continue()
+		return
 	for card in cards:
 		children[index].show()
 		children[index].card_stats = card
 		children[index].set_values()
-	
-	print("\nREWARD CARD RESOURCES: " + str(cards))
+		index += 1
+		print("\nREWARD CARD RESOURCES: " + str(cards))
 
 func show_continue() -> void:
 	for card in card_container.get_children():

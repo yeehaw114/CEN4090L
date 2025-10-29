@@ -6,7 +6,7 @@ var default_cards : Array[CardResource] = [strike,strike,strike,strike,defend,de
 
 # Existing data from your game
 var coins := 20
-var coins_current := 20
+var coins_current := 0
 var max_health := 20
 var current_health := 20
 
@@ -22,7 +22,8 @@ var current_scene_path: String = ""
 var previous_scene: Node
 var pending_battle_resource: BattleResource = null
 var rooms_cleared: int = 0
-var total_rooms: int = 10
+var total_rooms: int = 2
+var boss_time := false
 var player_alive: bool = true
 var run_active: bool = false
 
@@ -49,6 +50,12 @@ func change_scene(scene_path: String):
 		if SCENES[key] == scene_path:
 			if scene_path == GameState.SCENES["lobby"]:
 				rooms_cleared = 0
+				boss_time = false
+				if player_alive:
+					coins += coins_current
+				coins_current = 0
+				current_health = max_health
+				player_alive = true
 				transferred_cards = default_cards.duplicate(true)
 				
 				print('\nCLEARING ROOMS CLEARED\n')
@@ -99,11 +106,11 @@ func start_run():
 
 func room_cleared():
 	rooms_cleared += 1
+	if rooms_cleared == total_rooms-1:
+		boss_time = true
 
 func player_died():
 	player_alive = false
-	coins_current = 0
-	print('RESETTING COINS')
 	change_scene(SCENES["lobby"])
 
 # --- NEW SECTION: Dynamic loading & unloading ---
