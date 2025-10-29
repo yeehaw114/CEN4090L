@@ -47,6 +47,11 @@ func change_scene(scene_path: String):
 	# If we have this scene already cached, use the preloaded version
 	for key in cached_scenes.keys():
 		if SCENES[key] == scene_path:
+			if scene_path == GameState.SCENES["lobby"]:
+				rooms_cleared = 0
+				transferred_cards = default_cards.duplicate(true)
+				
+				print('\nCLEARING ROOMS CLEARED\n')
 			get_tree().call_deferred("change_scene_to_packed", cached_scenes[key])
 			current_scene_path = scene_path
 			return
@@ -97,6 +102,8 @@ func room_cleared():
 
 func player_died():
 	player_alive = false
+	coins_current = 0
+	print('RESETTING COINS')
 	change_scene(SCENES["lobby"])
 
 # --- NEW SECTION: Dynamic loading & unloading ---

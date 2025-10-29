@@ -10,4 +10,6 @@ func _on_exit_entered(body):
 		call_deferred("go_to_campfire")
 
 func go_to_campfire():
+	GameState.room_cleared()
+	print('ROOMS CLEARED: '+str(GameState.rooms_cleared))
 	GameState.change_scene(GameState.SCENES["campfire"])
