@@ -51,3 +51,12 @@ func set_card_to_unlocked(card_new: CardResource):
 	for card in locked_cards:
 		if card == card_new:
 			card.is_locked = false
+
+func get_reward_options() -> Array[CardResource]:
+	get_all_cards()
+	var reward_cards : Array[CardResource] = []
+	for card in all_cards:
+		if !card.is_locked and !card.is_unlocked_at_start:
+			reward_cards.append(card)
+	return reward_cards
+	

@@ -82,7 +82,6 @@ func _input(event: InputEvent) -> void:
 func handle_current_turn():
 	if game_over:
 		return
-	decide_rewards()
 	if get_active_battle_state() == battle_state.PLAYER_STATUS:
 		#APPLY STATUS EFFECTS TO PLAYER
 		print('handling status effects on player')
@@ -189,7 +188,9 @@ func get_current_state():
 	
 func decide_rewards():
 	var coins := randi_range(battle_resource.coins_min,battle_resource.coins_max)
-	var cards = battle_resource.cards.duplicate() # make a copy to avoid mutating the original
+	#CHANGE THIS TO JUST GRAB ALL UNLOCKED CARDS NOT STRIKE OR DEFEND
+	var cards = CardCollection.get_reward_options().duplicate(true)
+	print('\nREWARD CARDS: '+str(cards))
 	var final_cards: Array[CardResource] = []
 
 	# Make sure there are at least 3 cards to choose from

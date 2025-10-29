@@ -78,14 +78,17 @@ layout_mode = 2
 alignment = 1
 
 [node name="Card" parent="Panel/VBoxContainer/VBoxContainer/CardContainer" instance=ExtResource("3_fmvqe")]
+visible = false
 layout_mode = 2
 is_reward = true
 
 [node name="Card2" parent="Panel/VBoxContainer/VBoxContainer/CardContainer" instance=ExtResource("3_fmvqe")]
+visible = false
 layout_mode = 2
 is_reward = true
 
 [node name="Card3" parent="Panel/VBoxContainer/VBoxContainer/CardContainer" instance=ExtResource("3_fmvqe")]
+visible = false
 layout_mode = 2
 is_reward = true
 

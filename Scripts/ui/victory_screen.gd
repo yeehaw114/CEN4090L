@@ -16,10 +16,12 @@ func _on_return_button_pressed() -> void:
 func set_reward_values(coins:int,cards:Array[CardResource]):
 	coin_reward_label.text = "Coins Earned: " + str(coins)
 	var children := card_container.get_children()
-	for i in range(min(cards.size(), children.size())):
-		var card_node = children[i]
-		card_node.card_stats = cards[i].duplicate(true)
-		card_node.set_values()
+	var index := 0
+	
+	for card in cards:
+		children[index].show()
+		children[index].card_stats = card
+		children[index].set_values()
 	
 	print("\nREWARD CARD RESOURCES: " + str(cards))
 
