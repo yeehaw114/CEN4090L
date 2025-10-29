@@ -11,10 +11,13 @@ var card_resources: Array[CardResource]
 
 func _on_return_button_pressed() -> void:
 	print('ATTEMPT TO RETURN TO: '+str(GameState.previous_scene))
+	GameState.coins_current += coins_value
+	print('COINS NEW VALUE: '+str(GameState.coins_current))
 	GameState.return_to_previous_scene_live()
 
 func set_reward_values(coins:int,cards:Array[CardResource]):
 	coin_reward_label.text = "Coins Earned: " + str(coins)
+	coins_value = coins
 	var children := card_container.get_children()
 	var index := 0
 	

@@ -6,6 +6,7 @@ var default_cards : Array[CardResource] = [strike,strike,strike,strike,defend,de
 
 # Existing data from your game
 var coins := 20
+var coins_current := 20
 var max_health := 20
 var current_health := 20
 
