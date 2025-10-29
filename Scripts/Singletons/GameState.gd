@@ -40,6 +40,39 @@ const SCENES := {
 	"boss": "res://Scenes/BossRoom.tscn"
 }
 
+func save():
+	var card_data = []
+	for card in CardCollection.all_cards:
+		card_data.append(card.to_dict())
+
+	var save_dict = {
+		"coins": coins,
+		"cards": card_data
+	}
+
+	var file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_dict, "\t"))
+	file.close()
+
+func load_game():
+	print('attempting to load game')
+	if not FileAccess.file_exists("user://savegame.json"):
+		print('failed to load game')
+		return
+
+	var file = FileAccess.open("user://savegame.json", FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+
+	if typeof(data) == TYPE_DICTIONARY:
+		coins = data.get("coins", 0)
+		
+		for card_info in data.get("cards", []):
+			for card in CardCollection.all_cards:
+				if card.card_name == card_info.get("card_name"):
+					card.from_dict(card_info)
+
+
 # --- Cached preloaded scenes ---
 var cached_scenes: Dictionary = {}
 

@@ -20,3 +20,12 @@ enum rank {ONE=1,TWO=2,THREE=3,FOUR=4}
 @export_category('rank data')
 @export var character_position : Array[rank]
 @export var enemy_position : Array[rank]
+
+func to_dict():
+	return {
+		"card_name": card_name,
+		"is_locked": is_locked,
+	}
+
+func from_dict(data: Dictionary):
+	is_locked = data.get("is_locked", false)
