@@ -34,9 +34,9 @@ signal took_damage(damage: int)
 
 func _ready():
 	enemy_sprite.texture = sprite
-	health_bar.value = health
-	health_bar.max_value = health
-	health_value_label.text = str(health)+'/'+str(health)
+	health_bar.value = GameState.current_health
+	health_bar.max_value = GameState.max_health
+	health_value_label.text = str(GameState.current_health)+'/'+str(GameState.max_health)
 
 func mouse_entered_body() -> void:
 	if is_able_to_be_selected:

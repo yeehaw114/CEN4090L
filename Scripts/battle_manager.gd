@@ -221,6 +221,7 @@ func _on_end_turn_button_pressed() -> void:
 
 func _on_enemies_all_enemies_died() -> void:
 	game_over = true
+	GameState.current_health = player.health
 
 func _on_player_player_died() -> void:
 	game_over = true
