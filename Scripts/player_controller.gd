@@ -35,6 +35,8 @@ func _physics_process(_delta):
 			if object.name == 'CardViewerCollision':
 				object.display_card_viewer()
 				toggle_able_to_move(false)
+			elif object.name == 'ChestCollision':
+				object.open()
 			
 	
 	velocity = locked_direction * SPEED
