@@ -14,7 +14,7 @@ const BLUR_CONSTANT = 2.5
 @onready var block_label: Label = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
 @onready var status_effect_container: GridContainer = $HBoxContainer/StatusEffectContainer
 @onready var health_value_label: Label = $HBoxContainer/VBoxContainer/HealthBar/HealthValueLabel
-@onready var player_sound_manager: AudioStreamPlayer2D = $PlayerSoundManager
+@onready var player_sound_manager: Node2D = $PlayerSoundManager
 
 var is_able_to_be_selected = false
 var is_dead = false
@@ -62,7 +62,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
-		player_sound_manager.play()
+		player_sound_manager.play_hurt()
 		health_value_label.text = str(health)+'/'+str(max_health)
 	health_bar.value = health
 	if check_if_dead():
@@ -120,6 +120,11 @@ func die():
 	player_died.emit()
 
 func set_status_effect(status_effect: StatusEffect, value: int):
+	if status_effect._type == StatusEffect.type["BUFF"]:
+		player_sound_manager.play_buff()
+	elif status_effect._type == StatusEffect.type["DEBUFF"]:
+		player_sound_manager.play_debuff()
+	
 	for effect in status_effects:
 		if effect.name == status_effect.name:
 			for e in get_status_effect_nodes():

@@ -19,7 +19,7 @@ const BLUR_CONSTANT = 2.5
 @onready var block_texture: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
 @onready var status_effect_container: GridContainer = $VBoxContainer/HBoxContainer/StatusEffectContainer
 @onready var health_value_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/HealthValueLabel
-@onready var enemy_sound_manager: AudioStreamPlayer2D = $EnemySoundManager
+@onready var enemy_sound_manager: Node2D = $EnemySoundManager
 
 @export var actions: Array[Action]
 
@@ -76,7 +76,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
-		enemy_sound_manager.play()
+		enemy_sound_manager.play_attack()
 		health_value_label.text = str(health)+'/'+str(enemy_resource.max_health)
 	health_bar.value = health
 	if check_if_dead():
@@ -161,6 +161,7 @@ func set_block_value(num: int):
 	block_label.text = str(num)
 
 func die():
+	enemy_sound_manager.play_death()
 	is_dead = true
 	set_grey_shader()
 	update_intention()
@@ -170,6 +171,11 @@ func die():
 	enemy_died.emit()
 
 func set_status_effect(status_effect: StatusEffect, value: int):
+	if status_effect._type == StatusEffect.type["BUFF"]:
+		enemy_sound_manager.play_buff()
+	elif status_effect._type == StatusEffect.type["DEBUFF"]:
+		enemy_sound_manager.play_debuff()
+	
 	for effect in status_effects:
 		if effect.name == status_effect.name:
 			for e in get_status_effect_nodes():

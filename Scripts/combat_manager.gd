@@ -110,6 +110,7 @@ func set_player_rank(character: Character, rank: int):
 	character_current_tile.character = null
 	tile_to_move_to.character = character
 	character.global_position = tile_to_move_to.character_position_point.global_position
+	character.player_sound_manager.play_move()
 	print('\nMOVING CHARACTER--------------------')
 	print('moving '+str(character)+' to '+str(rank))
 	print('position to move to: '+str(character.global_position))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1syl8lfndi8q"]
+[gd_scene load_steps=15 format=3 uid="uid://d1syl8lfndi8q"]
 
 [ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/character/enemy.gd" id="2_287tu"]
 [ext_resource type="Texture2D" uid="uid://cx3g6b3i4x7y0" path="res://Assets/Textures/select_target_ring.png" id="3_0830c"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="4_0830c"]
 [ext_resource type="Texture2D" uid="uid://dj5cvo2wfnqry" path="res://Assets/Textures/block_intention.png" id="5_0830c"]
 [ext_resource type="Script" uid="uid://dld5mwiy7c1hi" path="res://Scripts/damage_popup_position.gd" id="6_ghaa6"]
+[ext_resource type="Script" uid="uid://dgjnvbfb6cwy8" path="res://Scripts/enemy_sound_manager.gd" id="7_8uf12"]
 [ext_resource type="AudioStream" uid="uid://bof4x6weubsso" path="res://Assets/Music/Sound Effects/player_attack.wav" id="7_auwsv"]
-[ext_resource type="Script" uid="uid://wnb5co1suipm" path="res://Scripts/player_sound_manager.gd" id="8_8uf12"]
+[ext_resource type="AudioStream" uid="uid://c4nqm0l0jjy3i" path="res://Assets/Music/Sound Effects/Monster_Death2.wav" id="9_po0sg"]
+[ext_resource type="AudioStream" uid="uid://c2qra6hfpxklx" path="res://Assets/Music/Sound Effects/Buff.wav" id="10_haro7"]
+[ext_resource type="AudioStream" uid="uid://bscxrignmurno" path="res://Assets/Music/Sound Effects/Debuff.wav" id="11_56vhr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_287tu"]
 
@@ -134,8 +137,20 @@ size_flags_horizontal = 3
 position = Vector2(17, -55)
 script = ExtResource("6_ghaa6")
 
-[node name="EnemySoundManager" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemySoundManager" type="Node2D" parent="."]
+script = ExtResource("7_8uf12")
+
+[node name="PlayerAttackSound" type="AudioStreamPlayer2D" parent="EnemySoundManager"]
+scale = Vector2(1, 1)
 stream = ExtResource("7_auwsv")
-script = ExtResource("8_8uf12")
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="EnemySoundManager"]
+stream = ExtResource("9_po0sg")
+
+[node name="EnemyBuffSound" type="AudioStreamPlayer2D" parent="EnemySoundManager"]
+stream = ExtResource("10_haro7")
+
+[node name="EnemyDebuffSound" type="AudioStreamPlayer2D" parent="EnemySoundManager"]
+stream = ExtResource("11_56vhr")
 
 [connection signal="took_damage" from="." to="DamagePopupPosition" method="popup"]
