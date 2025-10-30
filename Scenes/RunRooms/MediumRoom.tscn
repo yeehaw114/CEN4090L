@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="7_tsnul"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="8_6j0gx"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfcrv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6j0gx"]
 texture = ExtResource("2_6j0gx")
 0:0/0 = 0
 1:0/0 = 0
@@ -2412,7 +2412,7 @@ texture = ExtResource("2_6j0gx")
 58:39/0 = 0
 59:39/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erf6w"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_km68n"]
 texture = ExtResource("3_km68n")
 6:1/0 = 0
 5:2/0 = 0
@@ -2615,8 +2615,8 @@ texture = ExtResource("3_km68n")
 6:19/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_scg0w"]
-sources/0 = SubResource("TileSetAtlasSource_jfcrv")
-sources/3 = SubResource("TileSetAtlasSource_erf6w")
+sources/0 = SubResource("TileSetAtlasSource_6j0gx")
+sources/3 = SubResource("TileSetAtlasSource_km68n")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j8mo"]
 size = Vector2(145, 119)
