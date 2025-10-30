@@ -141,7 +141,6 @@ script = ExtResource("6_ghaa6")
 script = ExtResource("7_8uf12")
 
 [node name="PlayerAttackSound" type="AudioStreamPlayer2D" parent="EnemySoundManager"]
-scale = Vector2(1, 1)
 stream = ExtResource("7_auwsv")
 
 [node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="EnemySoundManager"]
