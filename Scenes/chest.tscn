@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://biu0om42lrp8e"]
+[gd_scene load_steps=7 format=3 uid="uid://biu0om42lrp8e"]
 
 [ext_resource type="Script" uid="uid://b0e5rp71q8rau" path="res://Scripts/chest.gd" id="1_cjfl1"]
 [ext_resource type="Texture2D" uid="uid://oxrs81kyfwfm" path="res://Assets/Tilesets/tileset Copy.png" id="1_lyb87"]
 [ext_resource type="Script" uid="uid://djj6syjfs0ciu" path="res://Scripts/chest_collision.gd" id="3_bagqn"]
+[ext_resource type="Script" uid="uid://dld5mwiy7c1hi" path="res://Scripts/damage_popup_position.gd" id="4_pmguq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjfl1"]
 atlas = ExtResource("1_lyb87")
@@ -29,3 +30,7 @@ script = ExtResource("3_bagqn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChestCollision"]
 position = Vector2(-18, 1.5)
 shape = SubResource("RectangleShape2D_cjfl1")
+
+[node name="CoinsPopupPosition" type="Marker2D" parent="."]
+position = Vector2(0, -36)
+script = ExtResource("4_pmguq")
