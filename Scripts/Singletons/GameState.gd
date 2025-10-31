@@ -146,6 +146,11 @@ func player_died():
 	player_alive = false
 	change_scene(SCENES["lobby"])
 
+func heal(value: int):
+	current_health += value
+	if current_health > max_health:
+		current_health = max_health
+
 # --- NEW SECTION: Dynamic loading & unloading ---
 
 func _ready():

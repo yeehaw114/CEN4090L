@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://brbnpk4f5pujb"]
+
+[ext_resource type="Texture2D" uid="uid://oxrs81kyfwfm" path="res://Assets/Tilesets/tileset Copy.png" id="1_wj8pf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yab6x"]
+atlas = ExtResource("1_wj8pf")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfo6h"]
+
+[node name="Campfire" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_yab6x")
+
+[node name="CampfireCollision" type="StaticBody2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampfireCollision"]
+shape = SubResource("RectangleShape2D_wfo6h")
