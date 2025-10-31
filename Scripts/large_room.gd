@@ -1,4 +1,8 @@
 extends Node2D
+class_name Room
+
+@export var room_name := 'Foggy Clearing'
+@export var danger := 'Caution Advised'
 
 @onready var exit_zone = $ExitZone
 

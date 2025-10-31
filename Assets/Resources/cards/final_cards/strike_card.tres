@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://mirotg2noub8"
 script = ExtResource("3_pkss0")
 is_unlocked_at_start = true
 is_locked = false
+cost = 0
 card_name = "Strike"
 card_cost = 1
 card_description = "3 dmg"

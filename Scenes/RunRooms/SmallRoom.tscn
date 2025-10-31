@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://encp1lfehwbb"]
 
-[ext_resource type="Script" uid="uid://byjeall8ckfxe" path="res://Scripts/small_room.gd" id="1_joqn7"]
+[ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_606r0"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_3lx42"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_re08b"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="6_606r0"]
@@ -12,7 +12,7 @@ size = Vector2(145, 119)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_joqn7")
+script = ExtResource("1_606r0")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
