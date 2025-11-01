@@ -25,6 +25,10 @@ const grey_shader := preload("res://Assets/Shaders/grey.gdshader")
 var is_currently_selected: bool = false
 var is_able_to_be_selected: bool = true
 
+func _gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print("CLICKED ON CARD:", self)
+
 func set_values() -> void:
 	if card_stats:
 		cost_label.text = str(card_stats.card_cost)

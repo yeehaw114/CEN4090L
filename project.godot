@@ -19,6 +19,7 @@ config/icon="res://Assets/Textures/icon.svg"
 
 GameState="*res://Scripts/Singletons/GameState.gd"
 CardCollection="*res://Scripts/Singletons/card_collection.gd"
+GlobalAudioStreamPlayer="*res://Scripts/Singletons/audio_stream_player.tscn"
 
 [display]
 
@@ -34,6 +35,7 @@ Character=""
 Tile=""
 Player=""
 Interactable=""
+CardArea=""
 
 [input]
 

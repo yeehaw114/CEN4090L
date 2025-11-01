@@ -29,6 +29,7 @@ material = SubResource("ShaderMaterial_eumee")
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 48.0
+mouse_filter = 2
 texture = ExtResource("2_wf8id")
 
 [node name="CostLabel" type="Label" parent="BaseCardSprite"]
@@ -65,6 +66,7 @@ offset_left = 9.0
 offset_top = 130.0
 offset_right = 13.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="playerRank3Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -74,6 +76,7 @@ offset_left = 18.0
 offset_top = 130.0
 offset_right = 22.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="playerRank2Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -83,6 +86,7 @@ offset_left = 27.0
 offset_top = 130.0
 offset_right = 31.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="playerRank1Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -92,6 +96,7 @@ offset_left = 36.0
 offset_top = 130.0
 offset_right = 40.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="enemyRank1Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -101,6 +106,7 @@ offset_left = 56.0
 offset_top = 130.0
 offset_right = 60.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="enemyRank2Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -110,6 +116,7 @@ offset_left = 65.0
 offset_top = 130.0
 offset_right = 69.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="enemyRank3Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -119,6 +126,7 @@ offset_left = 74.0
 offset_top = 130.0
 offset_right = 78.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
 [node name="enemyRank4Texture" type="TextureRect" parent="BaseCardSprite"]
@@ -128,9 +136,10 @@ offset_left = 83.0
 offset_top = 130.0
 offset_right = 87.0
 offset_bottom = 134.0
+mouse_filter = 2
 texture = ExtResource("3_brehn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["CardArea"]]
 position = Vector2(16, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

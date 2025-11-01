@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dckl0ng06ox3i"]
+[gd_scene load_steps=15 format=3 uid="uid://dckl0ng06ox3i"]
 
 [ext_resource type="Script" uid="uid://clyguo5h5h47k" path="res://Scripts/character/Player.gd" id="1_nytcm"]
 [ext_resource type="Resource" uid="uid://dad7jr7v1eil4" path="res://Inventory/playerinventory.tres" id="2_2mse5"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dj5cvo2wfnqry" path="res://Assets/Textures/block_intention.png" id="4_nytcm"]
 [ext_resource type="Script" uid="uid://dld5mwiy7c1hi" path="res://Scripts/damage_popup_position.gd" id="5_ejsiy"]
 [ext_resource type="AudioStream" uid="uid://d2qaa84pqky84" path="res://Assets/Music/Sound Effects/player_hurt.wav" id="6_2mse5"]
-[ext_resource type="PackedScene" uid="uid://dra73teelv3io" path="res://Inventory/inv_ui.tscn" id="7_reotu"]
 [ext_resource type="Script" uid="uid://wnb5co1suipm" path="res://Scripts/player_sound_manager.gd" id="7_wbia7"]
 [ext_resource type="AudioStream" uid="uid://bglak24xhk455" path="res://Assets/Music/Sound Effects/Combat_Movement.wav" id="9_kq7hj"]
 [ext_resource type="AudioStream" uid="uid://c2qra6hfpxklx" path="res://Assets/Music/Sound Effects/Buff.wav" id="10_l1rcp"]
@@ -132,12 +131,5 @@ stream = ExtResource("10_l1rcp")
 
 [node name="PlayerDebuffSound" type="AudioStreamPlayer2D" parent="PlayerSoundManager"]
 stream = ExtResource("11_le1tg")
-
-[node name="Inv_UI" parent="." instance=ExtResource("7_reotu")]
-visible = false
-offset_left = -42.5
-offset_top = -105.5
-offset_right = 42.5
-offset_bottom = -42.5
 
 [connection signal="took_damage" from="." to="DamagePopupPosition" method="popup"]
