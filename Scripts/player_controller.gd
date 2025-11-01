@@ -22,12 +22,27 @@ var last_facing = "down"
 var locked_direction = Vector2.ZERO
 var first_input_locked = false
 var able_to_move := true
+var last_interactable: Node = null
 
 func _ready() -> void:
 	limit_camera(tilemap)
 
 func _physics_process(_delta):
 	handle_movement_input()
+	
+	if interact_raycast.is_colliding():
+		var object = interact_raycast.get_collider()
+		
+		if object.name == "CampfireCollision":
+			# Only show popup if it's not already shown
+			if last_interactable != object:
+				object.show_popup()
+				last_interactable = object
+	else:
+		# Raycast not hitting anything
+		if last_interactable:
+			last_interactable.hide_popup()
+			last_interactable = null
 	
 	if Input.is_action_just_pressed("Interact"):
 		if check_for_interactable():
