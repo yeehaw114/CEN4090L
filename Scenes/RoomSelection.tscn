@@ -1,40 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://w8nm2xlmmtgi"]
+[gd_scene load_steps=4 format=3 uid="uid://w8nm2xlmmtgi"]
 
 [ext_resource type="Script" uid="uid://crnnv5ty5rkwl" path="res://Scripts/RoomSelection.gd" id="1_j4bhn"]
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_wcecl"]
 [ext_resource type="Texture2D" uid="uid://4ueydpqoc4uy" path="res://Assets/Textures/lobby_floor.png" id="2_b3xbg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4bhn"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcecl"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4wja"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -43,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_wcecl")
 script = ExtResource("1_j4bhn")
 
 [node name="TextureRect" type="ColorRect" parent="."]
@@ -52,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0196078, 0.0313726, 0.0313726, 1)
+color = Color(0.0375669, 0.00660722, 0.00571392, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -79,13 +48,12 @@ offset_right = 231.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_j4bhn")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel"]
 layout_mode = 1
@@ -129,7 +97,6 @@ text = "Go To room A"
 [node name="Panel2" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wcecl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel2"]
 layout_mode = 1
@@ -173,7 +140,6 @@ text = "Go To room B"
 [node name="Panel3" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_v4wja")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel3"]
 layout_mode = 1

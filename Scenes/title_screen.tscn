@@ -1,22 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmnrqfsktextv"]
+[gd_scene load_steps=6 format=3 uid="uid://cmnrqfsktextv"]
 
 [ext_resource type="Texture2D" uid="uid://dmmh6iqh5ouvo" path="res://Assets/Textures/title_screen_background.png" id="1_klylv"]
 [ext_resource type="Script" uid="uid://c1nswdafje5rb" path="res://Scripts/ui/title_screen.gd" id="1_p3fck"]
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_twnyg"]
 [ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="3_4gxqj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twnyg"]
 shader = ExtResource("3_4gxqj")
 shader_parameter/amount = 2.265
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55kwv"]
-bg_color = Color(0.065224, 0.0241953, 0.00326082, 1)
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -25,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_twnyg")
 script = ExtResource("1_p3fck")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -48,7 +40,6 @@ offset_top = -194.0
 offset_right = 194.0
 offset_bottom = -44.0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
 
 [node name="MarginContainer" type="MarginContainer" parent="ButtonContainer"]
 layout_mode = 1
@@ -64,6 +55,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="ButtonContainer/MarginContainer/VBoxContainer"]
@@ -107,7 +99,6 @@ offset_right = 300.0
 offset_bottom = 212.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_55kwv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
 layout_mode = 1
