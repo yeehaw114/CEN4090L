@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://347o3jmibjcx"]
+
+[ext_resource type="FontFile" uid="uid://c3mm0ysc7uskf" path="res://Assets/Themes/rainyhearts.ttf" id="1_c2cg5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2cg5"]
+bg_color = Color(0.0177324, 0.0177324, 0.0177324, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ox6s"]
+bg_color = Color(0.054631, 0.00992274, 0.00858113, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kkju"]
+bg_color = Color(0.054631, 0.00992274, 0.00858113, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+default_font = ExtResource("1_c2cg5")
+default_font_size = 18
+Button/styles/normal = SubResource("StyleBoxFlat_c2cg5")
+Panel/styles/panel = SubResource("StyleBoxFlat_2ox6s")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_2kkju")
