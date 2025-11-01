@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c538r0eqm4xck"]
+[gd_scene load_steps=6 format=3 uid="uid://c538r0eqm4xck"]
 
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="1_151om"]
 [ext_resource type="Script" uid="uid://cvumtbxtrlukm" path="res://Scripts/card_collection_viewer_object.gd" id="1_i83ph"]
 [ext_resource type="Script" uid="uid://gdu6p4ehlwx5" path="res://Scripts/card_viewer_collision.gd" id="3_so6ak"]
+[ext_resource type="Texture2D" uid="uid://dhq6q0008t50t" path="res://Assets/Textures/click_popup.png" id="4_bwgye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_151om"]
 size = Vector2(38, 38)
@@ -23,3 +24,10 @@ script = ExtResource("3_so6ak")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardViewerCollision" groups=["Interactable"]]
 position = Vector2(0, -19)
 shape = SubResource("RectangleShape2D_151om")
+
+[node name="ClickPopup" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -56)
+texture = ExtResource("4_bwgye")

@@ -38,6 +38,11 @@ func _physics_process(_delta):
 			if last_interactable != object:
 				object.show_popup()
 				last_interactable = object
+		elif object.name == "CardViewerCollision":
+			# Only show popup if it's not already shown
+			if last_interactable != object:
+				object.show_popup()
+				last_interactable = object
 	else:
 		# Raycast not hitting anything
 		if last_interactable:
