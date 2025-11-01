@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccn2slhbknpu6"]
 
-[ext_resource type="Script" path="res://Scripts/audio_stream_player.gd" id="1_kukuk"]
+[ext_resource type="Script" uid="uid://dx1kp7u33gvhg" path="res://Scripts/audio_stream_player.gd" id="1_kukuk"]
 [ext_resource type="AudioStream" uid="uid://ctoruv1jdhhqf" path="res://Assets/Music/Soundtrack/Dungeon_Music.ogg" id="1_mm0r8"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
