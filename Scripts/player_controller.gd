@@ -82,16 +82,16 @@ func handle_movement_input():
 		return
 	# If no direction is locked, check for new input
 	if not first_input_locked:
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("Up"):
 			locked_direction = Vector2.UP
 			first_input_locked = true
-		elif Input.is_action_pressed("ui_down"):
+		elif Input.is_action_pressed("Down"):
 			locked_direction = Vector2.DOWN
 			first_input_locked = true
-		elif Input.is_action_pressed("ui_left"):
+		elif Input.is_action_pressed("Left"):
 			locked_direction = Vector2.LEFT
 			first_input_locked = true
-		elif Input.is_action_pressed("ui_right"):
+		elif Input.is_action_pressed("Right"):
 			locked_direction = Vector2.RIGHT
 			first_input_locked = true
 	
@@ -99,13 +99,13 @@ func handle_movement_input():
 	if first_input_locked:
 		var still_pressed = false
 		
-		if locked_direction == Vector2.UP and Input.is_action_pressed("ui_up"):
+		if locked_direction == Vector2.UP and Input.is_action_pressed("Up"):
 			still_pressed = true
-		elif locked_direction == Vector2.DOWN and Input.is_action_pressed("ui_down"):
+		elif locked_direction == Vector2.DOWN and Input.is_action_pressed("Down"):
 			still_pressed = true
-		elif locked_direction == Vector2.LEFT and Input.is_action_pressed("ui_left"):
+		elif locked_direction == Vector2.LEFT and Input.is_action_pressed("Left"):
 			still_pressed = true
-		elif locked_direction == Vector2.RIGHT and Input.is_action_pressed("ui_right"):
+		elif locked_direction == Vector2.RIGHT and Input.is_action_pressed("Right"):
 			still_pressed = true
 		
 		# If the locked key is released, unlock direction
