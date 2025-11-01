@@ -38,8 +38,7 @@ func _physics_process(_delta):
 			elif object.name == 'ChestCollision':
 				object.open()
 			elif object.name == 'CampfireCollision':
-				print('heal 10')
-				GameState.heal(10)
+				object.use()
 			
 	
 	velocity = locked_direction * SPEED
