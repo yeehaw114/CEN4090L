@@ -70,6 +70,7 @@ layout_mode = 2
 text = "QUIT GAME"
 
 [node name="SettingsPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(300, 400)
 layout_mode = 1
 anchors_preset = 8
