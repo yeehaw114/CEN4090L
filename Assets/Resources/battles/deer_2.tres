@@ -1,18 +1,22 @@
-[gd_resource type="Resource" script_class="BattleResource" load_steps=9 format=3 uid="uid://couoivijdshec"]
+[gd_resource type="Resource" script_class="BattleResource" load_steps=13 format=3 uid="uid://couoivijdshec"]
 
 [ext_resource type="Resource" uid="uid://bv3l6j5p3op6y" path="res://Assets/Resources/enemies/deer.tres" id="1_k4ty6"]
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="1_ln1s2"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_gnj06"]
-[ext_resource type="Resource" uid="uid://detdhfkxxsff5" path="res://Assets/Resources/cards/strike_card.tres" id="4_cvk1j"]
 [ext_resource type="Resource" uid="uid://cq1rwnf63qmjq" path="res://Assets/Resources/cards/plague_gernade_card.tres" id="6_4a0am"]
 [ext_resource type="Resource" uid="uid://0ip1ck77fjuu" path="res://Assets/Resources/cards/empower_card.tres" id="7_7wp7b"]
 [ext_resource type="Resource" uid="uid://b31qg1xqqc52p" path="res://Assets/Resources/cards/criple_card_test.tres" id="8_6jgd7"]
+[ext_resource type="Resource" uid="uid://bbxocmclha6ev" path="res://Assets/Resources/cards/final_cards/claw_through_card.tres" id="8_wl7ti"]
 [ext_resource type="Resource" uid="uid://c5qokaaq00eh3" path="res://Assets/Resources/cards/fortitude_card_test.tres" id="9_ciwr2"]
+[ext_resource type="Resource" uid="uid://bydu88bjis4od" path="res://Assets/Resources/cards/final_cards/poison_bolt_card.tres" id="9_q5ewa"]
+[ext_resource type="Resource" uid="uid://cjms6yd0xg70q" path="res://Assets/Resources/cards/final_cards/purge_card.tres" id="10_11lxw"]
+[ext_resource type="Resource" uid="uid://dtu1xfu53s7fi" path="res://Assets/Resources/cards/final_cards/last_stand_card.tres" id="12_dc76u"]
+[ext_resource type="Resource" uid="uid://v5urifcg8uwg" path="res://Assets/Resources/cards/final_cards/soilder_arnament.tres" id="12_wl7ti"]
 
 [resource]
 script = ExtResource("1_ln1s2")
 boss = false
-starting_cards = Array[ExtResource("2_gnj06")]([ExtResource("4_cvk1j"), ExtResource("4_cvk1j"), ExtResource("6_4a0am"), ExtResource("6_4a0am"), ExtResource("7_7wp7b"), ExtResource("8_6jgd7"), ExtResource("9_ciwr2")])
+starting_cards = Array[ExtResource("2_gnj06")]([ExtResource("8_wl7ti"), ExtResource("9_q5ewa"), ExtResource("10_11lxw"), ExtResource("12_dc76u"), ExtResource("12_wl7ti")])
 enemy_rank_1 = ExtResource("1_k4ty6")
 enemy_rank_2 = ExtResource("1_k4ty6")
 player_position = 1

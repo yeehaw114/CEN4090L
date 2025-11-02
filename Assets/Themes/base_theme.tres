@@ -89,7 +89,7 @@ corner_radius_bottom_left = 4
 
 [resource]
 default_font = ExtResource("1_c2cg5")
-default_font_size = 18
+default_font_size = 16
 Button/styles/normal = SubResource("StyleBoxFlat_c2cg5")
 HScrollBar/styles/grabber = SubResource("StyleBoxFlat_5k3wj")
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_1mjp0")

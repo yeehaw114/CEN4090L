@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=31 format=3 uid="uid://btaajwyd7swy2"]
 
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_7l6j3"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
 [ext_resource type="Script" uid="uid://bw3704fmcgt8o" path="res://Scripts/battle_manager.gd" id="1_tvmj4"]
 [ext_resource type="Script" uid="uid://ce2cme4pswhcl" path="res://Scripts/ui/ui.gd" id="2_8i1lf"]
@@ -49,6 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_7l6j3")
 script = ExtResource("2_8i1lf")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -81,14 +83,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -18.0
-offset_right = 22.0
-offset_bottom = 5.0
+offset_left = -30.0
+offset_top = -17.0
+offset_right = 10.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 16
 text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MoveCrystalButton" type="TextureButton" parent="."]
 texture_filter = 1
@@ -126,7 +131,10 @@ offset_right = 41.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 16
 text = "END TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CharacterContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
@@ -235,6 +243,8 @@ offset_left = 31.0
 offset_top = -44.0
 offset_right = 159.0
 offset_bottom = -21.0
+theme = ExtResource("1_7l6j3")
+theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="DiscardButton" type="TextureButton" parent="BattleManager/Cards/DrawPile"]
@@ -281,6 +291,8 @@ offset_left = 34.0
 offset_top = -46.0
 offset_right = 162.0
 offset_bottom = -23.0
+theme = ExtResource("1_7l6j3")
+theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="DiscardButton" type="TextureButton" parent="BattleManager/Cards/DiscardPile"]
