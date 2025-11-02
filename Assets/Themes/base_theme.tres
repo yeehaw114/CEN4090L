@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://347o3jmibjcx"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://347o3jmibjcx"]
 
 [ext_resource type="FontFile" uid="uid://c3mm0ysc7uskf" path="res://Assets/Themes/rainyhearts.ttf" id="1_c2cg5"]
 
@@ -38,6 +38,24 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bymbt"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fgdx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ox6s"]
 bg_color = Color(0.054631, 0.00992274, 0.00858113, 1)
@@ -93,6 +111,8 @@ default_font_size = 16
 Button/styles/normal = SubResource("StyleBoxFlat_c2cg5")
 HScrollBar/styles/grabber = SubResource("StyleBoxFlat_5k3wj")
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_1mjp0")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_bymbt")
+HSlider/styles/slider = SubResource("StyleBoxFlat_7fgdx")
 Panel/styles/panel = SubResource("StyleBoxFlat_2ox6s")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_2kkju")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_wgwlk")

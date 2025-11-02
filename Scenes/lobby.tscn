@@ -88,11 +88,6 @@ visible = false
 [node name="ShopDisplay" parent="CanvasLayer" instance=ExtResource("3_o08vn")]
 visible = false
 
-[node name="SaveTest" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "SAVE TEST"
-
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
@@ -167,7 +162,6 @@ polygon = PackedVector2Array(-156, 99, -138, 104, -110, 107, -82, 107, -65, 104,
 [connection signal="toggle_display" from="CanvasLayer/CardCollectionViewer" to="Player" method="toggle_able_to_move"]
 [connection signal="new_card_unlocked" from="CanvasLayer/ShopDisplay" to="CanvasLayer/CardCollectionViewer" method="populate_grid"]
 [connection signal="toggle_display" from="CanvasLayer/ShopDisplay" to="Player" method="toggle_able_to_move"]
-[connection signal="pressed" from="CanvasLayer/SaveTest" to="." method="_on_save_test_pressed"]
 [connection signal="interacted_with" from="CardCollectionViewerObject" to="CanvasLayer/CardCollectionViewer" method="display"]
 [connection signal="interacted_with" from="ShopObject" to="CanvasLayer/ShopDisplay" method="_on_shop_object_interacted_with"]
 [connection signal="body_entered" from="ShopTrigger" to="." method="_on_shop_trigger_body_entered"]

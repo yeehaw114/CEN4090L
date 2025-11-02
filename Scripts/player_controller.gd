@@ -17,6 +17,7 @@ const raycast_down = Vector2(0,25)
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interact_raycast: RayCast2D = $InteractRaycast
+@onready var pause_screen: Control = $CanvasLayer/PauseScreen
 
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
@@ -29,6 +30,11 @@ func _ready() -> void:
 
 func _physics_process(_delta):
 	handle_movement_input()
+	
+	if Input.is_action_just_pressed("Pause") and able_to_move:
+		pause(true)
+	elif Input.is_action_just_pressed("Pause") and !able_to_move:
+		pause(false)
 	
 	if interact_raycast.is_colliding():
 		var object = interact_raycast.get_collider()
@@ -71,6 +77,14 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	update_animation()
+
+func pause(toggle: bool):
+	if toggle:
+		pause_screen.show()
+		able_to_move = false
+	else:
+		pause_screen.hide()
+		able_to_move = true
 
 func check_for_interactable() -> bool:
 	if interact_raycast.is_colliding():
