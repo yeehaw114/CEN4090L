@@ -13,6 +13,7 @@ size = Vector2(145, 119)
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_606r0")
+room_name = "Small Pathway"
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

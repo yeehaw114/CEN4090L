@@ -2417,6 +2417,8 @@ size = Vector2(145, 119)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gyrme")
+room_name = "Open Pastures"
+danger = "Treacherous"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_tgb0s")
