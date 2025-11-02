@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://bemyvn00evh7p"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_a4qd2"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_pv6y6"]
+
+[sub_resource type="Resource" id="Resource_a4qd2"]
+script = ExtResource("1_a4qd2")
+value = 2
+type = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_pv6y6")
+is_unlocked_at_start = false
+is_locked = false
+cost = 10
+card_name = "Shove"
+card_cost = 0
+card_description = "2 dmg"
+card_actions = Array[ExtResource("1_a4qd2")]([SubResource("Resource_a4qd2")])
+character_position = Array[int]([1])
+enemy_position = Array[int]([1, 2, 3, 4])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

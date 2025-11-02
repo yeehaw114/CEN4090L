@@ -8,7 +8,7 @@ const grey_shader := preload("res://Assets/Shaders/grey.gdshader")
 @export var is_reward: bool
 
 @onready var cost_label: Label = $BaseCardSprite/CostLabel
-@onready var description_label: Label = $BaseCardSprite/DescriptionLabel
+@onready var description_label: RichTextLabel = $BaseCardSprite/DescriptionLabel
 @onready var name_label: Label = $BaseCardSprite/NameLabel
 @onready var base_card_sprite: TextureRect = $BaseCardSprite
 

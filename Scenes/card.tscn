@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfixw0merhgge"]
+[gd_scene load_steps=8 format=3 uid="uid://dfixw0merhgge"]
 
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_e6po8"]
 [ext_resource type="Script" uid="uid://djqe6niv4w71f" path="res://Scripts/card.gd" id="1_wf8id"]
 [ext_resource type="Shader" uid="uid://b7ldgj1t2haqs" path="res://Assets/Shaders/grey.gdshader" id="2_eumee"]
 [ext_resource type="Texture2D" uid="uid://bldtba5w4l5db" path="res://Assets/Textures/card_template.png" id="2_wf8id"]
@@ -21,6 +22,7 @@ scale = Vector2(1.25, 1.25)
 pivot_offset = Vector2(48, 72)
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("1_e6po8")
 script = ExtResource("1_wf8id")
 
 [node name="BaseCardSprite" type="TextureRect" parent="."]
@@ -33,31 +35,47 @@ mouse_filter = 2
 texture = ExtResource("2_wf8id")
 
 [node name="CostLabel" type="Label" parent="BaseCardSprite"]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 2.0
-offset_right = 130.0
-offset_bottom = 41.0
-scale = Vector2(0.81, 0.57)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.2
+offset_top = -70.4
+offset_right = 49.2
+offset_bottom = -40.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.48, 0.48)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DescriptionLabel" type="Label" parent="BaseCardSprite"]
+[node name="DescriptionLabel" type="RichTextLabel" parent="BaseCardSprite"]
+custom_minimum_size = Vector2(160, 80)
 layout_mode = 0
-offset_left = 16.0
-offset_top = 97.0
-offset_right = 142.0
-offset_bottom = 120.0
+offset_left = 6.0
+offset_top = 84.0
+offset_right = 168.5
+offset_bottom = 167.0
 scale = Vector2(0.517, 0.47)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NameLabel" type="Label" parent="BaseCardSprite"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 6.0
+offset_top = 4.0
 offset_right = 141.0
-offset_bottom = 29.0
+offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="playerRank4Texture" type="TextureRect" parent="BaseCardSprite"]
 visible = false

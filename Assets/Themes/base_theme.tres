@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://347o3jmibjcx"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://347o3jmibjcx"]
 
 [ext_resource type="FontFile" uid="uid://c3mm0ysc7uskf" path="res://Assets/Themes/rainyhearts.ttf" id="1_c2cg5"]
 
@@ -16,6 +16,28 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k3wj"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mjp0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0215865, 0.00379561, 0.00328246, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ox6s"]
 bg_color = Color(0.054631, 0.00992274, 0.00858113, 1)
@@ -43,9 +65,35 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgwlk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aak48"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0215865, 0.00379561, 0.00328246, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 default_font = ExtResource("1_c2cg5")
 default_font_size = 18
 Button/styles/normal = SubResource("StyleBoxFlat_c2cg5")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_5k3wj")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_1mjp0")
 Panel/styles/panel = SubResource("StyleBoxFlat_2ox6s")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_2kkju")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_wgwlk")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_aak48")
