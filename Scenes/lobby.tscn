@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dijkunqqqrdts"]
+[gd_scene load_steps=16 format=3 uid="uid://dijkunqqqrdts"]
 
 [ext_resource type="Script" uid="uid://8vdp66j7hha3" path="res://Scripts/lobby.gd" id="1_4233d"]
 [ext_resource type="PackedScene" uid="uid://d2rj2qfquesex" path="res://Scenes/card_collection_viewer.tscn" id="2_aghey"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c538r0eqm4xck" path="res://Scenes/card_collection_viewer_object.tscn" id="3_bvheq"]
 [ext_resource type="PackedScene" uid="uid://dij45t62wor7k" path="res://Scenes/shop_display.tscn" id="3_o08vn"]
 [ext_resource type="PackedScene" uid="uid://do1e73n8c4x27" path="res://Scenes/shop_object.tscn" id="6_1updj"]
+[ext_resource type="Texture2D" uid="uid://nok333u5fh7i" path="res://Assets/Textures/card_collection.png" id="6_5ndqc"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="6_bvheq"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="6_jigxi"]
 [ext_resource type="Texture2D" uid="uid://c5volmsjc1bfp" path="res://Assets/Textures/AndresSprites/shop sprite.png" id="7_aghey"]
@@ -112,6 +113,7 @@ layer_2/tile_data = PackedInt32Array(720879, 327682, 1, 655343, 327682, 1, 58980
 [node name="CardCollectionViewerObject" parent="." instance=ExtResource("3_bvheq")]
 y_sort_enabled = true
 position = Vector2(164, 74)
+sprite = ExtResource("6_5ndqc")
 
 [node name="ShopObject" parent="." instance=ExtResource("6_1updj")]
 position = Vector2(111, -92)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c538r0eqm4xck"]
+[gd_scene load_steps=7 format=3 uid="uid://c538r0eqm4xck"]
 
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="1_151om"]
 [ext_resource type="Script" uid="uid://cvumtbxtrlukm" path="res://Scripts/card_collection_viewer_object.gd" id="1_i83ph"]
+[ext_resource type="Texture2D" uid="uid://nok333u5fh7i" path="res://Assets/Textures/card_collection.png" id="3_43hbt"]
 [ext_resource type="Script" uid="uid://gdu6p4ehlwx5" path="res://Scripts/card_viewer_collision.gd" id="3_so6ak"]
 [ext_resource type="Texture2D" uid="uid://dhq6q0008t50t" path="res://Assets/Textures/click_popup.png" id="4_bwgye"]
 
@@ -14,8 +15,7 @@ sprite = ExtResource("1_151om")
 
 [node name="MenuObjectSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -19)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_151om")
+texture = ExtResource("3_43hbt")
 
 [node name="CardViewerCollision" type="StaticBody2D" parent="."]
 collision_layer = 3

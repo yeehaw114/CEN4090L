@@ -65,8 +65,9 @@ func _physics_process(_delta):
 			elif object.name == 'CampfireCollision':
 				object.use()
 			
+	if able_to_move:
+		velocity = locked_direction * SPEED
 	
-	velocity = locked_direction * SPEED
 	move_and_slide()
 	
 	update_animation()
@@ -86,6 +87,7 @@ func toggle_able_to_move(toggle: bool):
 		able_to_move = true
 		return
 	able_to_move = false
+	velocity = Vector2.ZERO
 
 func handle_movement_input():
 	if !able_to_move:
