@@ -52,7 +52,20 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			enemy.take_damage(action.value + character.damage_modifier)
 		elif action.type == action.ACTION_TYPE.DEBUFF:
-			enemy.set_status_effect(action.status_effect, action.value)
+			if action.apply_to_self:
+				character.set_status_effect(action.status_effect, action.value)
+				character.apply_debuffs()
+			else:
+				enemy.set_status_effect(action.status_effect, action.value)
+		elif action.type == action.ACTION_TYPE.BLOCK:
+			player.add_and_set_block_value(action.value)
+		elif action.type == action.ACTION_TYPE.BUFF:
+			if action.apply_to_self:
+				character.set_status_effect(action.status_effect, action.value)
+				character.apply_buffs()
+			else:
+				enemy.set_status_effect(action.status_effect, action.value)
+				enemy.apply_buffs()
 	clear_and_update_cards(card)
 
 func move_card_to_discard(card):

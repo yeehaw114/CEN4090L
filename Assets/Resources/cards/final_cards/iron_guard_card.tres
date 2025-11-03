@@ -8,6 +8,7 @@ script = ExtResource("1_spnvp")
 value = 20
 type = 4
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
