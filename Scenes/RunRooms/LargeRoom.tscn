@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_gyrme"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_m0evg"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_o6oxl"]
-[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="4_ltm6y"]
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="5_atd37"]
+[ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="5_gyrme"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjshl"]
 texture = ExtResource("2_m0evg")
@@ -2412,8 +2412,8 @@ texture = ExtResource("2_m0evg")
 [sub_resource type="TileSet" id="TileSet_tgb0s"]
 sources/0 = SubResource("TileSetAtlasSource_cjshl")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x8ua"]
-size = Vector2(145, 119)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0evg"]
+size = Vector2(88, 82)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gyrme")
@@ -2427,16 +2427,15 @@ layer_0/tile_data = PackedInt32Array(0, 1966080, 20, -1179677, 65536, 1, -111414
 
 [node name="Player" parent="." instance=ExtResource("3_o6oxl")]
 
+[node name="Enemy" parent="." instance=ExtResource("5_atd37")]
+position = Vector2(316, -24)
+
 [node name="ExitZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
 position = Vector2(305, 141)
-shape = SubResource("RectangleShape2D_1x8ua")
+shape = SubResource("RectangleShape2D_m0evg")
 
 [node name="Sprite2D" type="Sprite2D" parent="ExitZone"]
 position = Vector2(304.941, 142.46)
-scale = Vector2(1.20404, 0.930313)
-texture = ExtResource("4_ltm6y")
-
-[node name="Enemy" parent="." instance=ExtResource("5_atd37")]
-position = Vector2(316, -24)
+texture = ExtResource("5_gyrme")

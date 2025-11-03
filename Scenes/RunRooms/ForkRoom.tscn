@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_1nxh2"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_evllc"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_g4bs3"]
-[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="4_p62y7"]
+[ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="4_evllc"]
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="5_ckw5y"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="6_fyqvn"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="7_evllc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf2si"]
-size = Vector2(145, 119)
+size = Vector2(88, 82)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -40,7 +40,7 @@ layer_4/y_sort_enabled = true
 tilemap = NodePath("../TileMap")
 
 [node name="ExitZone" type="Area2D" parent="."]
-position = Vector2(-286, 612)
+position = Vector2(-289, 577)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
 position = Vector2(305, 141)
@@ -48,8 +48,7 @@ shape = SubResource("RectangleShape2D_tf2si")
 
 [node name="Sprite2D" type="Sprite2D" parent="ExitZone"]
 position = Vector2(304.941, 142.46)
-scale = Vector2(1.20404, 0.930313)
-texture = ExtResource("4_p62y7")
+texture = ExtResource("4_evllc")
 
 [node name="Enemy" parent="." instance=ExtResource("5_ckw5y")]
 position = Vector2(-255, 377)
