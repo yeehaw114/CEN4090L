@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=8 format=3 uid="uid://bk0m43hq2iy8d"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_vi3ll"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_75gcx"]
+[ext_resource type="Resource" uid="uid://dy0qgeh7m6kfn" path="res://Assets/Resources/StatusEffects/pestilence.tres" id="2_adma7"]
+[ext_resource type="Texture2D" uid="uid://47rukfk5xrml" path="res://Assets/Textures/AndresSprites/Enemy Bat Sprite.png" id="3_2bm04"]
+
+[sub_resource type="Resource" id="Resource_d2ovd"]
+script = ExtResource("1_vi3ll")
+value = 1
+type = 3
+status_effect = ExtResource("2_adma7")
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_dokgd"]
+script = ExtResource("1_vi3ll")
+value = 5
+type = 4
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_tvphk"]
+script = ExtResource("1_vi3ll")
+value = 5
+type = 0
+status_effect_value = 0
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_75gcx")
+max_health = 10
+enemy_texture = ExtResource("3_2bm04")
+actions = Array[ExtResource("1_vi3ll")]([SubResource("Resource_d2ovd"), SubResource("Resource_dokgd"), SubResource("Resource_tvphk")])
+metadata/_custom_type_script = "uid://dbdemlyd4pbbv"

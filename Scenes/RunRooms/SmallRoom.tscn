@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://encp1lfehwbb"]
+[gd_scene load_steps=12 format=3 uid="uid://encp1lfehwbb"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_606r0"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_3lx42"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_re08b"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_3tgvn"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="6_606r0"]
+[ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_gegft"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="6_m6wl8"]
+[ext_resource type="Resource" uid="uid://couoivijdshec" path="res://Assets/Resources/battles/deer_2.tres" id="8_un7kl"]
+[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_wjgnv"]
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="13_tf2si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smr5v"]
@@ -40,7 +44,7 @@ tilemap = NodePath("../TileMap")
 
 [node name="Enemy" parent="." instance=ExtResource("13_tf2si")]
 position = Vector2(-296, 164)
-battle_resource = ExtResource("6_606r0")
+battle_resources = Array[ExtResource("5_3tgvn")]([ExtResource("6_gegft"), ExtResource("6_606r0"), ExtResource("8_un7kl"), ExtResource("9_wjgnv")])
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-602, 161)
