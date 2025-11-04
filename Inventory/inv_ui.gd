@@ -19,12 +19,11 @@ func update_slots():
 		slots[i].update(inv.slots[i])
 
 func _process(delta):
-	#if Input.is_action_just_pressed("i"):
-		#if is_open:
-			#close()
-		#else:
-			#open()
-	pass
+	if Input.is_action_just_pressed("i"):
+		if is_open:
+			close()
+		else:
+			open()
 
 func open():
 	visible = true

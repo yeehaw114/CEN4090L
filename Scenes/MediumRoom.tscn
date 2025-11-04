@@ -1,10 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://nebwfw80r7lt"]
+[gd_scene load_steps=13 format=3 uid="uid://nebwfw80r7lt"]
 
 [ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_r1cx8"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_537ox"]
 [ext_resource type="Texture2D" uid="uid://oxrs81kyfwfm" path="res://Assets/Tilesets/tileset Copy.png" id="3_fp3bb"]
-[ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_erf6w"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="6_gft67"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="6_mfmo7"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="8_erf6w"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="12_hewmn"]
@@ -2663,7 +2661,7 @@ texture = ExtResource("12_hewmn")
 [node name="Enemy" parent="." instance=ExtResource("13_e6dov")]
 texture_filter = 1
 position = Vector2(316, -24)
-battle_resources = Array[ExtResource("6_gft67")]([ExtResource("14_xftum"), ExtResource("6_erf6w")])
+battle_resource = ExtResource("14_xftum")
 
 [node name="Player" parent="." instance=ExtResource("6_mfmo7")]
 

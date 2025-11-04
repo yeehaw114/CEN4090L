@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://o8o20a6mxny"]
+[gd_scene load_steps=27 format=3 uid="uid://o8o20a6mxny"]
 
 [ext_resource type="Script" uid="uid://davrco1nbat1f" path="res://Scripts/player_controller.gd" id="1_xods4"]
 [ext_resource type="Texture2D" uid="uid://bts58b82i05x7" path="res://Assets/Textures/player_overworld_walk_down.png" id="2_f4tgq"]
 [ext_resource type="Texture2D" uid="uid://dh1oonrb1xj83" path="res://Assets/Textures/player_overworld_walk_right.png" id="3_l4anu"]
 [ext_resource type="Texture2D" uid="uid://cxd4iccsjh0v5" path="res://Assets/Textures/player_overworld_walk_up.png" id="4_j4txs"]
-[ext_resource type="PackedScene" uid="uid://dsvhja4baeqre" path="res://Scenes/pause_screen.tscn" id="5_l4anu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8dubh"]
 atlas = ExtResource("2_f4tgq")
@@ -211,8 +210,3 @@ zoom = Vector2(2, 2)
 [node name="InteractRaycast" type="RayCast2D" parent="."]
 target_position = Vector2(0, -25)
 collision_mask = 2
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("5_l4anu")]
-visible = false

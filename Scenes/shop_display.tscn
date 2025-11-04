@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dij45t62wor7k"]
+[gd_scene load_steps=5 format=3 uid="uid://dij45t62wor7k"]
 
-[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_uji41"]
 [ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_wnvar"]
 [ext_resource type="Script" uid="uid://xkfu47h4s8lc" path="res://Scripts/ui/shop_display.gd" id="1_xbukj"]
 [ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="2_v160x"]
@@ -16,7 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_uji41")
 script = ExtResource("1_xbukj")
 
 [node name="ColorRect" type="ColorRect" parent="."]

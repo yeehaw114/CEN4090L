@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1syl8lfndi8q"]
+[gd_scene load_steps=15 format=3 uid="uid://d1syl8lfndi8q"]
 
 [ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/character/enemy.gd" id="2_287tu"]
-[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="3_56vhr"]
 [ext_resource type="Texture2D" uid="uid://cx3g6b3i4x7y0" path="res://Assets/Textures/select_target_ring.png" id="3_0830c"]
 [ext_resource type="Texture2D" uid="uid://bftt4w431ccvi" path="res://Assets/Textures/attack_intenttion.png" id="4_287tu"]
 [ext_resource type="Texture2D" uid="uid://bdcupfodlk85a" path="res://Assets/Textures/deer_corrupted_idle.png" id="4_0830c"]
@@ -17,17 +16,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_287tu"]
 bg_color = Color(0.215018, 0.0732119, 0.0222391, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0830c"]
 bg_color = Color(0.290785, 0.707762, 0.161001, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
 
 [node name="Character" type="Node2D" groups=["Character"]]
 scale = Vector2(1.7, 1.7)
@@ -42,10 +33,9 @@ texture = ExtResource("3_0830c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = -32.3529
-offset_top = -80.0
+offset_top = -89.4118
 offset_right = 67.6471
-offset_bottom = 23.0
-theme = ExtResource("3_56vhr")
+offset_bottom = 13.5882
 
 [node name="IntentionContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -128,9 +118,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -7.29416
-offset_top = -3.76467
+offset_top = -4.88232
 offset_right = 35.7058
-offset_bottom = 19.2353
+offset_bottom = 18.1177
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.37, 0.37)

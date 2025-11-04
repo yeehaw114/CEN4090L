@@ -9,7 +9,6 @@ script = ExtResource("1_bbe4k")
 value = 10
 type = 0
 status_effect_value = 0
-apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]

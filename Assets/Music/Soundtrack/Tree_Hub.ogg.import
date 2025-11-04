@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Tree_Hub.ogg-11b958391dcdd1b106bfbc6e684995f5
 
 [params]
 
-loop=true
-loop_offset=0.0
-bpm=0.0
+loop=false
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4
