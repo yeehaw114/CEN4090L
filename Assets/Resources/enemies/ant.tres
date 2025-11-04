@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=7 format=3 uid="uid://d2635cm2cp1br"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_0gg8s"]
+[ext_resource type="Texture2D" uid="uid://bcfd1yxaact0d" path="res://Assets/Textures/AndresSprites/Enemy Ant Sprite.png" id="2_8iiet"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_q73y0"]
+
+[sub_resource type="Resource" id="Resource_v2g5c"]
+script = ExtResource("1_0gg8s")
+value = 5
+type = 0
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_8jcol"]
+script = ExtResource("1_0gg8s")
+value = 10
+type = 0
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_6i2ls"]
+script = ExtResource("1_0gg8s")
+value = 20
+type = 0
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_q73y0")
+max_health = 10
+enemy_texture = ExtResource("2_8iiet")
+actions = Array[ExtResource("1_0gg8s")]([SubResource("Resource_v2g5c"), SubResource("Resource_8jcol"), SubResource("Resource_6i2ls")])
+metadata/_custom_type_script = "uid://dbdemlyd4pbbv"

@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 [gd_resource type="Resource" script_class="BattleResource" load_steps=16 format=3 uid="uid://couoivijdshec"]
+=======
+[gd_resource type="Resource" script_class="BattleResource" load_steps=15 format=3 uid="uid://couoivijdshec"]
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="1_ln1s2"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_gnj06"]
 [ext_resource type="Resource" uid="uid://cq1rwnf63qmjq" path="res://Assets/Resources/cards/plague_gernade_card.tres" id="6_4a0am"]
 [ext_resource type="Resource" uid="uid://b2n1c5bkqci3u" path="res://Assets/Resources/enemies/snake.tres" id="6_wpb8k"]
 [ext_resource type="Resource" uid="uid://0ip1ck77fjuu" path="res://Assets/Resources/cards/empower_card.tres" id="7_7wp7b"]
+<<<<<<< HEAD
 [ext_resource type="Resource" path="res://Assets/Resources/enemies/ant.tres" id="7_11lxw"]
 [ext_resource type="Resource" uid="uid://b31qg1xqqc52p" path="res://Assets/Resources/cards/criple_card_test.tres" id="8_6jgd7"]
 [ext_resource type="Resource" path="res://Assets/Resources/cards/final_cards/claw_through_card.tres" id="8_wl7ti"]
@@ -15,15 +20,33 @@
 [ext_resource type="Resource" path="res://Assets/Resources/cards/final_cards/balanced_strike.tres" id="14_dc76u"]
 [ext_resource type="Resource" path="res://Assets/Resources/cards/final_cards/even_strike.tres" id="14_wpb8k"]
 [ext_resource type="Resource" path="res://Assets/Resources/cards/final_cards/rusty_blade.tres" id="14_x88np"]
+=======
+[ext_resource type="Resource" uid="uid://d2635cm2cp1br" path="res://Assets/Resources/enemies/ant.tres" id="7_11lxw"]
+[ext_resource type="Resource" uid="uid://b31qg1xqqc52p" path="res://Assets/Resources/cards/criple_card_test.tres" id="8_6jgd7"]
+[ext_resource type="Resource" uid="uid://bbxocmclha6ev" path="res://Assets/Resources/cards/final_cards/claw_through_card.tres" id="8_wl7ti"]
+[ext_resource type="Resource" uid="uid://bk0m43hq2iy8d" path="res://Assets/Resources/enemies/bat.tres" id="8_wpb8k"]
+[ext_resource type="Resource" uid="uid://c5qokaaq00eh3" path="res://Assets/Resources/cards/fortitude_card_test.tres" id="9_ciwr2"]
+[ext_resource type="Resource" uid="uid://ddbx2kol3lawp" path="res://Assets/Resources/cards/final_cards/corroded_defence.tres" id="14_11lxw"]
+[ext_resource type="Resource" uid="uid://ejtswg844n7p" path="res://Assets/Resources/cards/final_cards/balanced_strike.tres" id="14_dc76u"]
+[ext_resource type="Resource" uid="uid://dmjmcmxkkneeh" path="res://Assets/Resources/cards/final_cards/even_strike.tres" id="14_wpb8k"]
+[ext_resource type="Resource" uid="uid://b31mdjokcpx8a" path="res://Assets/Resources/cards/final_cards/rusty_blade.tres" id="14_x88np"]
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [resource]
 script = ExtResource("1_ln1s2")
 boss = false
 starting_cards = Array[ExtResource("2_gnj06")]([ExtResource("8_wl7ti"), ExtResource("14_dc76u"), ExtResource("14_x88np"), ExtResource("14_11lxw"), ExtResource("14_wpb8k")])
+<<<<<<< HEAD
 enemy_rank_1 = ExtResource("6_wpb8k")
 enemy_rank_2 = ExtResource("7_11lxw")
 enemy_rank_3 = ExtResource("8_wpb8k")
 enemy_rank_4 = ExtResource("9_dc76u")
+=======
+enemy_rank_1 = ExtResource("1_k4ty6")
+enemy_rank_2 = ExtResource("7_11lxw")
+enemy_rank_3 = ExtResource("8_wpb8k")
+enemy_rank_4 = ExtResource("1_k4ty6")
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 player_position = 1
 coins_min = 6
 coins_max = 7

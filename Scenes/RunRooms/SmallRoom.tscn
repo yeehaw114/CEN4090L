@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=14 format=3 uid="uid://encp1lfehwbb"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://encp1lfehwbb"]
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_606r0"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_3lx42"]
@@ -7,10 +11,15 @@
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="6_606r0"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_gegft"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="6_m6wl8"]
+<<<<<<< HEAD
 [ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_un7kl"]
 [ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_wjgnv"]
 [ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_wjgnv"]
 [ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_8644t"]
+=======
+[ext_resource type="Resource" uid="uid://couoivijdshec" path="res://Assets/Resources/battles/deer_2.tres" id="8_un7kl"]
+[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_wjgnv"]
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="13_tf2si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smr5v"]
@@ -46,7 +55,11 @@ tilemap = NodePath("../TileMap")
 
 [node name="Enemy" parent="." instance=ExtResource("13_tf2si")]
 position = Vector2(-296, 164)
+<<<<<<< HEAD
 battle_resources = Array[ExtResource("5_3tgvn")]([ExtResource("6_gegft"), ExtResource("6_606r0"), ExtResource("9_wjgnv"), ExtResource("9_un7kl"), ExtResource("10_wjgnv"), ExtResource("11_8644t")])
+=======
+battle_resources = Array[ExtResource("5_3tgvn")]([ExtResource("6_gegft"), ExtResource("6_606r0"), ExtResource("8_un7kl"), ExtResource("9_wjgnv")])
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-602, 161)

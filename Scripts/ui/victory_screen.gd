@@ -18,6 +18,7 @@ func _on_return_button_pressed() -> void:
 	print('ATTEMPT TO RETURN TO: '+str(GameState.previous_scene))
 	GameState.coins_current += coins_value
 	print('COINS NEW VALUE: '+str(GameState.coins_current))
+	GlobalAudioStreamPlayer.play_dungeon_music()
 	GameState.return_to_previous_scene_live()
 
 func set_reward_values(coins:int,cards:Array[CardResource]):

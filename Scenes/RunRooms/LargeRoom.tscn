@@ -1,18 +1,24 @@
+<<<<<<< HEAD
 [gd_scene load_steps=16 format=3 uid="uid://cba2vurrsygg2"]
+=======
+[gd_scene load_steps=13 format=3 uid="uid://cba2vurrsygg2"]
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_gyrme"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_m0evg"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_o6oxl"]
-[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="4_ltm6y"]
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="5_atd37"]
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_b1e5q"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="5_gyrme"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_8opkq"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_j28o3"]
 [ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="8_qcf1s"]
+<<<<<<< HEAD
 [ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_j28o3"]
 [ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_qcf1s"]
 [ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_u80ud"]
+=======
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjshl"]
 texture = ExtResource("2_m0evg")
@@ -2420,11 +2426,13 @@ texture = ExtResource("2_m0evg")
 [sub_resource type="TileSet" id="TileSet_tgb0s"]
 sources/0 = SubResource("TileSetAtlasSource_cjshl")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x8ua"]
-size = Vector2(145, 119)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0evg"]
+size = Vector2(88, 82)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gyrme")
+room_name = "Open Pastures"
+danger = "Treacherous"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_tgb0s")
@@ -2435,18 +2443,18 @@ layer_0/tile_data = PackedInt32Array(0, 1966080, 20, -1179677, 65536, 1, -111414
 
 [node name="Enemy" parent="." instance=ExtResource("5_atd37")]
 position = Vector2(316, -24)
+<<<<<<< HEAD
 battle_resources = Array[ExtResource("5_b1e5q")]([ExtResource("6_8opkq"), ExtResource("7_j28o3"), ExtResource("8_qcf1s"), ExtResource("9_j28o3"), ExtResource("10_qcf1s"), ExtResource("11_u80ud")])
+=======
+battle_resources = Array[ExtResource("5_b1e5q")]([ExtResource("6_8opkq"), ExtResource("7_j28o3"), ExtResource("8_qcf1s")])
+>>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [node name="ExitZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
 position = Vector2(305, 141)
-shape = SubResource("RectangleShape2D_1x8ua")
+shape = SubResource("RectangleShape2D_m0evg")
 
 [node name="Sprite2D" type="Sprite2D" parent="ExitZone"]
 position = Vector2(304.941, 142.46)
-scale = Vector2(1.20404, 0.930313)
-texture = ExtResource("4_ltm6y")
-
-[node name="Enemy" parent="." instance=ExtResource("5_atd37")]
-position = Vector2(316, -24)
+texture = ExtResource("5_gyrme")
