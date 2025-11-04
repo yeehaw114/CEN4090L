@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=15 format=3 uid="uid://k83g6r48l3qs"]
-=======
-[gd_scene load_steps=13 format=3 uid="uid://k83g6r48l3qs"]
->>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_adjii"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_r37mg"]
@@ -11,17 +7,11 @@
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_38bbn"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_1fy8r"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_05mxj"]
-<<<<<<< HEAD
 [ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_38bbn"]
 [ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_ec5pq"]
 [ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_1fy8r"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="10_m45b7"]
 [ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_05mxj"]
-=======
-[ext_resource type="Resource" uid="uid://couoivijdshec" path="res://Assets/Resources/battles/deer_2.tres" id="8_r1owe"]
-[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_ec5pq"]
-[ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="10_m45b7"]
->>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="11_r37mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smr5v"]
@@ -60,11 +50,7 @@ offset_bottom = -10.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_68cm8")]
 position = Vector2(496, 236)
-<<<<<<< HEAD
 battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("9_ec5pq"), ExtResource("9_38bbn"), ExtResource("10_1fy8r"), ExtResource("11_05mxj")])
-=======
-battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("8_r1owe"), ExtResource("9_ec5pq")])
->>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(1140, 69)
@@ -79,11 +65,7 @@ texture = ExtResource("10_m45b7")
 
 [node name="Enemy2" parent="." instance=ExtResource("4_68cm8")]
 position = Vector2(1365, -14)
-<<<<<<< HEAD
 battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("9_ec5pq"), ExtResource("9_38bbn"), ExtResource("10_1fy8r"), ExtResource("11_05mxj")])
-=======
-battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("8_r1owe"), ExtResource("9_ec5pq")])
->>>>>>> parent of 7935ab3 (Revert "Merge branch 'main' of https://github.com/yeehaw114/CEN4090L")
 
 [node name="Chest" parent="." instance=ExtResource("11_r37mg")]
 position = Vector2(425, 205)
