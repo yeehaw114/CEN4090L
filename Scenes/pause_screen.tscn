@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" uid="uid://duc3blx3mm0nu" path="res://Scenes/pause_screen.gd" id="1_8py1w"]
 [ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_xub4q"]
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="3_hl5t3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jb6in"]
 shader = ExtResource("1_xub4q")
 shader_parameter/amount = 2.265
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gua7"]
-bg_color = Color(0.065224, 0.0241953, 0.00326082, 1)
 
 [node name="PauseScreen" type="Control"]
 layout_mode = 3
@@ -17,7 +15,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_hl5t3")
 script = ExtResource("1_8py1w")
+bus_name = "Master"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_jb6in")
@@ -28,7 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="PausePanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(600, 425)
 layout_mode = 1
 anchors_preset = 8
@@ -42,9 +42,9 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0gua7")
+theme = ExtResource("3_hl5t3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,19 +52,125 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="UnPauseButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="UnPauseButton" type="Button" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 text = "RESUME"
 
-[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 text = "QUIT GAME"
+
+[node name="SettingsPanel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Volume:"
+
+[node name="VolumeSilder" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="QuitSettingsButton" type="Button" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Exit Settings"
+
+[node name="QuitLossProgressPanel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitLossProgressPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="QuitLossProgressPanel/VBoxContainer"]
+layout_mode = 2
+text = "Are you Certain?"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="QuitLossProgressPanel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Quiting now means losing all current progress in the forest
+
+All cards unlocked and coins cached will be saved"
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitLossProgressPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="CancelQuitButton" type="Button" parent="QuitLossProgressPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Press on"
+
+[node name="ConfirmQuitButton" type="Button" parent="QuitLossProgressPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Save and Quit"
+
+[connection signal="pressed" from="PausePanel/VBoxContainer/UnPauseButton" to="." method="_on_un_pause_button_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PausePanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/VBoxContainer/QuitSettingsButton" to="." method="_on_quit_settings_button_pressed"]
+[connection signal="pressed" from="QuitLossProgressPanel/VBoxContainer/HBoxContainer/CancelQuitButton" to="." method="_on_cancel_quit_button_pressed"]
+[connection signal="pressed" from="QuitLossProgressPanel/VBoxContainer/HBoxContainer/ConfirmQuitButton" to="." method="_on_confirm_quit_button_pressed"]

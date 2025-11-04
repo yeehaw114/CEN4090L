@@ -82,6 +82,7 @@ func change_scene(scene_path: String):
 	for key in cached_scenes.keys():
 		if SCENES[key] == scene_path:
 			if scene_path == GameState.SCENES["lobby"]:
+				GlobalAudioStreamPlayer.play_lobby_music()
 				rooms_cleared = 0
 				boss_time = false
 				if player_alive:
@@ -122,6 +123,7 @@ func return_to_previous_scene_live():
 	# Reattach the previous live scene
 	tree.root.add_child(previous_scene)
 	tree.current_scene = previous_scene
+	GlobalAudioStreamPlayer.play_dungeon_music()
 	current_scene_path = ""  # optional, since this is a live restore
 
 	print("Returned to live previous scene:", previous_scene.name)
