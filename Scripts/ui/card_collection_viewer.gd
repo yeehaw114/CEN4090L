@@ -1,7 +1,6 @@
 extends Control
 
-@onready var grid_container: GridContainer = $MarginContainer/Panel/MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/GridContainer
-
+@onready var grid_container: GridContainer = $MarginContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/GridContainer
 
 signal toggle_display(toggle: bool)
 signal populate_card_collection(cards: Array[CardResource])

@@ -11,7 +11,6 @@ value = 1
 type = 3
 status_effect = ExtResource("2_nqjqx")
 status_effect_value = 0
-apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]

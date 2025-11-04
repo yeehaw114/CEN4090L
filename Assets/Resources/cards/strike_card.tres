@@ -9,7 +9,6 @@ script = ExtResource("1_q0muu")
 value = 3
 type = 0
 status_effect_value = 0
-apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
@@ -22,6 +21,6 @@ card_cost = 1
 card_description = "3 dmg"
 card_image = ExtResource("2_x51ho")
 card_actions = Array[ExtResource("1_q0muu")]([SubResource("Resource_dmua7")])
-character_position = Array[int]([1, 2, 3, 4])
-enemy_position = Array[int]([1, 2, 3, 4])
+character_position = Array[int]([1, 2])
+enemy_position = Array[int]([1, 2])
 metadata/_custom_type_script = "uid://dda632fu6blsg"

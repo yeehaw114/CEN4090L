@@ -8,7 +8,7 @@ const grey_shader := preload("res://Assets/Shaders/grey.gdshader")
 @export var is_reward: bool
 
 @onready var cost_label: Label = $BaseCardSprite/CostLabel
-@onready var description_label: RichTextLabel = $BaseCardSprite/DescriptionLabel
+@onready var description_label: Label = $BaseCardSprite/DescriptionLabel
 @onready var name_label: Label = $BaseCardSprite/NameLabel
 @onready var base_card_sprite: TextureRect = $BaseCardSprite
 
@@ -24,10 +24,6 @@ const grey_shader := preload("res://Assets/Shaders/grey.gdshader")
 
 var is_currently_selected: bool = false
 var is_able_to_be_selected: bool = true
-
-func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print("CLICKED ON CARD:", self)
 
 func set_values() -> void:
 	if card_stats:

@@ -8,7 +8,6 @@ script = ExtResource("1_spnvp")
 value = 20
 type = 4
 status_effect_value = 0
-apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
@@ -16,7 +15,7 @@ script = ExtResource("2_fa3cx")
 is_unlocked_at_start = false
 is_locked = true
 cost = 15
-card_name = "Iron Guard"
+card_name = "Iron Card"
 card_cost = 2
 card_description = "20 block"
 card_actions = Array[ExtResource("1_spnvp")]([SubResource("Resource_spnvp")])

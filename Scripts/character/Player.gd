@@ -158,7 +158,15 @@ func aply_status_effects():
 		elif status._type == status.type.BUFF:
 			apply_buffs()
 		elif status._type == status.type.DEBUFF:
-			apply_debuffs()
+			match status._stat:
+					status.stat.DAMAGE:
+						damage_decrease = status.count
+						print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
+					status.stat.BLOCK:
+						block_decrease = status.count
+						print('\n'+'UPDATING BLOCK MODIFER: '+str(block_modifier))
+					status.stat.CRIT:
+						pass
 	set_damage_and_block_modifer()
 
 func apply_buffs():
@@ -173,20 +181,6 @@ func apply_buffs():
 						block_increase = status.count
 					status.stat.CRIT:
 						pass
-	set_damage_and_block_modifer()
-
-func apply_debuffs():
-	for status in status_effects:
-		if status._type == status.type.DEBUFF:
-			match status._stat:
-				status.stat.DAMAGE:
-					damage_decrease = status.count
-					print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
-				status.stat.BLOCK:
-					block_decrease = status.count
-					print('\n'+'UPDATING BLOCK MODIFER: '+str(block_modifier))
-				status.stat.CRIT:
-					pass
 	set_damage_and_block_modifer()
 
 func clear_status_effects():
