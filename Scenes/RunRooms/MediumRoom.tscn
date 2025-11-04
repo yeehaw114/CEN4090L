@@ -1,28 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6idr0ahn2xqv"]
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-[ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_6j0gx"]
-[ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_6j0gx"]
-[ext_resource type="Texture2D" uid="uid://oxrs81kyfwfm" path="res://Assets/Tilesets/tileset Copy.png" id="3_km68n"]
-=======
 [ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_m4bxq"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_m4bxq"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_m4bxq"]
-[ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_m4bxq"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_m4bxq"]
-[ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_m4bxq"]
->>>>>>> Stashed changes
-=======
-[ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_m4bxq"]
-[ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_m4bxq"]
->>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="4_72cti"]
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="5_6srg7"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="6_qgtl0"]
@@ -34,7 +13,7 @@ size = Vector2(145, 119)
 
 [node name="MediumRoom" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_6j0gx")
+script = ExtResource("1_m4bxq")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
