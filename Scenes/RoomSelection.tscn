@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://crnnv5ty5rkwl" path="res://Scripts/RoomSelection.gd" id="1_j4bhn"]
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_wcecl"]
 [ext_resource type="Texture2D" uid="uid://4ueydpqoc4uy" path="res://Assets/Textures/lobby_floor.png" id="2_b3xbg"]
-[ext_resource type="Script" path="res://Scripts/ui/room_selection_panel.gd" id="3_v4wja"]
+[ext_resource type="Script" uid="uid://cg7eh05a4emhl" path="res://Scripts/ui/room_selection_panel.gd" id="3_v4wja"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

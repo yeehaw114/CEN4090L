@@ -2,20 +2,15 @@
 
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="1_ln1s2"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_gnj06"]
-
 [ext_resource type="Resource" uid="uid://cq1rwnf63qmjq" path="res://Assets/Resources/cards/plague_gernade_card.tres" id="6_4a0am"]
 [ext_resource type="Resource" uid="uid://b2n1c5bkqci3u" path="res://Assets/Resources/enemies/snake.tres" id="6_wpb8k"]
-
 [ext_resource type="Resource" uid="uid://0ip1ck77fjuu" path="res://Assets/Resources/cards/empower_card.tres" id="7_7wp7b"]
 [ext_resource type="Resource" uid="uid://d2635cm2cp1br" path="res://Assets/Resources/enemies/ant.tres" id="7_11lxw"]
-
 [ext_resource type="Resource" uid="uid://b31qg1xqqc52p" path="res://Assets/Resources/cards/criple_card_test.tres" id="8_6jgd7"]
 [ext_resource type="Resource" uid="uid://bbxocmclha6ev" path="res://Assets/Resources/cards/final_cards/claw_through_card.tres" id="8_wl7ti"]
 [ext_resource type="Resource" uid="uid://bk0m43hq2iy8d" path="res://Assets/Resources/enemies/bat.tres" id="8_wpb8k"]
-
 [ext_resource type="Resource" uid="uid://c5qokaaq00eh3" path="res://Assets/Resources/cards/fortitude_card_test.tres" id="9_ciwr2"]
 [ext_resource type="Resource" uid="uid://cofy1kqay6t68" path="res://Assets/Resources/enemies/owl.tres" id="9_dc76u"]
-
 [ext_resource type="Resource" uid="uid://ddbx2kol3lawp" path="res://Assets/Resources/cards/final_cards/corroded_defence.tres" id="14_11lxw"]
 [ext_resource type="Resource" uid="uid://ejtswg844n7p" path="res://Assets/Resources/cards/final_cards/balanced_strike.tres" id="14_dc76u"]
 [ext_resource type="Resource" uid="uid://dmjmcmxkkneeh" path="res://Assets/Resources/cards/final_cards/even_strike.tres" id="14_wpb8k"]
