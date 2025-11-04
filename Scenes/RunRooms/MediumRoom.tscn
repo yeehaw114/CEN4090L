@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6idr0ahn2xqv"]
+[gd_scene load_steps=19 format=3 uid="uid://b6idr0ahn2xqv"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_6j0gx"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_6j0gx"]
@@ -8,10 +8,12 @@
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="6_qgtl0"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="7_tsnul"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="7_ywlwi"]
-[ext_resource type="Resource" uid="uid://couoivijdshec" path="res://Assets/Resources/battles/deer_2.tres" id="8_0elwm"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="8_6j0gx"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="8_km68n"]
 [ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_42t47"]
+[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_ywlwi"]
+[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_0elwm"]
+[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_42t47"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6j0gx"]
 texture = ExtResource("2_6j0gx")
@@ -2654,7 +2656,7 @@ layer_4/tile_data = PackedInt32Array(1114083, 327683, 2, 1179619, 327683, 3, 124
 [node name="Enemy" parent="." instance=ExtResource("5_6srg7")]
 texture_filter = 1
 position = Vector2(316, -24)
-battle_resources = Array[ExtResource("5_qgtl0")]([ExtResource("6_qgtl0"), ExtResource("7_ywlwi"), ExtResource("8_0elwm"), ExtResource("9_42t47")])
+battle_resources = Array[ExtResource("5_qgtl0")]([ExtResource("6_qgtl0"), ExtResource("7_ywlwi"), ExtResource("9_42t47"), ExtResource("9_ywlwi"), ExtResource("10_0elwm"), ExtResource("11_42t47")])
 
 [node name="Player" parent="." instance=ExtResource("7_tsnul")]
 

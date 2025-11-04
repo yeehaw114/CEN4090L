@@ -6,6 +6,7 @@ const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 const attack_intention_texture = preload("res://Assets/Textures/attack_intenttion.png")
 const block_intention_texture = preload("res://Assets/Textures/block_intention.png")
 const debuff_intention_texture = preload("res://Assets/Textures/debuff_intention.png")
+const buff_intention_texture = preload("res://Assets/Textures/debuff_intention.png")
 
 const status_effect_scene = preload("res://Scenes/status_effect.tscn")
 const BLUR_CONSTANT = 2.5
@@ -116,6 +117,8 @@ func update_intention():
 		intention_texture.texture = block_intention_texture
 	if current_action.type == Action.ACTION_TYPE.DEBUFF:
 		intention_texture.texture = debuff_intention_texture
+	if current_action.type == Action.ACTION_TYPE.BUFF:
+		intention_texture.texture = buff_intention_texture
 
 func hide_intention():
 	intention_label.modulate = Color(1, 1, 1, 0)

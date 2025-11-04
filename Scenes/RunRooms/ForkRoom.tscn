@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvgekkjcnqbgg"]
+[gd_scene load_steps=15 format=3 uid="uid://bvgekkjcnqbgg"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_1nxh2"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_evllc"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="7_evllc"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="7_fyqvn"]
 [ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_ckw5y"]
+[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="10_vwx70"]
+[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="11_tplue"]
+[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="12_co1lm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf2si"]
 size = Vector2(88, 82)
@@ -55,11 +58,11 @@ texture = ExtResource("4_evllc")
 
 [node name="Enemy" parent="." instance=ExtResource("5_ckw5y")]
 position = Vector2(-255, 377)
-battle_resources = Array[ExtResource("6_ckw5y")]([ExtResource("7_fyqvn"), ExtResource("6_fyqvn"), ExtResource("9_ckw5y")])
+battle_resources = Array[ExtResource("6_ckw5y")]([ExtResource("7_fyqvn"), ExtResource("6_fyqvn"), ExtResource("9_ckw5y"), ExtResource("10_vwx70"), ExtResource("11_tplue"), ExtResource("12_co1lm")])
 
 [node name="Enemy2" parent="." instance=ExtResource("5_ckw5y")]
 position = Vector2(322, 359)
-battle_resources = Array[ExtResource("6_ckw5y")]([ExtResource("7_fyqvn"), ExtResource("6_fyqvn"), ExtResource("9_ckw5y")])
+battle_resources = Array[ExtResource("6_ckw5y")]([ExtResource("7_fyqvn"), ExtResource("6_fyqvn"), ExtResource("9_ckw5y"), ExtResource("10_vwx70"), ExtResource("11_tplue"), ExtResource("12_co1lm")])
 
 [node name="Chest" parent="." instance=ExtResource("7_evllc")]
 position = Vector2(234, 415)

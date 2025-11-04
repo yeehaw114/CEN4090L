@@ -156,6 +156,8 @@ func enemies_do_action(enemes: Array):
 				e.add_and_set_block_value(enemy_action.value + e.block_modifier)
 			elif enemy_action.type == Action.ACTION_TYPE.DEBUFF:
 				player.set_status_effect(enemy_action.status_effect, enemy_action.value)
+			elif enemy_action.type == Action.ACTION_TYPE.BUFF:
+				e.set_status_effect(enemy_action.status_effect, enemy_action.value)
 			
 func enemies_apply_dot(enemies: Array):
 	for e in enemies:

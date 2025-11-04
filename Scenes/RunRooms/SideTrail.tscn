@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8301d8m7k84v"]
+[gd_scene load_steps=15 format=3 uid="uid://b8301d8m7k84v"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_slylv"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_ufgen"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_2n7qn"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_qxlfe"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_5jqe4"]
-[ext_resource type="Resource" uid="uid://couoivijdshec" path="res://Assets/Resources/battles/deer_2.tres" id="8_70r17"]
+[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_h12e7"]
 [ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="9_naps7"]
+[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_2n7qn"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="10_fqp51"]
+[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_qxlfe"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="11_wuu63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smr5v"]
@@ -47,7 +49,7 @@ offset_bottom = -10.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_h12e7")]
 position = Vector2(429, 314)
-battle_resources = Array[ExtResource("5_2n7qn")]([ExtResource("6_qxlfe"), ExtResource("7_5jqe4"), ExtResource("8_70r17"), ExtResource("9_naps7")])
+battle_resources = Array[ExtResource("5_2n7qn")]([ExtResource("6_qxlfe"), ExtResource("7_5jqe4"), ExtResource("9_naps7"), ExtResource("9_h12e7"), ExtResource("10_2n7qn"), ExtResource("11_qxlfe")])
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-257, 558)
@@ -62,7 +64,7 @@ texture = ExtResource("10_fqp51")
 
 [node name="Enemy2" parent="." instance=ExtResource("4_h12e7")]
 position = Vector2(-236, 310)
-battle_resources = Array[ExtResource("5_2n7qn")]([ExtResource("6_qxlfe"), ExtResource("7_5jqe4"), ExtResource("8_70r17"), ExtResource("9_naps7")])
+battle_resources = Array[ExtResource("5_2n7qn")]([ExtResource("6_qxlfe"), ExtResource("7_5jqe4"), ExtResource("9_naps7"), ExtResource("9_h12e7"), ExtResource("10_2n7qn"), ExtResource("11_qxlfe")])
 
 [node name="Chest" parent="." instance=ExtResource("11_wuu63")]
 position = Vector2(-25, 558)
