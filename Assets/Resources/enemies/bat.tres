@@ -11,6 +11,7 @@ value = 1
 type = 3
 status_effect = ExtResource("2_adma7")
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Resource" id="Resource_dokgd"]
@@ -18,6 +19,7 @@ script = ExtResource("1_vi3ll")
 value = 5
 type = 4
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Resource" id="Resource_tvphk"]
@@ -25,6 +27,7 @@ script = ExtResource("1_vi3ll")
 value = 5
 type = 0
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]

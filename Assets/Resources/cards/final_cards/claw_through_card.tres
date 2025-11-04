@@ -8,6 +8,7 @@ script = ExtResource("1_cccri")
 value = 5
 type = 0
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Resource" id="Resource_0yvdl"]
@@ -15,6 +16,7 @@ script = ExtResource("1_cccri")
 value = 5
 type = 0
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
