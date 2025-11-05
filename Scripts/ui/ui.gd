@@ -20,6 +20,9 @@ extends Control
 @onready var victory_screen: Control = $VictoryScreen
 @onready var pause_screen: Control = $PauseScreen
 
+@onready var battle_sound_manager: Node2D = $BattleSoundManager
+
+
 var move_crystal_normal = Rect2(Vector2(0,0),Vector2(32,32))
 var move_crystal_selected = Rect2(Vector2(32,0),Vector2(32,32))
 var move_crystal_empty = Rect2(Vector2(64,0),Vector2(64,32))
@@ -105,11 +108,13 @@ func on_draw_button_pressed() -> void:
 
 func display_game_over_screen():
 	#get_tree().paused = true;
+	battle_sound_manager.play_loss()
 	battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
 	game_over_screen.show()
 	
 func display_victory_screen():
 	#get_tree().paused = true;
+	battle_sound_manager.play_won()
 	battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
 	victory_screen.show()
 	

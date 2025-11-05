@@ -1,8 +1,10 @@
 extends Control
 
-@onready var grid_container: GridContainer = $MarginContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/GridContainer
+@onready var grid_container: GridContainer = $MarginContainer/Panel/MarginContainer2/VBoxContainer/MarginContainer/ScrollContainer/GridContainer
+
 
 signal toggle_display(toggle: bool)
+signal populate_card_collection(cards: Array[CardResource])
 
 var card_file_path := "res://Assets/Resources/cards/final_cards/"
 const card_scene := preload("res://Scenes/card.tscn")
@@ -23,35 +25,9 @@ func populate_grid():
 	for child in grid_container.get_children():
 		child.queue_free()
 
-	# Open dir
-	var dir := DirAccess.open(card_file_path)
-	if dir == null:
-		push_error("Could not open directory: " + card_file_path)
-		return
-
-	var unlocked: Array = []
-	var locked: Array = []
-
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		# skip directories and hidden entries like '.' '..'
-		if not dir.current_is_dir() and not file_name.begins_with("."):
-			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
-				var file_path := card_file_path + file_name
-				var card_resource := ResourceLoader.load(file_path)
-				if card_resource:
-					# Defensive check: make sure is_locked property exists and is a bool
-					if card_resource.is_locked:
-						locked.append(card_resource)
-					else:
-						unlocked.append(card_resource)
-				else:
-					push_warning("Failed to load resource: " + file_path)
-		file_name = dir.get_next()
-	dir.list_dir_end()
-
-	# Add unlocked first, then locked
+	var unlocked = CardCollection.get_all_unlocked_cards()
+	var locked = CardCollection.get_all_locked_cards()
+	
 	for res in unlocked + locked:
 		var card_instance = card_scene.instantiate()
 		card_instance.card_stats = res
@@ -59,6 +35,8 @@ func populate_grid():
 		card_instance.call_deferred("set_values")
 		if card_instance.card_stats.is_locked:
 			card_instance.apply_greyscale()
+			
+	populate_card_collection.emit(locked)
 
 	# Debug info
 	print("populate_grid: unlocked=", unlocked.size(), " locked=", locked.size())

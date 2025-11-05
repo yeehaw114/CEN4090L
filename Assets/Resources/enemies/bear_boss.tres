@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=5 format=3 uid="uid://bdx5ugvmelsah"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_bbe4k"]
+[ext_resource type="Texture2D" uid="uid://bovs3etw6ep5f" path="res://Assets/Textures/AndresSprites/Bear Battle SPrite.png" id="2_8l5b7"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_odvpw"]
+
+[sub_resource type="Resource" id="Resource_in81h"]
+script = ExtResource("1_bbe4k")
+value = 10
+type = 0
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_odvpw")
+max_health = 30
+enemy_texture = ExtResource("2_8l5b7")
+actions = Array[ExtResource("1_bbe4k")]([SubResource("Resource_in81h")])
+metadata/_custom_type_script = "uid://dbdemlyd4pbbv"

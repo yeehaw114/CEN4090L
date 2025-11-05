@@ -17,11 +17,13 @@ const raycast_down = Vector2(0,25)
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interact_raycast: RayCast2D = $InteractRaycast
+@onready var pause_screen: Control = $CanvasLayer/PauseScreen
 
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
 var first_input_locked = false
 var able_to_move := true
+var last_interactable: Node = null
 
 func _ready() -> void:
 	limit_camera(tilemap)
@@ -29,17 +31,60 @@ func _ready() -> void:
 func _physics_process(_delta):
 	handle_movement_input()
 	
+	if Input.is_action_just_pressed("Pause") and able_to_move:
+		pause(true)
+	elif Input.is_action_just_pressed("Pause") and !able_to_move:
+		pause(false)
+	
+	if interact_raycast.is_colliding():
+		var object = interact_raycast.get_collider()
+		
+		if object.name == "CampfireCollision":
+			# Only show popup if it's not already shown
+			if last_interactable != object:
+				object.show_popup()
+				last_interactable = object
+		elif object.name == "CardViewerCollision":
+			# Only show popup if it's not already shown
+			if last_interactable != object:
+				object.show_popup()
+				last_interactable = object
+		elif object.name == "ChestCollision":
+			# Only show popup if it's not already shown
+			if last_interactable != object:
+				object.show_popup()
+				last_interactable = object
+	else:
+		# Raycast not hitting anything
+		if last_interactable:
+			last_interactable.hide_popup()
+			last_interactable = null
+	
 	if Input.is_action_just_pressed("Interact"):
 		if check_for_interactable():
 			var object = get_raycast_object()
 			if object.name == 'CardViewerCollision':
 				object.display_card_viewer()
 				toggle_able_to_move(false)
+			elif object.name == 'ChestCollision':
+				object.open()
+			elif object.name == 'CampfireCollision':
+				object.use()
+			
+	if able_to_move:
+		velocity = locked_direction * SPEED
 	
-	velocity = locked_direction * SPEED
 	move_and_slide()
 	
 	update_animation()
+
+func pause(toggle: bool):
+	if toggle:
+		pause_screen.show()
+		able_to_move = false
+	else:
+		pause_screen.hide()
+		able_to_move = true
 
 func check_for_interactable() -> bool:
 	if interact_raycast.is_colliding():
@@ -56,22 +101,23 @@ func toggle_able_to_move(toggle: bool):
 		able_to_move = true
 		return
 	able_to_move = false
+	velocity = Vector2.ZERO
 
 func handle_movement_input():
 	if !able_to_move:
 		return
 	# If no direction is locked, check for new input
 	if not first_input_locked:
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("Up"):
 			locked_direction = Vector2.UP
 			first_input_locked = true
-		elif Input.is_action_pressed("ui_down"):
+		elif Input.is_action_pressed("Down"):
 			locked_direction = Vector2.DOWN
 			first_input_locked = true
-		elif Input.is_action_pressed("ui_left"):
+		elif Input.is_action_pressed("Left"):
 			locked_direction = Vector2.LEFT
 			first_input_locked = true
-		elif Input.is_action_pressed("ui_right"):
+		elif Input.is_action_pressed("Right"):
 			locked_direction = Vector2.RIGHT
 			first_input_locked = true
 	
@@ -79,13 +125,13 @@ func handle_movement_input():
 	if first_input_locked:
 		var still_pressed = false
 		
-		if locked_direction == Vector2.UP and Input.is_action_pressed("ui_up"):
+		if locked_direction == Vector2.UP and Input.is_action_pressed("Up"):
 			still_pressed = true
-		elif locked_direction == Vector2.DOWN and Input.is_action_pressed("ui_down"):
+		elif locked_direction == Vector2.DOWN and Input.is_action_pressed("Down"):
 			still_pressed = true
-		elif locked_direction == Vector2.LEFT and Input.is_action_pressed("ui_left"):
+		elif locked_direction == Vector2.LEFT and Input.is_action_pressed("Left"):
 			still_pressed = true
-		elif locked_direction == Vector2.RIGHT and Input.is_action_pressed("ui_right"):
+		elif locked_direction == Vector2.RIGHT and Input.is_action_pressed("Right"):
 			still_pressed = true
 		
 		# If the locked key is released, unlock direction

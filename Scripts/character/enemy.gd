@@ -6,6 +6,7 @@ const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 const attack_intention_texture = preload("res://Assets/Textures/attack_intenttion.png")
 const block_intention_texture = preload("res://Assets/Textures/block_intention.png")
 const debuff_intention_texture = preload("res://Assets/Textures/debuff_intention.png")
+const buff_intention_texture = preload("res://Assets/Textures/debuff_intention.png")
 
 const status_effect_scene = preload("res://Scenes/status_effect.tscn")
 const BLUR_CONSTANT = 2.5
@@ -19,7 +20,7 @@ const BLUR_CONSTANT = 2.5
 @onready var block_texture: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
 @onready var status_effect_container: GridContainer = $VBoxContainer/HBoxContainer/StatusEffectContainer
 @onready var health_value_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/HealthValueLabel
-@onready var enemy_sound_manager: AudioStreamPlayer2D = $EnemySoundManager
+@onready var enemy_sound_manager: Node2D = $EnemySoundManager
 
 @export var actions: Array[Action]
 
@@ -76,7 +77,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
-		enemy_sound_manager.play()
+		enemy_sound_manager.play_attack()
 		health_value_label.text = str(health)+'/'+str(enemy_resource.max_health)
 	health_bar.value = health
 	if check_if_dead():
@@ -116,6 +117,8 @@ func update_intention():
 		intention_texture.texture = block_intention_texture
 	if current_action.type == Action.ACTION_TYPE.DEBUFF:
 		intention_texture.texture = debuff_intention_texture
+	if current_action.type == Action.ACTION_TYPE.BUFF:
+		intention_texture.texture = buff_intention_texture
 
 func hide_intention():
 	intention_label.modulate = Color(1, 1, 1, 0)
@@ -161,6 +164,7 @@ func set_block_value(num: int):
 	block_label.text = str(num)
 
 func die():
+	enemy_sound_manager.play_death()
 	is_dead = true
 	set_grey_shader()
 	update_intention()
@@ -170,6 +174,11 @@ func die():
 	enemy_died.emit()
 
 func set_status_effect(status_effect: StatusEffect, value: int):
+	if status_effect._type == StatusEffect.type["BUFF"]:
+		enemy_sound_manager.play_buff()
+	elif status_effect._type == StatusEffect.type["DEBUFF"]:
+		enemy_sound_manager.play_debuff()
+	
 	for effect in status_effects:
 		if effect.name == status_effect.name:
 			for e in get_status_effect_nodes():

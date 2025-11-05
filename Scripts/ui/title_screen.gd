@@ -7,6 +7,10 @@ extends Control
 func _on_play_button_pressed() -> void:
 	GameState.change_scene(GameState.SCENES["lobby"])
 
+func _on_continue_button_pressed() -> void:
+	GameState.load_game()
+	GameState.change_scene(GameState.SCENES["lobby"])
+
 func _on_settings_button_pressed() -> void:
 	button_container.hide()
 	blur_screen.show()

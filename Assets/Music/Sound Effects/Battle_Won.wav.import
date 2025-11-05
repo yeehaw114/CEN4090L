@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlvajwo5fnm76"
+path="res://.godot/imported/Battle_Won.wav-658e0723d7c5fc23310c3895e2688270.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/Battle_Won.wav"
+dest_files=["res://.godot/imported/Battle_Won.wav-658e0723d7c5fc23310c3895e2688270.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

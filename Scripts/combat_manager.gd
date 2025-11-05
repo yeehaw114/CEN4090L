@@ -46,13 +46,27 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 		return
 	if card.card_stats.card_cost > current_energy:
 		return
+	if enemy.is_dead:
+		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			enemy.take_damage(action.value + character.damage_modifier)
-			clear_and_update_cards(card)
 		elif action.type == action.ACTION_TYPE.DEBUFF:
-			enemy.set_status_effect(action.status_effect, action.value)
-			clear_and_update_cards(card)
+			if action.apply_to_self:
+				character.set_status_effect(action.status_effect, action.value)
+				character.apply_debuffs()
+			else:
+				enemy.set_status_effect(action.status_effect, action.value)
+		elif action.type == action.ACTION_TYPE.BLOCK:
+			player.add_and_set_block_value(action.value)
+		elif action.type == action.ACTION_TYPE.BUFF:
+			if action.apply_to_self:
+				character.set_status_effect(action.status_effect, action.value)
+				character.apply_buffs()
+			else:
+				enemy.set_status_effect(action.status_effect, action.value)
+				enemy.apply_buffs()
+	clear_and_update_cards(card)
 
 func move_card_to_discard(card):
 	cards.discard_pile.move_card_to_discard(card)
@@ -67,18 +81,19 @@ func cast_card_on_player(character: Character, card: Card) -> void:
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			character.take_damage(action.value)
-			clear_and_update_cards(card)
 		elif action.type == action.ACTION_TYPE.BLOCK:
-			clear_and_update_cards(card)
 			character.add_and_set_block_value(action.value + character.block_modifier)
 		elif action.type == action.ACTION_TYPE.BUFF:
-			clear_and_update_cards(card)
 			character.set_status_effect(action.status_effect, action.value)
 			character.apply_buffs()
+		elif action.type == action.ACTION_TYPE.DEBUFF:
+			character.set_status_effect(action.status_effect, action.value)
+	clear_and_update_cards(card)
 			
 func clear_and_update_cards(card):
 	cards.card_unselected.emit()
 	use_energy(card.card_stats.card_cost)
+	energy_changed.emit(current_energy)
 	energy_changed.emit(current_energy)
 	cards.currently_selected_card = null
 	cards.discard_pile.move_card_to_discard(card)
@@ -110,6 +125,7 @@ func set_player_rank(character: Character, rank: int):
 	character_current_tile.character = null
 	tile_to_move_to.character = character
 	character.global_position = tile_to_move_to.character_position_point.global_position
+	character.player_sound_manager.play_move()
 	print('\nMOVING CHARACTER--------------------')
 	print('moving '+str(character)+' to '+str(rank))
 	print('position to move to: '+str(character.global_position))
@@ -140,6 +156,8 @@ func enemies_do_action(enemes: Array):
 				e.add_and_set_block_value(enemy_action.value + e.block_modifier)
 			elif enemy_action.type == Action.ACTION_TYPE.DEBUFF:
 				player.set_status_effect(enemy_action.status_effect, enemy_action.value)
+			elif enemy_action.type == Action.ACTION_TYPE.BUFF:
+				e.set_status_effect(enemy_action.status_effect, enemy_action.value)
 			
 func enemies_apply_dot(enemies: Array):
 	for e in enemies:

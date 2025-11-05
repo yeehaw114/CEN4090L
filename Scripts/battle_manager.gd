@@ -4,7 +4,7 @@ extends Node2D
 @onready var combat_manager: Node2D = $CombatManager
 
 @onready var battle_resource : BattleResource
-const battle_resource_test := preload("res://Assets/Resources/battles/deer_2.tres")
+const battle_resource_test := preload("res://Assets/Resources/battles/test.tres")
 
 var currently_selected_enemy: Character
 var game_over := false
@@ -82,7 +82,6 @@ func _input(event: InputEvent) -> void:
 func handle_current_turn():
 	if game_over:
 		return
-	decide_rewards()
 	if get_active_battle_state() == battle_state.PLAYER_STATUS:
 		#APPLY STATUS EFFECTS TO PLAYER
 		print('handling status effects on player')
@@ -189,7 +188,9 @@ func get_current_state():
 	
 func decide_rewards():
 	var coins := randi_range(battle_resource.coins_min,battle_resource.coins_max)
-	var cards = battle_resource.cards.duplicate() # make a copy to avoid mutating the original
+	#CHANGE THIS TO JUST GRAB ALL UNLOCKED CARDS NOT STRIKE OR DEFEND
+	var cards = CardCollection.get_reward_options().duplicate(true)
+	print('\nREWARD CARDS: '+str(cards))
 	var final_cards: Array[CardResource] = []
 
 	# Make sure there are at least 3 cards to choose from
@@ -220,6 +221,7 @@ func _on_end_turn_button_pressed() -> void:
 
 func _on_enemies_all_enemies_died() -> void:
 	game_over = true
+	GameState.current_health = player.health
 
 func _on_player_player_died() -> void:
 	game_over = true

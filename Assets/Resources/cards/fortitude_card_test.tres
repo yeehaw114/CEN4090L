@@ -11,12 +11,14 @@ value = 1
 type = 2
 status_effect = ExtResource("2_yqmni")
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
 script = ExtResource("2_kcyxa")
 is_unlocked_at_start = false
 is_locked = true
+cost = 0
 card_name = "Fortitude Test"
 card_cost = 0
 card_description = "Apply 1 fortitude"

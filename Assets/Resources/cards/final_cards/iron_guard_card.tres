@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=4 format=3 uid="uid://y8leply5cb2"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_spnvp"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_fa3cx"]
+
+[sub_resource type="Resource" id="Resource_spnvp"]
+script = ExtResource("1_spnvp")
+value = 20
+type = 4
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_fa3cx")
+is_unlocked_at_start = false
+is_locked = true
+cost = 15
+card_name = "Iron Guard"
+card_cost = 2
+card_description = "20 block"
+card_actions = Array[ExtResource("1_spnvp")]([SubResource("Resource_spnvp")])
+character_position = Array[int]([4])
+enemy_position = Array[int]([])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

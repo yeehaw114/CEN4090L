@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=9 format=3 uid="uid://cofy1kqay6t68"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_lfe6e"]
+[ext_resource type="Resource" uid="uid://b02av4pft06cs" path="res://Assets/Resources/StatusEffects/fortitude.tres" id="2_ymktw"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_yuosh"]
+[ext_resource type="Resource" uid="uid://bdwj7i5gmypmi" path="res://Assets/Resources/StatusEffects/strength.tres" id="3_bkpve"]
+[ext_resource type="Texture2D" uid="uid://c1ktj70j3t6j7" path="res://Assets/Textures/owl.png" id="3_xlf0l"]
+
+[sub_resource type="Resource" id="Resource_bkpve"]
+script = ExtResource("1_lfe6e")
+value = 5
+type = 4
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_iv35a"]
+script = ExtResource("1_lfe6e")
+value = 5
+type = 0
+status_effect = ExtResource("2_ymktw")
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_gkv8m"]
+script = ExtResource("1_lfe6e")
+value = 1
+type = 2
+status_effect = ExtResource("3_bkpve")
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_yuosh")
+max_health = 15
+enemy_texture = ExtResource("3_xlf0l")
+actions = Array[ExtResource("1_lfe6e")]([SubResource("Resource_bkpve"), SubResource("Resource_iv35a"), SubResource("Resource_gkv8m")])
+metadata/_custom_type_script = "uid://dbdemlyd4pbbv"

@@ -7,3 +7,10 @@ enum ACTION_TYPE {DAMAGE, HEAL, BUFF, DEBUFF, BLOCK}
 @export var type: ACTION_TYPE
 @export var status_effect: StatusEffect
 @export var status_effect_value: int
+@export var apply_to_self := false
+
+func to_dict():
+	return {
+		"value": value,
+		"type": type,
+	}

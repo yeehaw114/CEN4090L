@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ditihgvg3vwbo"
+path="res://.godot/imported/Cave_Footstep.wav-f102f373eaacfb6baef8a94eb4f46380.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/Cave_Footstep.wav"
+dest_files=["res://.godot/imported/Cave_Footstep.wav-f102f373eaacfb6baef8a94eb4f46380.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BattleResource" load_steps=5 format=3 uid="uid://d3ravvv4evhi8"]
+
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="1_ykav1"]
+[ext_resource type="Resource" uid="uid://cofy1kqay6t68" path="res://Assets/Resources/enemies/owl.tres" id="2_5ign1"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="2_pr6af"]
+[ext_resource type="Resource" uid="uid://d2635cm2cp1br" path="res://Assets/Resources/enemies/ant.tres" id="3_js8vi"]
+
+[resource]
+script = ExtResource("2_pr6af")
+boss = false
+starting_cards = Array[ExtResource("1_ykav1")]([])
+enemy_rank_1 = ExtResource("2_5ign1")
+enemy_rank_2 = ExtResource("3_js8vi")
+enemy_rank_3 = ExtResource("3_js8vi")
+player_position = 3
+coins_min = 3
+coins_max = 5
+cards = Array[ExtResource("1_ykav1")]([])
+metadata/_custom_type_script = "uid://d6nkb4bfujhr"

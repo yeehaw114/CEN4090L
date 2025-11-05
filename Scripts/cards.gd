@@ -40,17 +40,26 @@ func attempt_to_select_card():
 		print('REWARD CARD SELECTED: '+str(card))
 
 func raycast_check_for_card():
-	print('RAYCAST FOR CARDS')
+	print("RAYCAST FOR CARDS")
 	var space_state = get_viewport().world_2d.direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_viewport().get_mouse_position()
 	parameters.collide_with_areas = true
 	parameters.collision_mask = 1
-	var result = space_state.intersect_point(parameters)
-	if result.size() > 0:
-		if result[0].collider.get_parent().is_in_group("Card"):
-			print('CLICKED ON CARD: '+ str(result[0].collider.get_parent()))
-			return result[0].collider.get_parent()
+
+	var results = space_state.intersect_point(parameters)
+
+	for hit in results:
+		var collider = hit.collider
+		if collider is Area2D:
+			var node = collider
+			while node:
+				if node.is_in_group("Card"):
+					print("CLICKED ON CARD:", node)
+					return node
+				node = node.get_parent()
+
+	print("NO CARD CLICKED")
 	return null
 
 func set_cards():

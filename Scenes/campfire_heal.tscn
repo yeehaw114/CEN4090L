@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://brbnpk4f5pujb"]
+
+[ext_resource type="Texture2D" uid="uid://bkc85i3t7dke" path="res://Assets/Textures/campfire_lit.png" id="1_wj8pf"]
+[ext_resource type="Script" uid="uid://cxu0htlv6bsyi" path="res://Scripts/campfire_heal.gd" id="1_yab6x"]
+[ext_resource type="Script" uid="uid://0k5l6027f8t5" path="res://Scripts/campfire_collision.gd" id="3_wfo6h"]
+[ext_resource type="Texture2D" uid="uid://dhq6q0008t50t" path="res://Assets/Textures/click_popup.png" id="4_aoxpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfo6h"]
+
+[node name="Campfire" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_yab6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wj8pf")
+
+[node name="CampfireCollision" type="StaticBody2D" parent="."]
+collision_layer = 3
+script = ExtResource("3_wfo6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampfireCollision"]
+shape = SubResource("RectangleShape2D_wfo6h")
+
+[node name="ClickPopup" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1, -27)
+texture = ExtResource("4_aoxpn")

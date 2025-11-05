@@ -5,6 +5,11 @@ var defend = load("res://Assets/Resources/cards/defend_card.tres")
 var default_cards : Array[CardResource] = [strike,strike,strike,strike,defend,defend]
 
 # Existing data from your game
+var coins := 20
+var coins_current := 0
+var max_health := 20
+var current_health := 20
+
 var transferred_cards := default_cards.duplicate(true)
 var battle_scene: Control = null
 var display_deck_scene: Control = null
@@ -17,7 +22,8 @@ var current_scene_path: String = ""
 var previous_scene: Node
 var pending_battle_resource: BattleResource = null
 var rooms_cleared: int = 0
-var total_rooms: int = 10
+var total_rooms: int = 2
+var boss_time := false
 var player_alive: bool = true
 var run_active: bool = false
 
@@ -34,6 +40,39 @@ const SCENES := {
 	"boss": "res://Scenes/BossRoom.tscn"
 }
 
+func save():
+	var card_data = []
+	for card in CardCollection.all_cards:
+		card_data.append(card.to_dict())
+
+	var save_dict = {
+		"coins": coins,
+		"cards": card_data
+	}
+
+	var file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_dict, "\t"))
+	file.close()
+
+func load_game():
+	print('attempting to load game')
+	if not FileAccess.file_exists("user://savegame.json"):
+		print('failed to load game')
+		return
+
+	var file = FileAccess.open("user://savegame.json", FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+
+	if typeof(data) == TYPE_DICTIONARY:
+		coins = data.get("coins", 0)
+		
+		for card_info in data.get("cards", []):
+			for card in CardCollection.all_cards:
+				if card.card_name == card_info.get("card_name"):
+					card.from_dict(card_info)
+
+
 # --- Cached preloaded scenes ---
 var cached_scenes: Dictionary = {}
 
@@ -42,6 +81,18 @@ func change_scene(scene_path: String):
 	# If we have this scene already cached, use the preloaded version
 	for key in cached_scenes.keys():
 		if SCENES[key] == scene_path:
+			if scene_path == GameState.SCENES["lobby"]:
+				GlobalAudioStreamPlayer.play_lobby_music()
+				rooms_cleared = 0
+				boss_time = false
+				if player_alive:
+					coins += coins_current
+				coins_current = 0
+				current_health = max_health
+				player_alive = true
+				transferred_cards = default_cards.duplicate(true)
+				
+				print('\nCLEARING ROOMS CLEARED\n')
 			get_tree().call_deferred("change_scene_to_packed", cached_scenes[key])
 			current_scene_path = scene_path
 			return
@@ -72,6 +123,7 @@ func return_to_previous_scene_live():
 	# Reattach the previous live scene
 	tree.root.add_child(previous_scene)
 	tree.current_scene = previous_scene
+	GlobalAudioStreamPlayer.play_dungeon_music()
 	current_scene_path = ""  # optional, since this is a live restore
 
 	print("Returned to live previous scene:", previous_scene.name)
@@ -89,10 +141,17 @@ func start_run():
 
 func room_cleared():
 	rooms_cleared += 1
+	if rooms_cleared == total_rooms-1:
+		boss_time = true
 
 func player_died():
 	player_alive = false
 	change_scene(SCENES["lobby"])
+
+func heal(value: int):
+	current_health += value
+	if current_health > max_health:
+		current_health = max_health
 
 # --- NEW SECTION: Dynamic loading & unloading ---
 

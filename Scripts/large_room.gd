@@ -1,4 +1,8 @@
 extends Node2D
+class_name Room
+
+@export var room_name := 'Foggy Clearing'
+@export var danger := 'Caution Advised'
 
 @onready var exit_zone = $ExitZone
 
@@ -10,4 +14,5 @@ func _on_exit_entered(body):
 		call_deferred("go_to_campfire")
 
 func go_to_campfire():
+	GameState.room_cleared()
 	GameState.change_scene(GameState.SCENES["campfire"])

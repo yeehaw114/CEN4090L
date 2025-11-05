@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 80
-@export var battle_resource: BattleResource
+@export var battle_resources: Array[BattleResource]
 var player = null
 var is_dead = false
 
@@ -34,13 +34,21 @@ func _on_detect_exited(body):
 func _on_body_entered(body):
 	if body.name == "Player" and !is_dead:
 		call_deferred("_handle_battle_transition")
-		
+
+func get_battle_resource() -> BattleResource:
+	battle_resources.shuffle()
+	return battle_resources.pop_front()
+
 func _handle_battle_transition():
 	var tree = get_tree()
 	var current_room = tree.current_scene
+	var battle_resource = get_battle_resource()
+	
 	battle_resource.starting_cards.clear()
 	battle_resource.starting_cards = GameState.transferred_cards.duplicate(true)
 	GameState.pending_battle_resource = battle_resource
+	
+	
 	hide()
 	is_dead = true
 	collision_shape_2d.disabled = true

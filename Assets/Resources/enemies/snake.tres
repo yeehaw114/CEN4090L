@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=9 format=3 uid="uid://b2n1c5bkqci3u"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_7748o"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_gekel"]
+[ext_resource type="Resource" uid="uid://dy0qgeh7m6kfn" path="res://Assets/Resources/StatusEffects/pestilence.tres" id="2_xrnva"]
+[ext_resource type="Texture2D" uid="uid://cft7gf7eow8xv" path="res://Assets/Textures/snake.png" id="3_al8m4"]
+
+[sub_resource type="Resource" id="Resource_foti1"]
+script = ExtResource("1_7748o")
+value = 10
+type = 0
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_s4ctr"]
+script = ExtResource("1_7748o")
+value = 7
+type = 4
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_6bv51"]
+script = ExtResource("1_7748o")
+value = 10
+type = 4
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_qjboo"]
+script = ExtResource("1_7748o")
+value = 1
+type = 3
+status_effect = ExtResource("2_xrnva")
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_gekel")
+max_health = 20
+enemy_texture = ExtResource("3_al8m4")
+actions = Array[ExtResource("1_7748o")]([SubResource("Resource_foti1"), SubResource("Resource_s4ctr"), SubResource("Resource_6bv51"), SubResource("Resource_qjboo")])
+metadata/_custom_type_script = "uid://dbdemlyd4pbbv"

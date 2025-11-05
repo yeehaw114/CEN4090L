@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ciq8tvf8oopx0"
+path="res://.godot/imported/Player_Dying.wav-79613d7b09b290eccd563065360aa5f2.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Sound Effects/Player_Dying.wav"
+dest_files=["res://.godot/imported/Player_Dying.wav-79613d7b09b290eccd563065360aa5f2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

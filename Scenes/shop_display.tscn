@@ -1,0 +1,203 @@
+[gd_scene load_steps=6 format=3 uid="uid://dij45t62wor7k"]
+
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_uji41"]
+[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_wnvar"]
+[ext_resource type="Script" uid="uid://xkfu47h4s8lc" path="res://Scripts/ui/shop_display.gd" id="1_xbukj"]
+[ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="2_v160x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v160x"]
+shader = ExtResource("1_wnvar")
+shader_parameter/amount = 2.595
+
+[node name="ShopDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uji41")
+script = ExtResource("1_xbukj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v160x")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -230.0
+offset_right = 155.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "UNLOCK ONE CARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SoldOutLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "SOLD
+OUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_v160x")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "20 Coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="SoldOutLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "SOLD
+OUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer" instance=ExtResource("2_v160x")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MiddleCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "20 Coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="SoldOutLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "SOLD
+OUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer" instance=ExtResource("2_v160x")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RightCostLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+layout_mode = 2
+text = "20 Coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "EXIT"
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 716.0
+offset_top = 112.0
+offset_right = 866.0
+offset_bottom = 262.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinValueLabel" type="Label" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/PurchaseButton" to="." method="left_purchase"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/PurchaseButton" to="." method="middle_purchase"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3/VBoxContainer/PurchaseButton" to="." method="right_purchase"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

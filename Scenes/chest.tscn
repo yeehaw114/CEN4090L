@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://biu0om42lrp8e"]
+
+[ext_resource type="Script" uid="uid://b0e5rp71q8rau" path="res://Scripts/chest.gd" id="1_cjfl1"]
+[ext_resource type="Texture2D" uid="uid://oxrs81kyfwfm" path="res://Assets/Tilesets/tileset Copy.png" id="1_lyb87"]
+[ext_resource type="Script" uid="uid://djj6syjfs0ciu" path="res://Scripts/chest_collision.gd" id="3_bagqn"]
+[ext_resource type="Script" uid="uid://dld5mwiy7c1hi" path="res://Scripts/damage_popup_position.gd" id="4_pmguq"]
+[ext_resource type="AudioStream" uid="uid://cl1oog4vqvvi4" path="res://Assets/Music/Sound Effects/Chest_Open.wav" id="5_dq33m"]
+[ext_resource type="Texture2D" uid="uid://dhq6q0008t50t" path="res://Assets/Textures/click_popup.png" id="6_j6qf6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjfl1"]
+atlas = ExtResource("1_lyb87")
+region = Rect2(64, 48, 16, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjfl1"]
+size = Vector2(18, 15)
+
+[node name="Chest" type="Node2D" groups=["Interactable"]]
+y_sort_enabled = true
+script = ExtResource("1_cjfl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Interactable"]]
+texture = SubResource("AtlasTexture_cjfl1")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="ChestCollision" type="StaticBody2D" parent="." groups=["Interactable"]]
+position = Vector2(18, -8)
+collision_layer = 3
+script = ExtResource("3_bagqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChestCollision"]
+position = Vector2(-18, 1.5)
+shape = SubResource("RectangleShape2D_cjfl1")
+
+[node name="CoinsPopupPosition" type="Marker2D" parent="."]
+position = Vector2(0, -36)
+script = ExtResource("4_pmguq")
+
+[node name="ChestOpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dq33m")
+
+[node name="ClickPopup" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -37)
+texture = ExtResource("6_j6qf6")

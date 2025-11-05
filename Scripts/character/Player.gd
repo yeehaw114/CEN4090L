@@ -14,7 +14,7 @@ const BLUR_CONSTANT = 2.5
 @onready var block_label: Label = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
 @onready var status_effect_container: GridContainer = $HBoxContainer/StatusEffectContainer
 @onready var health_value_label: Label = $HBoxContainer/VBoxContainer/HealthBar/HealthValueLabel
-@onready var player_sound_manager: AudioStreamPlayer2D = $PlayerSoundManager
+@onready var player_sound_manager: Node2D = $PlayerSoundManager
 
 var is_able_to_be_selected = false
 var is_dead = false
@@ -34,9 +34,11 @@ signal took_damage(damage: int)
 
 func _ready():
 	enemy_sprite.texture = sprite
-	health_bar.value = health
-	health_bar.max_value = health
-	health_value_label.text = str(health)+'/'+str(health)
+	health_bar.value = GameState.current_health
+	health_bar.max_value = GameState.max_health
+	health = GameState.current_health
+	max_health = GameState.max_health
+	health_value_label.text = str(GameState.current_health)+'/'+str(GameState.max_health)
 
 func mouse_entered_body() -> void:
 	if is_able_to_be_selected:
@@ -60,7 +62,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
-		player_sound_manager.play()
+		player_sound_manager.play_hurt()
 		health_value_label.text = str(health)+'/'+str(max_health)
 	health_bar.value = health
 	if check_if_dead():
@@ -118,6 +120,11 @@ func die():
 	player_died.emit()
 
 func set_status_effect(status_effect: StatusEffect, value: int):
+	if status_effect._type == StatusEffect.type["BUFF"]:
+		player_sound_manager.play_buff()
+	elif status_effect._type == StatusEffect.type["DEBUFF"]:
+		player_sound_manager.play_debuff()
+	
 	for effect in status_effects:
 		if effect.name == status_effect.name:
 			for e in get_status_effect_nodes():
@@ -151,15 +158,7 @@ func aply_status_effects():
 		elif status._type == status.type.BUFF:
 			apply_buffs()
 		elif status._type == status.type.DEBUFF:
-			match status._stat:
-					status.stat.DAMAGE:
-						damage_decrease = status.count
-						print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
-					status.stat.BLOCK:
-						block_decrease = status.count
-						print('\n'+'UPDATING BLOCK MODIFER: '+str(block_modifier))
-					status.stat.CRIT:
-						pass
+			apply_debuffs()
 	set_damage_and_block_modifer()
 
 func apply_buffs():
@@ -174,6 +173,20 @@ func apply_buffs():
 						block_increase = status.count
 					status.stat.CRIT:
 						pass
+	set_damage_and_block_modifer()
+
+func apply_debuffs():
+	for status in status_effects:
+		if status._type == status.type.DEBUFF:
+			match status._stat:
+				status.stat.DAMAGE:
+					damage_decrease = status.count
+					print('\n'+'UPDATING DAMAGE MODIFER: '+str(damage_modifier))
+				status.stat.BLOCK:
+					block_decrease = status.count
+					print('\n'+'UPDATING BLOCK MODIFER: '+str(block_modifier))
+				status.stat.CRIT:
+					pass
 	set_damage_and_block_modifer()
 
 func clear_status_effects():
