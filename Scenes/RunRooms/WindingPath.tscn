@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://k83g6r48l3qs"]
+[gd_scene load_steps=17 format=3 uid="uid://k83g6r48l3qs"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_adjii"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_r37mg"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="10_m45b7"]
 [ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_05mxj"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="11_r37mg"]
+[ext_resource type="Resource" uid="uid://c6246ravlwatf" path="res://Assets/Resources/battles/bat_ant.tres" id="13_1fy8r"]
+[ext_resource type="Resource" uid="uid://yv62v7ds0wjq" path="res://Assets/Resources/battles/deer_2.tres" id="14_05mxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smr5v"]
 size = Vector2(88, 82)
@@ -50,7 +52,7 @@ offset_bottom = -10.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_68cm8")]
 position = Vector2(496, 236)
-battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("9_ec5pq"), ExtResource("9_38bbn"), ExtResource("10_1fy8r"), ExtResource("11_05mxj")])
+battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("9_ec5pq"), ExtResource("9_38bbn"), ExtResource("10_1fy8r"), ExtResource("11_05mxj"), ExtResource("13_1fy8r"), ExtResource("14_05mxj")])
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(1140, 69)
@@ -65,7 +67,7 @@ texture = ExtResource("10_m45b7")
 
 [node name="Enemy2" parent="." instance=ExtResource("4_68cm8")]
 position = Vector2(1365, -14)
-battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("9_ec5pq"), ExtResource("9_38bbn"), ExtResource("10_1fy8r"), ExtResource("11_05mxj")])
+battle_resources = Array[ExtResource("5_38bbn")]([ExtResource("6_1fy8r"), ExtResource("7_05mxj"), ExtResource("9_ec5pq"), ExtResource("9_38bbn"), ExtResource("10_1fy8r"), ExtResource("11_05mxj"), ExtResource("13_1fy8r"), ExtResource("14_05mxj")])
 
 [node name="Chest" parent="." instance=ExtResource("11_r37mg")]
 position = Vector2(425, 205)

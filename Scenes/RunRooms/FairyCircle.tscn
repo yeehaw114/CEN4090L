@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cptn1nqumpx2c"]
+[gd_scene load_steps=16 format=3 uid="uid://cptn1nqumpx2c"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_3085a"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_ap5wj"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="10_5lngt"]
 [ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_kwube"]
 [ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_a57n8"]
+[ext_resource type="Resource" uid="uid://yv62v7ds0wjq" path="res://Assets/Resources/battles/deer_2.tres" id="12_a57n8"]
+[ext_resource type="Resource" uid="uid://c6246ravlwatf" path="res://Assets/Resources/battles/bat_ant.tres" id="13_hwvrb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smr5v"]
 size = Vector2(88, 82)
@@ -49,7 +51,7 @@ offset_bottom = -10.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_6vv1u")]
 position = Vector2(2, 381)
-battle_resources = Array[ExtResource("5_hxdrw")]([ExtResource("6_0eoa6"), ExtResource("7_btop5"), ExtResource("9_cporh"), ExtResource("9_mn70x"), ExtResource("10_kwube"), ExtResource("11_a57n8")])
+battle_resources = Array[ExtResource("5_hxdrw")]([ExtResource("6_0eoa6"), ExtResource("7_btop5"), ExtResource("9_cporh"), ExtResource("9_mn70x"), ExtResource("10_kwube"), ExtResource("11_a57n8"), ExtResource("12_a57n8"), ExtResource("13_hwvrb")])
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-312, 502)
