@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dijkunqqqrdts"]
+[gd_scene load_steps=15 format=3 uid="uid://dijkunqqqrdts"]
 
 [ext_resource type="Script" uid="uid://8vdp66j7hha3" path="res://Scripts/lobby.gd" id="1_4233d"]
 [ext_resource type="PackedScene" uid="uid://d2rj2qfquesex" path="res://Scenes/card_collection_viewer.tscn" id="2_aghey"]
@@ -24,9 +24,6 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruji2"]
-size = Vector2(48, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2vla"]
 size = Vector2(83, 46)
@@ -121,10 +118,6 @@ offset_bottom = -10.0
 
 [node name="ShopTrigger" type="Area2D" parent="."]
 y_sort_enabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopTrigger"]
-position = Vector2(108, -116)
-shape = SubResource("RectangleShape2D_ruji2")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopTrigger"]
 y_sort_enabled = true

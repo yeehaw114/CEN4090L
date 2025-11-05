@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxi70a7gdgnql"]
+
+[ext_resource type="Texture2D" uid="uid://dt05xo4fxu0tj" path="res://Assets/Textures/Lantern.png" id="1_wced7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wced7"]
+radius = 60.0083
+
+[sub_resource type="Gradient" id="Gradient_h1t0l"]
+colors = PackedColorArray(0.926105, 0.619056, 7.70092e-07, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_beu3c"]
+gradient = SubResource("Gradient_h1t0l")
+fill = 1
+fill_from = Vector2(0.495413, 0.509174)
+
+[node name="Torch" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(0.4, 0.372)
+texture = ExtResource("1_wced7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_wced7")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-3.05176e-05, -4)
+scale = Vector2(1.89063, 1.875)
+texture = SubResource("GradientTexture2D_beu3c")

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="13_e6dov"]
 [ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="14_xftum"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfcrv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gft67"]
 texture = ExtResource("2_537ox")
 0:0/0 = 0
 1:0/0 = 0
@@ -2414,7 +2414,7 @@ texture = ExtResource("2_537ox")
 58:39/0 = 0
 59:39/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erf6w"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p4igs"]
 texture = ExtResource("3_fp3bb")
 6:1/0 = 0
 5:2/0 = 0
@@ -2617,8 +2617,8 @@ texture = ExtResource("3_fp3bb")
 6:19/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_scg0w"]
-sources/0 = SubResource("TileSetAtlasSource_jfcrv")
-sources/3 = SubResource("TileSetAtlasSource_erf6w")
+sources/0 = SubResource("TileSetAtlasSource_gft67")
+sources/3 = SubResource("TileSetAtlasSource_p4igs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j8mo"]
 size = Vector2(145, 119)
