@@ -18,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_twnyg")
 script = ExtResource("1_p3fck")
+bus_name = "Master"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -113,9 +114,20 @@ layout_mode = 2
 text = "SETTINGS"
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Volume: "
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="QuitButton" type="Button" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 10
 text = "EXIT SETTINGS"
 
 [connection signal="pressed" from="ButtonContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
