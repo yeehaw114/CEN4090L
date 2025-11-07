@@ -25,7 +25,7 @@ func _ready():
 	
 	call_deferred("set_panel_visuals")
 	
-	if GameState.rooms_cleared >= 1:
+	if GameState.boss_time:
 		boss_time = true
 		call_deferred("set_boss_select")
 	

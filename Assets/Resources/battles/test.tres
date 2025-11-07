@@ -19,6 +19,7 @@
 [resource]
 script = ExtResource("10_mbbgg")
 boss = false
+difficulty = 2
 starting_cards = Array[ExtResource("1_yuy6e")]([ExtResource("11_dulcf"), ExtResource("12_tehd3"), ExtResource("13_bvsdl"), ExtResource("14_w0bq5"), ExtResource("15_isdw1")])
 enemy_rank_1 = ExtResource("6_ib40u")
 enemy_rank_2 = ExtResource("7_3ubxg")

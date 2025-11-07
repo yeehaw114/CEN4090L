@@ -41,20 +41,28 @@ func get_battle_resource() -> BattleResource:
 	battle_resources.shuffle()
 	return battle_resources.pop_front()
 
+func set_cards_on_battle(battle: BattleResource):
+	battle.starting_cards.clear()
+	battle.starting_cards = GameState.transferred_cards.duplicate(true)
+	GameState.pending_battle_resource = battle
+
 func _handle_battle_transition():
 	var tree = get_tree()
 	var current_room = tree.current_scene
 	
 	if !is_boss:
-		var battle = GlobalBattleResourceManager.get_random_battle_by_difficulty(BattleResource.DIFFICULTY.EASY)
-		battle.starting_cards.clear()
-		battle.starting_cards = GameState.transferred_cards.duplicate(true)
-		GameState.pending_battle_resource = battle
+		if GameState.rooms_cleared >= 7:
+			var battle = GlobalBattleResourceManager.get_random_battle_by_difficulty(BattleResource.DIFFICULTY.HARD)
+			set_cards_on_battle(battle)
+		elif GameState.rooms_cleared >= 3:
+			var battle = GlobalBattleResourceManager.get_random_battle_by_difficulty(BattleResource.DIFFICULTY.MEDIUM)
+			set_cards_on_battle(battle)
+		else:
+			var battle = GlobalBattleResourceManager.get_random_battle_by_difficulty(BattleResource.DIFFICULTY.EASY)
+			set_cards_on_battle(battle)
 	else:
 		var battle = GlobalBattleResourceManager.get_random_boss_battle()
-		battle.starting_cards.clear()
-		battle.starting_cards = GameState.transferred_cards.duplicate(true)
-		GameState.pending_battle_resource = battle
+		set_cards_on_battle(battle)
 		
 	
 	hide()
