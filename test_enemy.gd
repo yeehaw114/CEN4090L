@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var speed = 80
 @export var battle_resources: Array[BattleResource]
+@export var is_boss := false
+
 var player = null
 var is_dead = false
 
@@ -42,12 +44,18 @@ func get_battle_resource() -> BattleResource:
 func _handle_battle_transition():
 	var tree = get_tree()
 	var current_room = tree.current_scene
-	var battle_resource = get_battle_resource()
 	
-	battle_resource.starting_cards.clear()
-	battle_resource.starting_cards = GameState.transferred_cards.duplicate(true)
-	GameState.pending_battle_resource = battle_resource
-	
+	if !is_boss:
+		var battle = GlobalBattleResourceManager.get_random_battle_by_difficulty(BattleResource.DIFFICULTY.EASY)
+		battle.starting_cards.clear()
+		battle.starting_cards = GameState.transferred_cards.duplicate(true)
+		GameState.pending_battle_resource = battle
+	else:
+		var battle = GlobalBattleResourceManager.get_random_boss_battle()
+		battle.starting_cards.clear()
+		battle.starting_cards = GameState.transferred_cards.duplicate(true)
+		GameState.pending_battle_resource = battle
+		
 	
 	hide()
 	is_dead = true

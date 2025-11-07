@@ -35,3 +35,4 @@ offset_bottom = -10.0
 texture_filter = 1
 position = Vector2(227, -9)
 battle_resources = Array[ExtResource("4_q04ek")]([ExtResource("4_b2mui")])
+is_boss = true

@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("2_rwyge")
 boss = false
+difficulty = 1
 starting_cards = Array[ExtResource("1_imq2t")]([])
 enemy_rank_3 = ExtResource("2_xuc6m")
 enemy_rank_4 = ExtResource("3_5ysxb")
