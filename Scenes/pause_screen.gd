@@ -22,7 +22,15 @@ func _on_value_changed(value: float) -> void:
 
 func _on_un_pause_button_pressed() -> void:
 	pause_game.emit(false)
+	settings_panel.hide()
+	quit_loss_progress_panel.hide()
 
+func reset_panels_to_default():
+	settings_panel.hide()
+	quit_loss_progress_panel.hide()
+	un_pause_button.disabled = false
+	settings_button.disabled = false
+	quit_button.disabled = false
 
 func _on_settings_button_pressed() -> void:
 	settings_panel.show()
