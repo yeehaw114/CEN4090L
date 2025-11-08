@@ -4,7 +4,7 @@ extends Node2D
 @onready var combat_manager: Node2D = $CombatManager
 
 @onready var battle_resource : BattleResource
-const battle_resource_test := preload("res://Assets/Resources/battles/deer_2.tres")
+const battle_resource_test := preload("res://Assets/Resources/battles/test.tres")
 
 var currently_selected_enemy: Character
 var game_over := false

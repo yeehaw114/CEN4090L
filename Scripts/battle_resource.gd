@@ -2,7 +2,10 @@ extends Resource
 class_name BattleResource
 
 enum rank {ONE=1,TWO=2,THREE=3,FOUR=4}
+enum DIFFICULTY {EASY,MEDIUM,HARD}
+
 @export var boss := false
+@export var difficulty := DIFFICULTY.EASY
 @export_category('Cards')
 @export var starting_cards : Array[CardResource]
 

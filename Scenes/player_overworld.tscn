@@ -216,3 +216,5 @@ collision_mask = 2
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("5_l4anu")]
 visible = false
+
+[connection signal="pause_game" from="CanvasLayer/PauseScreen" to="." method="pause"]

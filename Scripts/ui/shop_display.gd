@@ -103,22 +103,22 @@ func left_purchase():
 	if GameState.coins >= card_left.card_stats.cost:
 		hide_panel(0)
 		CardCollection.set_card_to_unlocked(card_left.card_stats)
-		new_card_unlocked.emit()
 		spend_coins(card_left.card_stats.cost)
+		new_card_unlocked.emit()
 	
 func middle_purchase():
 	if GameState.coins >= card_middle.card_stats.cost:
 		hide_panel(1)
 		CardCollection.set_card_to_unlocked(card_middle.card_stats)
-		new_card_unlocked.emit()
 		spend_coins(card_middle.card_stats.cost)
+		new_card_unlocked.emit()
 	
 func right_purchase():
 	if GameState.coins >= card_right.card_stats.cost:
 		hide_panel(2)
 		CardCollection.set_card_to_unlocked(card_right.card_stats)
-		new_card_unlocked.emit()
 		spend_coins(card_right.card_stats.cost)
+		new_card_unlocked.emit()
 
 func _on_exit_button_pressed() -> void:
 	hide()

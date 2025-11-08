@@ -23,6 +23,8 @@ var last_facing = "down"
 var locked_direction = Vector2.ZERO
 var first_input_locked = false
 var able_to_move := true
+var able_to_interact := true
+var is_in_menu := false
 var last_interactable: Node = null
 
 func _ready() -> void:
@@ -31,9 +33,9 @@ func _ready() -> void:
 func _physics_process(_delta):
 	handle_movement_input()
 	
-	if Input.is_action_just_pressed("Pause") and able_to_move:
+	if Input.is_action_just_pressed("Pause") and able_to_move and !is_in_menu:
 		pause(true)
-	elif Input.is_action_just_pressed("Pause") and !able_to_move:
+	elif Input.is_action_just_pressed("Pause") and !able_to_move and !is_in_menu:
 		pause(false)
 	
 	if interact_raycast.is_colliding():
@@ -60,7 +62,7 @@ func _physics_process(_delta):
 			last_interactable.hide_popup()
 			last_interactable = null
 	
-	if Input.is_action_just_pressed("Interact"):
+	if Input.is_action_just_pressed("Interact") and able_to_move:
 		if check_for_interactable():
 			var object = get_raycast_object()
 			if object.name == 'CardViewerCollision':
@@ -84,6 +86,7 @@ func pause(toggle: bool):
 		able_to_move = false
 	else:
 		pause_screen.hide()
+		pause_screen.reset_panels_to_default()
 		able_to_move = true
 
 func check_for_interactable() -> bool:
@@ -99,8 +102,12 @@ func get_raycast_object():
 func toggle_able_to_move(toggle: bool):
 	if toggle:
 		able_to_move = true
+		able_to_interact = true
+		is_in_menu = false
 		return
 	able_to_move = false
+	able_to_interact = false
+	is_in_menu = true
 	velocity = Vector2.ZERO
 
 func handle_movement_input():
