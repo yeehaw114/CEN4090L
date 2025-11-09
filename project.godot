@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Game_Project"
+config/name="Mouse Knight"
 run/main_scene="uid://cmnrqfsktextv"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Assets/Textures/icon.svg"
+config/icon="uid://jq5a3pilqh80"
 
 [autoload]
 
@@ -28,6 +28,7 @@ window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://c7ucoccpyvtmd"
 
 [global_group]
 
