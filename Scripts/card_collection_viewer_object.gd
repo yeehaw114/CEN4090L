@@ -4,11 +4,12 @@ signal interacted_with
 
 @export var sprite : Texture2D
 
-@onready var menu_sprite: Sprite2D = $Sprite2D
+#@onready var menu_sprite: Sprite2D = $Sprite2D
 @onready var click_popup: Sprite2D = $ClickPopup
 
 func _ready() -> void:
-	call_deferred("set_sprite")
+	#call_deferred("set_sprite")
+	pass
 
 func set_sprite(sprite):
 	sprite.texture = sprite

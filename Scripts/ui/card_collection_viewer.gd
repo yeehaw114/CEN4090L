@@ -29,6 +29,7 @@ func populate_grid():
 	var locked = CardCollection.get_all_locked_cards()
 	
 	for res in unlocked + locked:
+		print('CARD RES: '+str(res))
 		var card_instance = card_scene.instantiate()
 		card_instance.card_stats = res
 		grid_container.add_child(card_instance)

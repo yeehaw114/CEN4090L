@@ -20,7 +20,7 @@ func get_all_cards():
 	while file_name != "":
 		# skip directories and hidden entries like '.' '..'
 		if not dir.current_is_dir() and not file_name.begins_with("."):
-			if file_name.ends_with(".tres") or file_name.ends_with(".res"):
+			if file_name.ends_with(".tres") or file_name.ends_with(".res") or file_name.ends_with(".tres.remap"):
 				var file_path := card_file_path + file_name
 				var card_resource := ResourceLoader.load(file_path)
 				if card_resource:

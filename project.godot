@@ -13,7 +13,6 @@ config_version=5
 config/name="Mouse Knight"
 run/main_scene="uid://cmnrqfsktextv"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://jq5a3pilqh80"
 
 [autoload]
 
@@ -29,6 +28,10 @@ window/size/viewport_height=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://c7ucoccpyvtmd"
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [global_group]
 

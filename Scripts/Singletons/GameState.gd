@@ -29,7 +29,7 @@ var run_active: bool = false
 
 # --- Scene registry ---
 const SCENES := {
-	"lobby": "res://Scenes/Lobby.tscn",
+	"lobby": "res://Scenes/lobby.tscn",
 	"bunker": "res://Scenes/Bunker.tscn",
 	"room_selection": "res://Scenes/RoomSelection.tscn",
 	"small_room": "res://Scenes/SmallRoom.tscn",
@@ -37,7 +37,7 @@ const SCENES := {
 	"large_room": "res://Scenes/LargeRoom.tscn",
 	"campfire": "res://Scenes/Campfire.tscn",
 	"battle": "res://Scenes/battle_manager.tscn",
-	"boss": "res://Scenes/BossRoom.tscn"
+	"boss": "res://Scenes/boss_room.tscn"
 }
 
 func save():

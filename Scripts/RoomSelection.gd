@@ -44,7 +44,7 @@ func get_room_paths():
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		if file_name.ends_with(".tscn"):
+		if file_name.ends_with(".tscn") or file_name.ends_with(".tscn.remap"):
 			all_rooms.append(run_room_paths + file_name)
 		file_name = dir.get_next()
 	dir.list_dir_end()
