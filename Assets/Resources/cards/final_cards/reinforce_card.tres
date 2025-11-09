@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://d2ndmrnq62glo"]
+
+[ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_ef7wp"]
+[ext_resource type="Resource" uid="uid://b02av4pft06cs" path="res://Assets/Resources/StatusEffects/fortitude.tres" id="2_dx3o5"]
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_xxtue"]
+
+[sub_resource type="Resource" id="Resource_s14ly"]
+script = ExtResource("1_ef7wp")
+value = 6
+type = 4
+status_effect_value = 0
+apply_to_self = true
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[sub_resource type="Resource" id="Resource_xxtue"]
+script = ExtResource("1_ef7wp")
+value = 1
+type = 2
+status_effect = ExtResource("2_dx3o5")
+status_effect_value = 0
+apply_to_self = false
+metadata/_custom_type_script = "uid://mirotg2noub8"
+
+[resource]
+script = ExtResource("2_xxtue")
+is_unlocked_at_start = false
+is_locked = false
+cost = 15
+card_name = "Reinforce"
+card_cost = 1
+card_description = "6 block
+1 fortitude (self)"
+card_actions = Array[ExtResource("1_ef7wp")]([SubResource("Resource_s14ly"), SubResource("Resource_xxtue")])
+character_position = Array[int]([2, 3])
+enemy_position = Array[int]([])
+metadata/_custom_type_script = "uid://dda632fu6blsg"

@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://mirotg2noub8"
 [sub_resource type="Resource" id="Resource_6i2ls"]
 script = ExtResource("1_0gg8s")
 value = 20
-type = 0
+type = 4
 status_effect_value = 0
 apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"

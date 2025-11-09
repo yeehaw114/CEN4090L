@@ -8,12 +8,13 @@ script = ExtResource("1_g2y4n")
 value = 7
 type = 4
 status_effect_value = 0
+apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [resource]
 script = ExtResource("2_1ueum")
 is_unlocked_at_start = false
-is_locked = true
+is_locked = false
 cost = 15
 card_name = "Soilder's Arnament"
 card_cost = 1
