@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BattleResource" load_steps=4 format=3 uid="uid://q38jots8yu0d"]
+
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="1_gvbv6"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="2_d2wl4"]
+[ext_resource type="Resource" uid="uid://bdx5ugvmelsah" path="res://Assets/Resources/enemies/bear_boss.tres" id="2_ukbxx"]
+
+[resource]
+script = ExtResource("2_d2wl4")
+boss = true
+difficulty = 2
+starting_cards = Array[ExtResource("1_gvbv6")]([])
+enemy_rank_2 = ExtResource("2_ukbxx")
+player_position = 2
+coins_min = 15
+coins_max = 20
+cards = Array[ExtResource("1_gvbv6")]([])
+metadata/_custom_type_script = "uid://d6nkb4bfujhr"
