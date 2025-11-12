@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_cccri"]
 script = ExtResource("1_cccri")
-value = 5
+value = 3
 type = 0
 status_effect_value = 0
 apply_to_self = false
@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://mirotg2noub8"
 
 [sub_resource type="Resource" id="Resource_0yvdl"]
 script = ExtResource("1_cccri")
-value = 5
+value = 3
 type = 0
 status_effect_value = 0
 apply_to_self = false
@@ -26,8 +26,8 @@ is_locked = true
 cost = 25
 card_name = "Claw through"
 card_cost = 1
-card_description = "5 dmg
-5 dmg"
+card_description = "3 dmg
+3 dmg"
 card_actions = Array[ExtResource("1_cccri")]([SubResource("Resource_cccri"), SubResource("Resource_0yvdl")])
 character_position = Array[int]([1, 2, 3])
 enemy_position = Array[int]([1, 2, 3])
