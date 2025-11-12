@@ -216,6 +216,7 @@ func _on_movement_button_pressed() -> void:
 func _on_end_turn_button_pressed() -> void:
 	if active_battle_state == battle_state.PLAYER:
 		print('end turn')
+		combat_manager.cards.unselect_card()
 		combat_manager.cards.discard_all_cards()
 		next_turn()
 
