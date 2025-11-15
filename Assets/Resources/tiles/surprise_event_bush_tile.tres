@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=3 format=3 uid="uid://cng4jwuomecnu"]
+
+[ext_resource type="Script" uid="uid://cb3tphfwanogu" path="res://Scripts/Resources/tile_resource.gd" id="1_lifky"]
+[ext_resource type="Resource" uid="uid://c2750l8ahynde" path="res://Assets/Resources/events/bush.tres" id="2_5lan6"]
+
+[resource]
+script = ExtResource("1_lifky")
+surprise_event = ExtResource("2_5lan6")
+exit = false
+wall = false
+metadata/_custom_type_script = "uid://cb3tphfwanogu"

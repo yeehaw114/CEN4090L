@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_lfe6e"]
 [ext_resource type="Resource" uid="uid://b02av4pft06cs" path="res://Assets/Resources/StatusEffects/fortitude.tres" id="2_ymktw"]
-[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_yuosh"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/Resources/enemy_resource.gd" id="2_yuosh"]
 [ext_resource type="Resource" uid="uid://bdwj7i5gmypmi" path="res://Assets/Resources/StatusEffects/strength.tres" id="3_bkpve"]
 [ext_resource type="Texture2D" uid="uid://c1ktj70j3t6j7" path="res://Assets/Textures/owl.png" id="3_xlf0l"]
 

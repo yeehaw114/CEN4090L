@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BattleResource" load_steps=4 format=3 uid="uid://g8nobur30hsm"]
 
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="1_2nc77"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="2_6gi0h"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/Resources/battle_resource.gd" id="2_6gi0h"]
 [ext_resource type="Resource" uid="uid://bdx5ugvmelsah" path="res://Assets/Resources/enemies/bear_boss.tres" id="2_y4let"]
 
 [resource]

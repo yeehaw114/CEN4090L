@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="1_cg6ql"]
 [ext_resource type="Resource" uid="uid://b2n1c5bkqci3u" path="res://Assets/Resources/enemies/snake.tres" id="2_1liux"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="2_8e5xh"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/Resources/battle_resource.gd" id="2_8e5xh"]
 [ext_resource type="Resource" uid="uid://cofy1kqay6t68" path="res://Assets/Resources/enemies/owl.tres" id="3_boxwl"]
 
 [resource]

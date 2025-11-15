@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=14 format=3 uid="uid://djbsucfieqoe0"]
+
+[ext_resource type="Script" uid="uid://rtvp88vwwrlw" path="res://Scripts/Resources/decisionResource.gd" id="1_nd6vk"]
+[ext_resource type="Script" uid="uid://dppj8x6674luj" path="res://Scripts/Resources/result_resource.gd" id="2_35l6u"]
+[ext_resource type="Texture2D" uid="uid://tpmkabbvl74s" path="res://Assets/Textures/Events/man_confused.png" id="2_448nf"]
+[ext_resource type="Script" uid="uid://2pjgup7centa" path="res://Scripts/Resources/event_resource.gd" id="2_gyj4d"]
+[ext_resource type="Texture2D" uid="uid://bvqh6eycltwac" path="res://Assets/Textures/Events/man_confused_result_1.png" id="3_1eyfh"]
+[ext_resource type="Texture2D" uid="uid://ctkeyh5b7f1oy" path="res://Assets/Textures/Events/man_confused_result_3.png" id="4_1eyfh"]
+[ext_resource type="Texture2D" uid="uid://b8fesfoguf878" path="res://Assets/Textures/Events/man_confused_result_2.png" id="5_qdbta"]
+
+[sub_resource type="Resource" id="Resource_qdbta"]
+script = ExtResource("2_35l6u")
+image = ExtResource("3_1eyfh")
+text = "He does'nt acknowlege you and simple mutters under his breath repeatly \"what was it, where is it… here? No no it cant be\"."
+metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_nc6v2"]
+script = ExtResource("2_35l6u")
+image = ExtResource("4_1eyfh")
+text = "Upon seeing you his eyes light up in terror, such terror he passes out cold and thuds to the ground, in his pocket is some food, sorry we need it more right now."
+metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_35l6u"]
+script = ExtResource("1_nd6vk")
+decision_text = "[1] - Investigate"
+results = Array[ExtResource("2_35l6u")]([SubResource("Resource_qdbta"), SubResource("Resource_nc6v2")])
+metadata/_custom_type_script = "uid://rtvp88vwwrlw"
+
+[sub_resource type="Resource" id="Resource_1eyfh"]
+script = ExtResource("2_35l6u")
+image = ExtResource("3_1eyfh")
+text = "As you pass by you wonder where he came from but quickly dismiss the thought as nothing would come of it."
+metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_5mcfa"]
+script = ExtResource("2_35l6u")
+image = ExtResource("5_qdbta")
+text = "As you pass by him you can feel it, staring, so cold, so... unnerving. You grow a bit more parinoid"
+metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_tnyf6"]
+script = ExtResource("1_nd6vk")
+decision_text = "[2] - Ignore it"
+results = Array[ExtResource("2_35l6u")]([SubResource("Resource_1eyfh"), SubResource("Resource_5mcfa")])
+metadata/_custom_type_script = "uid://rtvp88vwwrlw"
+
+[resource]
+script = ExtResource("2_gyj4d")
+event_title = "A man stands completely still looking confused"
+event_image = ExtResource("2_448nf")
+inquiry_body = "His build is extremly ordinary, you are confidant you could best him in combat but he's unstable and might catch you by surprise, you should be caustiouly optimistic about this encounter"
+inquiry_instinct = "People are dangerous they always are, never underestimate them is what Devon always said. These words have not and will not leave your mind. However on a more optimistic note he appears to be so dazed you could best him if you surpirsed him."
+inquiry_mind = "He seems to be thinking deeply about something. No acually he appears to be completely lost in his head, it's unlikely he'll ever get out. Best case scenario for him is the forest folk find him and take pity on him. But likely this man will be killed by nightfall."
+inquiry_will = "Strangly you are having a hard time figuring out how to proceed here, part of your is screaming run past him I bet he can't even shamble after you fast enough to see even the dust your feet leave behind. But on the other hand what do you have to be so afraid of,  were those years spent fighting for nothing? Go up to him and assert your presence like a warrior. Either way you feel far too confident"
+inquiry_gnosis = "He's seen it. As you search your mind for what \"it\" could mean you realize you have'nt the slightly clue what \"it\" is. You know about it evidently through your confidant assertion that he's seen \"it\". But does that mean you've seen it? Then what makes you any different than him? \"NO!\" you interupt you are differnt from him, he's shambling and aimless, YOU have a mission. A holy one at that. This line of reasoning has gotten you no where, except one thing you should be cautious around this man."
+decisions = Array[ExtResource("1_nd6vk")]([SubResource("Resource_35l6u"), SubResource("Resource_tnyf6")])
+metadata/_custom_type_script = "uid://2pjgup7centa"

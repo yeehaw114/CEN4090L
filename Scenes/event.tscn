@@ -1,0 +1,167 @@
+[gd_scene load_steps=5 format=3 uid="uid://gg61ayppaa36"]
+
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_dww88"]
+[ext_resource type="Script" uid="uid://cl3phfgqteicg" path="res://Scripts/levels/event.gd" id="2_u37vb"]
+[ext_resource type="Script" uid="uid://dn0mof62igw0e" path="res://Scripts/Events/inquiry_panel.gd" id="3_pn77i"]
+[ext_resource type="Script" uid="uid://bb4457v8vofl6" path="res://Scripts/Events/decision_panel.gd" id="4_pn77i"]
+
+[node name="Event" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dww88")
+script = ExtResource("2_u37vb")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 450)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -225.0
+offset_right = -60.0
+offset_bottom = 225.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ImagePanel" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="EventTexture" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/ImagePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 2
+
+[node name="InquiryPanel" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+script = ExtResource("3_pn77i")
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/InquiryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="BodyButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer"]
+layout_mode = 2
+text = "BODY"
+
+[node name="InstinctButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer"]
+layout_mode = 2
+text = "INSTINCT"
+
+[node name="MindButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer"]
+layout_mode = 2
+text = "MIND"
+
+[node name="WillButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer"]
+layout_mode = 2
+text = "WILL"
+
+[node name="GnosisButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer"]
+layout_mode = 2
+text = "GNOSIS"
+
+[node name="InquiryText" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+text = "The rusling is constant and unrelenting whatever is in there is not attempting to coneal it's self from you, meaning it's either unitellifent and is not aware of your presence or it is attempting to trick you, either way you are likely smarter and stronger than whatever it is."
+
+[node name="DecisionPanel" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+script = ExtResource("4_pn77i")
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/DecisionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="ResultImagePanel" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="ResultImage" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/ResultImagePanel"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 2
+
+[node name="ResultLabel" type="RichTextLabel" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+text = "The rusling is constant and unrelenting whatever is in there is not attempting to coneal it's self from you, meaning it's either unitellifent and is not aware of your presence or it is attempting to trick you, either way you are likely smarter and stronger than whatever it is."
+
+[node name="ContinueButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer/BodyButton" to="." method="_on_skill_button_pressed" binds= [1]]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer/InstinctButton" to="." method="_on_skill_button_pressed" binds= [2]]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer/MindButton" to="." method="_on_skill_button_pressed" binds= [3]]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer/WillButton" to="." method="_on_skill_button_pressed" binds= [4]]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/InquiryPanel/ButtonContainer/GnosisButton" to="." method="_on_skill_button_pressed" binds= [5]]
+[connection signal="decision_made" from="Panel/ScrollContainer/VBoxContainer/DecisionPanel" to="." method="decision_made"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

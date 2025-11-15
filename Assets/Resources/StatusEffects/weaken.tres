@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://d3p8x0txm2gb0"]
 
-[ext_resource type="Script" uid="uid://cqwe2neaf6scq" path="res://Scripts/status_effect_resource.gd" id="1_flwh8"]
+[ext_resource type="Script" uid="uid://cqwe2neaf6scq" path="res://Scripts/Resources/status_effect_resource.gd" id="1_flwh8"]
 [ext_resource type="Texture2D" uid="uid://d26sxxqolsk2f" path="res://Assets/Textures/debuff_intention.png" id="2_ducl2"]
 
 [resource]

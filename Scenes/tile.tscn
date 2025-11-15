@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgap54jsaf2gw"]
+
+[ext_resource type="Script" uid="uid://ddbyg1tyvh10d" path="res://Scripts/levels/tile.gd" id="1_xsjyq"]
+[ext_resource type="Texture2D" uid="uid://b87u0uqwrlk10" path="res://Assets/Textures/wall.png" id="2_rvq8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81xng"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsjyq"]
+size = Vector2(100, 100)
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_xsjyq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_81xng")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_xsjyq")
+disabled = true
+
+[node name="WallSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 22)
+texture = ExtResource("2_rvq8p")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

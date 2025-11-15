@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://d2635cm2cp1br" path="res://Assets/Resources/enemies/ant.tres" id="7_3ubxg"]
 [ext_resource type="Resource" uid="uid://bk0m43hq2iy8d" path="res://Assets/Resources/enemies/bat.tres" id="8_ky6sa"]
 [ext_resource type="Resource" uid="uid://cofy1kqay6t68" path="res://Assets/Resources/enemies/owl.tres" id="9_e6gpb"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="10_mbbgg"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/Resources/battle_resource.gd" id="10_mbbgg"]
 [ext_resource type="Resource" uid="uid://bbxocmclha6ev" path="res://Assets/Resources/cards/final_cards/claw_through_card.tres" id="11_dulcf"]
 [ext_resource type="Resource" uid="uid://ejtswg844n7p" path="res://Assets/Resources/cards/final_cards/balanced_strike.tres" id="12_tehd3"]
 [ext_resource type="Resource" uid="uid://b31mdjokcpx8a" path="res://Assets/Resources/cards/final_cards/rusty_blade.tres" id="13_bvsdl"]

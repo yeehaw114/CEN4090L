@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleResource" load_steps=4 format=3 uid="uid://yv62v7ds0wjq"]
 
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="1_ln1s2"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/Resources/battle_resource.gd" id="1_ln1s2"]
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="2_gnj06"]
 [ext_resource type="Resource" uid="uid://bv3l6j5p3op6y" path="res://Assets/Resources/enemies/deer.tres" id="2_k4ty6"]
 

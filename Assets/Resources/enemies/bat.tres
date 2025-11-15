@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=8 format=3 uid="uid://bk0m43hq2iy8d"]
 
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_vi3ll"]
-[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_75gcx"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/Resources/enemy_resource.gd" id="2_75gcx"]
 [ext_resource type="Resource" uid="uid://dy0qgeh7m6kfn" path="res://Assets/Resources/StatusEffects/pestilence.tres" id="2_adma7"]
 [ext_resource type="Texture2D" uid="uid://47rukfk5xrml" path="res://Assets/Textures/AndresSprites/Enemy Bat Sprite.png" id="3_2bm04"]
 

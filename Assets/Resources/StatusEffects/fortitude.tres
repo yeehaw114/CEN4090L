@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://b02av4pft06cs"]
 
-[ext_resource type="Script" uid="uid://cqwe2neaf6scq" path="res://Scripts/status_effect_resource.gd" id="1_nhjgi"]
+[ext_resource type="Script" uid="uid://cqwe2neaf6scq" path="res://Scripts/Resources/status_effect_resource.gd" id="1_nhjgi"]
 [ext_resource type="Texture2D" uid="uid://dj5cvo2wfnqry" path="res://Assets/Textures/block_intention.png" id="2_0x5xx"]
 
 [resource]

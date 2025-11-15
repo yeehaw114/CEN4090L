@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_537ox"]
 [ext_resource type="Texture2D" uid="uid://oxrs81kyfwfm" path="res://Assets/Tilesets/tileset Copy.png" id="3_fp3bb"]
 [ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_erf6w"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="6_gft67"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/Resources/battle_resource.gd" id="6_gft67"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="6_mfmo7"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="8_erf6w"]
 [ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="12_hewmn"]

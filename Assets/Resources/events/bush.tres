@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=10 format=3 uid="uid://c2750l8ahynde"]
+
+[ext_resource type="Script" uid="uid://rtvp88vwwrlw" path="res://Scripts/Resources/decisionResource.gd" id="1_iu25d"]
+[ext_resource type="Script" uid="uid://2pjgup7centa" path="res://Scripts/Resources/event_resource.gd" id="1_mqtmy"]
+[ext_resource type="Script" uid="uid://dppj8x6674luj" path="res://Scripts/Resources/result_resource.gd" id="2_0gn4h"]
+[ext_resource type="Texture2D" uid="uid://bsc8mg4wtmb0v" path="res://Assets/Textures/Events/bush.png" id="2_iu25d"]
+[ext_resource type="Texture2D" uid="uid://dha5p3a3bnesv" path="res://Assets/Textures/Events/bush_result.png" id="3_inemg"]
+
+[sub_resource type="Resource" id="Resource_8uerv"]
+script = ExtResource("2_0gn4h")
+image = ExtResource("3_inemg")
+text = "Nothing happens, there is noting in the bush."
+metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_inemg"]
+script = ExtResource("1_iu25d")
+decision_text = "[1] - Investigate"
+results = Array[ExtResource("2_0gn4h")]([SubResource("Resource_8uerv")])
+metadata/_custom_type_script = "uid://rtvp88vwwrlw"
+
+[sub_resource type="Resource" id="Resource_2nqik"]
+script = ExtResource("2_0gn4h")
+image = ExtResource("3_inemg")
+text = "You pass the bush by uneventfully."
+metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_0gn4h"]
+script = ExtResource("1_iu25d")
+decision_text = "[2] - Ignore it"
+results = Array[ExtResource("2_0gn4h")]([SubResource("Resource_2nqik")])
+metadata/_custom_type_script = "uid://rtvp88vwwrlw"
+
+[resource]
+script = ExtResource("1_mqtmy")
+event_title = "A bush is rusling in the path"
+event_image = ExtResource("2_iu25d")
+inquiry_body = "This bush's only purpose is concealment it's weak and would'nt even block a single blow. Pathetic"
+inquiry_instinct = "This bush could be hiding anything, a monster, a child, maybe even a ghost. To many possibilities, stay away."
+inquiry_mind = "The rusling is constant and unrelenting whatever is in there is not attempting to coneal it's self from you, meaning it's either unitellifent and is not aware of your presence or it is attempting to trick you, either way you are likely smarter and stronger than whatever it is."
+inquiry_will = "It's taunting you, what kinda knight is afraid of a bush you should investigate, whatever it is, you should investiagte"
+inquiry_gnosis = "You wonder what is in the bush and… nothing, not one clue, inclination, or even guess in the millions of possibilities, the thought is exciting, a new species perhaps, maybe a sprit of the forest meant to guide you but still just speculation"
+decisions = Array[ExtResource("1_iu25d")]([SubResource("Resource_inemg"), SubResource("Resource_0gn4h")])
+metadata/_custom_type_script = "uid://2pjgup7centa"

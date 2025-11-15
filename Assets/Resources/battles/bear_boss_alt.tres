@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="1_eoogp"]
 [ext_resource type="Resource" uid="uid://bdx5ugvmelsah" path="res://Assets/Resources/enemies/bear_boss.tres" id="2_dkp8n"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="2_uo4oa"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/Resources/battle_resource.gd" id="2_uo4oa"]
 
 [resource]
 script = ExtResource("2_uo4oa")

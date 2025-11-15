@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mirotg2noub8" path="res://Scripts/actions/combat_action.gd" id="1_bbe4k"]
 [ext_resource type="Texture2D" uid="uid://bovs3etw6ep5f" path="res://Assets/Textures/AndresSprites/Bear Battle SPrite.png" id="2_8l5b7"]
-[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/enemy_resource.gd" id="2_odvpw"]
+[ext_resource type="Script" uid="uid://dbdemlyd4pbbv" path="res://Scripts/Resources/enemy_resource.gd" id="2_odvpw"]
 
 [sub_resource type="Resource" id="Resource_in81h"]
 script = ExtResource("1_bbe4k")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=3 format=3 uid="uid://bq2q2d4tqppgi"]
+
+[ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="1_ngra7"]
+[ext_resource type="Script" uid="uid://cb3tphfwanogu" path="res://Scripts/Resources/tile_resource.gd" id="1_s47cr"]
+
+[resource]
+script = ExtResource("1_s47cr")
+enemy = ExtResource("1_ngra7")
+exit = false
+metadata/_custom_type_script = "uid://cb3tphfwanogu"

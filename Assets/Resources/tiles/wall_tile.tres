@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileResource" load_steps=2 format=3 uid="uid://dus4yptb4ulh8"]
+
+[ext_resource type="Script" uid="uid://cb3tphfwanogu" path="res://Scripts/Resources/tile_resource.gd" id="1_745h7"]
+
+[resource]
+script = ExtResource("1_745h7")
+exit = false
+wall = true
+metadata/_custom_type_script = "uid://cb3tphfwanogu"
