@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_8mwgy")
 exit = false
+wall = false
 metadata/_custom_type_script = "uid://cb3tphfwanogu"
