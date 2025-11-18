@@ -41,9 +41,18 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 script = ExtResource("3_bvt00")
 
-[node name="LevelProgressBar" type="ProgressBar" parent="CanvasLayer/TopPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TopPanelContainer"]
+layout_mode = 2
+
+[node name="LevelProgressBar" type="ProgressBar" parent="CanvasLayer/TopPanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+
+[node name="TimeProgressionLabel" type="Label" parent="CanvasLayer/TopPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Hours passed: 0"
+horizontal_alignment = 1
 
 [node name="BottomUIPanel" type="Panel" parent="CanvasLayer"]
 custom_minimum_size = Vector2(100, 100)

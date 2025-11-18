@@ -3,6 +3,7 @@ extends Control
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var player: PlayerExploration = $Player
 @onready var bottom_ui_panel: Panel = $CanvasLayer/BottomUIPanel
+@onready var top_panel_container: PanelContainer = $CanvasLayer/TopPanelContainer
 @onready var inventory_level: InventoryLevel = $CanvasLayer/BottomUIPanel/HBoxContainer/InventoryLevel
 
 @onready var tiles: Node2D = $Tiles
@@ -11,6 +12,8 @@ const event_scene := preload("res://Scenes/event.tscn")
 @export var player_inv : Inv
 var event_inventory : Inv
 @export var is_player_inventory := false
+
+var hours_passed := 0
 
 func _ready() -> void:
 	print("LEVEL HAS INVENTORY LEVEL INSTANCE:", inventory_level)
@@ -53,22 +56,17 @@ func _on_tiles_player_position_updated(tile: Variant) -> void:
 	print('\nplayer position: '+str(player.position.x))
 	print('tile position: '+str(tile.position.x))
 	
-	#print('\nPlayer Entered: '+str(tile.tile_resource.debug_name)+'\n')
 	var explorable = self.tiles.get_all_explorable_tiles()
 	var previous_tile
-	
 	var index = explorable.find(tile)
-
 	if index > 0:
 		previous_tile = explorable[index - 1]
-		#print(previous_tile)
 	else:
 		#print("This node has no previous element.")
 		pass
 	
 	if tile.tile_resource.surprise_event and !tile.cleared:
 		show_new_event(tile.tile_resource.surprise_event)
-		#tile.cleared = true
 	elif tile.tile_resource.enemy and !tile.cleared:
 		var tree = get_tree()
 		var current_room = tree.current_scene
@@ -78,14 +76,13 @@ func _on_tiles_player_position_updated(tile: Variant) -> void:
 		GameState.pending_battle_resource = battle
 		tree.root.remove_child(current_room)
 		GameState.previous_scene = current_room
-		
-		#tile.cleared = true
-		#Change scene to battle
 		GameState.change_scene(GameState.SCENES["battle"])
 	if previous_tile and previous_tile.cleared:
 		if not tile.cleared:
 			tile.cleared = true
 			PlayerInventory.take_nerve_damage(15)
+			hours_passed += 1
+			top_panel_container.set_time_progress(hours_passed)
 
 func apply_item_effect(item: InvItem):
 	if item.stat == InvItem.STAT.HEALTH:
