@@ -1,11 +1,87 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://dad7jr7v1eil4"]
+[gd_resource type="Resource" script_class="Inv" load_steps=19 format=3 uid="uid://dad7jr7v1eil4"]
 
 [ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="1_7uf4i"]
-[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_oqpsp"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_7uf4i"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/bandage.tres" id="3_yrre2"]
+[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/opioid.tres" id="4_yrre2"]
+
+[sub_resource type="Resource" id="Resource_oqpsp"]
+script = ExtResource("2_7uf4i")
+item = ExtResource("3_yrre2")
+amount = 2
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_yrre2"]
+script = ExtResource("2_7uf4i")
+item = ExtResource("4_yrre2")
+amount = 1
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_wq1fa"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_amcam"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_to21c"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ajmj0"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_k5okl"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_d0kw6"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_0o0fp"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_2hfcn"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_cmtkm"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_1sk44"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_otoat"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ka4bu"]
+script = ExtResource("2_7uf4i")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
 [resource]
 script = ExtResource("1_7uf4i")
-slots = Array[ExtResource("2_oqpsp")]([])
+slots = Array[ExtResource("2_7uf4i")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44"), SubResource("Resource_otoat"), SubResource("Resource_ka4bu")])
+columns = 7
+is_players = true
 max_health = 100
 current_health = 100
 coins = 0

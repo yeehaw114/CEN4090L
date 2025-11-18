@@ -14,18 +14,26 @@ class_name Event
 @onready var continue_button: Button = $Panel/ScrollContainer/VBoxContainer/ContinueButton
 @onready var result_image_panel: Panel = $Panel/ScrollContainer/VBoxContainer/ResultImagePanel
 @onready var result_image: TextureRect = $Panel/ScrollContainer/VBoxContainer/ResultImagePanel/ResultImage
+@onready var center_container: Panel = $Panel/ScrollContainer/VBoxContainer/CenterContainer
+@onready var inventory_result: Control = $Panel/ScrollContainer/VBoxContainer/CenterContainer/InventoryLevel
 
-const test_resource := preload("res://Assets/Resources/events/bush.tres")
+
+const test_resource := preload("res://Assets/Resources/events/man_confused.tres")
+var test_inv =test_resource.decisions[0].results[1].inv
 enum SKILLS {BOD=1,INS=2,MIN=3,WILL=4,GNO=5}
 
 signal event_finished
+signal result_inventory_decided(inv: Inv)
 
 @export var eventResource : EventResource
 
 func _ready() -> void:
-	#eventResource = test_resource
+	if not eventResource:
+		eventResource = test_resource
 	title_label.text = eventResource.event_title
 	event_texture.texture = eventResource.event_image
+	
+	set_inventory(test_inv)
 	
 func _on_skill_button_pressed(index: int):
 	if index == SKILLS.BOD:
@@ -47,11 +55,17 @@ func set_inquiry_text(text: String):
 	inquiry_text.text = text
 	call_deferred("_scroll_to_bottom")
 
-func decision_made(text: String,image: Texture2D):
+func decision_made(text: String,image: Texture2D,inventory: Inv):
 	result_label.text = text
 	result_image.texture = image
 	result_image_panel.show()
 	result_label.show()
+	
+	if inventory:
+		center_container.show()
+		set_inventory(inventory)
+		result_inventory_decided.emit(inventory)
+	
 	continue_button.show()
 	call_deferred("_scroll_to_bottom")
 
@@ -63,3 +77,7 @@ func _scroll_to_bottom() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame # <-- important for RichTextLabel
 	scroll_container.scroll_vertical = scroll_container.get_v_scroll_bar().max_value
+
+func set_inventory(inventory: Inv):
+	inventory_result.inv = inventory
+	inventory_result.spawn_slots(inventory_result.inv.columns,inventory_result.inv.slots.size())

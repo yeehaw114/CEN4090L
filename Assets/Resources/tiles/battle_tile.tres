@@ -8,4 +8,7 @@ script = ExtResource("1_s47cr")
 enemy = ExtResource("1_ngra7")
 exit = false
 wall = false
+starts_cleared = false
+spawn_tile = false
+debug_name = "battle"
 metadata/_custom_type_script = "uid://cb3tphfwanogu"

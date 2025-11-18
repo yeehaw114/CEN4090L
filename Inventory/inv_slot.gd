@@ -2,5 +2,5 @@ extends Resource
 
 class_name InvSlot
 
-@export var card: CardResource
+@export var item: InvItem
 @export var amount: int = 0

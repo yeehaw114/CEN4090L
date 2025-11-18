@@ -8,4 +8,7 @@ script = ExtResource("1_3bgij")
 surprise_event = ExtResource("2_1sopj")
 exit = false
 wall = false
+starts_cleared = false
+spawn_tile = false
+debug_name = "surprise_man"
 metadata/_custom_type_script = "uid://cb3tphfwanogu"

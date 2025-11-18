@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventResource" load_steps=14 format=3 uid="uid://djbsucfieqoe0"]
+[gd_resource type="Resource" script_class="EventResource" load_steps=19 format=3 uid="uid://djbsucfieqoe0"]
 
 [ext_resource type="Script" uid="uid://rtvp88vwwrlw" path="res://Scripts/Resources/decisionResource.gd" id="1_nd6vk"]
 [ext_resource type="Script" uid="uid://dppj8x6674luj" path="res://Scripts/Resources/result_resource.gd" id="2_35l6u"]
@@ -7,17 +7,38 @@
 [ext_resource type="Texture2D" uid="uid://bvqh6eycltwac" path="res://Assets/Textures/Events/man_confused_result_1.png" id="3_1eyfh"]
 [ext_resource type="Texture2D" uid="uid://ctkeyh5b7f1oy" path="res://Assets/Textures/Events/man_confused_result_3.png" id="4_1eyfh"]
 [ext_resource type="Texture2D" uid="uid://b8fesfoguf878" path="res://Assets/Textures/Events/man_confused_result_2.png" id="5_qdbta"]
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="5_tnyf6"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="6_7exhx"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/bandage.tres" id="6_tnyf6"]
 
 [sub_resource type="Resource" id="Resource_qdbta"]
 script = ExtResource("2_35l6u")
 image = ExtResource("3_1eyfh")
 text = "He does'nt acknowlege you and simple mutters under his breath repeatly \"what was it, where is it… here? No no it cant be\"."
+favor = 1
 metadata/_custom_type_script = "uid://dppj8x6674luj"
+
+[sub_resource type="Resource" id="Resource_kpwfc"]
+script = ExtResource("6_7exhx")
+item = ExtResource("6_tnyf6")
+amount = 1
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_fxi23"]
+script = ExtResource("5_tnyf6")
+slots = Array[ExtResource("6_7exhx")]([SubResource("Resource_kpwfc")])
+columns = 3
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"
 
 [sub_resource type="Resource" id="Resource_nc6v2"]
 script = ExtResource("2_35l6u")
 image = ExtResource("4_1eyfh")
 text = "Upon seeing you his eyes light up in terror, such terror he passes out cold and thuds to the ground, in his pocket is some food, sorry we need it more right now."
+inv = SubResource("Resource_fxi23")
+favor = 2
 metadata/_custom_type_script = "uid://dppj8x6674luj"
 
 [sub_resource type="Resource" id="Resource_35l6u"]
@@ -30,12 +51,14 @@ metadata/_custom_type_script = "uid://rtvp88vwwrlw"
 script = ExtResource("2_35l6u")
 image = ExtResource("3_1eyfh")
 text = "As you pass by you wonder where he came from but quickly dismiss the thought as nothing would come of it."
+favor = 1
 metadata/_custom_type_script = "uid://dppj8x6674luj"
 
 [sub_resource type="Resource" id="Resource_5mcfa"]
 script = ExtResource("2_35l6u")
 image = ExtResource("5_qdbta")
 text = "As you pass by him you can feel it, staring, so cold, so... unnerving. You grow a bit more parinoid"
+favor = 1
 metadata/_custom_type_script = "uid://dppj8x6674luj"
 
 [sub_resource type="Resource" id="Resource_tnyf6"]

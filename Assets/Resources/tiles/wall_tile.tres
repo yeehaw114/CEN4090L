@@ -6,4 +6,7 @@
 script = ExtResource("1_745h7")
 exit = false
 wall = true
+starts_cleared = true
+spawn_tile = false
+debug_name = "wall"
 metadata/_custom_type_script = "uid://cb3tphfwanogu"

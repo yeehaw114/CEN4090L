@@ -27,6 +27,8 @@ var boss_time := false
 var player_alive: bool = true
 var run_active: bool = false
 
+signal health_changed(value: int)
+
 # --- Scene registry ---
 const SCENES := {
 	"lobby": "res://Scenes/lobby.tscn",
@@ -37,7 +39,7 @@ const SCENES := {
 	"large_room": "res://Scenes/LargeRoom.tscn",
 	"campfire": "res://Scenes/Campfire.tscn",
 	"battle": "res://Scenes/battle_manager.tscn",
-	"boss": "res://Scenes/boss_room.tscn"
+	"boss": "dres://Scenes/boss_room.tscn"
 }
 
 func save():
@@ -72,6 +74,9 @@ func load_game():
 				if card.card_name == card_info.get("card_name"):
 					card.from_dict(card_info)
 
+func set_new_health(health: int):
+	current_health = health
+	health_changed.emit(health)
 
 # --- Cached preloaded scenes ---
 var cached_scenes: Dictionary = {}
@@ -123,6 +128,11 @@ func return_to_previous_scene_live():
 	# Reattach the previous live scene
 	tree.root.add_child(previous_scene)
 	tree.current_scene = previous_scene
+	
+	previous_scene.tiles.set_all_tiles_collision(false)
+	await get_tree().process_frame
+	previous_scene.tiles.set_all_tiles_collision(true)
+	
 	GlobalAudioStreamPlayer.play_dungeon_music()
 	current_scene_path = ""  # optional, since this is a live restore
 

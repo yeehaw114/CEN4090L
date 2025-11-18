@@ -14,12 +14,12 @@ script = ExtResource("1_xsjyq")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="DetectionCollision" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_81xng")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="WallCollision" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_xsjyq")
 disabled = true
 

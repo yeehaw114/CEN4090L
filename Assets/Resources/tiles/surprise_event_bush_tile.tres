@@ -8,4 +8,7 @@ script = ExtResource("1_lifky")
 surprise_event = ExtResource("2_5lan6")
 exit = false
 wall = false
+starts_cleared = false
+spawn_tile = false
+debug_name = "surprise_bush"
 metadata/_custom_type_script = "uid://cb3tphfwanogu"

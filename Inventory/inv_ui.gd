@@ -39,5 +39,5 @@ func add_card_to_inventory(card_stat: CardResource) -> void:
 	new_card.card_stats = card_stat
 	new_card.is_able_to_be_selected = false
 	grid_container.add_child(new_card)
-	inv.insert(card_stat)
+	#inv.insert(card_stat)
 	update_slots()  

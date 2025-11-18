@@ -3,8 +3,11 @@ extends Node
 # Add this to your autoload/singleton list in Project Settings?? IDK how to do this, is this safe?
 
 # Player Stats
-var current_health: int = 10
-var max_health: int = 10
+var current_health: int = 20
+var max_health: int = 20
+var max_nerve := 100
+var current_nerve := max_nerve
+
 var coins: int = 0
 
 # Inventory
@@ -24,14 +27,16 @@ var run_inventory: Dictionary = {
 	"is_on_run": false
 }
 
-signal health_changed(new_health: int, max_health: int)
+signal health_changed(new_health: int)
+signal nerve_changed(new_nerve: int)
 signal coins_changed(new_coins: int)
 signal cards_changed()
 signal deck_changed()
 
 func _ready() -> void:
 	# Initialize with starting cards
-	initialize_starting_deck()
+	#initialize_starting_deck()
+	pass
 
 # Initialize the player's starting deck
 func initialize_starting_deck() -> void:
@@ -58,16 +63,32 @@ func initialize_starting_deck() -> void:
 # Health Management
 func take_damage(amount: int) -> void:
 	current_health = max(0, current_health - amount)
-	health_changed.emit(current_health, max_health)
+	health_changed.emit(current_health)
 
 func heal(amount: int) -> void:
 	current_health = min(max_health, current_health + amount)
-	health_changed.emit(current_health, max_health)
+	health_changed.emit(current_health)
 
 func set_max_health(new_max: int) -> void:
 	max_health = new_max
 	current_health = min(current_health, max_health)
-	health_changed.emit(current_health, max_health)
+	health_changed.emit(current_health)
+
+# Nerve Management
+func take_nerve_damage(amount: int) -> void:
+	print('taking '+str(amount)+' nerve damage')
+	current_nerve = max(0, current_nerve - amount)
+	nerve_changed.emit(current_nerve)
+
+func heal_nerve(amount: int) -> void:
+	current_nerve = min(max_nerve, current_nerve + amount)
+	nerve_changed.emit(current_nerve)
+
+func set_max_nerve(new_max: int) -> void:
+	max_nerve = new_max
+	current_nerve = min(current_nerve, max_nerve)
+	nerve_changed.emit(current_nerve)
+
 
 func use_flask() -> bool:
 	if healing_flasks > 0:

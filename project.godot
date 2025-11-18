@@ -20,6 +20,7 @@ GameState="*res://Scripts/Singletons/GameState.gd"
 CardCollection="*res://Scripts/Singletons/card_collection.gd"
 GlobalAudioStreamPlayer="*res://Scripts/Singletons/audio_stream_player.tscn"
 GlobalBattleResourceManager="*res://Scripts/Singletons/GlobalBattleResourceManager.gd"
+PlayerInventory="*res://Scripts/Singletons/PlayerInventory.gd"
 
 [display]
 

@@ -31,6 +31,7 @@ var block_decrease := 0
 
 signal player_died
 signal took_damage(damage: int)
+signal healh_changed(health: int)
 
 func _ready():
 	enemy_sprite.texture = sprite
@@ -38,6 +39,8 @@ func _ready():
 	health_bar.max_value = GameState.max_health
 	health = GameState.current_health
 	max_health = GameState.max_health
+	#healh_changed.connect(GameState.set_new_health)
+	took_damage.connect(PlayerInventory.take_damage)
 	health_value_label.text = str(GameState.current_health)+'/'+str(GameState.max_health)
 
 func mouse_entered_body() -> void:
@@ -62,6 +65,7 @@ func take_damage(damage: int):
 	health -= damage
 	if !health_before_damage == health:
 		took_damage.emit(damage)
+		healh_changed.emit(health)
 		player_sound_manager.play_hurt()
 		health_value_label.text = str(health)+'/'+str(max_health)
 	health_bar.value = health

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://gg61ayppaa36"]
+[gd_scene load_steps=7 format=3 uid="uid://gg61ayppaa36"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_dww88"]
 [ext_resource type="Script" uid="uid://cl3phfgqteicg" path="res://Scripts/levels/event.gd" id="2_u37vb"]
 [ext_resource type="Script" uid="uid://dn0mof62igw0e" path="res://Scripts/Events/inquiry_panel.gd" id="3_pn77i"]
 [ext_resource type="Script" uid="uid://bb4457v8vofl6" path="res://Scripts/Events/decision_panel.gd" id="4_pn77i"]
+[ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="5_efmpf"]
+[ext_resource type="Resource" uid="uid://dad1t2llar0sx" path="res://Inventory/man_confused.tres" id="6_sg3nx"]
 
 [node name="Event" type="Control"]
 layout_mode = 3
@@ -12,11 +14,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_dww88")
 script = ExtResource("2_u37vb")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(500, 450)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -26,7 +28,7 @@ anchor_bottom = 0.5
 offset_left = -560.0
 offset_top = -225.0
 offset_right = -60.0
-offset_bottom = 225.0
+offset_bottom = 125.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -149,8 +151,24 @@ stretch_mode = 2
 visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 text = "The rusling is constant and unrelenting whatever is in there is not attempting to coneal it's self from you, meaning it's either unitellifent and is not aware of your presence or it is attempting to trick you, either way you are likely smarter and stronger than whatever it is."
+
+[node name="CenterContainer" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="InventoryLevel" parent="Panel/ScrollContainer/VBoxContainer/CenterContainer" instance=ExtResource("5_efmpf")]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+inventoryData = ExtResource("6_sg3nx")
 
 [node name="ContinueButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 visible = false

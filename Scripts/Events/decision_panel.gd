@@ -3,7 +3,7 @@ extends Panel
 @onready var button_container: HBoxContainer = $ButtonContainer
 @onready var event: Event = $"../../../.."
 
-signal decision_made(text: String, image: Texture2D)
+signal decision_made(text: String, image: Texture2D, items: Array[InvItem])
 
 func set_decision_buttons(buttons: Array[DecisionResource]):
 	for node in button_container.get_children():
@@ -22,4 +22,8 @@ func _on_decision_pressed(button: DecisionResource):
 	var final_decision = button.results.pick_random()
 	var image = final_decision.image
 	var text = final_decision.text
-	decision_made.emit(text,image)
+	var inv: Inv
+	if final_decision.inv:
+		inv = final_decision.inv
+		
+	decision_made.emit(text,image,inv)

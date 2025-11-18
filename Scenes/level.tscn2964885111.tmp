@@ -25,7 +25,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_0f350")
 script = ExtResource("1_wqkje")
-player_inv = ExtResource("3_oqgf2")
+inv = ExtResource("3_oqgf2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -93,7 +93,6 @@ text = "View Cards"
 
 [node name="InventoryLevel" parent="CanvasLayer/BottomUIPanel/HBoxContainer" instance=ExtResource("7_qxfql")]
 layout_mode = 2
-inventoryData = ExtResource("3_oqgf2")
 is_player_inventory = true
 
 [node name="Tiles" type="Node2D" parent="."]
@@ -127,6 +126,9 @@ motion_mirroring = Vector2(320, 0)
 texture = ExtResource("1_k5f4k")
 centered = false
 
+[connection signal="item_got" from="CanvasLayer/BottomUIPanel/HBoxContainer/InventoryLevel" to="." method="attempt_to_insert"]
+[connection signal="item_got" from="CanvasLayer/BottomUIPanel/HBoxContainer/InventoryLevel" to="CanvasLayer/BottomUIPanel/HBoxContainer/InventoryLevel" method="test"]
+[connection signal="item_used" from="CanvasLayer/BottomUIPanel/HBoxContainer/InventoryLevel" to="." method="apply_item_effect"]
 [connection signal="level_bounds_found" from="Tiles" to="Player" method="set_camera_bounds"]
 [connection signal="new_tile_cleared" from="Tiles" to="CanvasLayer/TopPanelContainer" method="set_progress"]
 [connection signal="player_position_updated" from="Tiles" to="." method="_on_tiles_player_position_updated"]

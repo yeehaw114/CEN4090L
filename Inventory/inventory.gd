@@ -2,19 +2,30 @@ extends Resource
 class_name Inv
 
 @export var slots: Array[InvSlot] = []
+@export var columns: int = 1
+@export var is_players := false
+
+signal update
+
+
 @export var max_health: int = 100
 @export var current_health: int = 100
 @export var coins: int = 0
 
-func insert(card: CardResource, amount: int = 1) -> void:
-	# Check if card already exists (for stacking)
+func insert(item: InvItem) -> void:
+	#print('item trying to insert: '+str(item.name))
+	if not is_players:
+		return
 	for slot in slots:
-		if slot.card == card:
-			slot.amount += amount
-			return
+		if slot.item:
+			pass
+			#print(slot.item.name)
+		#print('empty slot')
+	#print('\n')
 	
-	# Otherwise, create new slot
-	var new_slot := InvSlot.new()
-	new_slot.card = card
-	new_slot.amount = amount
-	slots.append(new_slot)
+	for slot in slots:
+		if slot.item:
+			if slot.item.name == item.name:
+				slot.amount += 1
+				#print('\nincreasing by 1: '+str(slot.item.name))
+	update.emit()
