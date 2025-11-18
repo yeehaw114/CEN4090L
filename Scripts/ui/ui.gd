@@ -32,6 +32,7 @@ func _ready() -> void:
 	set_energy_max(3)
 	set_energy_value(3)
 	pause_screen.un_pause_button.button_up.connect(display_pause_screen.bind(false))
+	#battle_manager.combat_manager.error_made.connect(error_made)
 
 func switch_to_display_discard_pile() -> void:
 	move_crystal_button.visible = false
@@ -105,6 +106,9 @@ func on_discard_button_pressed() -> void:
 	
 func on_draw_button_pressed() -> void:
 	switch_to_display_draw_pile()
+
+func error_made():
+	battle_sound_manager.play_error()
 
 func display_game_over_screen():
 	#get_tree().paused = true;

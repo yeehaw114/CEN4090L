@@ -16,3 +16,7 @@ func highlight(toggle: bool):
 	else:
 		high_light_sprite.hide()
 	
+
+
+func _on_combat_manager_error_made() -> void:
+	pass # Replace with function body.

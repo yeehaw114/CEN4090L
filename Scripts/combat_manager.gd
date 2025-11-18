@@ -9,6 +9,7 @@ extends Node2D
 @export var max_energy := 3
 var current_energy := max_energy
 signal energy_changed(energy: int)
+signal error_made
 
 func _on_card_selected(card: Card) -> void:
 	cards.currently_selected_card = card
@@ -43,10 +44,13 @@ func raycast_check_for_tile():
 	
 func cast_card_on_character(character: Character, card: Card, enemy: Character) -> void:
 	if !check_character_on_valid_tile(character,card) or !check_enemy_on_valid_tile(enemy,card):
+		error_made.emit()
 		return
 	if card.card_stats.card_cost > current_energy:
+		error_made.emit()
 		return
 	if enemy.is_dead:
+		error_made.emit()
 		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
@@ -75,8 +79,10 @@ func move_card_to_discard(card):
 
 func cast_card_on_player(character: Character, card: Card) -> void:
 	if !check_character_on_valid_tile(character,card):
+		error_made.emit()
 		return
 	if card.card_stats.card_cost > current_energy:
+		error_made.emit()
 		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:

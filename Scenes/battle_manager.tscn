@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=32 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_7l6j3"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dlvajwo5fnm76" path="res://Assets/Music/Sound Effects/Battle_Won.wav" id="24_14ft4"]
 [ext_resource type="Script" uid="uid://fly5ribh7ybc" path="res://Scripts/battle_sound_manager.gd" id="24_qdd5b"]
 [ext_resource type="AudioStream" uid="uid://dnsmd1y1ey57a" path="res://Assets/Music/Sound Effects/Battle_Lost.wav" id="25_qdd5b"]
+[ext_resource type="AudioStream" uid="uid://r864pdku0xse" path="res://Assets/Music/Sound Effects/Error.wav" id="28_ufhob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
@@ -323,6 +324,9 @@ stream = ExtResource("24_14ft4")
 [node name="BattleLossSound" type="AudioStreamPlayer2D" parent="BattleSoundManager"]
 stream = ExtResource("25_qdd5b")
 
+[node name="BattleErrorSound" type="AudioStreamPlayer2D" parent="BattleSoundManager"]
+stream = ExtResource("28_ufhob")
+
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
@@ -332,6 +336,7 @@ stream = ExtResource("25_qdd5b")
 [connection signal="rewards_decided" from="BattleManager" to="VictoryScreen" method="set_reward_values"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
 [connection signal="energy_changed" from="BattleManager/CombatManager" to="." method="set_energy_value"]
+[connection signal="error_made" from="BattleManager/CombatManager" to="." method="error_made"]
 [connection signal="player_died" from="BattleManager/Player" to="." method="display_game_over_screen"]
 [connection signal="player_died" from="BattleManager/Player" to="BattleManager" method="_on_player_player_died"]
 [connection signal="all_enemies_died" from="BattleManager/Enemies" to="." method="display_victory_screen"]
