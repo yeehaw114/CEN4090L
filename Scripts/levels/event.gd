@@ -19,7 +19,6 @@ class_name Event
 
 
 const test_resource := preload("res://Assets/Resources/events/man_confused.tres")
-var test_inv =test_resource.decisions[0].results[1].inv
 enum SKILLS {BOD=1,INS=2,MIN=3,WILL=4,GNO=5}
 
 signal event_finished
@@ -32,8 +31,6 @@ func _ready() -> void:
 		eventResource = test_resource
 	title_label.text = eventResource.event_title
 	event_texture.texture = eventResource.event_image
-	
-	set_inventory(test_inv)
 	
 func _on_skill_button_pressed(index: int):
 	if index == SKILLS.BOD:

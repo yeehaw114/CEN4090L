@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 script = ExtResource("1_wv26v")
 slots = Array[ExtResource("2_0qjwq")]([SubResource("Resource_oq3ou")])
 columns = 3
+is_players = false
 max_health = 100
 current_health = 100
 coins = 0

@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxapipdvecyyf"]
+
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_0f350"]
+[ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="1_k5f4k"]
+[ext_resource type="Script" uid="uid://q4grhrjnypjh" path="res://Scripts/levels/level.gd" id="1_wqkje"]
+[ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="2_6phgx"]
+[ext_resource type="Script" uid="uid://djqea15xbts6y" path="res://Scripts/levels/player.gd" id="2_81xng"]
+[ext_resource type="Texture2D" uid="uid://20fisve0baj0" path="res://Assets/Textures/player_portrait.png" id="3_8c0lf"]
+[ext_resource type="Script" uid="uid://d25ih565yl4j" path="res://Scripts/levels/bottom_ui_panel.gd" id="3_754fn"]
+[ext_resource type="Script" uid="uid://skd327rsfqhc" path="res://Scripts/levels/top_panel_container.gd" id="3_bvt00"]
+[ext_resource type="Resource" uid="uid://dad7jr7v1eil4" path="res://Inventory/playerinventory.tres" id="3_oqgf2"]
+[ext_resource type="Script" uid="uid://cneenyb3oe6nt" path="res://Scripts/levels/tiles.gd" id="3_wqkje"]
+[ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="7_qxfql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
+
+[node name="Level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_0f350")
+script = ExtResource("1_wqkje")
+player_inv = ExtResource("3_oqgf2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TopPanelContainer" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(800, 50)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+script = ExtResource("3_bvt00")
+
+[node name="LevelProgressBar" type="ProgressBar" parent="CanvasLayer/TopPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BottomUIPanel" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme = ExtResource("1_0f350")
+script = ExtResource("3_754fn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("3_8c0lf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/BottomUIPanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+
+[node name="NerveBar" type="ProgressBar" parent="CanvasLayer/BottomUIPanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+
+[node name="Button" type="Button" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
+layout_mode = 2
+text = "View Cards"
+
+[node name="InventoryLevel" parent="CanvasLayer/BottomUIPanel/HBoxContainer" instance=ExtResource("7_qxfql")]
+layout_mode = 2
+inventoryData = ExtResource("3_oqgf2")
+is_player_inventory = true
+
+[node name="Tiles" type="Node2D" parent="."]
+script = ExtResource("3_wqkje")
+
+[node name="LevelGenerator" type="Node2D" parent="."]
+
+[node name="EventHandler" type="Node2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(150, 90)
+script = ExtResource("2_81xng")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_6phgx")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(100, 0)
+zoom = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(6.33333, 5.99999)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_k5f4k")
+centered = false
+
+[connection signal="level_bounds_found" from="Tiles" to="Player" method="set_camera_bounds"]
+[connection signal="new_tile_cleared" from="Tiles" to="CanvasLayer/TopPanelContainer" method="set_progress"]
+[connection signal="player_position_updated" from="Tiles" to="." method="_on_tiles_player_position_updated"]
