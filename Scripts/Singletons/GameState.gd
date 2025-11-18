@@ -91,8 +91,7 @@ func change_scene(scene_path: String):
 				current_health = max_health
 				player_alive = true
 				transferred_cards = default_cards.duplicate(true)
-				
-				print('\nCLEARING ROOMS CLEARED\n')
+			
 			get_tree().call_deferred("change_scene_to_packed", cached_scenes[key])
 			current_scene_path = scene_path
 			return
@@ -125,7 +124,7 @@ func return_to_previous_scene_live():
 	tree.current_scene = previous_scene
 	GlobalAudioStreamPlayer.play_dungeon_music()
 	current_scene_path = ""  # optional, since this is a live restore
-
+	GlobalAudioStreamPlayer.play_dungeon_music()
 	print("Returned to live previous scene:", previous_scene.name)
 
 # --- Lifecycle helpers ---

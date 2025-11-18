@@ -18,7 +18,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 GameState="*res://Scripts/Singletons/GameState.gd"
 CardCollection="*res://Scripts/Singletons/card_collection.gd"
-GlobalAudioStreamPlayer="*res://Scripts/Singletons/audio_stream_player.tscn"
+GlobalAudioStreamPlayer="*res://Assets/Music/Ambience/audio_stream_player.tscn"
 GlobalBattleResourceManager="*res://Scripts/Singletons/GlobalBattleResourceManager.gd"
 
 [display]

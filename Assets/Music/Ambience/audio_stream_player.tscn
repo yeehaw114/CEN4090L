@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1wmp5lls266b"]
+
+[ext_resource type="AudioStream" uid="uid://ctoruv1jdhhqf" path="res://Assets/Music/Soundtrack/Dungeon_Music.ogg" id="1_20t3o"]
+[ext_resource type="Script" uid="uid://dx1kp7u33gvhg" path="res://Scripts/audio_stream_player.gd" id="2_lgy40"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_20t3o")
+volume_db = -6.0
+script = ExtResource("2_lgy40")

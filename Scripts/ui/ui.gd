@@ -116,6 +116,7 @@ func display_victory_screen():
 	#get_tree().paused = true;
 	battle_sound_manager.play_won()
 	battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
+	victory_screen.set_current_players_hand(GameState.transferred_cards)
 	victory_screen.show()
 	
 func display_pause_screen(switch: bool):

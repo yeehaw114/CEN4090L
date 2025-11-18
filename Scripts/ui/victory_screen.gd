@@ -1,13 +1,24 @@
 extends Control
 
-@onready var card_container: HBoxContainer = $Panel/VBoxContainer/VBoxContainer/CardContainer
-@onready var coin_reward_label: Label = $Panel/VBoxContainer/CoinRewardLabel
-@onready var continue_button: Button = $Panel/ContinueButton
-@onready var select_card_label: Label = $Panel/VBoxContainer/VBoxContainer/SelectCardLabel
-@onready var none_button: Button = $Panel/VBoxContainer/VBoxContainer/NoneButton
+@onready var card_container: HBoxContainer = $VictoryPanel/VBoxContainer/VBoxContainer/CardContainer
+@onready var coin_reward_label: Label = $VictoryPanel/VBoxContainer/CoinRewardLabel
+@onready var continue_button: Button = $VictoryPanel/ContinueButton
+@onready var select_card_label: Label = $VictoryPanel/VBoxContainer/VBoxContainer/SelectCardLabel
+@onready var none_button: Button = $VictoryPanel/VBoxContainer/VBoxContainer/NoneButton
+@onready var display_card_deck: Control = $DisplayCardDeck
+@onready var view_player_cards_button: Button = $VictoryPanel/VBoxContainer/ViewPlayerCardsButton
 
 var coins_value: int
 var card_resources: Array[CardResource]
+
+var player_hand : Array[CardResource]
+
+func _ready() -> void:
+	display_card_deck.exit_button_clicked.connect(close_display_player_cards)
+
+func set_current_players_hand(cards: Array[CardResource]):
+	display_card_deck.stats_list = cards
+	display_card_deck.populate_grid()
 
 func _on_return_button_pressed() -> void:
 	if GameState.boss_time:
@@ -22,6 +33,7 @@ func _on_return_button_pressed() -> void:
 	GameState.return_to_previous_scene_live()
 
 func set_reward_values(coins:int,cards:Array[CardResource]):
+	
 	coin_reward_label.text = "Coins Earned: " + str(coins)
 	coins_value = coins
 	var children := card_container.get_children()
@@ -43,3 +55,11 @@ func show_continue() -> void:
 	card_container.hide()
 	select_card_label.hide()
 	none_button.hide()
+	view_player_cards_button.hide()
+
+
+func _on_view_player_cards_button_pressed() -> void:
+	display_card_deck.show()
+
+func close_display_player_cards():
+	display_card_deck.hide()

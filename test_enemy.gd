@@ -74,4 +74,5 @@ func _handle_battle_transition():
 	GameState.previous_scene = current_room
 
 	#Change scene to battle
+	GlobalAudioStreamPlayer.play_battle_music()
 	GameState.change_scene(GameState.SCENES["battle"])
