@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b15ra3iat3shd"]
+[gd_scene load_steps=6 format=3 uid="uid://b15ra3iat3shd"]
 
 [ext_resource type="Script" uid="uid://bofrhvd7i5hxb" path="res://Scripts/damage_popup.gd" id="1_bv3wo"]
+[ext_resource type="FontFile" uid="uid://c3mm0ysc7uskf" path="res://Assets/Themes/rainyhearts.ttf" id="2_dwj5p"]
 
 [sub_resource type="Animation" id="Animation_bv3wo"]
 length = 0.001
@@ -79,6 +80,7 @@ _data = {
 }
 
 [node name="DamagePopup" type="Marker2D"]
+top_level = true
 script = ExtResource("1_bv3wo")
 
 [node name="Label" type="Label" parent="."]
@@ -88,14 +90,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -17.12
+offset_top = -14.46
+offset_right = 17.12
+offset_bottom = 14.46
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_dwj5p")
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
