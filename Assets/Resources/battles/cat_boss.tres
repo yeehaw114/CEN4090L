@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BattleResource" load_steps=4 format=3 uid="uid://c1iioddej1t43"]
+
+[ext_resource type="Script" uid="uid://dda632fu6blsg" path="res://Scripts/card_resource.gd" id="1_bkqey"]
+[ext_resource type="Resource" uid="uid://dyyq3il8m1oe0" path="res://Assets/Resources/enemies/cat_boss.tres" id="2_1ukgd"]
+[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="2_ril2r"]
+
+[resource]
+script = ExtResource("2_ril2r")
+boss = true
+difficulty = 2
+starting_cards = Array[ExtResource("1_bkqey")]([])
+enemy_rank_1 = ExtResource("2_1ukgd")
+player_position = 1
+coins_min = 15
+coins_max = 20
+cards = Array[ExtResource("1_bkqey")]([])
+metadata/_custom_type_script = "uid://d6nkb4bfujhr"
