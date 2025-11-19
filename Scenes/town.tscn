@@ -38,6 +38,7 @@ script = ExtResource("3_ckvn4")
 [node name="StorageEntrance" type="Area2D" parent="Entrances"]
 position = Vector2(38, 413)
 script = ExtResource("3_28ev0")
+intro = "storage_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/StorageEntrance"]
 position = Vector2(6.5, -11)
@@ -46,6 +47,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 [node name="ChurchEntrance" type="Area2D" parent="Entrances"]
 position = Vector2(197, 346)
 script = ExtResource("3_28ev0")
+intro = "church_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/ChurchEntrance"]
 position = Vector2(6.5, -11)
@@ -54,6 +56,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 [node name="InfirmaryEntrance" type="Area2D" parent="Entrances"]
 position = Vector2(311, 102)
 script = ExtResource("3_28ev0")
+intro = "infirmary_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/InfirmaryEntrance"]
 position = Vector2(6.5, -11)
@@ -62,6 +65,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 [node name="TownhallEntrance" type="Area2D" parent="Entrances"]
 position = Vector2(480, 137)
 script = ExtResource("3_28ev0")
+intro = "townhall_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/TownhallEntrance"]
 position = Vector2(6.5, -11)
@@ -70,6 +74,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 [node name="FieldEntrance" type="Area2D" parent="Entrances"]
 position = Vector2(754, 153)
 script = ExtResource("3_28ev0")
+intro = "field_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/FieldEntrance"]
 position = Vector2(6.5, -11)
@@ -78,10 +83,22 @@ shape = SubResource("RectangleShape2D_kswdu")
 [node name="SmithyEntrance" type="Area2D" parent="Entrances"]
 position = Vector2(738, 443)
 script = ExtResource("3_28ev0")
+intro = "smithy_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/SmithyEntrance"]
 position = Vector2(6.5, -11)
 shape = SubResource("RectangleShape2D_kswdu")
+
+[node name="LevelSelectButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -145.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Go to Level Select
+"
 
 [connection signal="mouse_entered" from="Entrances/StorageEntrance" to="Entrances/StorageEntrance" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Entrances/StorageEntrance" to="Entrances/StorageEntrance" method="_on_mouse_exited"]
@@ -95,3 +112,4 @@ shape = SubResource("RectangleShape2D_kswdu")
 [connection signal="mouse_exited" from="Entrances/FieldEntrance" to="Entrances/FieldEntrance" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Entrances/SmithyEntrance" to="Entrances/SmithyEntrance" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Entrances/SmithyEntrance" to="Entrances/SmithyEntrance" method="_on_mouse_exited"]
+[connection signal="pressed" from="LevelSelectButton" to="." method="_on_level_select_button_pressed"]
