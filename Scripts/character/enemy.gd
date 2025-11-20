@@ -6,7 +6,7 @@ const grey_shader = preload("res://Assets/Shaders/grey.gdshader")
 const attack_intention_texture = preload("res://Assets/Textures/attack_intenttion.png")
 const block_intention_texture = preload("res://Assets/Textures/block_intention.png")
 const debuff_intention_texture = preload("res://Assets/Textures/debuff_intention.png")
-const buff_intention_texture = preload("res://Assets/Textures/debuff_intention.png")
+const buff_intention_texture = preload("res://Assets/Textures/buff.png")
 
 const status_effect_scene = preload("res://Scenes/status_effect.tscn")
 const BLUR_CONSTANT = 2.5

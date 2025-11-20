@@ -19,6 +19,7 @@ extends Control
 @onready var game_over_screen: Control = $GameOverScreen
 @onready var victory_screen: Control = $VictoryScreen
 @onready var pause_screen: Control = $PauseScreen
+@onready var battle_tutorial_screen: Control = $BattleTutorialScreen
 
 @onready var battle_sound_manager: Node2D = $BattleSoundManager
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	set_energy_max(3)
 	set_energy_value(3)
 	pause_screen.un_pause_button.button_up.connect(display_pause_screen.bind(false))
+	battle_tutorial_screen.pause_game.connect(display_tutorial_screen.bind(false))
 	#battle_manager.combat_manager.error_made.connect(error_made)
 
 func switch_to_display_discard_pile() -> void:
@@ -134,3 +136,14 @@ func display_pause_screen(switch: bool):
 		battle_manager.game_paused = false
 		pause_screen.hide()
 		print('HIDE PAUSE SCREEN')
+
+func display_tutorial_screen(switch: bool):
+	if switch:
+		battle_manager.combat_manager.cards.make_cards_in_hand_unselectable()
+		if battle_manager.combat_manager.cards.currently_selected_card:
+				battle_manager.combat_manager.cards.unselect_card()
+		battle_tutorial_screen.show()
+	else:
+		battle_manager.combat_manager.cards.make_cards_in_hand_selectable()
+		battle_manager.game_paused = false
+		battle_tutorial_screen.hide()

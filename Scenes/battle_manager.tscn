@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=34 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_7l6j3"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
 [ext_resource type="Texture2D" uid="uid://c3ytv3j8mh0qi" path="res://Assets/Textures/end_turn_underlay.png" id="5_85kri"]
+[ext_resource type="Texture2D" uid="uid://ju6sq7ao4c3n" path="res://Assets/Textures/tutorial.png" id="5_iusux"]
 [ext_resource type="Script" uid="uid://hxdbbb7wtq5v" path="res://Scripts/ui/character_container.gd" id="6_6q0we"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
@@ -26,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dsvhja4baeqre" path="res://Scenes/pause_screen.tscn" id="22_cr05y"]
 [ext_resource type="AudioStream" uid="uid://dlvajwo5fnm76" path="res://Assets/Music/Sound Effects/Battle_Won.wav" id="24_14ft4"]
 [ext_resource type="Script" uid="uid://fly5ribh7ybc" path="res://Scripts/battle_sound_manager.gd" id="24_qdd5b"]
+[ext_resource type="PackedScene" uid="uid://b73ihxfybd55x" path="res://Scenes/battle_tutorial_screen.tscn" id="25_p7vyl"]
 [ext_resource type="AudioStream" uid="uid://dnsmd1y1ey57a" path="res://Assets/Music/Sound Effects/Battle_Lost.wav" id="25_qdd5b"]
 [ext_resource type="AudioStream" uid="uid://r864pdku0xse" path="res://Assets/Music/Sound Effects/Error.wav" id="28_ufhob"]
 
@@ -95,6 +97,15 @@ theme_override_font_sizes/font_size = 16
 text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 842.0
+offset_top = 13.0
+offset_right = 882.0
+offset_bottom = 53.0
+texture_normal = ExtResource("5_iusux")
+stretch_mode = 0
 
 [node name="MoveCrystalButton" type="TextureButton" parent="."]
 texture_filter = 1
@@ -315,6 +326,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="BattleTutorialScreen" parent="." instance=ExtResource("25_p7vyl")]
+visible = false
+layout_mode = 1
+
 [node name="BattleSoundManager" type="Node2D" parent="."]
 script = ExtResource("24_qdd5b")
 
@@ -327,6 +342,7 @@ stream = ExtResource("25_qdd5b")
 [node name="BattleErrorSound" type="AudioStreamPlayer2D" parent="BattleSoundManager"]
 stream = ExtResource("28_ufhob")
 
+[connection signal="pressed" from="TextureButton" to="." method="display_tutorial_screen" binds= [true]]
 [connection signal="pressed" from="MoveCrystalButton" to="." method="_on_movement_button_pressed"]
 [connection signal="pressed" from="MoveCrystalButton" to="BattleManager" method="_on_movement_button_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]

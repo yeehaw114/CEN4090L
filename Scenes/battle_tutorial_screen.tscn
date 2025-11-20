@@ -1,0 +1,217 @@
+[gd_scene load_steps=13 format=3 uid="uid://b73ihxfybd55x"]
+
+[ext_resource type="Shader" uid="uid://dfhvpjjx38han" path="res://Assets/Shaders/blur.gdshader" id="1_mdo43"]
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_u27n8"]
+[ext_resource type="Script" uid="uid://canhdod1gvt1s" path="res://Scripts/ui/battle_tutorial_screen.gd" id="2_bh6im"]
+[ext_resource type="Texture2D" uid="uid://c3ytv3j8mh0qi" path="res://Assets/Textures/end_turn_underlay.png" id="3_42km4"]
+[ext_resource type="Texture2D" uid="uid://dramnk8jinkra" path="res://Assets/Textures/move_crystal_sprite_sheet.png" id="4_7mi5i"]
+[ext_resource type="Texture2D" uid="uid://bj7wunbj8gpih" path="res://Assets/Textures/energy_orb.png" id="5_2vmdh"]
+[ext_resource type="PackedScene" uid="uid://dfixw0merhgge" path="res://Scenes/card.tscn" id="6_7mi5i"]
+[ext_resource type="Texture2D" uid="uid://dj5cvo2wfnqry" path="res://Assets/Textures/block_intention.png" id="7_2vmdh"]
+[ext_resource type="Texture2D" uid="uid://bftt4w431ccvi" path="res://Assets/Textures/attack_intenttion.png" id="8_xuvkx"]
+[ext_resource type="Texture2D" uid="uid://d26sxxqolsk2f" path="res://Assets/Textures/debuff_intention.png" id="9_bh6im"]
+[ext_resource type="Texture2D" uid="uid://bisf5osak1vl0" path="res://Assets/Textures/buff.png" id="10_cmk2u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u27n8"]
+shader = ExtResource("1_mdo43")
+shader_parameter/amount = 2.265
+
+[node name="BattleTutorialScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u27n8")
+script = ExtResource("2_bh6im")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_u27n8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 425)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Combat is Turned based, You can play cards and move then click the button shown bellow to end your turn."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_42km4")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.5
+offset_right = 20.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "END TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "You get one movement opprotunity per turn, in order to move you must click the green crystal in the top left corner. Then you can click on one of the four tiles to move to. If the crystal is grey then you can't move."
+fit_content = true
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_7mi5i")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Every turn you start with 3 energy. You need energy to cast cards. You can find the energy cost in the top right corner."
+fit_content = true
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_2vmdh")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/TextureRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.5
+offset_right = 20.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cards have an energy cost. Actions such as dealing damage to enemies, blocking damage from enemies, buffing yourself, etc. They also have position data, the 4 circles in the bottom left represent the spots the player has to be in the cast the card, the 4 circles in the bottom right corner represent the spots the enemy has to be in to cast the card."
+fit_content = true
+
+[node name="Card" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_7mi5i")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "At the start of the player and enemies turn, they lose all block aquired the previous turn. Block when gained acts as a shield from damage. For example if you play a card that gives you 5 block, you will block that much damage that turn"
+fit_content = true
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_2vmdh")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/TextureRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -15.5
+offset_right = 1.0
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Above the enemies head, you will see a symbol and a number, this is the enemies intention, sword means attack, shield means block, green swirl means debuff, and red arrow means buff."
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_xuvkx")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_2vmdh")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_bh6im")
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_cmk2u")
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Status effects appear as a small icon next to the player or enemy, if you wish to know what the status effect does simply hover your mouse over it."
+fit_content = true
+
+[node name="ExitButton" type="Button" parent="Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "EXIT TUTORIAL"
+
+[connection signal="pressed" from="Panel/MarginContainer/ScrollContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
