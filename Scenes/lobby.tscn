@@ -6,15 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c538r0eqm4xck" path="res://Scenes/card_collection_viewer_object.tscn" id="3_bvheq"]
 [ext_resource type="PackedScene" uid="uid://dij45t62wor7k" path="res://Scenes/shop_display.tscn" id="3_o08vn"]
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="4_gdlty"]
+[ext_resource type="PackedScene" uid="uid://cy1rojdwp8lp" path="res://Scenes/dialogue_box_1.tscn" id="4_sqxuf"]
 [ext_resource type="PackedScene" uid="uid://do1e73n8c4x27" path="res://Scenes/shop_object.tscn" id="6_1updj"]
 [ext_resource type="Texture2D" uid="uid://nok333u5fh7i" path="res://Assets/Textures/card_collection.png" id="6_5ndqc"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="6_bvheq"]
 [ext_resource type="Texture2D" uid="uid://c5volmsjc1bfp" path="res://Assets/Textures/AndresSprites/shop sprite.png" id="7_aghey"]
 [ext_resource type="Texture2D" uid="uid://dg12s6wpbp5eq" path="res://Assets/Textures/AndresSprites/tree sprite.png" id="10_o08vn"]
 [ext_resource type="Texture2D" uid="uid://846xgvaoyhjh" path="res://Assets/Textures/AndresSprites/Bunker sprite.png" id="11_5ndqc"]
-[ext_resource type="PackedScene" uid="uid://da0pq36rab0c1" path="res://Scenes/lobby_npc.tscn" id="14_jjrc4"]
-[ext_resource type="PackedScene" uid="uid://c76r84vpul5bn" path="res://Scenes/DialogueBox.tscn" id="15_pvv31"]
 [ext_resource type="Script" uid="uid://byqyqx8r72djm" path="res://Scripts/exit_area.gd" id="16_sqxuf"]
+[ext_resource type="PackedScene" uid="uid://cxy4iu3yyyveq" path="res://Scenes/npc.tscn" id="17_a2vla"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4233d"]
 bg_color = Color(0.713025, 0.819169, 0.996371, 1)
@@ -87,6 +87,12 @@ visible = false
 
 [node name="ShopDisplay" parent="CanvasLayer" instance=ExtResource("3_o08vn")]
 visible = false
+
+[node name="DialogueBox1" parent="CanvasLayer" groups=["dialogue_box"] instance=ExtResource("4_sqxuf")]
+offset_left = -3.0
+offset_top = -64.0
+offset_right = -3.0
+offset_bottom = -64.0
 
 [node name="CoinContainer" type="Panel" parent="CanvasLayer"]
 anchors_preset = 1
@@ -185,10 +191,8 @@ offset = Vector2(-3, -121)
 y_sort_enabled = true
 polygon = PackedVector2Array(-156, 99, -138, 104, -110, 107, -82, 107, -65, 104, -50, 93, -74, 80, -74, 80, -125, 79, -123, 77)
 
-[node name="NPCObject" parent="." instance=ExtResource("14_jjrc4")]
-position = Vector2(76, 61)
-
-[node name="DialogueBox" parent="." instance=ExtResource("15_pvv31")]
+[node name="NPC" parent="." instance=ExtResource("17_a2vla")]
+position = Vector2(160, -26)
 
 [connection signal="toggle_display" from="CanvasLayer/CardCollectionViewer" to="." method="set_coin_label_visibility"]
 [connection signal="toggle_display" from="CanvasLayer/CardCollectionViewer" to="Player" method="toggle_able_to_move"]
