@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://xhqx44x072fb"]
+
+[ext_resource type="Script" uid="uid://k6488mda5shj" path="res://test_enemy.gd" id="1_jwr60"]
+[ext_resource type="Texture2D" uid="uid://btfp1qs6o8p05" path="res://Assets/Textures/blackSmoke00.png" id="2_jwr60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv0g2"]
+size = Vector2(54.5, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6qe4"]
+radius = 196.125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bs22l"]
+radius = 35.0143
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rjgro"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 15.0
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.1
+scale_max = 0.2
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_jwr60")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.90625, 0.734375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wv0g2")
+
+[node name="DetectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_k6qe4")
+
+[node name="BodyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+shape = SubResource("CircleShape2D_bs22l")
+
+[node name="IdleSmoke" type="GPUParticles2D" parent="."]
+amount = 20
+amount_ratio = 0.5
+texture = ExtResource("2_jwr60")
+lifetime = 1.5
+preprocess = 1.0
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_rjgro")
