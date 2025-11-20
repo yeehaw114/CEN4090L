@@ -2,6 +2,8 @@ extends Control
 
 @onready var entrances: Control = $Entrances
 
+const level_select_filepath := "res://Scenes/level_select.tscn"
+
 var is_in_dialouge
 
 func _process(delta: float) -> void:
@@ -12,4 +14,4 @@ func _process(delta: float) -> void:
 
 
 func _on_level_select_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file(level_select_filepath)

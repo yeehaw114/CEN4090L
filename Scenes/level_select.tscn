@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn2fqooygysl1"]
+
+[ext_resource type="Texture2D" uid="uid://bj7wunbj8gpih" path="res://Assets/Textures/energy_orb.png" id="1_nkys2"]
+[ext_resource type="Script" uid="uid://dtdf8jd3o2ury" path="res://Scripts/level_select/select_area.gd" id="2_lx4vd"]
+[ext_resource type="PackedScene" uid="uid://bgqhlljfk7qnw" path="res://Scenes/town.tscn" id="3_lx4vd"]
+[ext_resource type="PackedScene" uid="uid://cxapipdvecyyf" path="res://Scenes/level.tscn" id="4_2sqnl"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectArea" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 221.0
+offset_right = 473.0
+offset_bottom = 261.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("1_nkys2")
+script = ExtResource("2_lx4vd")
+scene = ExtResource("3_lx4vd")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 735.0
+offset_top = 220.0
+offset_right = 775.0
+offset_bottom = 260.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("1_nkys2")
+script = ExtResource("2_lx4vd")
+scene = ExtResource("4_2sqnl")
+
+[connection signal="pressed" from="SelectArea" to="SelectArea" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton2" to="TextureButton2" method="_on_pressed"]
