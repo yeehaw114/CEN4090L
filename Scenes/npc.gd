@@ -18,6 +18,8 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	
+	$AnimatedSprite2D.play("default")
+	
 	# Make sure icon is hidden at start (check if it exists first)
 	if click_icon:
 		click_icon.visible = false
