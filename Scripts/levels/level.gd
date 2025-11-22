@@ -14,17 +14,19 @@ var event_inventory : Inv
 @export var is_player_inventory := false
 
 var hours_passed := 0
+var current_tile : Tile
 
 func _ready() -> void:
 	print("LEVEL HAS INVENTORY LEVEL INSTANCE:", inventory_level)
 	bottom_ui_panel.update_health(GameState.current_health)
-	inventory_level.item_got.connect(attempt_to_insert_item)
 	
-	print('\nplayer inv: '+str(player_inv))
-	#print('IS ITEM GOT CONNECTED TO THE FUNCTION')
-	#print(inventory_level.item_got.is_connected(attempt_to_insert_item))
+	inventory_level.set_inventory(inventory_level.inventoryData)
 	inventory_level.item_got.connect(attempt_to_insert_item)
 	inventory_level.item_used.connect(apply_item_effect)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Interact"):
+		attempt_to_interact_with_tile(current_tile)
 
 func set_event_inventory(inv: Inv):
 	event_inventory = inv
@@ -33,7 +35,7 @@ func set_event_inventory(inv: Inv):
 
 func show_new_event(event_resource : EventResource):
 	var new_event = event_scene.instantiate()
-	new_event.eventResource = event_resource
+	new_event.eventResource = event_resource.duplicate(true)
 	new_event.event_finished.connect(set_player_move.bind(true))
 	new_event.result_inventory_decided.connect(set_event_inventory)
 	canvas_layer.add_child(new_event)
@@ -53,9 +55,6 @@ func _on_tiles_player_position_updated(tile: Variant) -> void:
 	if tile.player != player:
 		return  # ignore updates for other tiles
 	
-	print('\nplayer position: '+str(player.position.x))
-	print('tile position: '+str(tile.position.x))
-	
 	var explorable = self.tiles.get_all_explorable_tiles()
 	var previous_tile
 	var index = explorable.find(tile)
@@ -64,6 +63,8 @@ func _on_tiles_player_position_updated(tile: Variant) -> void:
 	else:
 		#print("This node has no previous element.")
 		pass
+	
+	current_tile = tile
 	
 	if tile.tile_resource.surprise_event and !tile.cleared:
 		show_new_event(tile.tile_resource.surprise_event)
@@ -93,3 +94,11 @@ func apply_item_effect(item: InvItem):
 func attempt_to_insert_item(item: InvItem):
 	print("ATTEMPT INSERT CALLED WITH:", item)
 	inventory_level.inv.insert(item)
+
+func attempt_to_interact_with_tile(tile: Tile):
+	if not tile:
+		return
+	
+	if tile.tile_resource.exit or tile.tile_resource.interactable:
+		if tile.tile_resource.exit:
+			get_tree().change_scene_to_file("res://Scenes/town.tscn")

@@ -6,6 +6,7 @@ class_name Tile
 @onready var area: Area2D = $Area2D
 
 @onready var wall_sprite: Sprite2D = $WallSprite
+@onready var interactable_sprite: Sprite2D = $Interactable_sprite
 
 var tile_resource : TileResource
 var interactable
@@ -31,6 +32,9 @@ func set_resource(res):
 		wall_sprite.show()
 	if tile_resource.starts_cleared:
 		cleared = true
+	if tile_resource.exit:
+		interactable_sprite.show()
+	
 
 func disable_collisions():
 	area.monitoring = false

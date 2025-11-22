@@ -23,18 +23,28 @@ func _ready() -> void:
 		print("item_got →", c)
 	for c in get_signal_connection_list("item_used"):
 		print("item_used →", c)
-	if inventoryData:
-		inv = inventoryData
-	else:
-		inv = inv_test
+
+	#if inventoryData:
+		#inv = inventoryData.duplicate(true)
+	#else:
+		#inv = inv_test.duplicate(true)
 	
-	inv.update.connect(update_slots)
-	spawn_slots(inv.columns,inv.slots.size())
+	#inv.update.connect(update_slots)
+	#spawn_slots(inv.columns,inv.slots.size())
 	# Connect only once
 	#inv.update.connect(update_slots)
 	#spawn_slots(inv.columns,inv.slots.size())
 	
+func set_inventory(inv: Inv):
+	inventoryData = inv
+	reload_inventory()
 	
+func reload_inventory():
+	if !inventoryData:
+		return
+	inv = inventoryData.duplicate(true)
+	inv.update.connect(update_slots)
+	spawn_slots(inv.columns, inv.slots.size())
 
 func spawn_slots(columns: int, num_slots: int):
 	slots.clear()

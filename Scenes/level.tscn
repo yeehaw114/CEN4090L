@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxapipdvecyyf"]
+[gd_scene load_steps=32 format=3 uid="uid://cxapipdvecyyf"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="1_k5f4k"]
@@ -11,6 +11,93 @@
 [ext_resource type="Resource" uid="uid://dad7jr7v1eil4" path="res://Inventory/playerinventory.tres" id="3_oqgf2"]
 [ext_resource type="Script" uid="uid://cneenyb3oe6nt" path="res://Scripts/levels/tiles.gd" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="7_qxfql"]
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="8_c7le1"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="9_2klc5"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/bandage.tres" id="10_nngtn"]
+[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/opioid.tres" id="11_vofx3"]
+
+[sub_resource type="Resource" id="Resource_oqpsp"]
+script = ExtResource("9_2klc5")
+item = ExtResource("10_nngtn")
+amount = 2
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_yrre2"]
+script = ExtResource("9_2klc5")
+item = ExtResource("11_vofx3")
+amount = 1
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_wq1fa"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_amcam"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_to21c"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ajmj0"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_k5okl"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_d0kw6"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_0o0fp"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_2hfcn"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_cmtkm"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_1sk44"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_otoat"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ka4bu"]
+script = ExtResource("9_2klc5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_c7le1"]
+resource_local_to_scene = true
+script = ExtResource("8_c7le1")
+slots = Array[ExtResource("9_2klc5")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44"), SubResource("Resource_otoat"), SubResource("Resource_ka4bu")])
+columns = 7
+is_players = true
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
 
@@ -55,7 +142,7 @@ text = "Hours passed: 0"
 horizontal_alignment = 1
 
 [node name="BottomUIPanel" type="Panel" parent="CanvasLayer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(100, 200)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -78,6 +165,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 texture = ExtResource("3_8c0lf")
+stretch_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
@@ -98,11 +186,13 @@ value = 20.0
 
 [node name="Button" type="Button" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "View Cards"
 
 [node name="InventoryLevel" parent="CanvasLayer/BottomUIPanel/HBoxContainer" instance=ExtResource("7_qxfql")]
 layout_mode = 2
-inventoryData = ExtResource("3_oqgf2")
+inventoryData = SubResource("Resource_c7le1")
 is_player_inventory = true
 
 [node name="Tiles" type="Node2D" parent="."]

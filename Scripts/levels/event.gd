@@ -76,5 +76,4 @@ func _scroll_to_bottom() -> void:
 	scroll_container.scroll_vertical = scroll_container.get_v_scroll_bar().max_value
 
 func set_inventory(inventory: Inv):
-	inventory_result.inv = inventory
-	inventory_result.spawn_slots(inventory_result.inv.columns,inventory_result.inv.slots.size())
+	inventory_result.set_inventory(inventory.duplicate(true))

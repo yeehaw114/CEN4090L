@@ -11,6 +11,7 @@ amount = 2
 metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_wv26v")
 slots = Array[ExtResource("2_0qjwq")]([SubResource("Resource_oq3ou")])
 columns = 3

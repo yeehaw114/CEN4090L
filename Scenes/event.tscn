@@ -1,11 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://gg61ayppaa36"]
+[gd_scene load_steps=11 format=3 uid="uid://gg61ayppaa36"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_dww88"]
 [ext_resource type="Script" uid="uid://cl3phfgqteicg" path="res://Scripts/levels/event.gd" id="2_u37vb"]
 [ext_resource type="Script" uid="uid://dn0mof62igw0e" path="res://Scripts/Events/inquiry_panel.gd" id="3_pn77i"]
 [ext_resource type="Script" uid="uid://bb4457v8vofl6" path="res://Scripts/Events/decision_panel.gd" id="4_pn77i"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="5_efmpf"]
-[ext_resource type="Resource" uid="uid://dad1t2llar0sx" path="res://Inventory/man_confused.tres" id="6_sg3nx"]
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="6_v0b6g"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="7_yic17"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/bandage.tres" id="8_kjvvw"]
+
+[sub_resource type="Resource" id="Resource_oq3ou"]
+script = ExtResource("7_yic17")
+item = ExtResource("8_kjvvw")
+amount = 2
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_v0b6g"]
+resource_local_to_scene = true
+script = ExtResource("6_v0b6g")
+slots = Array[ExtResource("7_yic17")]([SubResource("Resource_oq3ou")])
+columns = 3
+is_players = false
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"
 
 [node name="Event" type="Control"]
 layout_mode = 3
@@ -168,7 +187,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 2
-inventoryData = ExtResource("6_sg3nx")
+inventoryData = SubResource("Resource_v0b6g")
 
 [node name="ContinueButton" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
 visible = false

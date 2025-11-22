@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgap54jsaf2gw"]
+[gd_scene load_steps=6 format=3 uid="uid://cgap54jsaf2gw"]
 
 [ext_resource type="Script" uid="uid://ddbyg1tyvh10d" path="res://Scripts/levels/tile.gd" id="1_xsjyq"]
 [ext_resource type="Texture2D" uid="uid://b87u0uqwrlk10" path="res://Assets/Textures/wall.png" id="2_rvq8p"]
+[ext_resource type="Texture2D" uid="uid://cn0d8aq65lklw" path="res://Assets/Textures/forest_enter.png" id="3_4kj4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81xng"]
 size = Vector2(100, 100)
@@ -27,5 +28,9 @@ disabled = true
 visible = false
 position = Vector2(0, 22)
 texture = ExtResource("2_rvq8p")
+
+[node name="Interactable_sprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_4kj4d")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

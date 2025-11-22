@@ -62,6 +62,7 @@ results = Array[ExtResource("2_35l6u")]([SubResource("Resource_1eyfh"), SubResou
 metadata/_custom_type_script = "uid://rtvp88vwwrlw"
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_gyj4d")
 event_title = "A man stands completely still looking confused"
 event_image = ExtResource("2_448nf")
