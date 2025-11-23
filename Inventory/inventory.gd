@@ -20,6 +20,15 @@ func insert(item: InvItem) -> void:
 		if slot.item:
 			if slot.item.name == item.name:
 				slot.amount += 1
+				update.emit()
+				return
+	for slot in slots:
+		if not slot.item:
+			slot.item = item
+			slot.amount += 1
+			update.emit()
+			return
+	print('inventory too full!')
 	update.emit()
 
 # Creates a fresh duplicate where each slot and item is duplicated

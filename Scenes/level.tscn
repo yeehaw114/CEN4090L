@@ -16,10 +16,10 @@
 [ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="9_2klc5"]
 [ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/useable/bandage.tres" id="10_nngtn"]
 [ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/useable/opioid.tres" id="11_vofx3"]
-[ext_resource type="Script" uid="uid://c1ajmtvayp2pv" path="res://Scripts/levels/BottomUI/gear_panel.gd" id="13_00k4y"]
 [ext_resource type="Script" uid="uid://dyfj0im1ibsaq" path="res://Scripts/levels/BottomUI/weapon_panel.gd" id="14_3a44l"]
 [ext_resource type="Texture2D" uid="uid://dbergklkk744q" path="res://Assets/Textures/Asprite/cloak.png" id="14_vofx3"]
 [ext_resource type="Resource" uid="uid://0g1p3x5d3x3c" path="res://Inventory/Items/gear/weapons/iron_sword.tres" id="15_0cmrb"]
+[ext_resource type="PackedScene" uid="uid://g3mls7ib10qq" path="res://Scenes/gear_description_popup.tscn" id="15_3a44l"]
 
 [sub_resource type="Resource" id="Resource_oqpsp"]
 script = ExtResource("9_2klc5")
@@ -83,7 +83,7 @@ script = ExtResource("9_2klc5")
 amount = 0
 metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
-[sub_resource type="Resource" id="Resource_vofx3"]
+[sub_resource type="Resource" id="Resource_3a44l"]
 resource_local_to_scene = true
 script = ExtResource("8_c7le1")
 slots = Array[ExtResource("9_2klc5")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44")])
@@ -290,7 +290,7 @@ script = ExtResource("7_2klc5")
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-inventoryData = SubResource("Resource_vofx3")
+inventoryData = SubResource("Resource_3a44l")
 is_player_inventory = true
 
 [node name="BottomContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer"]
@@ -405,7 +405,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("13_00k4y")
 
 [node name="GearContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel"]
 layout_mode = 1
@@ -440,6 +439,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GearDescriptionPopup" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" instance=ExtResource("15_3a44l")]
+layout_mode = 0
 
 [node name="ArmourContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
 layout_mode = 2
@@ -551,6 +553,8 @@ centered = false
 
 [connection signal="menu_opened" from="CanvasLayer/BottomUIPanel" to="." method="on_menu_opened"]
 [connection signal="pressed" from="CanvasLayer/BottomUIPanel/VBoxContainer/OpenButton" to="CanvasLayer/BottomUIPanel" method="_on_open_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" method="_on_mouse_exited"]
 [connection signal="level_bounds_found" from="Tiles" to="Player" method="set_camera_bounds"]
 [connection signal="new_tile_cleared" from="Tiles" to="CanvasLayer/TopPanelContainer" method="set_progress"]
 [connection signal="player_position_updated" from="Tiles" to="." method="_on_tiles_player_position_updated"]
