@@ -34,3 +34,4 @@ visible = false
 texture = ExtResource("3_4kj4d")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

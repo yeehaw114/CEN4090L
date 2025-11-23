@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cxapipdvecyyf"]
+[gd_scene load_steps=39 format=3 uid="uid://cxapipdvecyyf"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="1_k5f4k"]
@@ -10,11 +10,16 @@
 [ext_resource type="Script" uid="uid://skd327rsfqhc" path="res://Scripts/levels/top_panel_container.gd" id="3_bvt00"]
 [ext_resource type="Resource" uid="uid://dad7jr7v1eil4" path="res://Inventory/playerinventory.tres" id="3_oqgf2"]
 [ext_resource type="Script" uid="uid://cneenyb3oe6nt" path="res://Scripts/levels/tiles.gd" id="3_wqkje"]
+[ext_resource type="Script" uid="uid://swkodfd5mnip" path="res://Scripts/levels/open_button.gd" id="7_2klc5"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="7_qxfql"]
 [ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="8_c7le1"]
 [ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="9_2klc5"]
-[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/bandage.tres" id="10_nngtn"]
-[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/opioid.tres" id="11_vofx3"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/useable/bandage.tres" id="10_nngtn"]
+[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/useable/opioid.tres" id="11_vofx3"]
+[ext_resource type="Script" uid="uid://c1ajmtvayp2pv" path="res://Scripts/levels/BottomUI/gear_panel.gd" id="13_00k4y"]
+[ext_resource type="Script" uid="uid://dyfj0im1ibsaq" path="res://Scripts/levels/BottomUI/weapon_panel.gd" id="14_3a44l"]
+[ext_resource type="Texture2D" uid="uid://dbergklkk744q" path="res://Assets/Textures/Asprite/cloak.png" id="14_vofx3"]
+[ext_resource type="Resource" uid="uid://0g1p3x5d3x3c" path="res://Inventory/Items/gear/weapons/iron_sword.tres" id="15_0cmrb"]
 
 [sub_resource type="Resource" id="Resource_oqpsp"]
 script = ExtResource("9_2klc5")
@@ -78,26 +83,70 @@ script = ExtResource("9_2klc5")
 amount = 0
 metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
-[sub_resource type="Resource" id="Resource_otoat"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_ka4bu"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_c7le1"]
+[sub_resource type="Resource" id="Resource_vofx3"]
 resource_local_to_scene = true
 script = ExtResource("8_c7le1")
-slots = Array[ExtResource("9_2klc5")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44"), SubResource("Resource_otoat"), SubResource("Resource_ka4bu")])
-columns = 7
+slots = Array[ExtResource("9_2klc5")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44")])
+columns = 6
 is_players = true
 max_health = 100
 current_health = 100
 coins = 0
 metadata/_custom_type_script = "uid://7y36k5fupqqf"
+
+[sub_resource type="Animation" id="Animation_3a44l"]
+resource_name = "Panel_slide_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_vofx3"]
+resource_name = "Panel_slide_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 400), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_00k4y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3a44l"]
+_data = {
+&"Panel_slide_down": SubResource("Animation_3a44l"),
+&"Panel_slide_up": SubResource("Animation_vofx3"),
+&"RESET": SubResource("Animation_00k4y")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
 
@@ -110,6 +159,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_0f350")
 script = ExtResource("1_wqkje")
 player_inv = ExtResource("3_oqgf2")
@@ -132,8 +182,10 @@ script = ExtResource("3_bvt00")
 layout_mode = 2
 
 [node name="LevelProgressBar" type="ProgressBar" parent="CanvasLayer/TopPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 4
+show_percentage = false
 
 [node name="TimeProgressionLabel" type="Label" parent="CanvasLayer/TopPanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -142,18 +194,246 @@ text = "Hours passed: 0"
 horizontal_alignment = 1
 
 [node name="BottomUIPanel" type="Panel" parent="CanvasLayer"]
-custom_minimum_size = Vector2(100, 200)
-anchors_preset = 12
-anchor_top = 1.0
+custom_minimum_size = Vector2(100, 125)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 400.0
+offset_bottom = 400.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_0f350")
 script = ExtResource("3_754fn")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="OpenButton" type="Button" parent="CanvasLayer/BottomUIPanel/VBoxContainer"]
+layout_mode = 2
+text = "Open"
+
+[node name="TopContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_8c0lf")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer/HealthContainer"]
+layout_mode = 2
+text = "Health:"
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 20.0
+value = 20.0
+
+[node name="NerveContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer/NerveContainer"]
+layout_mode = 2
+text = "Nerve:"
+
+[node name="NerveBar" type="ProgressBar" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer/NerveContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 20.0
+value = 20.0
+
+[node name="EmotionContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer/EmotionContainer"]
+layout_mode = 2
+text = "Emotion:"
+
+[node name="EmotionLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/VBoxContainer/EmotionContainer"]
+layout_mode = 2
+text = "Focused"
+
+[node name="CardButton" type="Button" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "View Cards"
+script = ExtResource("7_2klc5")
+
+[node name="InventoryLevel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer" instance=ExtResource("7_qxfql")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+inventoryData = SubResource("Resource_vofx3")
+is_player_inventory = true
+
+[node name="BottomContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="ProgressionStatPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+offset_left = 15.0
+offset_right = 135.0
+offset_bottom = 391.0
+alignment = 1
+
+[node name="BodyContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/BodyContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "BOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BodyLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/BodyContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstinctContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/InstinctContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "INS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstinctLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/InstinctContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MindContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/MindContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MindLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/MindContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WillContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/WillContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "WILL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WillContainer" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/WillContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GnosisContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/GnosisContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "GNO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GnosisLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/ProgressionStatPanel/StatsContainer/GnosisContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 48
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GearPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("13_00k4y")
+
+[node name="GearContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="WeaponContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer"]
+layout_mode = 2
+text = "WEAPON"
+
+[node name="WeaponPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+script = ExtResource("14_3a44l")
+resource = ExtResource("15_0cmrb")
+
+[node name="WeaponTexture" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,39 +441,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="ArmourContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
 layout_mode = 2
-texture = ExtResource("3_8c0lf")
-stretch_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/BottomUIPanel/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer"]
 layout_mode = 2
-max_value = 20.0
-value = 20.0
+text = "ARMOUR"
 
-[node name="NerveBar" type="ProgressBar" parent="CanvasLayer/BottomUIPanel/HBoxContainer/VBoxContainer"]
+[node name="ArmourPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-max_value = 20.0
-value = 20.0
 
-[node name="Button" type="Button" parent="CanvasLayer/BottomUIPanel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "View Cards"
+[node name="ArmourTexture" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_vofx3")
 
-[node name="InventoryLevel" parent="CanvasLayer/BottomUIPanel/HBoxContainer" instance=ExtResource("7_qxfql")]
+[node name="StatsPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer"]
 layout_mode = 2
-inventoryData = SubResource("Resource_c7le1")
-is_player_inventory = true
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel"]
+layout_mode = 1
+offset_right = 102.0
+offset_bottom = 87.0
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "STATS"
+
+[node name="LevelContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/LevelContainer"]
+layout_mode = 2
+text = "LEVEL"
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/LevelContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "1"
+
+[node name="AccuracyContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/AccuracyContainer"]
+layout_mode = 2
+text = "ACCURACY"
+
+[node name="AccuracyLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/AccuracyContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "95"
+
+[node name="DodgeContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/DodgeContainer"]
+layout_mode = 2
+text = "DODGE CHANCE"
+
+[node name="DodgeLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/DodgeContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "10"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BottomUIPanel"]
+libraries = {
+&"": SubResource("AnimationLibrary_3a44l")
+}
 
 [node name="Tiles" type="Node2D" parent="."]
 script = ExtResource("3_wqkje")
@@ -226,6 +549,8 @@ motion_mirroring = Vector2(320, 0)
 texture = ExtResource("1_k5f4k")
 centered = false
 
+[connection signal="menu_opened" from="CanvasLayer/BottomUIPanel" to="." method="on_menu_opened"]
+[connection signal="pressed" from="CanvasLayer/BottomUIPanel/VBoxContainer/OpenButton" to="CanvasLayer/BottomUIPanel" method="_on_open_button_pressed"]
 [connection signal="level_bounds_found" from="Tiles" to="Player" method="set_camera_bounds"]
 [connection signal="new_tile_cleared" from="Tiles" to="CanvasLayer/TopPanelContainer" method="set_progress"]
 [connection signal="player_position_updated" from="Tiles" to="." method="_on_tiles_player_position_updated"]

@@ -10,6 +10,7 @@
 script = ExtResource("2_0gn4h")
 image = ExtResource("3_inemg")
 text = "Nothing happens, there is noting in the bush."
+favor = 1
 metadata/_custom_type_script = "uid://dppj8x6674luj"
 
 [sub_resource type="Resource" id="Resource_inemg"]
@@ -22,6 +23,7 @@ metadata/_custom_type_script = "uid://rtvp88vwwrlw"
 script = ExtResource("2_0gn4h")
 image = ExtResource("3_inemg")
 text = "You pass the bush by uneventfully."
+favor = 1
 metadata/_custom_type_script = "uid://dppj8x6674luj"
 
 [sub_resource type="Resource" id="Resource_0gn4h"]

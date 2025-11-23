@@ -29,8 +29,8 @@ func populate_tiles():
 		new_tile.call_deferred("set_resource", tile)
 		#new_tile.set_resource(tile)
 		
-		if not new_tile.player_entered.is_connected(update_player_position):
-			new_tile.player_entered.connect(update_player_position)
+		new_tile.player_entered.connect(update_player_position)
+		new_tile.player_interacted.connect(attempt_to_interact_with_tile)
 		
 		add_child(new_tile)
 		if tiles.is_empty(): 
@@ -62,12 +62,22 @@ func update_player_position(tile):
 	get_percentage_level_complete()
 	#print(str(tile) + " has " + str(tile.player))
 
+func attempt_to_interact_with_tile(tile):
+	if not tile:
+		return
+	if not tile.player:
+		return
+	
+	if tile.tile_resource.exit or tile.tile_resource.interactable:
+		if tile.tile_resource.exit:
+			get_tree().change_scene_to_file("res://Scenes/town.tscn")
+
 func get_percentage_level_complete():
 	var explored_tiles : Array[Tile]
 	var explorable_tiles : Array[Tile]
 	
 	for tile in tiles:
-		if !tile.tile_resource.wall:
+		if !tile.tile_resource.starts_cleared:
 			explorable_tiles.append(tile)
 	
 	for tile in explorable_tiles:

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8fesfoguf878" path="res://Assets/Textures/Events/man_confused_result_2.png" id="5_qdbta"]
 [ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="5_tnyf6"]
 [ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="6_7exhx"]
-[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/bandage.tres" id="6_tnyf6"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/useable/bandage.tres" id="6_tnyf6"]
 
 [sub_resource type="Resource" id="Resource_kpwfc"]
 script = ExtResource("6_7exhx")

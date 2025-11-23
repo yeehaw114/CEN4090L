@@ -4,7 +4,8 @@ extends Control
 @onready var player: PlayerExploration = $Player
 @onready var bottom_ui_panel: Panel = $CanvasLayer/BottomUIPanel
 @onready var top_panel_container: PanelContainer = $CanvasLayer/TopPanelContainer
-@onready var inventory_level: InventoryLevel = $CanvasLayer/BottomUIPanel/HBoxContainer/InventoryLevel
+@onready var inventory_level: InventoryLevel = $CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/InventoryLevel
+
 
 @onready var tiles: Node2D = $Tiles
 
@@ -24,10 +25,6 @@ func _ready() -> void:
 	inventory_level.item_got.connect(attempt_to_insert_item)
 	inventory_level.item_used.connect(apply_item_effect)
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Interact"):
-		attempt_to_interact_with_tile(current_tile)
-
 func set_event_inventory(inv: Inv):
 	event_inventory = inv
 	print('\nplayer inv: '+str(player_inv))
@@ -41,11 +38,13 @@ func show_new_event(event_resource : EventResource):
 	canvas_layer.add_child(new_event)
 	print('new event: '+str(new_event))
 	set_player_move(false)
+	bottom_ui_panel.can_open = false
 	#print('showing new event')
 
 func set_player_move(toggle: bool):
 	if toggle:
 		player.set_can_move(true)
+		bottom_ui_panel.can_open = true
 	else:
 		player.set_can_move(false)
 
@@ -95,10 +94,9 @@ func attempt_to_insert_item(item: InvItem):
 	print("ATTEMPT INSERT CALLED WITH:", item)
 	inventory_level.inv.insert(item)
 
-func attempt_to_interact_with_tile(tile: Tile):
-	if not tile:
-		return
-	
-	if tile.tile_resource.exit or tile.tile_resource.interactable:
-		if tile.tile_resource.exit:
-			get_tree().change_scene_to_file("res://Scenes/town.tscn")
+
+func on_menu_opened(toggle: bool) -> void:
+	if toggle:
+		player.set_can_move(false)
+	else:
+		player.set_can_move(true)

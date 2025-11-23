@@ -13,27 +13,6 @@ const inv_test = preload("res://Inventory/playerinventory.tres")
 
 signal item_used(item: InvItem)
 signal item_got(item: InvItem)
-
-
-func _ready() -> void:
-	print("Declared signals:", get_signal_list())
-	print("INVENTORY LEVEL INSTANCE:", self)
-	print("LIVE CONNECTIONS:")
-	for c in get_signal_connection_list("item_got"):
-		print("item_got →", c)
-	for c in get_signal_connection_list("item_used"):
-		print("item_used →", c)
-
-	#if inventoryData:
-		#inv = inventoryData.duplicate(true)
-	#else:
-		#inv = inv_test.duplicate(true)
-	
-	#inv.update.connect(update_slots)
-	#spawn_slots(inv.columns,inv.slots.size())
-	# Connect only once
-	#inv.update.connect(update_slots)
-	#spawn_slots(inv.columns,inv.slots.size())
 	
 func set_inventory(inv: Inv):
 	inventoryData = inv

@@ -15,6 +15,7 @@ var cleared := false
 var can_react := false
 
 signal player_entered
+signal player_interacted(tile: Tile)
 
 func _ready():
 	await get_tree().process_frame
@@ -46,3 +47,8 @@ func enable_collisions():
 	area.monitoring = true
 	area.monitorable = true
 	
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("Interact"):
+		player_interacted.emit(self)

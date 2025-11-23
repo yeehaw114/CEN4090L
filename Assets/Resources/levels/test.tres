@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="LevelResource" load_steps=7 format=3 uid="uid://bowj88p6k5igu"]
+[gd_resource type="Resource" script_class="LevelResource" load_steps=9 format=3 uid="uid://bowj88p6k5igu"]
 
 [ext_resource type="Script" uid="uid://kga3rc6bf0td" path="res://Scripts/Resources/level_resource.gd" id="1_4ngrv"]
 [ext_resource type="Script" uid="uid://cb3tphfwanogu" path="res://Scripts/Resources/tile_resource.gd" id="2_10rc0"]
 [ext_resource type="Resource" uid="uid://dus4yptb4ulh8" path="res://Assets/Resources/tiles/wall_tile.tres" id="3_duxc4"]
 [ext_resource type="Resource" uid="uid://bp510qj4icep3" path="res://Assets/Resources/tiles/start_tile.tres" id="4_aoj4k"]
 [ext_resource type="Resource" uid="uid://br2hnvvvxunio" path="res://Assets/Resources/tiles/exit_tile.tres" id="5_duxc4"]
+[ext_resource type="Resource" uid="uid://bq2q2d4tqppgi" path="res://Assets/Resources/tiles/battle_tile.tres" id="6_aoj4k"]
+[ext_resource type="Resource" uid="uid://cng4jwuomecnu" path="res://Assets/Resources/tiles/surprise_event_bush_tile.tres" id="7_jxrv5"]
 [ext_resource type="Resource" uid="uid://dagnnq71rdtvh" path="res://Assets/Resources/tiles/surprise_event_man.tres" id="7_x3qlk"]
 
 [resource]
 script = ExtResource("1_4ngrv")
-tiles = Array[ExtResource("2_10rc0")]([ExtResource("3_duxc4"), ExtResource("4_aoj4k"), ExtResource("7_x3qlk"), ExtResource("7_x3qlk"), ExtResource("5_duxc4"), ExtResource("3_duxc4")])
+tiles = Array[ExtResource("2_10rc0")]([ExtResource("3_duxc4"), ExtResource("4_aoj4k"), ExtResource("7_x3qlk"), ExtResource("6_aoj4k"), ExtResource("7_jxrv5"), ExtResource("5_duxc4"), ExtResource("3_duxc4")])
 metadata/_custom_type_script = "uid://kga3rc6bf0td"

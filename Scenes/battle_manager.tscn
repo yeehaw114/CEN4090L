@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=50 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_7l6j3"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
@@ -19,8 +19,12 @@
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
 [ext_resource type="Script" uid="uid://5svhxht7fhon" path="res://Scripts/combat_manager.gd" id="9_cr05y"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="15_w3f45"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="16_uj83q"]
 [ext_resource type="Texture2D" uid="uid://ch3hht6huwojd" path="res://Assets/Textures/display_card_button.png" id="17_85kri"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/useable/bandage.tres" id="17_vrrmn"]
 [ext_resource type="Script" uid="uid://1pnuxocrdbjn" path="res://Scripts/ui/draw_pile.gd" id="18_8mf7n"]
+[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/useable/opioid.tres" id="18_wwbdl"]
 [ext_resource type="PackedScene" uid="uid://djwo85t3pfwst" path="res://Scenes/game_over_screen.tscn" id="19_csd6w"]
 [ext_resource type="PackedScene" uid="uid://crinoxwgj5hyu" path="res://Scenes/victory_screen.tscn" id="20_et1xl"]
 [ext_resource type="PackedScene" uid="uid://dsvhja4baeqre" path="res://Scenes/pause_screen.tscn" id="22_cr05y"]
@@ -31,6 +35,89 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_oqpsp"]
+script = ExtResource("16_uj83q")
+item = ExtResource("17_vrrmn")
+amount = 2
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_yrre2"]
+script = ExtResource("16_uj83q")
+item = ExtResource("18_wwbdl")
+amount = 1
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_wq1fa"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_amcam"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_to21c"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ajmj0"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_k5okl"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_d0kw6"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_0o0fp"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_2hfcn"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_cmtkm"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_1sk44"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_otoat"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ka4bu"]
+script = ExtResource("16_uj83q")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_57res"]
+resource_local_to_scene = true
+script = ExtResource("15_w3f45")
+slots = Array[ExtResource("16_uj83q")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44"), SubResource("Resource_otoat"), SubResource("Resource_ka4bu")])
+columns = 7
+is_players = true
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"
 
 [sub_resource type="Curve" id="Curve_2u0r0"]
 _data = [Vector2(0, 0), 0.0, 6.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0, 0.0, 0, 0]
@@ -217,6 +304,7 @@ script = ExtResource("9_cr05y")
 
 [node name="Player" parent="BattleManager" groups=["Player"] instance=ExtResource("9_csd6w")]
 position = Vector2(400, 318)
+inv = SubResource("Resource_57res")
 health = 20
 sprite = ExtResource("1_58ulb")
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://0g1p3x5d3x3c"]
+
+[ext_resource type="Script" uid="uid://dimvrbr0d7huq" path="res://Scripts/Resources/weapon_resource.gd" id="1_d5icn"]
+[ext_resource type="Texture2D" uid="uid://b6s5sn08yfgsg" path="res://Assets/Textures/Asprite/iron_sword.png" id="2_2r1bd"]
+
+[resource]
+script = ExtResource("1_d5icn")
+weapon_name = "Iron Sword"
+texture = ExtResource("2_2r1bd")
+damage_min = 2
+damage_max = 3
+metadata/_custom_type_script = "uid://dimvrbr0d7huq"
