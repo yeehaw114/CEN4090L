@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cy1rojdwp8lp"]
 
 [ext_resource type="Script" uid="uid://cdun6iwx3clt" path="res://Scenes/dialogue_box_1.gd" id="1_05fg3"]
-[ext_resource type="Texture2D" uid="uid://20n0xx2jk8h0" path="res://Assets/Textures/icon.svg" id="2_bcu1f"]
+[ext_resource type="Texture2D" uid="uid://bhgyf83jgw1m6" path="res://Assets/Textures/AndresSprites/oldman head.png" id="2_bcu1f"]
 
 [node name="DialogueBox1" type="Control"]
 layout_mode = 3
