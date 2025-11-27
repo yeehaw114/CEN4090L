@@ -8,6 +8,7 @@
 script = ExtResource("1_q80kt")
 value = 6
 type = 0
+power = 0
 status_effect_value = 0
 apply_to_self = false
 metadata/_custom_type_script = "uid://mirotg2noub8"
@@ -16,6 +17,7 @@ metadata/_custom_type_script = "uid://mirotg2noub8"
 script = ExtResource("1_q80kt")
 value = 1
 type = 3
+power = 0
 status_effect = ExtResource("2_k1b04")
 status_effect_value = 0
 apply_to_self = false

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq1j5j850qe53"]
+
+[ext_resource type="Script" uid="uid://cmpub17rn8red" path="res://Inventory/weapon_inventory.gd" id="1_knmk1"]
+[ext_resource type="Resource" uid="uid://dww5e247lrohe" path="res://Inventory/town_weapon_inventory.tres" id="2_0m46n"]
+
+[node name="WeaponInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_knmk1")
+inventoryData = ExtResource("2_0m46n")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3

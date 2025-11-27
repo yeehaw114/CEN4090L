@@ -11,13 +11,13 @@ var card_resources: Array[CardResource]
 
 func _on_return_button_pressed() -> void:
 	if GameState.boss_time:
-		GameState.coins_current += coins_value
+		PlayerInventory.loot_coins(coins_value)
 		GameState.change_scene(GameState.SCENES['lobby'])
 		return
 	
-	print('ATTEMPT TO RETURN TO: '+str(GameState.previous_scene))
-	GameState.coins_current += coins_value
-	print('COINS NEW VALUE: '+str(GameState.coins_current))
+	PlayerInventory.loot_coins(coins_value)
+	print('COINS NEW VALUE: '+str(PlayerInventory.coins_looted))
+
 	GlobalAudioStreamPlayer.play_dungeon_music()
 	GameState.return_to_previous_scene_live()
 

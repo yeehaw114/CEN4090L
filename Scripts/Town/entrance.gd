@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var intro : String
+@export var area : String
 
 var is_mouse_over := false
 
@@ -19,3 +20,6 @@ func _on_mouse_exited() -> void:
 func enter_dialouge():
 	Dialogic.start(intro)
 	dialouge_entered.emit()
+
+func _on_talk_button_pressed() -> void:
+	enter_dialouge()

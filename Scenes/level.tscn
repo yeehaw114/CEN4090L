@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cxapipdvecyyf"]
+[gd_scene load_steps=40 format=3 uid="uid://cxapipdvecyyf"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="1_k5f4k"]
@@ -10,27 +10,26 @@
 [ext_resource type="Script" uid="uid://skd327rsfqhc" path="res://Scripts/levels/top_panel_container.gd" id="3_bvt00"]
 [ext_resource type="Resource" uid="uid://dad7jr7v1eil4" path="res://Inventory/playerinventory.tres" id="3_oqgf2"]
 [ext_resource type="Script" uid="uid://cneenyb3oe6nt" path="res://Scripts/levels/tiles.gd" id="3_wqkje"]
+[ext_resource type="Script" uid="uid://bmq057ahxduya" path="res://Scripts/levels/victory_panel.gd" id="5_3a44l"]
+[ext_resource type="PackedScene" uid="uid://dq1j5j850qe53" path="res://Inventory/weapon_inventory.tscn" id="7_0cmrb"]
 [ext_resource type="Script" uid="uid://swkodfd5mnip" path="res://Scripts/levels/open_button.gd" id="7_2klc5"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="7_qxfql"]
 [ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="8_c7le1"]
 [ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="9_2klc5"]
-[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/useable/bandage.tres" id="10_nngtn"]
-[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/useable/opioid.tres" id="11_vofx3"]
 [ext_resource type="Script" uid="uid://dyfj0im1ibsaq" path="res://Scripts/levels/BottomUI/weapon_panel.gd" id="14_3a44l"]
-[ext_resource type="Texture2D" uid="uid://dbergklkk744q" path="res://Assets/Textures/Asprite/cloak.png" id="14_vofx3"]
-[ext_resource type="Resource" uid="uid://0g1p3x5d3x3c" path="res://Inventory/Items/gear/weapons/iron_sword.tres" id="15_0cmrb"]
 [ext_resource type="PackedScene" uid="uid://g3mls7ib10qq" path="res://Scenes/gear_description_popup.tscn" id="15_3a44l"]
+[ext_resource type="Script" uid="uid://dhwe01qohhwmq" path="res://Scripts/levels/BottomUI/armour_panel.gd" id="16_0cmrb"]
+[ext_resource type="Script" uid="uid://cbwiylfhgtb4m" path="res://Scripts/levels/BottomUI/ranged_panel.gd" id="17_24uko"]
+[ext_resource type="Script" uid="uid://boiwilwpvg2gd" path="res://Scripts/levels/BottomUI/stats_panel.gd" id="18_pnhnk"]
 
 [sub_resource type="Resource" id="Resource_oqpsp"]
 script = ExtResource("9_2klc5")
-item = ExtResource("10_nngtn")
-amount = 2
+amount = 0
 metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
 [sub_resource type="Resource" id="Resource_yrre2"]
 script = ExtResource("9_2klc5")
-item = ExtResource("11_vofx3")
-amount = 1
+amount = 0
 metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
 [sub_resource type="Resource" id="Resource_wq1fa"]
@@ -83,7 +82,7 @@ script = ExtResource("9_2klc5")
 amount = 0
 metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
 
-[sub_resource type="Resource" id="Resource_3a44l"]
+[sub_resource type="Resource" id="Resource_0cmrb"]
 resource_local_to_scene = true
 script = ExtResource("8_c7le1")
 slots = Array[ExtResource("9_2klc5")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44")])
@@ -193,6 +192,68 @@ size_flags_horizontal = 4
 text = "Hours passed: 0"
 horizontal_alignment = 1
 
+[node name="VictoryPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -201.0
+offset_right = 150.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0f350")
+script = ExtResource("5_3a44l")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/VictoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VictoryPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quest Conquered"
+horizontal_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Money Looted:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Spoils Looted:"
+horizontal_alignment = 1
+
+[node name="LootInventory" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("7_qxfql")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Victory Reward:"
+horizontal_alignment = 1
+
+[node name="WeaponInventory" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("7_0cmrb")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
 [node name="BottomUIPanel" type="Panel" parent="CanvasLayer"]
 custom_minimum_size = Vector2(100, 125)
 anchors_preset = 15
@@ -290,7 +351,7 @@ script = ExtResource("7_2klc5")
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-inventoryData = SubResource("Resource_3a44l")
+inventoryData = SubResource("Resource_0cmrb")
 is_player_inventory = true
 
 [node name="BottomContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer"]
@@ -417,22 +478,21 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="WeaponContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
+[node name="MeleeContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer"]
 layout_mode = 2
-text = "WEAPON"
+text = "MELEE"
 
-[node name="WeaponPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer"]
+[node name="MeleePanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 script = ExtResource("14_3a44l")
-resource = ExtResource("15_0cmrb")
 
-[node name="WeaponTexture" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel"]
+[node name="MeleeTexture" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer/MeleePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -440,7 +500,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GearDescriptionPopup" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" instance=ExtResource("15_3a44l")]
+[node name="GearDescriptionPopup" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer/MeleePanel" instance=ExtResource("15_3a44l")]
+visible = false
+layout_mode = 0
+
+[node name="RangedContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer"]
+layout_mode = 2
+text = "RANGED"
+
+[node name="RangedPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+script = ExtResource("17_24uko")
+
+[node name="RangedTexture" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer/RangedPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GearDescriptionPopup" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer/RangedPanel" instance=ExtResource("15_3a44l")]
+visible = false
 layout_mode = 0
 
 [node name="ArmourContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer"]
@@ -455,6 +542,7 @@ text = "ARMOUR"
 [node name="ArmourPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+script = ExtResource("16_0cmrb")
 
 [node name="ArmourTexture" type="TextureRect" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel"]
 layout_mode = 1
@@ -463,11 +551,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_vofx3")
+
+[node name="GearDescriptionPopup" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel" instance=ExtResource("15_3a44l")]
+visible = false
+layout_mode = 0
 
 [node name="StatsPanel" type="Panel" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("18_pnhnk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel"]
 layout_mode = 1
@@ -489,7 +581,7 @@ text = "LEVEL"
 [node name="LevelLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/LevelContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "1"
+text = "0"
 
 [node name="AccuracyContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
 layout_mode = 2
@@ -501,7 +593,7 @@ text = "ACCURACY"
 [node name="AccuracyLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/AccuracyContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "95"
+text = "0"
 
 [node name="DodgeContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
 layout_mode = 2
@@ -513,7 +605,31 @@ text = "DODGE CHANCE"
 [node name="DodgeLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/DodgeContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "10"
+text = "0"
+
+[node name="CritContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/CritContainer"]
+layout_mode = 2
+text = "CRIT CHANCE"
+
+[node name="CritLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/CritContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="MoneyContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/MoneyContainer"]
+layout_mode = 2
+text = "MONEY LOOTED"
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/StatsPanel/VBoxContainer/MoneyContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BottomUIPanel"]
 libraries = {
@@ -551,10 +667,16 @@ motion_mirroring = Vector2(320, 0)
 texture = ExtResource("1_k5f4k")
 centered = false
 
+[connection signal="pressed" from="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer/ExitButton" to="CanvasLayer/VictoryPanel" method="_on_exit_button_pressed"]
 [connection signal="menu_opened" from="CanvasLayer/BottomUIPanel" to="." method="on_menu_opened"]
 [connection signal="pressed" from="CanvasLayer/BottomUIPanel/VBoxContainer/OpenButton" to="CanvasLayer/BottomUIPanel" method="_on_open_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/WeaponContainer/WeaponPanel" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer/MeleePanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer/MeleePanel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer/MeleePanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/MeleeContainer/MeleePanel" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer/RangedPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer/RangedPanel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer/RangedPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/RangedContainer/RangedPanel" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel" to="CanvasLayer/BottomUIPanel/VBoxContainer/BottomContainer/GearPanel/GearContainer/ArmourContainer/ArmourPanel" method="_on_mouse_exited"]
 [connection signal="level_bounds_found" from="Tiles" to="Player" method="set_camera_bounds"]
+[connection signal="level_won" from="Tiles" to="." method="_on_level_won"]
 [connection signal="new_tile_cleared" from="Tiles" to="CanvasLayer/TopPanelContainer" method="set_progress"]
 [connection signal="player_position_updated" from="Tiles" to="." method="_on_tiles_player_position_updated"]

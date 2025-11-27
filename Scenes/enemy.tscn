@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1syl8lfndi8q"]
+[gd_scene load_steps=17 format=3 uid="uid://d1syl8lfndi8q"]
 
 [ext_resource type="Script" uid="uid://ck6vqehtn7u6w" path="res://Scripts/character/enemy.gd" id="2_287tu"]
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="3_56vhr"]
@@ -26,7 +26,11 @@ border_width_bottom = 1
 bg_color = Color(0.290785, 0.707762, 0.161001, 1)
 border_width_left = 1
 border_width_top = 1
-border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56vhr"]
+border_width_left = 1
+border_width_top = 1
 border_width_bottom = 1
 
 [node name="Character" type="Node2D" groups=["Character"]]
@@ -83,7 +87,11 @@ layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -92,8 +100,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0830c")
 value = 50.0
 show_percentage = false
 
-[node name="BlockTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar"]
+[node name="BlockTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar"]
 visible = false
+z_index = 1
 texture_filter = 1
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 0
@@ -103,7 +112,7 @@ offset_right = 8.0
 offset_bottom = 13.0
 texture = ExtResource("5_0830c")
 
-[node name="BlockLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture"]
+[node name="BlockLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar/BlockTexture"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,7 +129,62 @@ scale = Vector2(0.504726, 0.501993)
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthValueLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar"]
+[node name="HealthValueLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.29416
+offset_top = -3.76467
+offset_right = 35.7058
+offset_bottom = 19.2353
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.37, 0.37)
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NerveBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_287tu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_56vhr")
+value = 50.0
+show_percentage = false
+
+[node name="BlockTexture" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/NerveBar"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 13.0
+texture = ExtResource("5_0830c")
+
+[node name="BlockLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/NerveBar/BlockTexture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -7.5
+offset_right = 13.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.504726, 0.501993)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthValueLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/NerveBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

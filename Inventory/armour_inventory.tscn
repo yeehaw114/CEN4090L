@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4axp2wgb7g37"]
+
+[ext_resource type="Script" uid="uid://dtqdbgmkjfb0j" path="res://Inventory/armour_inventory.gd" id="1_2mwb6"]
+[ext_resource type="Resource" uid="uid://bqeat3fprwsbr" path="res://Inventory/town_armour_inventory.tres" id="2_dyxp8"]
+
+[node name="ArmourInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_2mwb6")
+inventoryData = ExtResource("2_dyxp8")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="WeaponInv" load_steps=14 format=3 uid="uid://dww5e247lrohe"]
+
+[ext_resource type="Script" uid="uid://cqi3uc3jgg62a" path="res://Scripts/Resources/weapon_inv.gd" id="1_a0c4t"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_7a5h3"]
+[ext_resource type="Script" uid="uid://cg2bisogdsotn" path="res://Inventory/weapon_slot_resource.gd" id="3_7a5h3"]
+[ext_resource type="Resource" uid="uid://0g1p3x5d3x3c" path="res://Inventory/Items/gear/weapons/iron_sword.tres" id="4_pabbg"]
+
+[sub_resource type="Resource" id="Resource_mgltr"]
+script = ExtResource("3_7a5h3")
+weapon = ExtResource("4_pabbg")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_fjckp"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_noet3"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_jwx1y"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_ugell"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_oedb4"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_h3qs5"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_rkm8j"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[sub_resource type="Resource" id="Resource_agttr"]
+script = ExtResource("3_7a5h3")
+amount = 0
+metadata/_custom_type_script = "uid://cg2bisogdsotn"
+
+[resource]
+script = ExtResource("1_a0c4t")
+slots = Array[ExtResource("2_7a5h3")]([SubResource("Resource_mgltr"), SubResource("Resource_fjckp"), SubResource("Resource_noet3"), SubResource("Resource_jwx1y"), SubResource("Resource_ugell"), SubResource("Resource_oedb4"), SubResource("Resource_h3qs5"), SubResource("Resource_rkm8j"), SubResource("Resource_agttr")])
+columns = 3
+is_players = false
+metadata/_custom_type_script = "uid://cqi3uc3jgg62a"

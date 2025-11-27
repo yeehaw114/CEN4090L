@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ArmourInv" load_steps=10 format=3 uid="uid://bqeat3fprwsbr"]
+
+[ext_resource type="Script" uid="uid://b1m5ivujupac5" path="res://Scripts/Resources/armour_inv.gd" id="1_ho05l"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_nutfe"]
+[ext_resource type="Script" uid="uid://dwvurdyhxtk7f" path="res://Inventory/armour_slot_resource.gd" id="3_nutfe"]
+[ext_resource type="Resource" uid="uid://0vra0fnjtj6a" path="res://Inventory/Items/gear/armour/cloak.tres" id="3_pkhpp"]
+
+[sub_resource type="Resource" id="Resource_pkhpp"]
+script = ExtResource("3_nutfe")
+armour = ExtResource("3_pkhpp")
+amount = 0
+metadata/_custom_type_script = "uid://dwvurdyhxtk7f"
+
+[sub_resource type="Resource" id="Resource_ybfna"]
+script = ExtResource("3_nutfe")
+amount = 0
+metadata/_custom_type_script = "uid://dwvurdyhxtk7f"
+
+[sub_resource type="Resource" id="Resource_rd8jq"]
+script = ExtResource("3_nutfe")
+amount = 0
+metadata/_custom_type_script = "uid://dwvurdyhxtk7f"
+
+[sub_resource type="Resource" id="Resource_ocpm0"]
+script = ExtResource("3_nutfe")
+amount = 0
+metadata/_custom_type_script = "uid://dwvurdyhxtk7f"
+
+[sub_resource type="Resource" id="Resource_5dh05"]
+script = ExtResource("3_nutfe")
+amount = 0
+metadata/_custom_type_script = "uid://dwvurdyhxtk7f"
+
+[resource]
+script = ExtResource("1_ho05l")
+slots = Array[ExtResource("2_nutfe")]([SubResource("Resource_pkhpp"), SubResource("Resource_ybfna"), SubResource("Resource_rd8jq"), SubResource("Resource_ocpm0"), SubResource("Resource_5dh05")])
+columns = 3
+is_players = false
+metadata/_custom_type_script = "uid://b1m5ivujupac5"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=67 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_7l6j3"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
@@ -11,14 +11,23 @@
 [ext_resource type="Texture2D" uid="uid://bj7wunbj8gpih" path="res://Assets/Textures/energy_orb.png" id="3_6q0we"]
 [ext_resource type="Script" uid="uid://5ty0h0k1dbf8" path="res://Scripts/cards.gd" id="3_qfsls"]
 [ext_resource type="Script" uid="uid://dvq116u8gcv4w" path="res://Scripts/ui/hand_area.gd" id="4_2u0r0"]
+[ext_resource type="Texture2D" uid="uid://20fisve0baj0" path="res://Assets/Textures/player_portrait.png" id="4_uj83q"]
+[ext_resource type="Script" uid="uid://cxnak2ui0qdlj" path="res://Scripts/player_stats.gd" id="4_vavaq"]
+[ext_resource type="Script" uid="uid://mabk65uqrju8" path="res://Scripts/player_stats_container.gd" id="4_vrrmn"]
 [ext_resource type="Texture2D" uid="uid://c3ytv3j8mh0qi" path="res://Assets/Textures/end_turn_underlay.png" id="5_85kri"]
 [ext_resource type="Script" uid="uid://hxdbbb7wtq5v" path="res://Scripts/ui/character_container.gd" id="6_6q0we"]
 [ext_resource type="Script" uid="uid://clampp5fpmn1l" path="res://Scripts/ui/discard_pile.gd" id="6_mg17r"]
+[ext_resource type="Script" uid="uid://cxe2xm8wr4g35" path="res://Scripts/enemy_stats_container.gd" id="6_wwbdl"]
 [ext_resource type="PackedScene" uid="uid://b2gu0jn3son2i" path="res://Scenes/display_card_deck.tscn" id="6_wwo4e"]
+[ext_resource type="Texture2D" uid="uid://dmwxvc8v4kd1k" path="res://Assets/Textures/Asprite/defenses.png" id="7_57res"]
 [ext_resource type="Script" uid="uid://bidihr68pu0ak" path="res://Scripts/ui/display_draw_deck.gd" id="7_csd6w"]
+[ext_resource type="Script" uid="uid://c3d1dc6cerp4i" path="res://Scripts/defenses_container_player.gd" id="7_idl0f"]
 [ext_resource type="Script" uid="uid://cerbiy3qprbls" path="res://Scripts/enemies.gd" id="7_qfsls"]
+[ext_resource type="Texture2D" uid="uid://st2g73ys18y7" path="res://Assets/Textures/Asprite/defenses_ranged.png" id="8_4k3u5"]
+[ext_resource type="Script" uid="uid://5u2geqtvhgi4" path="res://Scripts/enemy_stats.gd" id="8_e8buj"]
 [ext_resource type="Script" uid="uid://5svhxht7fhon" path="res://Scripts/combat_manager.gd" id="9_cr05y"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="9_csd6w"]
+[ext_resource type="Script" uid="uid://dv7bu5ggqy6bu" path="res://Scripts/defenses_container.gd" id="10_3neq5"]
 [ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="15_w3f45"]
 [ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="16_uj83q"]
 [ext_resource type="Texture2D" uid="uid://ch3hht6huwojd" path="res://Assets/Textures/display_card_button.png" id="17_85kri"]
@@ -31,6 +40,38 @@
 [ext_resource type="AudioStream" uid="uid://dlvajwo5fnm76" path="res://Assets/Music/Sound Effects/Battle_Won.wav" id="24_14ft4"]
 [ext_resource type="Script" uid="uid://fly5ribh7ybc" path="res://Scripts/battle_sound_manager.gd" id="24_qdd5b"]
 [ext_resource type="AudioStream" uid="uid://dnsmd1y1ey57a" path="res://Assets/Music/Sound Effects/Battle_Lost.wav" id="25_qdd5b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idl0f"]
+atlas = ExtResource("7_57res")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhecr"]
+atlas = ExtResource("7_57res")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq0jt"]
+atlas = ExtResource("8_4k3u5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slk1o"]
+atlas = ExtResource("8_4k3u5")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3neq5"]
+atlas = ExtResource("7_57res")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8buj"]
+atlas = ExtResource("7_57res")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcshw"]
+atlas = ExtResource("8_4k3u5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vavaq"]
+atlas = ExtResource("8_4k3u5")
+region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhry"]
 atlas = ExtResource("2_qfhry")
@@ -150,6 +191,171 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_gfmbw")
 
+[node name="PlayerStats" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_vavaq")
+
+[node name="PlayerStatsContainer" type="HBoxContainer" parent="PlayerStats"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 0
+offset_right = 350.0
+offset_bottom = 100.0
+script = ExtResource("4_vrrmn")
+
+[node name="PlayerPortrait" type="TextureRect" parent="PlayerStats/PlayerStatsContainer"]
+layout_mode = 2
+texture = ExtResource("4_uj83q")
+
+[node name="BarContainer" type="VBoxContainer" parent="PlayerStats/PlayerStatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthContainer" type="HBoxContainer" parent="PlayerStats/PlayerStatsContainer/BarContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerStats/PlayerStatsContainer/BarContainer/HealthContainer"]
+layout_mode = 2
+text = "Health:"
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerStats/PlayerStatsContainer/BarContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NerveContainer" type="HBoxContainer" parent="PlayerStats/PlayerStatsContainer/BarContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerStats/PlayerStatsContainer/BarContainer/NerveContainer"]
+layout_mode = 2
+text = "Nerve:"
+
+[node name="NerveBar" type="ProgressBar" parent="PlayerStats/PlayerStatsContainer/BarContainer/NerveContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefensesContainer" type="VBoxContainer" parent="PlayerStats"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 102.0
+offset_right = 71.0
+offset_bottom = 170.0
+script = ExtResource("7_idl0f")
+
+[node name="MeleeDefensesContainer" type="HBoxContainer" parent="PlayerStats/DefensesContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="NerveDefenseTexture" type="TextureRect" parent="PlayerStats/DefensesContainer/MeleeDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_idl0f")
+stretch_mode = 2
+
+[node name="HealthDefenseTexture" type="TextureRect" parent="PlayerStats/DefensesContainer/MeleeDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qhecr")
+stretch_mode = 2
+
+[node name="RangedDefensesContainer" type="HBoxContainer" parent="PlayerStats/DefensesContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="NerveDefenseTexture" type="TextureRect" parent="PlayerStats/DefensesContainer/RangedDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hq0jt")
+stretch_mode = 2
+
+[node name="HealthDefenseTexture" type="TextureRect" parent="PlayerStats/DefensesContainer/RangedDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_slk1o")
+stretch_mode = 2
+
+[node name="EnemyStats" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_e8buj")
+
+[node name="EnemyStatsContainer" type="HBoxContainer" parent="EnemyStats"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 570.0
+offset_right = 920.0
+offset_bottom = 100.0
+grow_horizontal = 0
+script = ExtResource("6_wwbdl")
+
+[node name="BarContainer" type="VBoxContainer" parent="EnemyStats/EnemyStatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthContainer" type="HBoxContainer" parent="EnemyStats/EnemyStatsContainer/BarContainer"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="EnemyStats/EnemyStatsContainer/BarContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+fill_mode = 1
+
+[node name="Label" type="Label" parent="EnemyStats/EnemyStatsContainer/BarContainer/HealthContainer"]
+layout_mode = 2
+text = ":Health"
+
+[node name="NerveContainer" type="HBoxContainer" parent="EnemyStats/EnemyStatsContainer/BarContainer"]
+layout_mode = 2
+
+[node name="NerveBar" type="ProgressBar" parent="EnemyStats/EnemyStatsContainer/BarContainer/NerveContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+fill_mode = 1
+
+[node name="Label" type="Label" parent="EnemyStats/EnemyStatsContainer/BarContainer/NerveContainer"]
+layout_mode = 2
+text = ":Nerve"
+
+[node name="EnemyPortrait" type="TextureRect" parent="EnemyStats/EnemyStatsContainer"]
+layout_mode = 2
+texture = ExtResource("4_uj83q")
+
+[node name="DefensesContainer" type="VBoxContainer" parent="EnemyStats"]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 103.0
+offset_right = 957.0
+offset_bottom = 171.0
+script = ExtResource("10_3neq5")
+
+[node name="MeleeDefensesContainer" type="HBoxContainer" parent="EnemyStats/DefensesContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="NerveDefenseTexture" type="TextureRect" parent="EnemyStats/DefensesContainer/MeleeDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3neq5")
+stretch_mode = 2
+
+[node name="HealthDefenseTexture" type="TextureRect" parent="EnemyStats/DefensesContainer/MeleeDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_e8buj")
+stretch_mode = 2
+
+[node name="RangedDefensesContainer" type="HBoxContainer" parent="EnemyStats/DefensesContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="NerveDefenseTexture" type="TextureRect" parent="EnemyStats/DefensesContainer/RangedDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tcshw")
+stretch_mode = 2
+
+[node name="HealthDefenseTexture" type="TextureRect" parent="EnemyStats/DefensesContainer/RangedDefensesContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vavaq")
+stretch_mode = 2
+
 [node name="EnergyOrb" type="TextureRect" parent="."]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
@@ -157,8 +363,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -854.0
+offset_top = 48.0
+offset_right = -790.0
+offset_bottom = 112.0
 grow_horizontal = 0
 texture = ExtResource("3_6q0we")
 
@@ -185,8 +393,10 @@ vertical_alignment = 1
 [node name="MoveCrystalButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 176.0
+offset_top = 50.0
+offset_right = 216.0
+offset_bottom = 90.0
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_qfhry")
 
@@ -236,7 +446,7 @@ offset_right = -1.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 8
 alignment = 1
 script = ExtResource("6_6q0we")
 
@@ -418,6 +628,7 @@ stream = ExtResource("25_qdd5b")
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="exit_button_clicked" from="DisplayDiscardDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
+[connection signal="enemy_clicked" from="BattleManager" to="EnemyStats" method="_on_battle_manager_enemy_clicked"]
 [connection signal="pause_game" from="BattleManager" to="." method="display_pause_screen"]
 [connection signal="rewards_decided" from="BattleManager" to="VictoryScreen" method="set_reward_values"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]

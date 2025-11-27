@@ -6,9 +6,35 @@ extends Node
 var current_health: int = 20
 var max_health: int = 20
 var max_nerve := 100
-var current_nerve := max_nerve
+var current_nerve := max_nerve - 40
 
-var coins: int = 0
+var coins: int = 10
+var coins_looted: int = 0
+
+var level := 1
+var accuracy := 95
+var dodge := 10
+var crit := 5
+
+# Combat Stats
+var weapon_resource : WeaponResource = preload("res://Inventory/Items/gear/weapons/iron_sword.tres")
+var ranged_resource : RangedResource = preload("res://Inventory/Items/gear/weapons/bow.tres")
+var armour_resource : ArmourResource = preload("res://Inventory/Items/gear/armour/cloak.tres")
+var melee_damage_min : int = weapon_resource.damage_min
+var melee_damage_max : int = weapon_resource.damage_max
+var ranged_damage_min : int = ranged_resource.damage_min
+var ranged_damage_max : int = ranged_resource.damage_max
+var block_min : int = armour_resource.block_min
+var block_max : int = armour_resource.block_max
+
+func get_damage_melee():
+	return randi_range(melee_damage_min,melee_damage_max)
+	
+func get_damage_ranged():
+	return randi_range(ranged_damage_min,ranged_damage_max)
+	
+func get_block():
+	return randi_range(block_min,block_max)
 
 # Inventory
 var owned_cards: Array[Resource] = []  # All cards the player owns
@@ -30,6 +56,7 @@ var run_inventory: Dictionary = {
 signal health_changed(new_health: int)
 signal nerve_changed(new_nerve: int)
 signal coins_changed(new_coins: int)
+signal loot_coins_changed(new_coins: int)
 signal cards_changed()
 signal deck_changed()
 
@@ -108,6 +135,15 @@ func spend_coins(amount: int) -> bool:
 		coins_changed.emit(coins)
 		return true
 	return false
+	
+func loot_coins(amount: int) -> void:
+	coins_looted += amount
+	loot_coins_changed.emit(coins_looted)
+	
+func transfer_loot_coins():
+	coins += coins_looted
+	coins_looted = 0
+	coins_changed.emit(coins)
 
 # Card Management
 func add_card_to_collection(card_resource: Resource) -> void:

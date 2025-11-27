@@ -13,55 +13,34 @@ const BLUR_CONSTANT = 2.5
 
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/EnemySprite
-@onready var health_bar: ProgressBar = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar
+@onready var health_bar: ProgressBar = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar
 @onready var intention_texture: TextureRect = $VBoxContainer/IntentionContainer/IntentionTexture
 @onready var intention_label: Label = $VBoxContainer/IntentionContainer/IntentionLabel
-@onready var block_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture/BlockLabel
-@onready var block_texture: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/BlockTexture
+@onready var block_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
+@onready var block_texture: TextureRect = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar/BlockTexture
 @onready var status_effect_container: GridContainer = $VBoxContainer/HBoxContainer/StatusEffectContainer
-@onready var health_value_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/HealthBar/HealthValueLabel
+@onready var health_value_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HealthBar/HealthValueLabel
 @onready var enemy_sound_manager: Node2D = $EnemySoundManager
+@onready var damage_popup_position: Marker2D = $DamagePopupPosition
 
 @export var actions: Array[Action]
-
 @export var enemy_resource: EnemyResource
 
 signal enemy_died
-signal took_damage(damage: int)
 
 var current_action : Action
-var is_able_to_be_selected = false
-var is_dead = false
-var rank : int = -1
-var block_value := 0 
-
-var damage_modifier := 0
-var damage_increase := 0
-var damage_decrease := 0
-
-var block_modifier := 0
-var block_increase := 0
-var block_decrease := 0
 
 func _ready():
 	enemy_sprite.texture = enemy_resource.enemy_texture
 	health_bar.value = enemy_resource.max_health
 	health_bar.max_value = enemy_resource.max_health
 	health = enemy_resource.max_health
+	max_health = enemy_resource.max_health
 	actions = enemy_resource.actions
 	health_value_label.text = str(health)+'/'+str(health)
 	set_current_action(0)
 	print('\nENEMY ACTIONS: '+str(actions))
 	print('CURRENT ACTION: '+str(current_action))
-
-func mouse_entered_body() -> void:
-	if is_able_to_be_selected:
-		select_ring.visible = true
-	else:
-		select_ring.visible = false
-	
-func mouse_exited_body() -> void:
-	select_ring.visible = false
 
 func take_damage(damage: int):
 	print('\n'+str(self)+' is taking '+str(damage))
@@ -76,12 +55,15 @@ func take_damage(damage: int):
 	var health_before_damage = health
 	health -= damage
 	if !health_before_damage == health:
-		took_damage.emit(damage)
+		took_damage.emit(str(damage))
 		enemy_sound_manager.play_attack()
 		health_value_label.text = str(health)+'/'+str(enemy_resource.max_health)
 	health_bar.value = health
 	if check_if_dead():
 		die()
+
+func attack_missed_character():
+	damage_popup_position.popup('MISS')
 
 func turn_selectibility_off() ->void:
 	select_ring.visible = false

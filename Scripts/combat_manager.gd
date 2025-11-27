@@ -50,7 +50,15 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
-			enemy.take_damage(action.value + character.damage_modifier)
+			if action.power == Action.POWER.LIGHT:
+				if character.calculate_chance(character.accuracy):
+					print('succeded hit')
+					var damage = PlayerInventory.get_damage_melee()
+					enemy.take_damage(damage + character.damage_modifier)
+				else:
+					print('missed hit')
+					enemy.attack_missed_character()
+				
 		elif action.type == action.ACTION_TYPE.DEBUFF:
 			if action.apply_to_self:
 				character.set_status_effect(action.status_effect, action.value)
@@ -68,6 +76,8 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 				enemy.apply_buffs()
 	clear_and_update_cards(card)
 
+
+
 func move_card_to_discard(card):
 	cards.discard_pile.move_card_to_discard(card)
 	enemies.toggle_selectability_off()
@@ -80,9 +90,13 @@ func cast_card_on_player(character: Character, card: Card) -> void:
 		return
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
-			character.take_damage(action.value)
+			if action.power == Action.POWER.LIGHT:
+				var damage = PlayerInventory.get_damage()
+				character.take_damage(damage + character.damage_modifer)
 		elif action.type == action.ACTION_TYPE.BLOCK:
-			character.add_and_set_block_value(action.value + character.block_modifier)
+			if action.power == Action.POWER.LIGHT:
+				var block = PlayerInventory.get_block()
+				character.add_and_set_block_value(block + character.block_modifier)
 		elif action.type == action.ACTION_TYPE.BUFF:
 			character.set_status_effect(action.status_effect, action.value)
 			character.apply_buffs()

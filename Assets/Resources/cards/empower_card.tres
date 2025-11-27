@@ -9,6 +9,7 @@
 script = ExtResource("1_oo6cp")
 value = 1
 type = 2
+power = 0
 status_effect = ExtResource("2_ac72e")
 status_effect_value = 1
 apply_to_self = false

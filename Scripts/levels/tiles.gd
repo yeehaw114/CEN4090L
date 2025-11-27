@@ -12,6 +12,7 @@ const level_size := 10
 signal player_position_updated(tile)
 signal level_bounds_found(left_limit,right_limit)
 signal new_tile_cleared(progress: float)
+signal level_won
 
 var tiles : Array[Tile] = []
 var explored_tiles : Array[Tile]
@@ -70,7 +71,7 @@ func attempt_to_interact_with_tile(tile):
 	
 	if tile.tile_resource.exit or tile.tile_resource.interactable:
 		if tile.tile_resource.exit:
-			get_tree().change_scene_to_file("res://Scenes/town.tscn")
+			level_won.emit()
 
 func get_percentage_level_complete():
 	var explored_tiles : Array[Tile]

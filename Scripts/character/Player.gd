@@ -9,29 +9,22 @@ const BLUR_CONSTANT = 2.5
 
 @onready var select_ring: Sprite2D = $SelectRing
 @onready var enemy_sprite: TextureRect = $HBoxContainer/VBoxContainer/EnemySprite
-@onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/HealthBar
-@onready var block_texture: TextureRect = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture
-@onready var block_label: Label = $HBoxContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
+@onready var health_bar: ProgressBar = $HBoxContainer/VBoxContainer/VBoxContainer/HealthBar
+@onready var block_texture: TextureRect = $HBoxContainer/VBoxContainer/VBoxContainer/HealthBar/BlockTexture
+
+@onready var block_label: Label = $HBoxContainer/VBoxContainer/VBoxContainer/HealthBar/BlockTexture/BlockLabel
+
 @onready var status_effect_container: GridContainer = $HBoxContainer/StatusEffectContainer
-@onready var health_value_label: Label = $HBoxContainer/VBoxContainer/HealthBar/HealthValueLabel
+@onready var health_value_label: Label = $HBoxContainer/VBoxContainer/VBoxContainer/HealthBar/HealthValueLabel
 @onready var player_sound_manager: Node2D = $PlayerSoundManager
 
-var is_able_to_be_selected = false
-var is_dead = false
-var rank : int = -1 
-var block_value := 0 
-
-var damage_modifier := 0
-var damage_increase := 0
-var damage_decrease := 0
-
-var block_modifier := 0
-var block_increase := 0
-var block_decrease := 0
+var level : int
+var accuracy : int
+var crit : int
+var dodge : int
 
 signal player_died
-signal took_damage(damage: int)
-signal healh_changed(health: int)
+
 
 func _ready():
 	enemy_sprite.texture = sprite
@@ -39,18 +32,12 @@ func _ready():
 	health_bar.max_value = GameState.max_health
 	health = GameState.current_health
 	max_health = GameState.max_health
-	#healh_changed.connect(GameState.set_new_health)
+	level = PlayerInventory.level
+	accuracy = PlayerInventory.accuracy
+	crit = PlayerInventory.crit
+	dodge = PlayerInventory.dodge
 	took_damage.connect(PlayerInventory.take_damage)
 	health_value_label.text = str(GameState.current_health)+'/'+str(GameState.max_health)
-
-func mouse_entered_body() -> void:
-	if is_able_to_be_selected:
-		select_ring.visible = true
-	else:
-		select_ring.visible = false
-	
-func mouse_exited_body() -> void:
-	select_ring.visible = false
 
 func take_damage(damage: int):
 	if block_value > 0:
@@ -202,3 +189,10 @@ func set_damage_and_block_modifer():
 	damage_modifier = damage_increase - damage_decrease
 	block_modifier = block_increase - block_decrease
 	print('UPDATING DAMAGE MODIFER: '+str(damage_modifier))
+
+func calculate_chance(chance: int):
+	var check = randi_range(0,100)
+	if check <= chance:
+		return true
+	else:
+		return false

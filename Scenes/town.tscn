@@ -1,9 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgqhlljfk7qnw"]
+[gd_scene load_steps=21 format=3 uid="uid://bgqhlljfk7qnw"]
 
 [ext_resource type="Script" uid="uid://rt13vqeryiqi" path="res://Scripts/Town/town.gd" id="1_iau6b"]
 [ext_resource type="Texture2D" uid="uid://dxa1nl5qlu7dw" path="res://Assets/Textures/town_background.png" id="1_kswdu"]
 [ext_resource type="Script" uid="uid://dhjihalxepqjf" path="res://Scripts/Town/entrance.gd" id="3_28ev0"]
 [ext_resource type="Script" uid="uid://cjbu7t2gt6yu0" path="res://Scripts/Town/entrances.gd" id="3_ckvn4"]
+[ext_resource type="Script" uid="uid://cnd7xq0sxlyq7" path="res://Scripts/Town/stat_container.gd" id="3_poxg2"]
+[ext_resource type="Script" uid="uid://5wu0fefxxfvl" path="res://Scripts/Town/money_container.gd" id="4_6cii4"]
+[ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="4_7kgdu"]
+[ext_resource type="Script" uid="uid://dilnuatg22r6h" path="res://Scripts/Town/storage_ui.gd" id="4_emwlo"]
+[ext_resource type="Script" uid="uid://bli0rn5njk1a5" path="res://Scripts/Town/storage_panel.gd" id="5_2rtke"]
+[ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="5_gflae"]
+[ext_resource type="Resource" uid="uid://cclcsqmpxuild" path="res://Inventory/town_inventory.tres" id="7_8t1t8"]
+[ext_resource type="PackedScene" uid="uid://dq1j5j850qe53" path="res://Inventory/weapon_inventory.tscn" id="8_kl8ok"]
+[ext_resource type="PackedScene" uid="uid://4axp2wgb7g37" path="res://Inventory/armour_inventory.tscn" id="10_6knsj"]
+[ext_resource type="PackedScene" uid="uid://ctieufqn4eyyi" path="res://Inventory/ranged_inventory.tscn" id="12_82cbf"]
+[ext_resource type="Script" uid="uid://cb80v26ggiuiy" path="res://Scripts/Town/bar_ui.gd" id="12_biiny"]
+[ext_resource type="Resource" uid="uid://cfyvdraitl8kt" path="res://Inventory/town_ranged_inventory.tres" id="13_bhs38"]
+[ext_resource type="Texture2D" uid="uid://rrh6g7xgbajx" path="res://Assets/Textures/Asprite/bar_drinking_temp.png" id="13_cvl5t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emwlo"]
+bg_color = Color(7.5084e-06, 0.47972, 0.0880254, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6knsj"]
+bg_color = Color(0.625597, 0.625597, 0.625597, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kswdu"]
 size = Vector2(69, 112)
@@ -28,6 +47,265 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_kswdu")
 
+[node name="StatContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 58.0
+script = ExtResource("3_poxg2")
+
+[node name="HealthContainer" type="HBoxContainer" parent="StatContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="StatContainer/HealthContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health: "
+
+[node name="HealthBar" type="ProgressBar" parent="StatContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_emwlo")
+
+[node name="NerveContainer" type="HBoxContainer" parent="StatContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="StatContainer/NerveContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Nerve: "
+
+[node name="NerveBar" type="ProgressBar" parent="StatContainer/NerveContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_6knsj")
+
+[node name="MoneyContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("4_6cii4")
+
+[node name="Label" type="Label" parent="MoneyContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Money:"
+
+[node name="MoneyLabel" type="Label" parent="MoneyContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "20"
+
+[node name="StorageUI" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_emwlo")
+
+[node name="StorageOptionsPanel" type="Panel" parent="StorageUI"]
+top_level = true
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 0
+offset_left = 455.0
+offset_top = 160.0
+offset_right = 555.0
+offset_bottom = 360.0
+theme = ExtResource("4_7kgdu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StorageUI/StorageOptionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TalkButton" type="Button" parent="StorageUI/StorageOptionsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Talk"
+
+[node name="ExitButton" type="Button" parent="StorageUI/StorageOptionsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit"
+
+[node name="StoragePanel" type="Panel" parent="StorageUI"]
+top_level = true
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("4_7kgdu")
+script = ExtResource("5_2rtke")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StorageUI/StoragePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="StorageUI/StoragePanel/VBoxContainer"]
+layout_mode = 2
+text = "STORAGE"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="StorageUI/StoragePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemsButton" type="Button" parent="StorageUI/StoragePanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "ITEMS"
+
+[node name="WeaponsButton" type="Button" parent="StorageUI/StoragePanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "WEAPONS"
+
+[node name="RangedButton" type="Button" parent="StorageUI/StoragePanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "RANGED"
+
+[node name="ArmourButton" type="Button" parent="StorageUI/StoragePanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "ARMOUR"
+
+[node name="Panel" type="Panel" parent="StorageUI/StoragePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryLevel" parent="StorageUI/StoragePanel/VBoxContainer/Panel" instance=ExtResource("5_gflae")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+inventoryData = ExtResource("7_8t1t8")
+is_player_inventory = true
+is_in_level = false
+
+[node name="WeaponInventory" parent="StorageUI/StoragePanel/VBoxContainer/Panel" instance=ExtResource("8_kl8ok")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="ArmourInventory" parent="StorageUI/StoragePanel/VBoxContainer/Panel" instance=ExtResource("10_6knsj")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RangedInventory" parent="StorageUI/StoragePanel/VBoxContainer/Panel" instance=ExtResource("12_82cbf")]
+visible = false
+layout_mode = 1
+inventoryData = ExtResource("13_bhs38")
+
+[node name="BarUI" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_7kgdu")
+script = ExtResource("12_biiny")
+
+[node name="BarPanel" type="Panel" parent="BarUI"]
+top_level = true
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_7kgdu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarUI/BarPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BarUI/BarPanel/VBoxContainer"]
+layout_mode = 2
+text = "BAR"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BarUI/BarPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("13_cvl5t")
+
+[node name="BarOptionsPanel" type="Panel" parent="BarUI"]
+top_level = true
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 0
+offset_left = 691.0
+offset_top = 220.0
+offset_right = 791.0
+offset_bottom = 420.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarUI/BarOptionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DrinkButton" type="Button" parent="BarUI/BarOptionsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Drink
+cost: 5"
+
+[node name="TalkButton" type="Button" parent="BarUI/BarOptionsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "TALK"
+
+[node name="ExitButton" type="Button" parent="BarUI/BarOptionsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "EXIT"
+
 [node name="Entrances" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -39,6 +317,7 @@ script = ExtResource("3_ckvn4")
 position = Vector2(38, 413)
 script = ExtResource("3_28ev0")
 intro = "storage_intro"
+area = "storage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/StorageEntrance"]
 position = Vector2(6.5, -11)
@@ -48,6 +327,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 position = Vector2(197, 346)
 script = ExtResource("3_28ev0")
 intro = "church_intro"
+area = "church"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/ChurchEntrance"]
 position = Vector2(6.5, -11)
@@ -57,6 +337,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 position = Vector2(311, 102)
 script = ExtResource("3_28ev0")
 intro = "infirmary_intro"
+area = "infirmary"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/InfirmaryEntrance"]
 position = Vector2(6.5, -11)
@@ -66,6 +347,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 position = Vector2(480, 137)
 script = ExtResource("3_28ev0")
 intro = "townhall_intro"
+area = "townhall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/TownhallEntrance"]
 position = Vector2(6.5, -11)
@@ -75,6 +357,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 position = Vector2(754, 153)
 script = ExtResource("3_28ev0")
 intro = "field_intro"
+area = "field"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/FieldEntrance"]
 position = Vector2(6.5, -11)
@@ -84,6 +367,7 @@ shape = SubResource("RectangleShape2D_kswdu")
 position = Vector2(738, 443)
 script = ExtResource("3_28ev0")
 intro = "smithy_intro"
+area = "smithy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/SmithyEntrance"]
 position = Vector2(6.5, -11)
@@ -100,6 +384,18 @@ grow_horizontal = 0
 text = "Go to Level Select
 "
 
+[connection signal="pressed" from="StorageUI/StorageOptionsPanel/VBoxContainer/TalkButton" to="Entrances/StorageEntrance" method="_on_talk_button_pressed"]
+[connection signal="pressed" from="StorageUI/StorageOptionsPanel/VBoxContainer/ExitButton" to="." method="leave_area"]
+[connection signal="pressed" from="StorageUI/StorageOptionsPanel/VBoxContainer/ExitButton" to="StorageUI" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="StorageUI/StoragePanel/VBoxContainer/VBoxContainer/ItemsButton" to="StorageUI/StoragePanel" method="_on_items_button_pressed"]
+[connection signal="pressed" from="StorageUI/StoragePanel/VBoxContainer/VBoxContainer/WeaponsButton" to="StorageUI/StoragePanel" method="_on_weapons_button_pressed"]
+[connection signal="pressed" from="StorageUI/StoragePanel/VBoxContainer/VBoxContainer/RangedButton" to="StorageUI/StoragePanel" method="_on_ranged_button_pressed"]
+[connection signal="pressed" from="StorageUI/StoragePanel/VBoxContainer/VBoxContainer/ArmourButton" to="StorageUI/StoragePanel" method="_on_armour_button_pressed"]
+[connection signal="item_used" from="StorageUI/StoragePanel/VBoxContainer/Panel/InventoryLevel" to="." method="_on_inventory_level_item_used"]
+[connection signal="pressed" from="BarUI/BarOptionsPanel/VBoxContainer/DrinkButton" to="BarUI" method="_on_drink_button_pressed"]
+[connection signal="pressed" from="BarUI/BarOptionsPanel/VBoxContainer/TalkButton" to="Entrances/FieldEntrance" method="_on_talk_button_pressed"]
+[connection signal="pressed" from="BarUI/BarOptionsPanel/VBoxContainer/ExitButton" to="." method="leave_area"]
+[connection signal="pressed" from="BarUI/BarOptionsPanel/VBoxContainer/ExitButton" to="BarUI" method="_on_exit_button_pressed"]
 [connection signal="mouse_entered" from="Entrances/StorageEntrance" to="Entrances/StorageEntrance" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Entrances/StorageEntrance" to="Entrances/StorageEntrance" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Entrances/ChurchEntrance" to="Entrances/ChurchEntrance" method="_on_mouse_entered"]

@@ -4,10 +4,16 @@ extends Control
 @onready var player: PlayerExploration = $Player
 @onready var bottom_ui_panel: Panel = $CanvasLayer/BottomUIPanel
 @onready var top_panel_container: PanelContainer = $CanvasLayer/TopPanelContainer
+@onready var victory_panel: Panel = $CanvasLayer/VictoryPanel
+
 @onready var inventory_level: InventoryLevel = $CanvasLayer/BottomUIPanel/VBoxContainer/TopContainer/InventoryLevel
 
 
 @onready var tiles: Node2D = $Tiles
+
+const test_strike = preload("res://Assets/Resources/cards/rpg_cards/light_strike.tres")
+const test_block = preload("res://Assets/Resources/cards/rpg_cards/light_block.tres")
+const test_hand : Array[CardResource] = [test_strike,test_strike,test_strike,test_block,test_block]
 
 const event_scene := preload("res://Scenes/event.tscn")
 @export var player_inv : Inv
@@ -71,8 +77,11 @@ func _on_tiles_player_position_updated(tile: Variant) -> void:
 		var tree = get_tree()
 		var current_room = tree.current_scene
 		var battle = tile.tile_resource.enemy
+		
 		battle.starting_cards.clear()
-		battle.starting_cards = GameState.transferred_cards.duplicate(true)
+		#battle.starting_cards = GameState.transferred_cards.duplicate(true)
+		battle.starting_cards = test_hand.duplicate(true)
+		
 		GameState.pending_battle_resource = battle
 		tree.root.remove_child(current_room)
 		GameState.previous_scene = current_room
@@ -94,9 +103,19 @@ func attempt_to_insert_item(item: InvItem):
 	print("ATTEMPT INSERT CALLED WITH:", item)
 	inventory_level.inv.insert(item)
 
-
 func on_menu_opened(toggle: bool) -> void:
 	if toggle:
 		player.set_can_move(false)
 	else:
 		player.set_can_move(true)
+
+func _on_level_won() -> void:
+	var loot_inventory = bottom_ui_panel.inventory_level.inv
+	victory_panel.set_loot_inventory(loot_inventory)
+	GameState.transferred_inv = loot_inventory
+	victory_panel.set_money_label(PlayerInventory.coins_looted)
+	PlayerInventory.transfer_loot_coins()
+	player.set_can_move(false)
+	bottom_ui_panel.hide()
+	victory_panel.show()
+	top_panel_container.hide()

@@ -1,15 +1,10 @@
 extends Panel
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var health_bar: ProgressBar = $VBoxContainer/TopContainer/VBoxContainer/HealthContainer/HealthBar
-
 @onready var nerve_bar: ProgressBar = $VBoxContainer/TopContainer/VBoxContainer/NerveContainer/NerveBar
-
 @onready var player_portrait: TextureRect = $VBoxContainer/TopContainer/PlayerPortrait
-
 @onready var inventory_level: InventoryLevel = $VBoxContainer/TopContainer/InventoryLevel
-
 
 const normal_portrait = preload("res://Assets/Textures/player_portrait.png")
 const portrait_stage_1 = preload("res://Assets/Textures/player_portrait_stage_1.png")

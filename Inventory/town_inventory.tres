@@ -1,0 +1,189 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=38 format=3 uid="uid://cclcsqmpxuild"]
+
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="1_vaiey"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_6inxd"]
+
+[sub_resource type="Resource" id="Resource_vaiey"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_6inxd"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_05pcu"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_wh0g7"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_4enay"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_bhj30"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_7363x"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_a5qdr"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_fwxta"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_rjlcq"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_brxqm"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_74k8o"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_2lhtr"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_fkapx"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_g4nmg"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_vcrno"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_kja7k"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_qo75v"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_rr3ah"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_17pr6"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_xm4ht"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_6xfo5"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_44rmx"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_q7x8g"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_agpom"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_eij44"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_3fjjc"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_gp8eo"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_nu6yb"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ikgc7"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_l7jy0"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_54vja"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_pf410"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_uymq8"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_xxhy1"]
+script = ExtResource("2_6inxd")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[resource]
+script = ExtResource("1_vaiey")
+slots = Array[ExtResource("2_6inxd")]([SubResource("Resource_vaiey"), SubResource("Resource_6inxd"), SubResource("Resource_05pcu"), SubResource("Resource_wh0g7"), SubResource("Resource_4enay"), SubResource("Resource_bhj30"), SubResource("Resource_7363x"), SubResource("Resource_a5qdr"), SubResource("Resource_fwxta"), SubResource("Resource_rjlcq"), SubResource("Resource_brxqm"), SubResource("Resource_74k8o"), SubResource("Resource_2lhtr"), SubResource("Resource_fkapx"), SubResource("Resource_g4nmg"), SubResource("Resource_vcrno"), SubResource("Resource_kja7k"), SubResource("Resource_qo75v"), SubResource("Resource_rr3ah"), SubResource("Resource_17pr6"), SubResource("Resource_xm4ht"), SubResource("Resource_6xfo5"), SubResource("Resource_44rmx"), SubResource("Resource_q7x8g"), SubResource("Resource_agpom"), SubResource("Resource_eij44"), SubResource("Resource_3fjjc"), SubResource("Resource_gp8eo"), SubResource("Resource_nu6yb"), SubResource("Resource_ikgc7"), SubResource("Resource_l7jy0"), SubResource("Resource_54vja"), SubResource("Resource_pf410"), SubResource("Resource_uymq8"), SubResource("Resource_xxhy1")])
+columns = 7
+is_players = true
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"

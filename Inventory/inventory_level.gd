@@ -3,6 +3,7 @@ class_name InventoryLevel
 
 @export var inventoryData : Inv
 @export var is_player_inventory := false
+@export var is_in_level := true
 
 @onready var inv: Inv
 @onready var grid_container: GridContainer = $GridContainer
@@ -56,6 +57,8 @@ func used_item(item: InvItem):
 	item_used.emit(item)
 	
 func got_item(item: InvItem):
+	if not is_in_level:
+		return
 	print("GOT ITEM CALLED!", item)
 	print(item, " is InvItem? ", item is InvItem)
 	item_got.emit(item)
@@ -63,3 +66,10 @@ func got_item(item: InvItem):
 	print(level)
 	level.attempt_to_insert_item(item)
 	
+func add_inventory(other_inv: Inv):
+	if !inventoryData or !other_inv:
+		return
+	for slot in other_inv.slots:
+		if slot.item and slot.amount > 0:
+			for i in range(slot.amount):
+				inventoryData.insert(slot.item)

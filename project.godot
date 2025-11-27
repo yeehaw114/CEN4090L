@@ -22,6 +22,7 @@ GlobalAudioStreamPlayer="*res://Scripts/Singletons/audio_stream_player.tscn"
 GlobalBattleResourceManager="*res://Scripts/Singletons/GlobalBattleResourceManager.gd"
 PlayerInventory="*res://Scripts/Singletons/PlayerInventory.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+TownInventories="*res://Scripts/Singletons/town_inventories.gd"
 
 [dialogic]
 

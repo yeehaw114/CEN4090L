@@ -18,6 +18,7 @@ var active_state := -1
 signal state_changed(state: int)
 signal pause_game(switch: bool)
 signal rewards_decided(coins: int, cards: Array[CardResource])
+signal enemy_clicked(char : Character)
 
 enum battle_state {PLAYER_STATUS,PLAYER, ENEMY_STATUS,ENEMY}
 var active_battle_state := -1
@@ -145,12 +146,15 @@ func handle_left_input():
 		var char : Character
 		if tile:
 			char = tile.character
+			if char:
+				enemy_clicked.emit(char)
 		if char != null and combat_manager.cards.currently_selected_card != null:
 			currently_selected_enemy = char
 			if currently_selected_enemy.is_in_group('Player'):
 				combat_manager.cast_card_on_player(player, combat_manager.cards.currently_selected_card)
 			else:
 				combat_manager.cast_card_on_character(player,combat_manager.cards.currently_selected_card,currently_selected_enemy)
+				enemy_clicked.emit(currently_selected_enemy)
 	elif active_state == battle_state_player.MOVE:
 		var tile = combat_manager.raycast_check_for_tile()
 		if tile != null:
