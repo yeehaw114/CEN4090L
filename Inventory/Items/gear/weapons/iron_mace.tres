@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://vcc164ijev31"]
+
+[ext_resource type="Script" uid="uid://dimvrbr0d7huq" path="res://Scripts/Resources/weapon_resource.gd" id="1_88r77"]
+[ext_resource type="Texture2D" uid="uid://cjbnobft8h2rs" path="res://Assets/Textures/Asprite/mace.png" id="2_nkrqb"]
+
+[resource]
+script = ExtResource("1_88r77")
+weapon_name = "Iron Mace"
+texture = ExtResource("2_nkrqb")
+weight = 0
+rarity = 0
+damage_min = 2
+damage_max = 4
+metadata/_custom_type_script = "uid://dimvrbr0d7huq"

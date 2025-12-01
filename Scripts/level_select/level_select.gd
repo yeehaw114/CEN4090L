@@ -13,3 +13,6 @@ func _process(delta: float) -> void:
 func area_selected(scene: Variant, title: Variant, texture: Variant, info: Variant) -> void:
 	area_info.set_values(scene,title,texture,info)
 	area_info.show()
+
+func _on_reward_display(weapon: WeaponResource) -> void:
+	area_info.set_reward(weapon)
