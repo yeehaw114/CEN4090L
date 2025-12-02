@@ -18,6 +18,8 @@ const raycast_down = Vector2(0,25)
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interact_raycast: RayCast2D = $InteractRaycast
 @onready var pause_screen: Control = $CanvasLayer/PauseScreen
+@onready var grass_walk_sound: AudioStreamPlayer2D = $GrassWalkSound
+@onready var timer: Timer = $Timer
 
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
@@ -32,6 +34,12 @@ func _ready() -> void:
 
 func _physics_process(_delta):
 	handle_movement_input()
+	
+	if not velocity.length() == 0:
+		if timer.time_left <= 0:
+			grass_walk_sound.pitch_scale = randf_range(0.8,1.2)
+			grass_walk_sound.play()
+			timer.start(0.3)
 	
 	if Input.is_action_just_pressed("Pause") and able_to_move and !is_in_menu:
 		pause(true)
