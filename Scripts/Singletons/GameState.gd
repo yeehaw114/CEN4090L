@@ -14,6 +14,10 @@ var transferred_cards := default_cards.duplicate(true)
 var battle_scene: Control = null
 var display_deck_scene: Control = null
 
+signal health_changed(health:int)
+signal coins_changed(coins:int)
+signal cards_changed(cards:Array[CardResource])
+
 func clear():
 	transferred_cards = []
 
@@ -72,7 +76,6 @@ func load_game():
 				if card.card_name == card_info.get("card_name"):
 					card.from_dict(card_info)
 
-
 # --- Cached preloaded scenes ---
 var cached_scenes: Dictionary = {}
 
@@ -122,6 +125,11 @@ func return_to_previous_scene_live():
 	# Reattach the previous live scene
 	tree.root.add_child(previous_scene)
 	tree.current_scene = previous_scene
+	
+	health_changed.emit(current_health)
+	coins_changed.emit(coins_current)
+	cards_changed.emit(transferred_cards)
+	
 	GlobalAudioStreamPlayer.play_dungeon_music()
 	current_scene_path = ""  # optional, since this is a live restore
 	GlobalAudioStreamPlayer.play_dungeon_music()

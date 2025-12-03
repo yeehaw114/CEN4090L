@@ -20,6 +20,7 @@ const raycast_down = Vector2(0,25)
 @onready var pause_screen: Control = $CanvasLayer/PauseScreen
 @onready var grass_walk_sound: AudioStreamPlayer2D = $GrassWalkSound
 @onready var timer: Timer = $Timer
+@onready var inventory: Panel = $CanvasLayer/Inventory
 
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
@@ -45,6 +46,11 @@ func _physics_process(_delta):
 		pause(true)
 	elif Input.is_action_just_pressed("Pause") and !able_to_move and !is_in_menu:
 		pause(false)
+		
+	if Input.is_action_just_pressed("Inventory") and able_to_move and !is_in_menu:
+		open_inventory(true)
+	elif Input.is_action_just_pressed("Inventory") and !able_to_move and !is_in_menu:
+		open_inventory(false)
 	
 	if interact_raycast.is_colliding():
 		var object = interact_raycast.get_collider()
@@ -78,8 +84,10 @@ func _physics_process(_delta):
 				toggle_able_to_move(false)
 			elif object.name == 'ChestCollision':
 				object.open()
+				GameState.coins_changed.emit(GameState.coins_current)
 			elif object.name == 'CampfireCollision':
 				object.use()
+				GameState.health_changed.emit(GameState.current_health)
 			
 	if able_to_move:
 		velocity = locked_direction * SPEED
@@ -92,9 +100,19 @@ func pause(toggle: bool):
 	if toggle:
 		pause_screen.show()
 		able_to_move = false
+		velocity = Vector2.ZERO
 	else:
 		pause_screen.hide()
 		pause_screen.reset_panels_to_default()
+		able_to_move = true
+		
+func open_inventory(toggle: bool):
+	if toggle:
+		inventory.show()
+		able_to_move = false
+		velocity = Vector2.ZERO
+	else:
+		inventory.hide()
 		able_to_move = true
 
 func check_for_interactable() -> bool:
