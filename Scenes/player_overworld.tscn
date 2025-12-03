@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://o8o20a6mxny"]
+[gd_scene load_steps=30 format=3 uid="uid://o8o20a6mxny"]
 
 [ext_resource type="Script" uid="uid://davrco1nbat1f" path="res://Scripts/player_controller.gd" id="1_xods4"]
 [ext_resource type="Texture2D" uid="uid://bts58b82i05x7" path="res://Assets/Textures/player_overworld_walk_down.png" id="2_f4tgq"]
 [ext_resource type="Texture2D" uid="uid://dh1oonrb1xj83" path="res://Assets/Textures/player_overworld_walk_right.png" id="3_l4anu"]
 [ext_resource type="Texture2D" uid="uid://cxd4iccsjh0v5" path="res://Assets/Textures/player_overworld_walk_up.png" id="4_j4txs"]
 [ext_resource type="PackedScene" uid="uid://dsvhja4baeqre" path="res://Scenes/pause_screen.tscn" id="5_l4anu"]
+[ext_resource type="Script" uid="uid://dp1yhynvhxpfb" path="res://Scenes/inventory_hud.gd" id="6_j4txs"]
+[ext_resource type="PackedScene" uid="uid://dra73teelv3io" path="res://Inventory/inv_ui.tscn" id="7_8dubh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8dubh"]
 atlas = ExtResource("2_f4tgq")
@@ -215,4 +217,33 @@ collision_mask = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("5_l4anu")]
+visible = false
+
+[node name="InventoryHUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_j4txs")
+
+[node name="Background" type="Panel" parent="CanvasLayer/InventoryHUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/InventoryHUD/Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/InventoryHUD/Background/MarginContainer"]
+layout_mode = 2
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/InventoryHUD/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/InventoryHUD/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="IventoryPanel" parent="CanvasLayer/InventoryHUD" instance=ExtResource("7_8dubh")]
 visible = false

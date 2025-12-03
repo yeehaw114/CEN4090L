@@ -18,6 +18,7 @@ const raycast_down = Vector2(0,25)
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var interact_raycast: RayCast2D = $InteractRaycast
 @onready var pause_screen: Control = $CanvasLayer/PauseScreen
+@onready var inventory_hud: Control = $CanvasLayer/InventoryHUD
 
 var last_facing = "down"
 var locked_direction = Vector2.ZERO
@@ -82,9 +83,13 @@ func pause(toggle: bool):
 	if toggle:
 		pause_screen.show()
 		able_to_move = false
+		if inventory_hud:
+			inventory_hud.hide()
 	else:
 		pause_screen.hide()
 		able_to_move = true
+		if inventory_hud:
+			inventory_hud.show()
 
 func check_for_interactable() -> bool:
 	if interact_raycast.is_colliding():

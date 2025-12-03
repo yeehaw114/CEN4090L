@@ -7,6 +7,7 @@
 script = ExtResource("2_4oh3p")
 is_unlocked_at_start = false
 is_locked = true
+cost = 0
 card_name = ""
 card_cost = 0
 card_description = ""
