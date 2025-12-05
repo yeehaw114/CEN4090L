@@ -35,5 +35,5 @@ metadata/_custom_type_script = "uid://dwvurdyhxtk7f"
 script = ExtResource("1_ho05l")
 slots = Array[ExtResource("2_nutfe")]([SubResource("Resource_pkhpp"), SubResource("Resource_ybfna"), SubResource("Resource_rd8jq"), SubResource("Resource_ocpm0"), SubResource("Resource_5dh05")])
 columns = 3
-is_players = false
+is_players = true
 metadata/_custom_type_script = "uid://b1m5ivujupac5"

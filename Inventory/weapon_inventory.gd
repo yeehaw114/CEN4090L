@@ -25,3 +25,20 @@ func spawn_slots(columns: int, num_slots: int):
 func update_slots():
 	for i in range(min(inventoryData.slots.size(), slots.size())):
 		slots[i].update(inventoryData.slots[i])
+
+func add_inventory(other_inv: Inv):
+	if !inventoryData or !other_inv:
+		return
+	for slot in other_inv.slots:
+		if slot.item:
+			inventoryData.insert(slot.item)
+				
+func set_inventory(inv: WeaponInv):
+	inventoryData = inv
+	reload_inventory()
+
+func reload_inventory():
+	if !inventoryData:
+		return
+	inventoryData.update.connect(update_slots)
+	spawn_slots(inventoryData.columns, inventoryData.slots.size())

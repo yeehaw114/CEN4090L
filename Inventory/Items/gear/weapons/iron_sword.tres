@@ -5,8 +5,13 @@
 
 [resource]
 script = ExtResource("1_d5icn")
-weapon_name = "Iron Sword"
-texture = ExtResource("2_2r1bd")
 damage_min = 2
 damage_max = 3
+weight = 0
+rarity = 0
+mass = 0
+name = "Iron Sword"
+texture = ExtResource("2_2r1bd")
+stat = 0
+value = 0
 metadata/_custom_type_script = "uid://dimvrbr0d7huq"

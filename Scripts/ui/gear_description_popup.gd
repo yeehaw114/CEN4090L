@@ -14,10 +14,10 @@ func _process(delta: float) -> void:
 
 func set_values(resource: Resource):
 	if resource is WeaponResource or resource is RangedResource:
-		name_label.text = resource.weapon_name
+		name_label.text = resource.name
 		value_range_label.text = 'DAMAGE: '+str(resource.damage_min)+' - '+str(resource.damage_max)
 	elif resource is ArmourResource:
-		name_label.text = resource.armour_name
+		name_label.text = resource.name
 		value_range_label.text = 'BLOCK: '+str(resource.block_min)+' - '+str(resource.block_max)
 	if resource.rarity == WeaponResource.RARITY.COMMON:
 		rarity_label.text = 'COMMON'

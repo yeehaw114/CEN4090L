@@ -5,8 +5,17 @@
 
 [resource]
 script = ExtResource("1_w4ec7")
-armour_name = "Cloak"
-texture = ExtResource("2_34ptc")
 block_min = 1
 block_max = 2
+melee_defense_health = 2
+ranged_defense_health = 2
+melee_defense_nerve = 2
+ranged_defense_nerve = 2
+weight = 0
+rarity = 0
+mass = 0
+name = "Cloak"
+texture = ExtResource("2_34ptc")
+stat = 0
+value = 0
 metadata/_custom_type_script = "uid://cnk4wwoqlpnk8"

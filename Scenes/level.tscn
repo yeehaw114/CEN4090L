@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cxapipdvecyyf"]
+[gd_scene load_steps=26 format=3 uid="uid://cxapipdvecyyf"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="1_k5f4k"]
@@ -14,84 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://dq1j5j850qe53" path="res://Inventory/weapon_inventory.tscn" id="7_0cmrb"]
 [ext_resource type="Script" uid="uid://swkodfd5mnip" path="res://Scripts/levels/open_button.gd" id="7_2klc5"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="7_qxfql"]
-[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="8_c7le1"]
-[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="9_2klc5"]
+[ext_resource type="Resource" uid="uid://bdo3eob8ewy58" path="res://Inventory/level_inventory.tres" id="11_3a44l"]
 [ext_resource type="Script" uid="uid://dyfj0im1ibsaq" path="res://Scripts/levels/BottomUI/weapon_panel.gd" id="14_3a44l"]
 [ext_resource type="PackedScene" uid="uid://g3mls7ib10qq" path="res://Scenes/gear_description_popup.tscn" id="15_3a44l"]
 [ext_resource type="Script" uid="uid://dhwe01qohhwmq" path="res://Scripts/levels/BottomUI/armour_panel.gd" id="16_0cmrb"]
 [ext_resource type="Script" uid="uid://cbwiylfhgtb4m" path="res://Scripts/levels/BottomUI/ranged_panel.gd" id="17_24uko"]
 [ext_resource type="Script" uid="uid://boiwilwpvg2gd" path="res://Scripts/levels/BottomUI/stats_panel.gd" id="18_pnhnk"]
-
-[sub_resource type="Resource" id="Resource_oqpsp"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_yrre2"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_wq1fa"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_amcam"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_to21c"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_ajmj0"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_k5okl"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_d0kw6"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_0o0fp"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_2hfcn"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_cmtkm"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_1sk44"]
-script = ExtResource("9_2klc5")
-amount = 0
-metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
-
-[sub_resource type="Resource" id="Resource_0cmrb"]
-resource_local_to_scene = true
-script = ExtResource("8_c7le1")
-slots = Array[ExtResource("9_2klc5")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44")])
-columns = 6
-is_players = true
-max_health = 100
-current_health = 100
-coins = 0
-metadata/_custom_type_script = "uid://7y36k5fupqqf"
 
 [sub_resource type="Animation" id="Animation_3a44l"]
 resource_name = "Panel_slide_down"
@@ -351,7 +279,7 @@ script = ExtResource("7_2klc5")
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-inventoryData = SubResource("Resource_0cmrb")
+inventoryData = ExtResource("11_3a44l")
 is_player_inventory = true
 
 [node name="BottomContainer" type="HBoxContainer" parent="CanvasLayer/BottomUIPanel/VBoxContainer"]

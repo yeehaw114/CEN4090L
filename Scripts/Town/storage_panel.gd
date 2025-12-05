@@ -15,7 +15,11 @@ func _ready() -> void:
 	GameState.transferred_inv = null
 	inventory_level.set_inventory(inventory_level.inventoryData)
 	
-	weapon_inventory.spawn_slots(weapon_inv.columns,weapon_inv.slots.size())
+	weapon_inventory.add_inventory(GameState.transffered_reward_inv)
+	GameState.transffered_reward_inv = null
+	weapon_inventory.set_inventory(weapon_inv)
+	
+	#weapon_inventory.spawn_slots(weapon_inv.columns,weapon_inv.slots.size())
 	armour_inventory.spawn_slots(armour_inv.columns,armour_inv.slots.size())
 	ranged_inventory.spawn_slots(ranged_inv.columns,ranged_inv.slots.size())
 

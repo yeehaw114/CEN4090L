@@ -23,6 +23,7 @@ GlobalBattleResourceManager="*res://Scripts/Singletons/GlobalBattleResourceManag
 PlayerInventory="*res://Scripts/Singletons/PlayerInventory.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 TownInventories="*res://Scripts/Singletons/town_inventories.gd"
+LevelManager="*res://Scripts/Singletons/level_manager.gd"
 
 [dialogic]
 

@@ -21,8 +21,10 @@ func set_reward(weapon: WeaponResource):
 	reward_label.show()
 	weapon_slot.show()
 	var reward_slot = WeaponSlot.new()
-	reward_slot.weapon = weapon
+	reward_slot.item = weapon
 	weapon_slot.update(reward_slot)
 
 func _on_enter_button_pressed() -> void:
+	if weapon_slot.slotData:
+		LevelManager.reward = weapon_slot.slotData.item
 	get_tree().change_scene_to_packed(Area_scene)

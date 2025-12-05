@@ -18,6 +18,7 @@ const test_hand : Array[CardResource] = [test_strike,test_strike,test_strike,tes
 const event_scene := preload("res://Scenes/event.tscn")
 @export var player_inv : Inv
 var event_inventory : Inv
+var reward_gear_inventory : WeaponInv
 @export var is_player_inventory := false
 
 var hours_passed := 0
@@ -30,6 +31,13 @@ func _ready() -> void:
 	inventory_level.set_inventory(inventory_level.inventoryData)
 	inventory_level.item_got.connect(attempt_to_insert_item)
 	inventory_level.item_used.connect(apply_item_effect)
+	
+	print('REWARD THIS LEVEL: '+str(LevelManager.reward))
+	reward_gear_inventory = WeaponInv.new()
+	var reward_slot = WeaponSlot.new()
+	reward_slot.item = LevelManager.reward
+	reward_gear_inventory.slots.append(reward_slot)
+	victory_panel.set_reward_inventory(reward_gear_inventory)
 
 func set_event_inventory(inv: Inv):
 	event_inventory = inv
@@ -113,6 +121,7 @@ func _on_level_won() -> void:
 	var loot_inventory = bottom_ui_panel.inventory_level.inv
 	victory_panel.set_loot_inventory(loot_inventory)
 	GameState.transferred_inv = loot_inventory
+	GameState.transffered_reward_inv = reward_gear_inventory
 	victory_panel.set_money_label(PlayerInventory.coins_looted)
 	PlayerInventory.transfer_loot_coins()
 	player.set_can_move(false)

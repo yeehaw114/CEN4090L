@@ -12,6 +12,7 @@ var current_health := 20
 
 var transferred_cards := default_cards.duplicate(true)
 var transferred_inv : Inv
+var transffered_reward_inv : WeaponInv
 var battle_scene: Control = null
 var display_deck_scene: Control = null
 

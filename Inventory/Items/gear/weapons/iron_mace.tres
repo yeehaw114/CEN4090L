@@ -5,10 +5,13 @@
 
 [resource]
 script = ExtResource("1_88r77")
-weapon_name = "Iron Mace"
-texture = ExtResource("2_nkrqb")
-weight = 0
-rarity = 0
 damage_min = 2
 damage_max = 4
+weight = 0
+rarity = 0
+mass = 0
+name = "Iron Mace"
+texture = ExtResource("2_nkrqb")
+stat = 0
+value = 0
 metadata/_custom_type_script = "uid://dimvrbr0d7huq"

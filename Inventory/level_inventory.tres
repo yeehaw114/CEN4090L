@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=15 format=3 uid="uid://bdo3eob8ewy58"]
+
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="1_gakb2"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="2_unmi5"]
+
+[sub_resource type="Resource" id="Resource_gakb2"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_unmi5"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_syo2e"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_rt3fy"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ccwhx"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_sibal"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_4swqh"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_hlqqo"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_it2iv"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_12bw2"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_4joan"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_og6sg"]
+script = ExtResource("2_unmi5")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[resource]
+script = ExtResource("1_gakb2")
+slots = Array[ExtResource("2_unmi5")]([SubResource("Resource_gakb2"), SubResource("Resource_unmi5"), SubResource("Resource_syo2e"), SubResource("Resource_rt3fy"), SubResource("Resource_ccwhx"), SubResource("Resource_sibal"), SubResource("Resource_4swqh"), SubResource("Resource_hlqqo"), SubResource("Resource_it2iv"), SubResource("Resource_12bw2"), SubResource("Resource_4joan"), SubResource("Resource_og6sg")])
+columns = 6
+is_players = true
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"

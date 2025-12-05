@@ -1,0 +1,189 @@
+[gd_scene load_steps=24 format=3 uid="uid://bb2u0ejp2ccro"]
+
+[ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="1_a7g22"]
+[ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="2_v0njl"]
+[ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="3_lgngk"]
+[ext_resource type="Script" uid="uid://cswbnc2w0bg1j" path="res://Inventory/inv_slot.gd" id="4_5tlqf"]
+[ext_resource type="Resource" uid="uid://ci5lybodpqi2k" path="res://Inventory/Items/useable/bandage.tres" id="5_kqvx4"]
+[ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/useable/opioid.tres" id="6_fkm06"]
+[ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="7_lgngk"]
+[ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="8_5tlqf"]
+
+[sub_resource type="Resource" id="Resource_oqpsp"]
+script = ExtResource("4_5tlqf")
+item = ExtResource("5_kqvx4")
+amount = 2
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_yrre2"]
+script = ExtResource("4_5tlqf")
+item = ExtResource("6_fkm06")
+amount = 1
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_wq1fa"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_amcam"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_to21c"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ajmj0"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_k5okl"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_d0kw6"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_0o0fp"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_2hfcn"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_cmtkm"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_1sk44"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_otoat"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_ka4bu"]
+script = ExtResource("4_5tlqf")
+amount = 0
+metadata/_custom_type_script = "uid://cswbnc2w0bg1j"
+
+[sub_resource type="Resource" id="Resource_c77gn"]
+resource_local_to_scene = true
+script = ExtResource("3_lgngk")
+slots = Array[ExtResource("4_5tlqf")]([SubResource("Resource_oqpsp"), SubResource("Resource_yrre2"), SubResource("Resource_wq1fa"), SubResource("Resource_amcam"), SubResource("Resource_to21c"), SubResource("Resource_ajmj0"), SubResource("Resource_k5okl"), SubResource("Resource_d0kw6"), SubResource("Resource_0o0fp"), SubResource("Resource_2hfcn"), SubResource("Resource_cmtkm"), SubResource("Resource_1sk44"), SubResource("Resource_otoat"), SubResource("Resource_ka4bu")])
+columns = 7
+is_players = true
+max_health = 100
+current_health = 100
+coins = 0
+metadata/_custom_type_script = "uid://7y36k5fupqqf"
+
+[node name="ProvisionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VentureButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 311.0
+offset_top = -94.0
+offset_right = 391.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "VENTURE ==>"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 447.0
+offset_right = 164.0
+offset_bottom = 478.0
+text = "<== RETURN"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 104.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RankContainer" parent="HBoxContainer" instance=ExtResource("1_a7g22")]
+layout_mode = 2
+
+[node name="RankContainer2" parent="HBoxContainer" instance=ExtResource("1_a7g22")]
+layout_mode = 2
+
+[node name="RankContainer3" parent="HBoxContainer" instance=ExtResource("1_a7g22")]
+layout_mode = 2
+
+[node name="RankContainer4" parent="HBoxContainer" instance=ExtResource("1_a7g22")]
+layout_mode = 2
+
+[node name="Player" parent="." instance=ExtResource("2_v0njl")]
+position = Vector2(663, 473)
+inv = SubResource("Resource_c77gn")
+sprite = ExtResource("7_lgngk")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(700, 375)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryLevel" parent="Panel/VBoxContainer/PanelContainer" instance=ExtResource("8_5tlqf")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemsButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ITEMS"
+
+[node name="GearButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "GEAR"
