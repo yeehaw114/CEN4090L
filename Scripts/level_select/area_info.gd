@@ -7,7 +7,10 @@ extends Panel
 @onready var reward_label: Label = $VBoxContainer/RewardLabel
 @onready var weapon_slot: Panel = $VBoxContainer/WeaponSlot
 
+const provision_scene := preload("res://Scenes/provision_screen.tscn")
+
 var Area_scene : PackedScene
+var is_home := false
 
 func set_values(scene: PackedScene,title: String,texture:Texture2D,info:String):
 	reward_label.hide()
@@ -27,4 +30,8 @@ func set_reward(weapon: WeaponResource):
 func _on_enter_button_pressed() -> void:
 	if weapon_slot.slotData:
 		LevelManager.reward = weapon_slot.slotData.item
-	get_tree().change_scene_to_packed(Area_scene)
+	LevelManager.current_scene = Area_scene
+	if is_home:
+		get_tree().change_scene_to_file("res://Scenes/town.tscn")
+		return
+	get_tree().change_scene_to_packed(provision_scene)

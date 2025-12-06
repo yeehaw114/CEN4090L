@@ -1,10 +1,13 @@
 extends Control
 
-@export var inventoryData : WeaponInv
+@export var inventoryData : Inv
+@export var external_inventory := false
 
 @onready var grid_container: GridContainer = $GridContainer
 @onready var slots: Array = grid_container.get_children()
-@onready var slot_scene := preload("res://Inventory/weapon_slot.tscn")
+@export var slot_scene : PackedScene
+
+signal external_slot_clicked(slot: InvSlot)
 
 func spawn_slots(columns: int, num_slots: int):
 	slots.clear()
@@ -17,6 +20,7 @@ func spawn_slots(columns: int, num_slots: int):
 
 	for i in range(num_slots):
 		var new_slot = slot_scene.instantiate()
+		new_slot.slot_clicked_on.connect(slot_clicked_on)
 		grid_container.add_child(new_slot)
 
 	slots = grid_container.get_children()
@@ -33,7 +37,7 @@ func add_inventory(other_inv: Inv):
 		if slot.item:
 			inventoryData.insert(slot.item)
 				
-func set_inventory(inv: WeaponInv):
+func set_inventory(inv:Inv):
 	inventoryData = inv
 	reload_inventory()
 
@@ -42,3 +46,8 @@ func reload_inventory():
 		return
 	inventoryData.update.connect(update_slots)
 	spawn_slots(inventoryData.columns, inventoryData.slots.size())
+
+func slot_clicked_on(slot: InvSlot):
+	print(slot.item.name)
+	if external_inventory:
+		external_slot_clicked.emit(slot)

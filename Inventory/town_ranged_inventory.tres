@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_l22yx"]
 script = ExtResource("4_32ywn")
-ranged = ExtResource("3_rsm7o")
+item = ExtResource("3_rsm7o")
 amount = 0
 metadata/_custom_type_script = "uid://c2df7uvc1k4tp"
 
@@ -56,4 +56,7 @@ script = ExtResource("1_g6gpk")
 slots = Array[ExtResource("2_s5sjp")]([SubResource("Resource_l22yx"), SubResource("Resource_sj1mk"), SubResource("Resource_yoou6"), SubResource("Resource_dt7yx"), SubResource("Resource_a4512"), SubResource("Resource_vcd42"), SubResource("Resource_8a6bd"), SubResource("Resource_yi71b"), SubResource("Resource_6y4tf")])
 columns = 3
 is_players = true
+max_health = 100
+current_health = 100
+coins = 0
 metadata/_custom_type_script = "uid://xjbesdy0o5m6"

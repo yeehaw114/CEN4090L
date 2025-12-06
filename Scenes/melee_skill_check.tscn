@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfb6o4c2n1lxj"]
+
+[ext_resource type="Texture2D" uid="uid://dramnk8jinkra" path="res://Assets/Textures/move_crystal_sprite_sheet.png" id="1_3ulgl"]
+[ext_resource type="Script" uid="uid://bu24lbt1f64q0" path="res://Scripts/skill_line.gd" id="1_b0gib"]
+[ext_resource type="Script" uid="uid://8kbaojnwl7rs" path="res://Scripts/melee_skill_check.gd" id="1_mv7pw"]
+[ext_resource type="Texture2D" uid="uid://4ueydpqoc4uy" path="res://Assets/Textures/lobby_floor.png" id="4_2l3ut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0gib"]
+atlas = ExtResource("1_3ulgl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv7pw"]
+size = Vector2(29, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqmq4"]
+size = Vector2(32, 32)
+
+[node name="MeleeSkillCheck" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mv7pw")
+
+[node name="SkillLine" type="Line2D" parent="."]
+points = PackedVector2Array(56, 393, 921, 393)
+script = ExtResource("1_b0gib")
+
+[node name="Point" type="Sprite2D" parent="SkillLine"]
+z_index = 5
+texture = SubResource("AtlasTexture_b0gib")
+
+[node name="Area2D" type="Area2D" parent="SkillLine/Point"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillLine/Point/Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mv7pw")
+
+[node name="RedHitRange" type="Sprite2D" parent="SkillLine"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(488.5, 393)
+texture = ExtResource("4_2l3ut")
+
+[node name="ZoneArea" type="Area2D" parent="SkillLine/RedHitRange"]
+
+[node name="ZoneCollisionShape" type="CollisionShape2D" parent="SkillLine/RedHitRange/ZoneArea"]
+shape = SubResource("RectangleShape2D_rqmq4")
+
+[node name="OrangeHitRange" type="Sprite2D" parent="SkillLine"]
+modulate = Color(0.601296, 0.176817, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(488.5, 393)
+texture = ExtResource("4_2l3ut")
+
+[node name="ZoneArea" type="Area2D" parent="SkillLine/OrangeHitRange"]
+
+[node name="ZoneCollisionShape" type="CollisionShape2D" parent="SkillLine/OrangeHitRange/ZoneArea"]
+shape = SubResource("RectangleShape2D_rqmq4")
+
+[connection signal="area_entered" from="SkillLine/RedHitRange/ZoneArea" to="." method="_on_zone_area_body_entered"]
+[connection signal="area_exited" from="SkillLine/RedHitRange/ZoneArea" to="." method="_on_zone_area_body_exited"]
+[connection signal="area_entered" from="SkillLine/OrangeHitRange/ZoneArea" to="." method="_on_zone_area_body_entered"]
+[connection signal="area_exited" from="SkillLine/OrangeHitRange/ZoneArea" to="." method="_on_zone_area_body_exited"]

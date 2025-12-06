@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cxapipdvecyyf"]
+[gd_scene load_steps=27 format=3 uid="uid://cxapipdvecyyf"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="1_k5f4k"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dq1j5j850qe53" path="res://Inventory/weapon_inventory.tscn" id="7_0cmrb"]
 [ext_resource type="Script" uid="uid://swkodfd5mnip" path="res://Scripts/levels/open_button.gd" id="7_2klc5"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="7_qxfql"]
+[ext_resource type="PackedScene" uid="uid://bbk3cyoh0j0k8" path="res://Inventory/weapon_slot.tscn" id="8_0cmrb"]
 [ext_resource type="Resource" uid="uid://bdo3eob8ewy58" path="res://Inventory/level_inventory.tres" id="11_3a44l"]
 [ext_resource type="Script" uid="uid://dyfj0im1ibsaq" path="res://Scripts/levels/BottomUI/weapon_panel.gd" id="14_3a44l"]
 [ext_resource type="PackedScene" uid="uid://g3mls7ib10qq" path="res://Scenes/gear_description_popup.tscn" id="15_3a44l"]
@@ -177,6 +178,7 @@ horizontal_alignment = 1
 [node name="WeaponInventory" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer" instance=ExtResource("7_0cmrb")]
 layout_mode = 2
 size_flags_vertical = 3
+slot_scene = ExtResource("8_0cmrb")
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/VictoryPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2

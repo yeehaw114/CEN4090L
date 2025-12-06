@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbk3cyoh0j0k8"]
 
-[ext_resource type="Script" uid="uid://c1le5mwg3pbw0" path="res://Inventory/weapon_slot.gd" id="1_0us3l"]
+[ext_resource type="Script" uid="uid://c1le5mwg3pbw0" path="res://Inventory/gear_slot.gd" id="1_0us3l"]
 [ext_resource type="PackedScene" uid="uid://g3mls7ib10qq" path="res://Scenes/gear_description_popup.tscn" id="2_lydqp"]
 
 [node name="WeaponSlot" type="Panel"]
@@ -9,7 +9,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_0us3l")
 
-[node name="WeaponTexture" type="TextureRect" parent="."]
+[node name="GearTexture" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bb2u0ejp2ccro"]
+[gd_scene load_steps=38 format=3 uid="uid://bb2u0ejp2ccro"]
 
+[ext_resource type="Script" uid="uid://dcsy27p5283rn" path="res://Scripts/provision_screen.gd" id="1_0d483"]
 [ext_resource type="PackedScene" uid="uid://b0gw8r15x7b48" path="res://Scenes/rank_container.tscn" id="1_a7g22"]
 [ext_resource type="PackedScene" uid="uid://dckl0ng06ox3i" path="res://Scenes/character.tscn" id="2_v0njl"]
 [ext_resource type="Script" uid="uid://7y36k5fupqqf" path="res://Inventory/inventory.gd" id="3_lgngk"]
@@ -8,6 +9,19 @@
 [ext_resource type="Resource" uid="uid://djk6akeybisyx" path="res://Inventory/Items/useable/opioid.tres" id="6_fkm06"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="7_lgngk"]
 [ext_resource type="PackedScene" uid="uid://1kpa0mxijviy" path="res://Inventory/inventory_level.tscn" id="8_5tlqf"]
+[ext_resource type="Script" uid="uid://cj2o7j7eow35f" path="res://Scripts/item_selection_container.gd" id="8_fkm06"]
+[ext_resource type="Resource" uid="uid://bdo3eob8ewy58" path="res://Inventory/level_inventory.tres" id="9_kqvx4"]
+[ext_resource type="Script" uid="uid://vafqvmi40wxc" path="res://Scripts/provision_panel.gd" id="9_vxpr0"]
+[ext_resource type="Resource" uid="uid://cclcsqmpxuild" path="res://Inventory/town_inventory.tres" id="11_c77gn"]
+[ext_resource type="Script" uid="uid://cs8ediawq4cyv" path="res://Scripts/gear_selection_container.gd" id="13_xqewb"]
+[ext_resource type="PackedScene" uid="uid://bbk3cyoh0j0k8" path="res://Inventory/weapon_slot.tscn" id="13_ydcku"]
+[ext_resource type="PackedScene" uid="uid://p3cta1h185ni" path="res://Inventory/ranged_slot.tscn" id="14_26yqn"]
+[ext_resource type="PackedScene" uid="uid://c28nlagjcal2t" path="res://Inventory/armour_slot.tscn" id="15_a2rqy"]
+[ext_resource type="PackedScene" uid="uid://dq1j5j850qe53" path="res://Inventory/weapon_inventory.tscn" id="16_26yqn"]
+[ext_resource type="PackedScene" uid="uid://ctieufqn4eyyi" path="res://Inventory/ranged_inventory.tscn" id="17_n64s1"]
+[ext_resource type="PackedScene" uid="uid://4axp2wgb7g37" path="res://Inventory/armour_inventory.tscn" id="18_xqewb"]
+[ext_resource type="Resource" uid="uid://cfyvdraitl8kt" path="res://Inventory/town_ranged_inventory.tres" id="19_43xdc"]
+[ext_resource type="Resource" uid="uid://bqeat3fprwsbr" path="res://Inventory/town_armour_inventory.tres" id="22_s8kx3"]
 
 [sub_resource type="Resource" id="Resource_oqpsp"]
 script = ExtResource("4_5tlqf")
@@ -99,6 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0d483")
 
 [node name="VentureButton" type="Button" parent="."]
 layout_mode = 1
@@ -115,7 +130,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "VENTURE ==>"
 
-[node name="Button" type="Button" parent="."]
+[node name="ReturnButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 61.0
 offset_top = 447.0
@@ -133,6 +148,7 @@ offset_top = 104.0
 offset_bottom = 204.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="RankContainer" parent="HBoxContainer" instance=ExtResource("1_a7g22")]
@@ -152,14 +168,15 @@ position = Vector2(663, 473)
 inv = SubResource("Resource_c77gn")
 sprite = ExtResource("7_lgngk")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="ProvisionPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(700, 375)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+script = ExtResource("9_vxpr0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ProvisionPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,23 +184,132 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
+[node name="ItemSelectionContainer" type="PanelContainer" parent="ProvisionPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("8_fkm06")
+
+[node name="PlayerInventoryContainer" type="PanelContainer" parent="ProvisionPanel/VBoxContainer/ItemSelectionContainer"]
+custom_minimum_size = Vector2(325, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="InventoryLevel" parent="ProvisionPanel/VBoxContainer/ItemSelectionContainer/PlayerInventoryContainer" instance=ExtResource("8_5tlqf")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+inventoryData = ExtResource("9_kqvx4")
+is_player_inventory = true
+is_in_level = false
+
+[node name="StorageContainer" type="PanelContainer" parent="ProvisionPanel/VBoxContainer/ItemSelectionContainer"]
+custom_minimum_size = Vector2(375, 275)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="InventoryStorage" parent="ProvisionPanel/VBoxContainer/ItemSelectionContainer/StorageContainer" instance=ExtResource("8_5tlqf")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+inventoryData = ExtResource("11_c77gn")
+is_in_level = false
+
+[node name="GearSelectionContainer" type="PanelContainer" parent="ProvisionPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("13_xqewb")
+
+[node name="GearContainer" type="VBoxContainer" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="WeaponSlot" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/GearContainer" instance=ExtResource("13_ydcku")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RangedSlot" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/GearContainer" instance=ExtResource("14_26yqn")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ArmourSlot" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/GearContainer" instance=ExtResource("15_a2rqy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MeleeButton" type="Button" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MELEE"
+
+[node name="RangedButton" type="Button" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RANGED"
+
+[node name="ArmourButton" type="Button" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ARMOUR"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventoryLevel" parent="Panel/VBoxContainer/PanelContainer" instance=ExtResource("8_5tlqf")]
+[node name="WeaponInventory" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/ScrollContainer" instance=ExtResource("16_26yqn")]
 layout_mode = 2
 size_flags_vertical = 3
+external_inventory = true
+slot_scene = ExtResource("13_ydcku")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="RangedInventory" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/ScrollContainer" instance=ExtResource("17_n64s1")]
+visible = false
+layout_mode = 2
+inventoryData = ExtResource("19_43xdc")
+external_inventory = true
+slot_scene = ExtResource("14_26yqn")
+
+[node name="ArmourInventory" parent="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/ScrollContainer" instance=ExtResource("18_xqewb")]
+visible = false
+layout_mode = 2
+inventoryData = ExtResource("22_s8kx3")
+external_inventory = true
+slot_scene = ExtResource("15_a2rqy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProvisionPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="ItemsButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="ItemsButton" type="Button" parent="ProvisionPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "ITEMS"
 
-[node name="GearButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="GearButton" type="Button" parent="ProvisionPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "GEAR"
+
+[connection signal="pressed" from="VentureButton" to="." method="_on_venture_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="item_got" from="ProvisionPanel/VBoxContainer/ItemSelectionContainer/StorageContainer/InventoryStorage" to="ProvisionPanel/VBoxContainer/ItemSelectionContainer" method="_on_inventory_storage_item_got"]
+[connection signal="pressed" from="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/HBoxContainer/MeleeButton" to="ProvisionPanel/VBoxContainer/GearSelectionContainer" method="_on_melee_button_pressed"]
+[connection signal="pressed" from="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/HBoxContainer/RangedButton" to="ProvisionPanel/VBoxContainer/GearSelectionContainer" method="_on_ranged_button_pressed"]
+[connection signal="pressed" from="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/HBoxContainer/ArmourButton" to="ProvisionPanel/VBoxContainer/GearSelectionContainer" method="_on_armour_button_pressed"]
+[connection signal="external_slot_clicked" from="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/ScrollContainer/WeaponInventory" to="ProvisionPanel/VBoxContainer/GearSelectionContainer/GearContainer/WeaponSlot" method="_on_weapon_inventory_external_slot_clicked"]
+[connection signal="external_slot_clicked" from="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/ScrollContainer/RangedInventory" to="ProvisionPanel/VBoxContainer/GearSelectionContainer/GearContainer/RangedSlot" method="_on_weapon_inventory_external_slot_clicked"]
+[connection signal="external_slot_clicked" from="ProvisionPanel/VBoxContainer/GearSelectionContainer/PanelContainer/VBoxContainer/ScrollContainer/ArmourInventory" to="ProvisionPanel/VBoxContainer/GearSelectionContainer/GearContainer/ArmourSlot" method="_on_weapon_inventory_external_slot_clicked"]
+[connection signal="pressed" from="ProvisionPanel/VBoxContainer/HBoxContainer/ItemsButton" to="ProvisionPanel" method="_on_items_button_pressed"]
+[connection signal="pressed" from="ProvisionPanel/VBoxContainer/HBoxContainer/GearButton" to="ProvisionPanel" method="_on_gear_button_pressed"]

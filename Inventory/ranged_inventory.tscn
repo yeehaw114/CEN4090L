@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctieufqn4eyyi"]
 
-[ext_resource type="Script" uid="uid://be3ln3mt0chf3" path="res://Inventory/ranged_inventory.gd" id="1_irqp7"]
+[ext_resource type="Script" uid="uid://cmpub17rn8red" path="res://Inventory/weapon_inventory.gd" id="1_irqp7"]
 
 [node name="RangedInventory" type="Control"]
 layout_mode = 3

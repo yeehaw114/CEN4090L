@@ -43,6 +43,7 @@ scene = ExtResource("3_lx4vd")
 title = "Home"
 texture = ExtResource("6_kb5mc")
 info = "Home sweet home."
+home = true
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 layout_mode = 0

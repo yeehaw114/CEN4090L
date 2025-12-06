@@ -120,8 +120,9 @@ func on_menu_opened(toggle: bool) -> void:
 func _on_level_won() -> void:
 	var loot_inventory = bottom_ui_panel.inventory_level.inv
 	victory_panel.set_loot_inventory(loot_inventory)
-	GameState.transferred_inv = loot_inventory
-	GameState.transffered_reward_inv = reward_gear_inventory
+	GameState.transferred_inv = loot_inventory.duplicate_fresh()
+	GameState.transffered_reward_inv = reward_gear_inventory.duplicate_fresh()
+	loot_inventory.clear_all()
 	victory_panel.set_money_label(PlayerInventory.coins_looted)
 	PlayerInventory.transfer_loot_coins()
 	player.set_can_move(false)

@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 @onready var rarity_label: Label = $MarginContainer/VBoxContainer/RarityLabel
 @onready var weight_label: Label = $MarginContainer/VBoxContainer/WeightLabel
 @onready var name_label: Label = $MarginContainer/VBoxContainer/NameLabel
@@ -22,4 +22,4 @@ func set_values(resource: Resource):
 	if resource.rarity == WeaponResource.RARITY.COMMON:
 		rarity_label.text = 'COMMON'
 	if resource.weight == WeaponResource.WEIGHT.LIGHT:
-		weight_label.text = 'Light'
+		weight_label.text = 'Light '+str(resource.mass)+' kg'

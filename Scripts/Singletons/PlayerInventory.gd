@@ -20,21 +20,27 @@ var crit := 5
 var weapon_resource : WeaponResource = preload("res://Inventory/Items/gear/weapons/iron_sword.tres")
 var ranged_resource : RangedResource = preload("res://Inventory/Items/gear/weapons/bow.tres")
 var armour_resource : ArmourResource = preload("res://Inventory/Items/gear/armour/cloak.tres")
-var melee_damage_min : int = weapon_resource.damage_min
-var melee_damage_max : int = weapon_resource.damage_max
-var ranged_damage_min : int = ranged_resource.damage_min
-var ranged_damage_max : int = ranged_resource.damage_max
-var block_min : int = armour_resource.block_min
-var block_max : int = armour_resource.block_max
+
+func change_melee(weapon: WeaponResource):
+	if weapon:
+		weapon_resource = weapon
+
+func change_ranged(weapon: RangedResource):
+	if weapon:
+		ranged_resource = weapon
+	
+func change_armour(armour: ArmourResource):
+	if armour:
+		armour_resource = armour
 
 func get_damage_melee():
-	return randi_range(melee_damage_min,melee_damage_max)
+	return randi_range(weapon_resource.damage_min,weapon_resource.damage_max)
 	
 func get_damage_ranged():
-	return randi_range(ranged_damage_min,ranged_damage_max)
+	return randi_range(ranged_resource.damage_min,ranged_resource.damage_max)
 	
 func get_block():
-	return randi_range(block_min,block_max)
+	return randi_range(armour_resource.block_min,armour_resource.block_max)
 
 # Inventory
 var owned_cards: Array[Resource] = []  # All cards the player owns

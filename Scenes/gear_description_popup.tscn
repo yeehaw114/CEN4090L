@@ -9,21 +9,16 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 
-[node name="GearDescriptionPopup" type="Panel"]
+[node name="GearDescriptionPopup" type="PanelContainer"]
 z_index = 1
 custom_minimum_size = Vector2(200, 100)
 offset_right = 200.0
-offset_bottom = 110.0
+offset_bottom = 145.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_00k4y")
 script = ExtResource("1_2tpgk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -42,7 +37,7 @@ text = "Name"
 
 [node name="WeightLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Weight"
+text = "Weight 20 kg"
 
 [node name="ValueRangeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -58,6 +58,7 @@ func used_item(item: InvItem):
 	
 func got_item(item: InvItem):
 	if not is_in_level:
+		item_got.emit(item)
 		return
 	print("GOT ITEM CALLED!", item)
 	print(item, " is InvItem? ", item is InvItem)

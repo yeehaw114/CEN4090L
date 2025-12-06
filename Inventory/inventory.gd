@@ -42,3 +42,9 @@ func duplicate_fresh() -> Inv:
 			new_slot.amount = slot.amount
 		new_inv.slots.append(new_slot)
 	return new_inv
+	
+func clear_all() -> void:
+	for slot in slots:
+		slot.item = null
+		slot.amount = 0
+	update.emit()
