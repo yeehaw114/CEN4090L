@@ -28,3 +28,4 @@ shape = SubResource("CircleShape2D_wced7")
 position = Vector2(-3.05176e-05, -4)
 scale = Vector2(1.89063, 1.875)
 texture = SubResource("GradientTexture2D_beu3c")
+texture_scale = 4.85
