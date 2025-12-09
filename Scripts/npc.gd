@@ -7,10 +7,11 @@ var player = null
 
 # Define your NPC's dialogue here
 var dialogue_lines = [
-	"Hello there, welcome to the lobby!",
-	"I'm here to help you get started.",
-	"Feel free to talk to me anytime you need assistance!",
-	"Good luck on your adventure!"
+	"Hello there traveller, welcome to the lobby! I'm here to help you get started.",
+	"Here you can look at your card collection, buy new cards at the shop, and begin your adventure by entering the bunker.",
+	"When you enter the bunker you will have to venture deeper into the forest until you find the corrupted bear, then you can defeat him!",
+	"Be on the lookout for chests around the forest, be careful of enemies you may encounter, and if you ever feel like you may die you can end your run in any campfire room.",
+	"Good luck little mouse, you may come back anytime to hear this again."
 ]
 
 func _ready():

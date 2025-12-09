@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cxy4iu3yyyveq"]
 
 [ext_resource type="Texture2D" uid="uid://drjmflvf7t1rv" path="res://Assets/Textures/AndresSprites/oldman.png" id="1_acqhf"]
-[ext_resource type="Script" uid="uid://ben6n7w1wrmsr" path="res://Scenes/npc.gd" id="1_g6unj"]
+[ext_resource type="Script" uid="uid://ben6n7w1wrmsr" path="res://Scripts/npc.gd" id="1_g6unj"]
 [ext_resource type="Texture2D" uid="uid://dhq6q0008t50t" path="res://Assets/Textures/click_popup.png" id="3_h1ryf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxsvc"]

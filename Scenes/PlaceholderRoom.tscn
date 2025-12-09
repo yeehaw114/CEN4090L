@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://k6tmh8gy8xb7"]
+[gd_scene load_steps=16 format=3 uid="uid://cxsre25lpjpa2"]
 
 [ext_resource type="Script" uid="uid://cbkrskvjv2a6w" path="res://Scripts/medium_room.gd" id="1_y1dnq"]
 [ext_resource type="Texture2D" uid="uid://dwrvl371b8nmo" path="res://Assets/TileSetDemo/sample map demo.png" id="2_hengp"]

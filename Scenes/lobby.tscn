@@ -89,10 +89,10 @@ visible = false
 visible = false
 
 [node name="DialogueBox1" parent="CanvasLayer" groups=["dialogue_box"] instance=ExtResource("4_sqxuf")]
-offset_left = -3.0
-offset_top = -64.0
-offset_right = -3.0
-offset_bottom = -64.0
+offset_left = 1.0
+offset_top = -91.0
+offset_right = 1.0
+offset_bottom = -91.0
 
 [node name="CoinContainer" type="Panel" parent="CanvasLayer"]
 anchors_preset = 1
