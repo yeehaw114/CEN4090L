@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmd8ch3pbo268"]
+
+[ext_resource type="Script" uid="uid://cdun6iwx3clt" path="res://Scripts/dialogue_box_1.gd" id="1_a8eu6"]
+[ext_resource type="Texture2D" uid="uid://bhgyf83jgw1m6" path="res://Assets/Textures/AndresSprites/oldman head.png" id="2_mshbu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcu1f"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="DialogueBox1" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -166.0
+offset_right = 10.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_a8eu6")
+
+[node name="DialoguePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bcu1f")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialoguePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialoguePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="NPCPortrait" type="TextureRect" parent="DialoguePanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_mshbu")
+
+[node name="DialogueLabel" type="Label" parent="DialoguePanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+autowrap_mode = 2

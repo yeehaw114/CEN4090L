@@ -1,7 +1,6 @@
 extends Control
 
 @onready var dialogue_label = $DialoguePanel/MarginContainer/HBoxContainer/DialogueLabel
-@onready var npc_portrait = $DialoguePanel/MarginContainer/HBoxContainer/NPCPortrait
 
 var dialogue_lines = []  # Array of dialogue sentences
 var current_line_index = 0
@@ -15,14 +14,11 @@ signal dialogue_finished
 func _ready():
 	visible = false
 
-func start_dialogue(lines: Array, portrait_texture: Texture2D = null):
+func start_dialogue(lines: Array):
 	dialogue_lines = lines
 	current_line_index = 0
 	visible = true
 	
-	# Set the NPC portrait if provided
-	if portrait_texture:
-		npc_portrait.texture = portrait_texture
 	
 	# Start displaying the first line
 	display_next_line()
