@@ -124,6 +124,9 @@ text = "Volume: "
 [node name="VolumeSlider" type="HSlider" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="QuitButton" type="Button" parent="SettingsPanel/VBoxContainer"]
 layout_mode = 2

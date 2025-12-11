@@ -23,7 +23,7 @@ size = Vector2(88, 82)
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_6tofe")
-room_name = "Open Pastures"
+room_name = "Dreary Maze"
 danger = "Treacherous"
 
 [node name="TileMap" type="TileMap" parent="."]
