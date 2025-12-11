@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name PlayerExploration
+#class_name PlayerExploration
 
 @onready var camera_2d: Camera2D = $Camera2D
 

@@ -2,6 +2,8 @@ extends Node
 # PlayerInventory Singleton
 # Add this to your autoload/singleton list in Project Settings?? IDK how to do this, is this safe?
 
+enum SKILL_TYPE {MISS,BAD,OK,GREAT}
+
 # Player Stats
 var current_health: int = 20
 var max_health: int = 20
@@ -33,8 +35,15 @@ func change_armour(armour: ArmourResource):
 	if armour:
 		armour_resource = armour
 
-func get_damage_melee():
-	return randi_range(weapon_resource.damage_min,weapon_resource.damage_max)
+func get_damage_melee(type: SKILL_TYPE):
+	if type == SKILL_TYPE.MISS:
+		return -1
+	elif type == SKILL_TYPE.BAD:
+		return 0.75 * randi_range(weapon_resource.damage_min,weapon_resource.damage_max)
+	elif type == SKILL_TYPE.OK:
+		return randi_range(weapon_resource.damage_min,weapon_resource.damage_max)
+	elif type == SKILL_TYPE.GREAT:
+		return 1.25 * randi_range(weapon_resource.damage_min,weapon_resource.damage_max)
 	
 func get_damage_ranged():
 	return randi_range(ranged_resource.damage_min,ranged_resource.damage_max)

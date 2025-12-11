@@ -2,8 +2,8 @@ extends Node
 
 @onready var discard_pile: Node2D = $DiscardPile
 @onready var draw_pile: Node2D = $DrawPile
-
 @onready var hand_area: ColorRect = $HandArea
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var card_scene: PackedScene = preload("res://Scenes/card.tscn")
 
@@ -138,3 +138,9 @@ func make_cards_in_hand_unselectable():
 func make_cards_in_hand_selectable():
 	for card in hand_area.get_cards():
 		card.is_able_to_be_selected = true
+
+func slide_cards_down():
+	animation_player.play("card_slide_down")
+	
+func slide_cards_up():
+	animation_player.play("card_slide_up")

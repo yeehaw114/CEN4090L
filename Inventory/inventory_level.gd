@@ -63,7 +63,7 @@ func got_item(item: InvItem):
 	print("GOT ITEM CALLED!", item)
 	print(item, " is InvItem? ", item is InvItem)
 	item_got.emit(item)
-	var level = get_tree().get_root().get_node("Level")
+	var level = get_tree().get_root().get_node("Level3D")
 	print(level)
 	level.attempt_to_insert_item(item)
 	

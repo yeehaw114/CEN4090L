@@ -8,7 +8,10 @@ extends Node2D
 
 @export var max_energy := 3
 var current_energy := max_energy
+var current_enemy : Character
+var current_characrer : Character
 signal energy_changed(energy: int)
+signal skill_check_begin
 
 func _on_card_selected(card: Card) -> void:
 	cards.currently_selected_card = card
@@ -51,13 +54,17 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 	for action in card.card_stats.card_actions:
 		if action.type == action.ACTION_TYPE.DAMAGE:
 			if action.power == Action.POWER.LIGHT:
-				if character.calculate_chance(character.accuracy):
-					print('succeded hit')
-					var damage = PlayerInventory.get_damage_melee()
-					enemy.take_damage(damage + character.damage_modifier)
-				else:
-					print('missed hit')
-					enemy.attack_missed_character()
+				cards.slide_cards_down()
+				skill_check_begin.emit()
+				current_enemy = enemy
+				current_characrer = character
+				#if character.calculate_chance(character.accuracy):
+					#print('succeded hit')
+					#var damage = PlayerInventory.get_damage_melee()
+					#enemy.take_damage(damage + character.damage_modifier)
+				#else:
+					#print('missed hit')
+					#enemy.attack_missed_character()
 				
 		elif action.type == action.ACTION_TYPE.DEBUFF:
 			if action.apply_to_self:
@@ -75,8 +82,6 @@ func cast_card_on_character(character: Character, card: Card, enemy: Character) 
 				enemy.set_status_effect(action.status_effect, action.value)
 				enemy.apply_buffs()
 	clear_and_update_cards(card)
-
-
 
 func move_card_to_discard(card):
 	cards.discard_pile.move_card_to_discard(card)
@@ -186,3 +191,13 @@ func use_energy(cost: int):
 func reset_energy():
 	current_energy = max_energy
 	energy_changed.emit(current_energy)
+
+func _on_melee_skill_check_finsihed(zone: int) -> void:
+	if zone != 0:
+		var damage = PlayerInventory.get_damage_melee(zone)
+		current_enemy.take_damage(damage + current_characrer.damage_modifier)
+	else:
+		current_enemy.attack_missed_character()
+	current_enemy = null
+	current_characrer = null
+	cards.slide_cards_up()

@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://ehhoyauawf7f"]
+
+[ext_resource type="Script" uid="uid://c2qibevr8d420" path="res://Scripts/level_3D/tile.gd" id="1_j4rut"]
+[ext_resource type="Texture2D" uid="uid://w0l5t05gy53y" path="res://Assets/Textures/campfire_exit.png" id="2_yrglj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ae7wr"]
+size = Vector3(3, 3.3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4rut"]
+size = Vector3(3, 3.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4rut"]
+albedo_color = Color(0.290785, 0.707762, 0.161001, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrglj"]
+albedo_color = Color(0.0607769, 0.187422, 0.0524434, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54yhg"]
+albedo_color = Color(0.0784314, 0.0509804, 0.0313726, 1)
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_j4rut")
+
+[node name="Area" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.328, 1.3, 0)
+shape = SubResource("BoxShape3D_ae7wr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+visible = false
+collision_mask = 2
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.328, 1.3, 0)
+shape = SubResource("BoxShape3D_j4rut")
+disabled = true
+
+[node name="WallBlock" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35608, 1.25391, 0)
+visible = false
+size = Vector3(3, 3.3, 1)
+material = SubResource("StandardMaterial3D_j4rut")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.357, -0.5, -1.42272)
+size = Vector3(3, 1, 6)
+material = SubResource("StandardMaterial3D_yrglj")
+
+[node name="Ceiling" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.357, 3.465, -1.423)
+size = Vector3(3, 1, 6)
+material = SubResource("StandardMaterial3D_yrglj")
+
+[node name="Midpoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
+
+[node name="Backwall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36516, 1.25771, -1.34591)
+size = Vector3(3, 4, 1)
+material = SubResource("StandardMaterial3D_54yhg")
+
+[node name="Backwall2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36516, 1.25771, -4.63814)
+size = Vector3(3, 4, 1)
+material = SubResource("StandardMaterial3D_54yhg")
+
+[node name="Backwall3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0871891, 1.80593, -3.3459)
+size = Vector3(0.5, 4, 5)
+material = SubResource("StandardMaterial3D_54yhg")
+
+[node name="Backwall4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61931, 1.81987, -3.35596)
+size = Vector3(0.5, 4, 5)
+material = SubResource("StandardMaterial3D_54yhg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 1.35553, 0.720682, -1.37614)
+shaded = true
+double_sided = false
+texture_filter = 0
+texture = ExtResource("2_yrglj")
+
+[connection signal="body_entered" from="Area" to="." method="_on_body_entered"]
+[connection signal="input_event" from="Area" to="." method="_on_area_input_event"]

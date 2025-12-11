@@ -1,19 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfb6o4c2n1lxj"]
+[gd_scene load_steps=13 format=3 uid="uid://cfb6o4c2n1lxj"]
 
 [ext_resource type="Texture2D" uid="uid://dramnk8jinkra" path="res://Assets/Textures/move_crystal_sprite_sheet.png" id="1_3ulgl"]
-[ext_resource type="Script" uid="uid://bu24lbt1f64q0" path="res://Scripts/skill_line.gd" id="1_b0gib"]
 [ext_resource type="Script" uid="uid://8kbaojnwl7rs" path="res://Scripts/melee_skill_check.gd" id="1_mv7pw"]
-[ext_resource type="Texture2D" uid="uid://4ueydpqoc4uy" path="res://Assets/Textures/lobby_floor.png" id="4_2l3ut"]
+[ext_resource type="Script" uid="uid://diais82yyvqcx" path="res://Scripts/zone.gd" id="2_b0gib"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b0gib"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ulgl"]
+size = Vector2(100, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0gib"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv7pw"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l3ut"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqmq4"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp7v7"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1ms2"]
+size = Vector2(100, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv7pw"]
 atlas = ExtResource("1_3ulgl")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv7pw"]
-size = Vector2(29, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqmq4"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x7qg"]
+size = Vector2(12, 29.3333)
 
 [node name="MeleeSkillCheck" type="Control"]
 layout_mode = 3
@@ -24,44 +41,151 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mv7pw")
 
-[node name="SkillLine" type="Line2D" parent="."]
-points = PackedVector2Array(56, 393, 921, 393)
-script = ExtResource("1_b0gib")
+[node name="BarContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = 190.0
+offset_right = 320.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Point" type="Sprite2D" parent="SkillLine"]
-z_index = 5
-texture = SubResource("AtlasTexture_b0gib")
+[node name="HBoxContainer" type="HBoxContainer" parent="BarContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Area2D" type="Area2D" parent="SkillLine/Point"]
+[node name="LeftMiss" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/LeftMissShape")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillLine/Point/Area2D"]
-position = Vector2(-0.5, 0)
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/LeftMiss"]
+collision_mask = 2
+
+[node name="LeftMissShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/LeftMiss/Area2D"]
+position = Vector2(50, 12.5)
+shape = SubResource("RectangleShape2D_3ulgl")
+
+[node name="LeftBad" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/LeftBadShape")
+type = 1
+
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/LeftBad"]
+collision_mask = 2
+
+[node name="LeftBadShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/LeftBad/Area2D"]
+position = Vector2(40, 12.5)
+shape = SubResource("RectangleShape2D_b0gib")
+
+[node name="LeftOk" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.321569, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/LeftOkShape")
+type = 2
+
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/LeftOk"]
+collision_mask = 2
+
+[node name="LeftOkShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/LeftOk/Area2D"]
+position = Vector2(40, 12.5)
 shape = SubResource("RectangleShape2D_mv7pw")
 
-[node name="RedHitRange" type="Sprite2D" parent="SkillLine"]
-modulate = Color(1, 0, 0, 1)
-z_index = 1
-position = Vector2(488.5, 393)
-texture = ExtResource("4_2l3ut")
+[node name="Great" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 1, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/GreatShape")
+type = 3
 
-[node name="ZoneArea" type="Area2D" parent="SkillLine/RedHitRange"]
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/Great"]
+collision_mask = 2
 
-[node name="ZoneCollisionShape" type="CollisionShape2D" parent="SkillLine/RedHitRange/ZoneArea"]
+[node name="GreatShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/Great/Area2D"]
+position = Vector2(40, 12.5)
+shape = SubResource("RectangleShape2D_2l3ut")
+
+[node name="RightOk" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.321569, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/RightOkShape")
+type = 2
+
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/RightOk"]
+collision_mask = 2
+
+[node name="RightOkShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/RightOk/Area2D"]
+position = Vector2(40, 12.5)
 shape = SubResource("RectangleShape2D_rqmq4")
 
-[node name="OrangeHitRange" type="Sprite2D" parent="SkillLine"]
-modulate = Color(0.601296, 0.176817, 0, 1)
-self_modulate = Color(1, 1, 1, 0)
-z_index = 2
-position = Vector2(488.5, 393)
-texture = ExtResource("4_2l3ut")
+[node name="RightBad" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/rightBadShape")
+type = 1
 
-[node name="ZoneArea" type="Area2D" parent="SkillLine/OrangeHitRange"]
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/RightBad"]
+collision_mask = 2
 
-[node name="ZoneCollisionShape" type="CollisionShape2D" parent="SkillLine/OrangeHitRange/ZoneArea"]
-shape = SubResource("RectangleShape2D_rqmq4")
+[node name="rightBadShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/RightBad/Area2D"]
+position = Vector2(40, 12.5)
+shape = SubResource("RectangleShape2D_mp7v7")
 
-[connection signal="area_entered" from="SkillLine/RedHitRange/ZoneArea" to="." method="_on_zone_area_body_entered"]
-[connection signal="area_exited" from="SkillLine/RedHitRange/ZoneArea" to="." method="_on_zone_area_body_exited"]
-[connection signal="area_entered" from="SkillLine/OrangeHitRange/ZoneArea" to="." method="_on_zone_area_body_entered"]
-[connection signal="area_exited" from="SkillLine/OrangeHitRange/ZoneArea" to="." method="_on_zone_area_body_exited"]
+[node name="RightMiss" type="ColorRect" parent="BarContainer/HBoxContainer" node_paths=PackedStringArray("collision_shape")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_b0gib")
+collision_shape = NodePath("Area2D/RightMissShape")
+
+[node name="Area2D" type="Area2D" parent="BarContainer/HBoxContainer/RightMiss"]
+collision_mask = 2
+
+[node name="RightMissShape" type="CollisionShape2D" parent="BarContainer/HBoxContainer/RightMiss/Area2D"]
+position = Vector2(50, 12.5)
+shape = SubResource("RectangleShape2D_g1ms2")
+
+[node name="Pointer" type="Sprite2D" parent="."]
+position = Vector2(80, 272)
+scale = Vector2(0.5, 1.5)
+texture = SubResource("AtlasTexture_mv7pw")
+
+[node name="Area2D" type="Area2D" parent="Pointer"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer/Area2D"]
+shape = SubResource("RectangleShape2D_5x7qg")
+
+[node name="BoundMarker" type="Marker2D" parent="."]
+position = Vector2(200, 460)
+
+[node name="BoundMarker2" type="Marker2D" parent="."]
+position = Vector2(800, 460)
+
+[connection signal="area_entered" from="BarContainer/HBoxContainer/LeftMiss/Area2D" to="." method="on_zone_entered" binds= [0]]
+[connection signal="area_entered" from="BarContainer/HBoxContainer/LeftBad/Area2D" to="." method="on_zone_entered" binds= [1]]
+[connection signal="area_entered" from="BarContainer/HBoxContainer/LeftOk/Area2D" to="." method="on_zone_entered" binds= [2]]
+[connection signal="area_entered" from="BarContainer/HBoxContainer/Great/Area2D" to="." method="on_zone_entered" binds= [3]]
+[connection signal="area_entered" from="BarContainer/HBoxContainer/RightOk/Area2D" to="." method="on_zone_entered" binds= [2]]
+[connection signal="area_entered" from="BarContainer/HBoxContainer/RightBad/Area2D" to="." method="on_zone_entered" binds= [1]]
+[connection signal="area_entered" from="BarContainer/HBoxContainer/RightMiss/Area2D" to="." method="on_zone_entered" binds= [0]]

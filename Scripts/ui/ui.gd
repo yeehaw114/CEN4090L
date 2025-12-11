@@ -19,6 +19,7 @@ extends Control
 @onready var game_over_screen: Control = $GameOverScreen
 @onready var victory_screen: Control = $VictoryScreen
 @onready var pause_screen: Control = $PauseScreen
+@onready var melee_skill_check: Control = $MeleeSkillCheck
 
 @onready var battle_sound_manager: Node2D = $BattleSoundManager
 
@@ -129,3 +130,6 @@ func display_pause_screen(switch: bool):
 		battle_manager.game_paused = false
 		pause_screen.hide()
 		print('HIDE PAUSE SCREEN')
+
+func melee_skill_check_finished(result):
+	print('CHECK FINISHED UPDATE UI')

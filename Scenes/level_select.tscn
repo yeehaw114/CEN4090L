@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://ckay5jd631rmk" path="res://Scripts/level_select/level_select.gd" id="1_qnihq"]
 [ext_resource type="Script" uid="uid://dtdf8jd3o2ury" path="res://Scripts/level_select/select_area.gd" id="2_lx4vd"]
 [ext_resource type="PackedScene" uid="uid://bgqhlljfk7qnw" path="res://Scenes/town.tscn" id="3_lx4vd"]
-[ext_resource type="PackedScene" uid="uid://cxapipdvecyyf" path="res://Scenes/level.tscn" id="4_2sqnl"]
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="5_s6o25"]
 [ext_resource type="Texture2D" uid="uid://4ueydpqoc4uy" path="res://Assets/Textures/lobby_floor.png" id="6_kb5mc"]
+[ext_resource type="PackedScene" uid="uid://dsqwf2jl0i5yo" path="res://Scenes/level_3d.tscn" id="6_mlwxk"]
 [ext_resource type="Script" uid="uid://cyic6h01vmyi8" path="res://Scripts/level_select/area_info.gd" id="6_qnihq"]
 [ext_resource type="Texture2D" uid="uid://c43ijwv525bn6" path="res://Assets/Textures/dark_forest_background.png" id="7_tgoug"]
 [ext_resource type="Resource" uid="uid://vcc164ijev31" path="res://Inventory/Items/gear/weapons/iron_mace.tres" id="8_mlwxk"]
@@ -54,7 +54,7 @@ offset_bottom = 260.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("1_nkys2")
 script = ExtResource("2_lx4vd")
-scene = ExtResource("4_2sqnl")
+scene = ExtResource("6_mlwxk")
 title = "Forest"
 texture = ExtResource("7_tgoug")
 info = "Was once home, now the forest is a festering wound whose heart bleeds from our sins."

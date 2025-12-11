@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://btaajwyd7swy2"]
+[gd_scene load_steps=72 format=3 uid="uid://btaajwyd7swy2"]
 
 [ext_resource type="Theme" uid="uid://347o3jmibjcx" path="res://Assets/Themes/base_theme.tres" id="1_7l6j3"]
 [ext_resource type="Texture2D" uid="uid://jq5a3pilqh80" path="res://Assets/Textures/player_idle.png" id="1_58ulb"]
@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://dlvajwo5fnm76" path="res://Assets/Music/Sound Effects/Battle_Won.wav" id="24_14ft4"]
 [ext_resource type="Script" uid="uid://fly5ribh7ybc" path="res://Scripts/battle_sound_manager.gd" id="24_qdd5b"]
 [ext_resource type="AudioStream" uid="uid://dnsmd1y1ey57a" path="res://Assets/Music/Sound Effects/Battle_Lost.wav" id="25_qdd5b"]
+[ext_resource type="PackedScene" uid="uid://cfb6o4c2n1lxj" path="res://Scenes/melee_skill_check.tscn" id="41_idl0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idl0f"]
 atlas = ExtResource("7_57res")
@@ -168,6 +169,60 @@ point_count = 3
 _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -1), 0.0, 5.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 5.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Animation" id="Animation_qhecr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(125, 374)]
+}
+
+[sub_resource type="Animation" id="Animation_idl0f"]
+resource_name = "card_slide_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(125, 374), Vector2(125, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_hq0jt"]
+resource_name = "card_slide_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(125, 600), Vector2(125, 374)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hq0jt"]
+_data = {
+&"RESET": SubResource("Animation_qhecr"),
+&"card_slide_down": SubResource("Animation_idl0f"),
+&"card_slide_up": SubResource("Animation_hq0jt")
+}
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -507,6 +562,9 @@ visible = false
 layout_mode = 1
 script = ExtResource("7_csd6w")
 
+[node name="MeleeSkillCheck" parent="." instance=ExtResource("41_idl0f")]
+layout_mode = 1
+
 [node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("1_tvmj4")
 
@@ -603,6 +661,12 @@ offset_right = 80.0
 offset_bottom = 74.0
 scale = Vector2(0.7, 0.7)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleManager/Cards"]
+root_node = NodePath("../HandArea")
+libraries = {
+&"": SubResource("AnimationLibrary_hq0jt")
+}
+
 [node name="GameOverScreen" parent="." instance=ExtResource("19_csd6w")]
 visible = false
 layout_mode = 1
@@ -629,11 +693,13 @@ stream = ExtResource("25_qdd5b")
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="exit_button_clicked" from="DisplayDiscardDeck" to="." method="switch_to_display_battle_screen"]
 [connection signal="exit_button_clicked" from="DisplayDrawDeck" to="." method="switch_to_display_battle_screen"]
+[connection signal="finsihed" from="MeleeSkillCheck" to="BattleManager/CombatManager" method="_on_melee_skill_check_finsihed"]
 [connection signal="enemy_clicked" from="BattleManager" to="EnemyStats" method="_on_battle_manager_enemy_clicked"]
 [connection signal="pause_game" from="BattleManager" to="." method="display_pause_screen"]
 [connection signal="rewards_decided" from="BattleManager" to="VictoryScreen" method="set_reward_values"]
 [connection signal="state_changed" from="BattleManager" to="." method="_on_battle_manager_state_changed"]
 [connection signal="energy_changed" from="BattleManager/CombatManager" to="." method="set_energy_value"]
+[connection signal="skill_check_begin" from="BattleManager/CombatManager" to="MeleeSkillCheck" method="_on_skill_check_begin"]
 [connection signal="player_died" from="BattleManager/Player" to="." method="display_game_over_screen"]
 [connection signal="player_died" from="BattleManager/Player" to="BattleManager" method="_on_player_player_died"]
 [connection signal="all_enemies_died" from="BattleManager/Enemies" to="." method="display_victory_screen"]

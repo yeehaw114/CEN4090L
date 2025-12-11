@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var melee_texture: TextureRect = $MeleeTexture
-@onready var gear_description_popup: Panel = $GearDescriptionPopup
+@onready var gear_description_popup: PanelContainer = $GearDescriptionPopup
 
 var resource : WeaponResource
 

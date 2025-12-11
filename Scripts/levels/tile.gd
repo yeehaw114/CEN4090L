@@ -1,5 +1,5 @@
 extends Node2D
-class_name Tile
+#class_name Tile
 
 @onready var wall_collision: CollisionShape2D = $StaticBody2D/WallCollision
 @onready var detection_collision: CollisionShape2D = $Area2D/DetectionCollision
@@ -21,10 +21,10 @@ func _ready():
 	await get_tree().process_frame
 	can_react = true
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is PlayerExploration:
-		player = body
-		player_entered.emit(self)
+#func _on_body_entered(body: Node2D) -> void:
+	#if body is PlayerExploration:
+		#player = body
+		#player_entered.emit(self)
 
 func set_resource(res):
 	tile_resource = res.duplicate(true)

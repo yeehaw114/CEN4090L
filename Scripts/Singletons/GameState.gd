@@ -131,9 +131,9 @@ func return_to_previous_scene_live():
 	tree.root.add_child(previous_scene)
 	tree.current_scene = previous_scene
 	
-	previous_scene.tiles.set_all_tiles_collision(false)
-	await get_tree().process_frame
-	previous_scene.tiles.set_all_tiles_collision(true)
+	#previous_scene.tiles.set_all_tiles_collision(false)
+	#await get_tree().process_frame
+	#previous_scene.tiles.set_all_tiles_collision(true)
 	
 	GlobalAudioStreamPlayer.play_dungeon_music()
 	current_scene_path = ""  # optional, since this is a live restore

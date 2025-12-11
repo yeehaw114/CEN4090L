@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var ranged_texture: TextureRect = $RangedTexture
-@onready var gear_description_popup: Panel = $GearDescriptionPopup
+@onready var gear_description_popup: PanelContainer = $GearDescriptionPopup
 
 var resource : RangedResource
 

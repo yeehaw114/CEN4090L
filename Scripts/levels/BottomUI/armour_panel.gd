@@ -1,7 +1,8 @@
 extends Panel
 
 @onready var armour_texture: TextureRect = $ArmourTexture
-@onready var gear_description_popup: Panel = $GearDescriptionPopup
+@onready var gear_description_popup: PanelContainer = $GearDescriptionPopup
+
 
 var resource : ArmourResource
 
