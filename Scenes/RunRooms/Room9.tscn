@@ -1,18 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://chh8nlyvx7lgn"]
+[gd_scene load_steps=8 format=3 uid="uid://chh8nlyvx7lgn"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_1a56j"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_cygc4"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_0x6u2"]
-[ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="4_xcsmi"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_biey4"]
-[ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_bbdar"]
-[ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_xpx54"]
-[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="8_v8kf5"]
-[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_mhv58"]
-[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_vavjr"]
-[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_emtvm"]
-[ext_resource type="Resource" uid="uid://yv62v7ds0wjq" path="res://Assets/Resources/battles/deer_2.tres" id="12_5baqg"]
-[ext_resource type="Resource" uid="uid://c6246ravlwatf" path="res://Assets/Resources/battles/bat_ant.tres" id="13_kh5b8"]
+[ext_resource type="PackedScene" uid="uid://xhqx44x072fb" path="res://Scenes/smoke_enemy.tscn" id="6_0u5l0"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="14_y5ymg"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="15_cygc4"]
 
@@ -46,14 +37,6 @@ tilemap = NodePath("../TileMap")
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="Enemy" parent="." instance=ExtResource("4_xcsmi")]
-position = Vector2(568, -149)
-battle_resources = Array[ExtResource("5_biey4")]([ExtResource("6_bbdar"), ExtResource("7_xpx54"), ExtResource("8_v8kf5"), ExtResource("9_mhv58"), ExtResource("10_vavjr"), ExtResource("11_emtvm"), ExtResource("12_5baqg"), ExtResource("13_kh5b8")])
-
-[node name="Enemy2" parent="." instance=ExtResource("4_xcsmi")]
-position = Vector2(-99, 278)
-battle_resources = Array[ExtResource("5_biey4")]([ExtResource("6_bbdar"), ExtResource("7_xpx54"), ExtResource("8_v8kf5"), ExtResource("9_mhv58"), ExtResource("10_vavjr"), ExtResource("11_emtvm"), ExtResource("12_5baqg"), ExtResource("13_kh5b8")])
-
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-37, -78)
 
@@ -68,3 +51,9 @@ texture = ExtResource("14_y5ymg")
 [node name="Chest" parent="." instance=ExtResource("15_cygc4")]
 position = Vector2(55, 60)
 coins = 2
+
+[node name="Enemy3" parent="." instance=ExtResource("6_0u5l0")]
+position = Vector2(-100, 281)
+
+[node name="Enemy4" parent="." instance=ExtResource("6_0u5l0")]
+position = Vector2(568, -149)

@@ -1,20 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://jno813m33ldw"]
+[gd_scene load_steps=8 format=3 uid="uid://jno813m33ldw"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_yro4h"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_qcd3u"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_tehy1"]
-[ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="4_rnjug"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_q4jk6"]
-[ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_gpw7q"]
-[ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_xk84n"]
-[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="8_jdff7"]
-[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_7s6tv"]
-[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_efvce"]
-[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_qc71c"]
-[ext_resource type="Resource" uid="uid://yv62v7ds0wjq" path="res://Assets/Resources/battles/deer_2.tres" id="12_2gqdb"]
-[ext_resource type="Resource" uid="uid://c6246ravlwatf" path="res://Assets/Resources/battles/bat_ant.tres" id="13_8h8cd"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="14_uvmod"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="15_4pvqj"]
+[ext_resource type="PackedScene" uid="uid://xhqx44x072fb" path="res://Scenes/smoke_enemy.tscn" id="16_qcd3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f1so"]
 size = Vector2(88, 82)
@@ -46,10 +37,6 @@ tilemap = NodePath("../TileMap")
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="Enemy" parent="." instance=ExtResource("4_rnjug")]
-position = Vector2(153, 170)
-battle_resources = Array[ExtResource("5_q4jk6")]([ExtResource("6_gpw7q"), ExtResource("7_xk84n"), ExtResource("8_jdff7"), ExtResource("9_7s6tv"), ExtResource("10_efvce"), ExtResource("11_qc71c"), ExtResource("12_2gqdb"), ExtResource("13_8h8cd")])
-
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-192, -251)
 
@@ -64,3 +51,6 @@ texture = ExtResource("14_uvmod")
 [node name="Chest" parent="." instance=ExtResource("15_4pvqj")]
 position = Vector2(135, 80)
 coins = 2
+
+[node name="Enemy2" parent="." instance=ExtResource("16_qcd3u")]
+position = Vector2(151, 171)

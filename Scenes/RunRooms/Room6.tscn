@@ -1,21 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0vwl55hbeejr"]
+[gd_scene load_steps=9 format=3 uid="uid://d0vwl55hbeejr"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_14k6t"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_iumug"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_4aplv"]
-[ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="4_d2wdl"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_e752m"]
-[ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_j6u3e"]
-[ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_y625x"]
-[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="8_kn21p"]
-[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_aowfd"]
-[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_3meom"]
-[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_t346d"]
-[ext_resource type="Resource" uid="uid://yv62v7ds0wjq" path="res://Assets/Resources/battles/deer_2.tres" id="12_3q8ju"]
-[ext_resource type="Resource" uid="uid://c6246ravlwatf" path="res://Assets/Resources/battles/bat_ant.tres" id="13_cent2"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="14_fmhjo"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="15_s1cfi"]
 [ext_resource type="PackedScene" uid="uid://dxi70a7gdgnql" path="res://Scenes/torch.tscn" id="16_iumug"]
+[ext_resource type="PackedScene" uid="uid://xhqx44x072fb" path="res://Scenes/smoke_enemy.tscn" id="17_4aplv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrojb"]
 size = Vector2(88, 82)
@@ -47,14 +38,6 @@ tilemap = NodePath("../TileMap")
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="Enemy" parent="." instance=ExtResource("4_d2wdl")]
-position = Vector2(191, 148)
-battle_resources = Array[ExtResource("5_e752m")]([ExtResource("6_j6u3e"), ExtResource("7_y625x"), ExtResource("8_kn21p"), ExtResource("9_aowfd"), ExtResource("10_3meom"), ExtResource("11_t346d"), ExtResource("12_3q8ju"), ExtResource("13_cent2")])
-
-[node name="Enemy2" parent="." instance=ExtResource("4_d2wdl")]
-position = Vector2(242, -179)
-battle_resources = Array[ExtResource("5_e752m")]([ExtResource("6_j6u3e"), ExtResource("7_y625x"), ExtResource("8_kn21p"), ExtResource("9_aowfd"), ExtResource("10_3meom"), ExtResource("11_t346d"), ExtResource("12_3q8ju"), ExtResource("13_cent2")])
-
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-550, 165)
 
@@ -84,3 +67,9 @@ position = Vector2(88, 201)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.111197, 0.111197, 0.111197, 1)
+
+[node name="Enemy3" parent="." instance=ExtResource("17_4aplv")]
+position = Vector2(245, -177)
+
+[node name="Enemy4" parent="." instance=ExtResource("17_4aplv")]
+position = Vector2(187, 147)

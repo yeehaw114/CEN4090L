@@ -1,18 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://xbyqj3f3px57"]
+[gd_scene load_steps=9 format=3 uid="uid://xbyqj3f3px57"]
 
 [ext_resource type="Script" uid="uid://cgh7vemlxb3t1" path="res://Scripts/large_room.gd" id="1_53nve"]
 [ext_resource type="TileSet" uid="uid://vhh13ddg8wcy" path="res://Assets/Tilesets/tileset_forest.tres" id="2_3esm2"]
 [ext_resource type="PackedScene" uid="uid://o8o20a6mxny" path="res://Scenes/player_overworld.tscn" id="3_ltmrk"]
-[ext_resource type="PackedScene" uid="uid://qq1lhi1qi58k" path="res://Scenes/test_enemy.tscn" id="4_g2odf"]
-[ext_resource type="Script" uid="uid://d6nkb4bfujhr" path="res://Scripts/battle_resource.gd" id="5_8hh16"]
-[ext_resource type="Resource" uid="uid://geiyh758k162" path="res://Assets/Resources/battles/bat_2.tres" id="6_53m3b"]
-[ext_resource type="Resource" uid="uid://djco31opypq60" path="res://Assets/Resources/battles/deer_1.tres" id="7_aog6m"]
-[ext_resource type="Resource" uid="uid://cie8oot3xbcqs" path="res://Assets/Resources/battles/deer_bat.tres" id="8_3blon"]
-[ext_resource type="Resource" uid="uid://ddu28upce7e5n" path="res://Assets/Resources/battles/deer_snake.tres" id="9_qak5s"]
-[ext_resource type="Resource" uid="uid://d3ravvv4evhi8" path="res://Assets/Resources/battles/owl_ant_2.tres" id="10_maew4"]
-[ext_resource type="Resource" uid="uid://cy20vxhrbl6i3" path="res://Assets/Resources/battles/owl_snake.tres" id="11_p5nhs"]
-[ext_resource type="Resource" uid="uid://yv62v7ds0wjq" path="res://Assets/Resources/battles/deer_2.tres" id="12_d3ny7"]
-[ext_resource type="Resource" uid="uid://c6246ravlwatf" path="res://Assets/Resources/battles/bat_ant.tres" id="13_jcagy"]
+[ext_resource type="PackedScene" uid="uid://xhqx44x072fb" path="res://Scenes/smoke_enemy.tscn" id="7_h4q5m"]
 [ext_resource type="Texture2D" uid="uid://cuqp38hwirqmw" path="res://Assets/Textures/room_end.png" id="14_6x356"]
 [ext_resource type="PackedScene" uid="uid://biu0om42lrp8e" path="res://Scenes/chest.tscn" id="15_o85jw"]
 [ext_resource type="PackedScene" uid="uid://dxi70a7gdgnql" path="res://Scenes/torch.tscn" id="16_3esm2"]
@@ -47,10 +38,6 @@ tilemap = NodePath("../TileMap")
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="Enemy" parent="." instance=ExtResource("4_g2odf")]
-position = Vector2(138, -223)
-battle_resources = Array[ExtResource("5_8hh16")]([ExtResource("6_53m3b"), ExtResource("7_aog6m"), ExtResource("8_3blon"), ExtResource("9_qak5s"), ExtResource("10_maew4"), ExtResource("11_p5nhs"), ExtResource("12_d3ny7"), ExtResource("13_jcagy")])
-
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(-625, -339)
 
@@ -80,3 +67,6 @@ position = Vector2(312, -200)
 
 [node name="Torch4" parent="." instance=ExtResource("16_3esm2")]
 position = Vector2(-360, -279)
+
+[node name="Enemy2" parent="." instance=ExtResource("7_h4q5m")]
+position = Vector2(140, -226)
